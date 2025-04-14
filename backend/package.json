@@ -9,7 +9,11 @@
     "dev": "nodemon",
     "lint": "eslint 'src/**/*.ts'",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "typecheck": "tsc --noEmit",
+    "coverage": "jest --coverage",
+    "prettier": "prettier --write 'src/**/*.ts'",
+    "prettier:check": "prettier --check 'src/**/*.ts'"              
   },
   "keywords": [],
   "author": "",
