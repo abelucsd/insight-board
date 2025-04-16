@@ -1,0 +1,692 @@
+2025-04-15T22:34:13.451Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-15T22:34:13.453Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-15T22:34:13.453Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-15T22:34:13.456Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-15T22:34:13.456Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 2 product(s).
+2025-04-15T22:34:13.456Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-15T22:34:13.697Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-15T22:34:13.699Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-15T22:34:13.700Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-15T22:34:13.708Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-15T22:34:13.709Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 2 product(s).
+2025-04-15T22:34:13.709Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T13:59:11.413Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T13:59:11.415Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T13:59:11.416Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T13:59:11.426Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T13:59:11.426Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 2 product(s).
+2025-04-16T13:59:11.426Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T13:59:11.618Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T13:59:11.620Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T13:59:11.621Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T13:59:11.624Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T13:59:11.625Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T13:59:25.226Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T13:59:25.228Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T13:59:25.229Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T13:59:25.238Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T13:59:25.239Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 2 product(s).
+2025-04-16T13:59:25.239Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T13:59:25.546Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T13:59:25.548Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T13:59:25.548Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T13:59:25.550Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T13:59:25.551Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T14:00:01.483Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T14:00:01.485Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T14:00:01.486Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T14:00:01.495Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T14:00:01.496Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 2 product(s).
+2025-04-16T14:00:01.496Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T14:00:32.607Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T14:00:32.609Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T14:00:32.610Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T14:00:32.619Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T14:00:32.620Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 2 product(s).
+2025-04-16T14:00:32.620Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T14:00:32.950Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T14:00:32.952Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T14:00:32.952Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T14:00:32.954Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T14:00:32.955Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T17:41:16.162Z function toUpperCase() { [native code] } [server.ts]: ERROR [server.ts]: [startServer()] Error starting server: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+2025-04-16T17:44:47.549Z function toUpperCase() { [native code] } [server.ts]: ERROR [server.ts]: [startServer()] Error starting server: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+2025-04-16T17:48:55.431Z function toUpperCase() { [native code] } [server.ts]: ERROR [server.ts]: [startServer()] Error starting server: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+2025-04-16T17:52:26.174Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T17:52:51.684Z function toUpperCase() { [native code] } [server.ts]: ERROR [server.ts]: [startServer()] Error starting server: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+2025-04-16T18:15:33.639Z function toUpperCase() { [native code] } [server.ts]: ERROR [server.ts]: [startServer()] Error starting server: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+2025-04-16T18:15:34.901Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:16:51.251Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:17:07.954Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:17:33.843Z function toUpperCase() { [native code] } [server.ts]: ERROR [server.ts]: [startServer()] Error starting server: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+2025-04-16T18:20:29.497Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T18:20:29.498Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:20:30.010Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:20:34.508Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T18:20:34.508Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T18:32:18.023Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T18:32:18.025Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:32:18.080Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:32:23.027Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T18:32:23.027Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T18:32:51.454Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T18:32:51.456Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:32:51.508Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:32:56.451Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T18:32:56.452Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T18:33:10.891Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T18:33:10.893Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:33:10.935Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:33:15.896Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T18:33:15.896Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T18:33:47.247Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T18:33:47.248Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:33:47.319Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:33:49.775Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:33:52.256Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T18:33:52.257Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T18:34:14.075Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:34:14.607Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T18:34:14.608Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T18:34:14.698Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:36:44.971Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T18:36:44.972Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T18:36:45.048Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:37:11.761Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T18:37:11.763Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T18:37:11.823Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:37:13.744Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:38:17.526Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T18:38:17.527Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T18:38:18.160Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:38:18.219Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T18:38:40.561Z function toUpperCase() { [native code] } [server.ts]: ERROR [server.ts]: [startServer()] Error starting server: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+2025-04-16T19:22:13.391Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:22:13.394Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:22:13.468Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:22:15.422Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:22:18.101Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:22:20.801Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:22:23.454Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:22:41.140Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:22:41.141Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:22:41.187Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:22:41.822Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:24:13.860Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:24:13.861Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:24:13.915Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:24:15.742Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:28:35.056Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:28:35.058Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:28:35.171Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:28:36.961Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:39:09.025Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:39:09.756Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:39:09.757Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:39:09.760Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:39:09.760Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T19:39:10.903Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:40:59.387Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:40:59.932Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:40:59.948Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:40:59.949Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:40:59.952Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:40:59.952Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T19:40:59.953Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:40:59.953Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T19:43:32.279Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:43:32.902Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:43:32.971Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:43:32.973Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:43:32.975Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:43:32.975Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T19:43:32.976Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:43:32.977Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T19:46:15.892Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:46:16.396Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:46:16.419Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:46:16.420Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:46:16.423Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:46:16.423Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T19:46:16.424Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:46:16.425Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T19:46:16.426Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:46:16.426Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T19:46:56.972Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:46:57.479Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:46:57.626Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:46:57.627Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:46:57.627Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: res.status is not a function
+2025-04-16T19:46:57.633Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:46:57.633Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T19:46:57.634Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: res.status is not a function
+2025-04-16T19:46:57.635Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:46:57.635Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T19:46:57.637Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:46:57.637Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T19:48:11.075Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:48:11.629Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:48:11.795Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:48:11.796Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:48:11.801Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:48:11.801Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T19:48:11.802Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:48:11.803Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:48:11.804Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T19:49:44.164Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:49:44.635Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:49:44.636Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:49:44.641Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:49:44.641Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T19:49:44.642Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:49:44.643Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:49:44.644Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T19:49:44.780Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:50:19.529Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:50:20.119Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:50:20.123Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:50:20.124Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:50:20.129Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:50:20.129Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T19:50:20.130Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:50:20.132Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:50:20.132Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:51:07.103Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:51:07.599Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:51:07.618Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:51:07.619Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:51:07.624Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:51:07.624Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T19:51:07.626Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:51:07.626Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T19:51:07.630Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:51:07.630Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:52:11.159Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:52:11.672Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:53:26.420Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:53:27.020Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:53:55.326Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:53:55.830Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:53:55.903Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:53:55.905Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:53:55.905Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: res.status is not a function
+2025-04-16T19:53:55.911Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:53:55.912Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T19:53:55.912Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: res.status is not a function
+2025-04-16T19:53:55.913Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:53:55.914Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T19:53:55.915Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:53:55.916Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:54:32.990Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:54:33.507Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:54:33.557Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:54:33.558Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:54:33.559Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: res.status is not a function
+2025-04-16T19:54:33.565Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:54:33.565Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T19:54:33.567Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:54:33.567Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T19:54:33.568Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:54:33.569Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:54:49.624Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:54:50.152Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T19:54:50.222Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:54:50.223Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T19:54:50.225Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:54:50.225Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T19:54:50.227Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:54:50.227Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T19:54:50.228Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T19:54:50.229Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:03:20.130Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:03:20.131Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:03:20.135Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:03:20.135Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:03:20.136Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:03:20.137Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:03:20.138Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:03:20.138Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:03:20.793Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:03:21.663Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:03:21.666Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:03:21.667Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:03:21.667Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:06:04.492Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:06:04.493Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:06:04.495Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:06:04.496Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:06:04.497Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:06:04.497Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:06:04.499Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:06:04.499Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:06:04.537Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:06:04.540Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:06:04.541Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:06:04.542Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:06:06.271Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:06:06.283Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:29:19.451Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:29:19.453Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:29:19.455Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:29:19.456Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:29:19.457Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:29:19.458Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:29:19.459Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:29:19.459Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:29:19.524Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:29:19.528Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:29:19.529Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:29:19.530Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:29:21.454Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:29:21.478Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:29:50.950Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:29:50.951Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:29:50.953Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:29:50.954Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:29:50.955Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:29:50.955Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:29:50.957Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:29:50.957Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:29:51.059Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:29:51.062Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:29:51.063Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:29:51.064Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:29:51.525Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:29:51.550Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:30:40.708Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:30:40.710Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:30:40.713Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:30:40.714Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:30:40.716Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:30:40.716Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:30:40.718Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:30:40.719Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:30:40.799Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:30:40.802Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:30:40.803Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:30:40.804Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:30:41.371Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:30:41.402Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:31:48.249Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:31:48.251Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:31:48.253Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:31:48.253Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:31:48.255Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:31:48.256Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:31:48.257Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:31:48.258Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:31:48.325Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:31:48.328Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:31:48.329Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:31:48.329Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:31:48.919Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:31:48.946Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:32:27.181Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:32:27.182Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:32:27.186Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:32:27.187Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:32:27.188Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:32:27.189Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:32:27.191Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:32:27.191Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:32:27.250Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:32:27.255Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:32:27.256Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:32:27.257Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:32:27.809Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:32:27.834Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:32:47.296Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:32:47.298Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:32:47.301Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:32:47.302Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:32:47.304Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:32:47.304Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:32:47.305Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:32:47.306Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:32:47.419Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:32:47.422Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:32:47.423Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:32:47.424Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:32:47.931Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:32:47.960Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:33:47.540Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:33:47.541Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:33:47.544Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:33:47.544Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:33:47.545Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:33:47.546Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:33:47.547Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:33:47.547Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:33:47.676Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:33:47.680Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:33:47.681Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:33:47.682Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:33:48.154Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:33:48.179Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:34:53.711Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:34:53.712Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:34:53.714Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:34:53.714Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:34:53.715Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:34:53.716Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:34:53.717Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:34:53.717Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:34:53.758Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:34:53.761Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:34:53.762Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:34:53.764Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:34:54.311Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:34:54.342Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:35:19.699Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:35:19.700Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:35:19.702Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:35:19.703Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:35:19.705Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:35:19.706Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:35:19.707Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:35:19.708Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:35:19.808Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:35:19.811Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:35:19.812Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:35:19.813Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:35:20.347Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:35:20.372Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:35:21.803Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:35:21.805Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:35:21.808Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:35:46.133Z function toUpperCase() { [native code] } [server.ts]: ERROR [server.ts]: [startServer()] Error starting server: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+2025-04-16T20:35:48.824Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:35:48.826Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:35:48.828Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:35:48.829Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:35:48.830Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:35:48.831Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:35:48.832Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:35:48.833Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:35:48.906Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:35:48.909Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:35:48.910Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:35:48.911Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:35:49.374Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:35:49.399Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:35:50.710Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:35:50.712Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:35:50.715Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:35:50.732Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:35:50.733Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:35:50.735Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:36:35.242Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:36:35.243Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:36:35.245Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:36:35.246Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:36:35.248Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:36:35.248Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:36:35.250Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:36:35.250Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:36:35.318Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:36:35.322Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:36:35.323Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:36:35.323Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:36:35.812Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:36:35.837Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:36:37.123Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:36:37.124Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:36:37.128Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:36:37.146Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:36:37.147Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:36:37.149Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:39:42.861Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:39:42.863Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:39:42.865Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:39:42.866Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:39:42.868Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:39:42.868Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:39:42.870Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:39:42.870Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:39:42.960Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:39:42.963Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:39:42.964Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:39:42.965Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:39:43.472Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:39:43.498Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:39:44.894Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:39:44.896Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:39:44.900Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:39:44.918Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:39:44.919Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:39:44.921Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:39:49.032Z function toUpperCase() { [native code] } [server.ts]: ERROR [server.ts]: [startServer()] Error starting server: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+2025-04-16T20:40:51.024Z function toUpperCase() { [native code] } [server.ts]: ERROR [server.ts]: [startServer()] Error starting server: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+2025-04-16T20:41:13.087Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:41:13.089Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:41:13.092Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:41:13.093Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:41:13.095Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:41:13.097Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:41:13.099Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:41:13.100Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:41:13.548Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:41:13.582Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:41:13.706Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:41:13.709Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:41:13.710Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:41:13.711Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:41:13.837Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:41:13.839Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:41:13.842Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:41:13.861Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:41:13.861Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:41:13.864Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:55:18.322Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:55:18.325Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:55:18.328Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:55:18.328Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:55:18.334Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:55:18.334Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:55:18.337Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:55:18.338Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:55:19.193Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:55:19.197Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:55:19.198Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:55:19.199Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:55:19.669Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:55:19.693Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:55:19.818Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:55:19.820Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:55:19.823Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:55:19.841Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:55:19.842Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:55:19.844Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:55:55.382Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:55:55.387Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:55:55.389Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:55:55.390Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:55:55.809Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:55:55.833Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:55:55.969Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:55:55.971Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:55:55.974Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:55:55.975Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:55:55.982Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:55:55.982Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:55:55.983Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:55:55.984Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:55:56.014Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:55:56.017Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:55:56.021Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:55:56.045Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:55:56.046Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:55:56.049Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:56:06.846Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:56:06.851Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:56:06.852Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:56:06.853Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:56:07.245Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:56:07.270Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:56:07.439Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:56:07.440Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:56:07.442Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:56:07.443Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:56:07.444Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:56:07.444Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:56:07.445Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:56:07.446Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:56:07.453Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:56:07.456Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:56:07.461Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:56:07.485Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:56:07.486Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:56:07.489Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:57:30.265Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:57:30.268Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:57:30.269Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:57:30.270Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:57:30.676Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:57:30.700Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:57:30.866Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:57:30.868Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:57:30.869Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:57:30.870Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:57:30.871Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:57:30.872Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:57:30.873Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:57:30.874Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:57:30.874Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:57:30.875Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:57:30.875Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:57:30.892Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:57:30.893Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:57:30.896Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:58:43.518Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:58:43.524Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:58:43.526Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:58:43.527Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:58:43.937Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:58:43.964Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:58:44.167Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:58:44.169Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:58:44.172Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:58:44.191Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:58:44.191Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:58:44.194Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:58:49.508Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:58:49.511Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:58:49.512Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:58:49.513Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:58:49.912Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:58:49.948Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:58:50.147Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:58:50.149Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:58:50.153Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:58:50.155Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:58:50.156Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:58:50.158Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:58:50.159Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:58:50.160Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:58:50.160Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:58:50.161Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:58:50.162Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:58:50.173Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:58:50.174Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:58:50.177Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:59:11.206Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:59:11.210Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:59:11.211Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:59:11.212Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:59:11.601Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:59:11.624Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:59:11.821Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:59:11.822Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:59:11.827Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:59:11.847Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:59:11.848Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:59:11.850Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:59:11.870Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:59:11.871Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:59:11.874Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:59:11.874Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:59:11.875Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:59:11.876Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:59:11.877Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:59:11.877Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:59:30.315Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:59:30.319Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:59:30.320Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:59:30.321Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T20:59:30.693Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:59:30.728Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:59:30.914Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:59:30.916Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:59:30.920Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:59:30.939Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:59:30.939Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T20:59:30.942Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:59:30.956Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:59:30.957Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T20:59:30.960Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:59:30.960Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T20:59:30.961Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:59:30.962Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T20:59:30.963Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T20:59:30.963Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T21:00:48.081Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:00:48.085Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:00:48.087Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:00:48.088Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T21:00:48.469Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:00:48.500Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:00:48.682Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:00:48.683Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T21:00:48.685Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:00:48.686Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T21:00:48.687Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:00:48.687Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T21:00:48.688Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:00:48.689Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T21:00:48.714Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:00:48.716Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:00:48.721Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T21:00:48.746Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:00:48.746Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:00:48.749Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T21:01:38.487Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:01:38.492Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:01:38.493Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:01:38.494Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T21:01:38.893Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:01:38.921Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:01:39.055Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:01:39.056Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T21:01:39.058Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:01:39.059Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T21:01:39.060Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:01:39.060Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T21:01:39.061Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:01:39.062Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T21:01:39.079Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:01:39.082Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:01:39.086Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T21:01:39.111Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:01:39.112Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:01:39.115Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T21:16:05.924Z function toUpperCase() { [native code] } [server.ts]: ERROR [server.ts]: [startServer()] Error starting server: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+2025-04-16T21:16:30.385Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:16:30.387Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T21:16:30.390Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:16:30.391Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
+2025-04-16T21:16:30.393Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:16:30.394Z function toUpperCase() { [native code] } [product.controller]: ERROR [product.controller]: [getProducts] Failed to get products: Database failure
+2025-04-16T21:16:30.395Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:16:30.396Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T21:16:30.734Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:16:30.763Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:16:30.960Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:16:30.963Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:16:30.964Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:16:30.964Z function toUpperCase() { [native code] } [product.service]: ERROR [product.service]: [getProducts] Error fetching products: Database error
+2025-04-16T21:16:31.157Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:16:31.158Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:16:31.162Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 0 product(s).
+2025-04-16T21:16:31.179Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Received request to get all products.
+2025-04-16T21:16:31.179Z function toUpperCase() { [native code] } [product.service]: INFO [product.service]: [getProducts] Returning 0 product(s).
+2025-04-16T21:16:31.181Z function toUpperCase() { [native code] } [product.controller]: INFO [product.controller]: [getProducts] Successfully fetched 2 product(s).
