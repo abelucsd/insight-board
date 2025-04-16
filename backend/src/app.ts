@@ -1,5 +1,5 @@
 import express from 'express';
-import productRoutes from './routes/productRoutes';
+import {productRouter} from './routes/product.routes';
 import { errorHandler } from './middlewares/errorHandler';
 
 const app = express();
@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 // Routes
-app.use('/api/products', productRoutes);
+app.use('/api/products', productRouter);
 
 app.use(errorHandler);
 

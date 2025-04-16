@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit",
     "coverage": "jest --coverage",
     "prettier": "prettier --write 'src/**/*.ts'",
-    "prettier:check": "prettier --check 'src/**/*.ts'"              
+    "prettier:check": "prettier --check 'src/**/*.ts'"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +22,7 @@
     "@types/express": "^5.0.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.14.1",
+    "@types/supertest": "^6.0.3",
     "dotenv": "^16.5.0",
     "eslint": "^9.24.0",
     "express": "^5.1.0",
@@ -30,8 +31,14 @@
     "nodemon": "^3.1.9",
     "npm": "^11.3.0",
     "prettier": "^3.5.3",
+    "supertest": "^7.1.0",
     "ts-jest": "^29.3.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "mongodb": "^6.15.0",
+    "mongodb-memory-server": "^10.1.4",
+    "mongoose": "^8.13.2"
   }
 }
