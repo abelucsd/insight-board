@@ -43,6 +43,4 @@ describe('Product Service', () => {
       expect(Product.find).toHaveBeenCalledTimes(1);
     });
   });
-
-
 });

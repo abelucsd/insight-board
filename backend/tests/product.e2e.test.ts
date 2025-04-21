@@ -70,4 +70,51 @@ describe('Products API', () => {
       expect(response.body[1].name).toBe('Product 2');
     });
   });
+
+
+  describe('Get /products/:id', () => {
+    it('should return a product by ID', async () => {
+      const newProduct = await Product.create({ name: 'Product 1', price: 10 });
+      const response = await request(app).get(`/api/products/${newProduct._id}`);
+      console.log(response.body._id, newProduct._id);
+      expect(response.status).toBe(200);
+      expect(response.body.name).toBe(newProduct.name);
+    });
+
+    it('should return 404 if product not found', async () => {
+      const response = await request(app).get('/api/products/invalid-id');
+      expect(response.status).toBe(404);
+    });
+  });
+
+
+  describe('PUT /products/:id', () => {
+    it('should update a product', async () => {
+      const newProduct = await Product.create({ name: 'Product 1', price: 10 });
+      const updatedProduct = { name: 'Updated Product', price: 15 };
+      const response = await request(app).put(`/api/products/${newProduct._id}`).send(updatedProduct);
+      expect(response.status).toBe(200);
+      expect(response.body.name).toBe(updatedProduct.name);
+    });
+
+    it('should return 404 if product not found', async () => {
+      const updatedProduct = { name: 'Updated Product', price: 15 };
+      const response = await request(app).put('/api/products/invalid-id').send(updatedProduct);
+      expect(response.status).toBe(404);
+    });
+  });
+
+
+  describe('DELETE /products/:id', () => {
+    it('should delete a product', async () => {
+      const newProduct = await Product.create({ name: 'Product 1', price: 10 });
+      const response = await request(app).delete(`/api/products/${newProduct._id}`);
+      expect(response.status).toBe(200);      
+    });
+
+    it('should return 404 if product not found', async () => {
+      const response = await request(app).delete('/api/products/invalid-id');
+      expect(response.status).toBe(404);
+    });
+  });
 });

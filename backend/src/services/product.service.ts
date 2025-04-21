@@ -31,4 +31,34 @@ export const productService = {
       throw err;
     }
   },
+  getProductById: async (id: string): Promise<IProduct | null> => {
+    try {
+      logger.info(`[getProductById] Fetching product with ID: ${id}`);
+      return await Product.findById(id);
+    } catch (error) {
+      const err = new CustomError('Failed to fetch product by ID', 404);
+      logger.error(`[getProductById] Error fetching product: ${err.message}`);
+      throw err;
+    }
+  },
+  updateProduct: async (id: string, productData: Partial<CreateProductInput>): Promise<IProduct | null> => {
+    try {
+      logger.info(`[updateProduct] Updating product with ID: ${id}`);
+      return await Product.findByIdAndUpdate(id, productData, { new: true });
+    } catch (error) {
+      const err = new CustomError('Failed to update product', 404);
+      logger.error(`[updateProduct] Error updating product: ${err.message}`);
+      throw err;
+    }
+  },
+  deleteProduct: async (id: string): Promise<IProduct | null> => {
+    try {
+      logger.info(`[deleteProduct] Deleting product with ID: ${id}`);
+      return await Product.findByIdAndDelete(id);
+    } catch (error) {
+      const err = new CustomError('Failed to delete product', 404);
+      logger.error(`[deleteProduct] Error deleting product: ${err.message}`);
+      throw err;
+    }
+  }
 };
