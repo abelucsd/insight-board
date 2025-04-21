@@ -15,7 +15,7 @@ const client = new MongoClient(config.db.mongodbUri, {
 });
 
 export const getDb = async (): Promise<Db> => {
-  if (!dbInstance) {
+  
     if (!config.db.mongodbUri) {  
       throw new Error(`MongoDB URI is not defined in the config`);
     }
@@ -23,6 +23,6 @@ export const getDb = async (): Promise<Db> => {
     await client.connect();
     dbInstance = client.db(config.db.name);
     logger.info(`[getDB] Connected to database: ${config.db.name}`);    
-  }
+  
   return dbInstance;
 };
