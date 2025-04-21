@@ -30,10 +30,29 @@ describe('Products API', () => {
   beforeEach(async () => {
     await Product.deleteMany({});
   })
+
+
+  describe('POST /products', () => {
+    it('should create a new product', async () => {
+      const newProduct = { name: 'Product 1', price: 10 };
+      const response = await request(app).post('/api/products').send(newProduct);
+      expect(response.status).toBe(201);
+      expect(response.body.name).toBe(newProduct.name);
+      expect(response.body.price).toBe(newProduct.price);
+
+      const productInDb = await Product.findById(response.body._id);
+      expect(productInDb).not.toBeNull();
+    });
+
+    it('should return 400 if product data is invalid', async () => {
+      const invalidProduct = { name: '', price: -10 };
+      const response = await request(app).post('/api/products').send(invalidProduct);
+      expect(response.status).toBe(400);
+    });    
+  });
+
   
-
   describe('Get /products', () => {        
-
     it('should return an empty array when no products exist', async () => {
       const response = await request(app).get('/api/products');
       expect(response.status).toBe(200);
@@ -50,7 +69,5 @@ describe('Products API', () => {
       expect(response.body[0].name).toBe('Product 1');
       expect(response.body[1].name).toBe('Product 2');
     });
-
   });
-
 });
