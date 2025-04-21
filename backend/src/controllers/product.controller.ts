@@ -5,6 +5,21 @@ import { createLogger } from '../utils/logger';
 
 const logger = createLogger('product.controller');
 
+export const createProduct = async( req: Request, res: Response, next: NextFunction) => {
+  try {
+    logger.info('[createProduct] Received request to create a new product.');
+
+    const { name, price } = req.body;
+    const newProduct = await productService.createProduct({ name, price });
+
+    logger.info(`[createProduct] Successfully created product with ID: ${newProduct._id}`);
+    res.status(201).json(newProduct);
+  } catch (error) {
+    logger.error(`[createProduct] Failed to create product: ${(error as Error).message}`);
+    next(error);
+  }
+}
+
 export const getProducts = async (req: Request, res: Response, next: NextFunction) => {
   try {
     logger.info('[getProducts] Received request to get all products.');
