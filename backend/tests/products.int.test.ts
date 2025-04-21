@@ -32,6 +32,21 @@ describe('Products Integration', () => {
   afterEach(async () => {
     await Product.deleteMany({});
   });
+
+
+  describe('create product', () => {
+    it('should create a new product', async () => {
+      const newProduct = { name: 'Product 3', price: 30 };
+      const result = await productService.createProduct(newProduct);
+      expect(result.name).toBe(newProduct.name);
+      expect(result.price).toBe(newProduct.price);
+    });
+
+    it('should throw an error when creating a product fails', async () => {
+      const newProduct = { name: '', price: 30 }; // Invalid product name
+      await expect(productService.createProduct(newProduct)).rejects.toThrow('Failed to create product');
+    });
+  });
   
 
   describe('get products', () => {
@@ -57,5 +72,42 @@ describe('Products Integration', () => {
     });
   });
 
+  describe('get product by id', () => {
+    it('should return a product by ID', async () => {
+      const newProduct = await Product.create({ name: 'Product 4', price: 40 });
+      const result = await productService.getProductById(newProduct._id);
+      expect(result!.name).toBe(newProduct.name);
+      expect(result!.price).toBe(newProduct.price);
+    });
 
+    it('should throw an error when product not found', async () => {
+      await expect(productService.getProductById('invalid-id')).rejects.toThrow('Failed to fetch product by ID');
+    });
+  });
+
+
+  describe('update product', () => {
+    it('should update a product', async () => {
+      const newProduct = await Product.create({ name: 'Product 5', price: 50 });
+      const updatedProduct = await productService.updateProduct(newProduct._id, { price: 60 });
+      expect(updatedProduct!.price).toBe(60);
+    });
+
+    it('should throw an error when updating a product fails', async () => {
+      await expect(productService.updateProduct('invalid-id', { price: 60 })).rejects.toThrow('Failed to update product');
+    });
+  });
+
+
+  describe('delete product', () => {
+    it('should delete a product', async () => {
+      const newProduct = await Product.create({ name: 'Product 6', price: 60 });
+      const deletedProduct = await productService.deleteProduct(newProduct._id);
+      expect(deletedProduct!.name).toBe(newProduct.name);
+    });
+
+    it('should throw an error when deleting a product fails', async () => {
+      await expect(productService.deleteProduct('invalid-id')).rejects.toThrow('Failed to delete product');
+    });
+  });
 });
