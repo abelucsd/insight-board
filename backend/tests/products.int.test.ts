@@ -32,6 +32,21 @@ describe('Products Integration', () => {
   afterEach(async () => {
     await Product.deleteMany({});
   });
+
+
+  describe('create product', () => {
+    it('should create a new product', async () => {
+      const newProduct = { name: 'Product 3', price: 30 };
+      const result = await productService.createProduct(newProduct);
+      expect(result.name).toBe(newProduct.name);
+      expect(result.price).toBe(newProduct.price);
+    });
+
+    it('should throw an error when creating a product fails', async () => {
+      const newProduct = { name: '', price: 30 }; // Invalid product name
+      await expect(productService.createProduct(newProduct)).rejects.toThrow('Failed to create product');
+    });
+  });
   
 
   describe('get products', () => {
@@ -55,7 +70,6 @@ describe('Products Integration', () => {
 
       expect(cleanResult).toEqual(products);
     });
-  });
-
+  });  
 
 });
