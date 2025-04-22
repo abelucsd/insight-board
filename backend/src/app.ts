@@ -29,6 +29,8 @@ app.use('/api/worker', workerRouter);
 
 app.use('/api/worker', workerRouter);
 
+app.use('api/worker/load-file', workerRouter);
+
 app.use(errorHandler);
 
 export default app;
