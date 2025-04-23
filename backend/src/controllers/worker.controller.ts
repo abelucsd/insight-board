@@ -15,6 +15,7 @@ export const loadFile = async (req: Request, res: Response, next: NextFunction):
     }
 
     const data = await runFileLoaderWorker(filePath as string);
+    console.log('Data from worker:', data);
     res.status(200).json(data);
   } catch (error) {        
     next(error);

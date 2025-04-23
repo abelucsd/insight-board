@@ -83,7 +83,7 @@ export async function cleanAndValidateData(rows: Row[]): Promise<any[]> {
 // Loaders for handling Excel, CSV, and JSON file formats
 async function loadExcel(filePath: string): Promise<Row[]> {
   try {
-    const workbook = XLSX.readFile(filePath);
+    const workbook = XLSX.readFileSync(filePath);    
     const sheetName = workbook.SheetNames[0];
     const worksheet = workbook.Sheets[sheetName];
     const json = XLSX.utils.sheet_to_json(worksheet);
@@ -96,9 +96,9 @@ async function loadExcel(filePath: string): Promise<Row[]> {
   }
 };
 
-async function loadCSV(filePath: string): Promise<Row[]> {
-  try {
-    const data = await fs.readFile(filePath, 'utf8');
+export async function loadCSV(filePath: string): Promise<Row[]> {
+  try {    
+    const data = await fs.readFileSync(filePath, 'utf8');    
     const lines = data.trim().split('\n');
     const headers = lines[0].split(',');
 
@@ -122,7 +122,7 @@ async function loadCSV(filePath: string): Promise<Row[]> {
   }  
 };
 
-async function loadJSON(filePath: string): Promise<Row[]> {
+export async function loadJSON(filePath: string): Promise<Row[]> {
   try {
     const data = fs.readFileSync(filePath, 'utf8');
     const json = JSON.parse(data);
@@ -140,10 +140,7 @@ async function loadJSON(filePath: string): Promise<Row[]> {
 async function loadFile(filePath: string): Promise<any[]> {
   const ext = path.extname(filePath).toLowerCase();
   let rows: Row[] = [];
-  switch (ext) {
-    case '.xlsx':
-      rows = await loadExcel(filePath);
-      break;
+  switch (ext) {    
     case '.csv':
       rows = await loadCSV(filePath);
       break;
@@ -162,11 +159,12 @@ async function loadFile(filePath: string): Promise<any[]> {
 };
 
 
-parentPort?.on('message', async (filePath: string) => {
+(async () => {
   try {
-    const data = await loadFile(filePath);
-    parentPort?.postMessage(data);
+    await loadFile(workerData.filePath);
+    parentPort?.postMessage({ message: 'File loaded successfully'});
   } catch (error: any) {
     parentPort?.postMessage({ error: error.message });
   }
-});
+})();
+
