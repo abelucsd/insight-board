@@ -1,10 +1,15 @@
 **/node_modules
 
+# Backend
 /backend/dist
 backend/logs
 *.log
 
 **/.env
+
+# Frontend
+/frontend/dist
+/frontend/.cache/
 
 .vscode
 .DS_Store
