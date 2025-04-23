@@ -80,6 +80,25 @@ export async function cleanAndValidateData(rows: Row[]): Promise<any[]> {
 }
 
 
+<<<<<<< HEAD
+=======
+// Loaders for handling Excel, CSV, and JSON file formats
+async function loadExcel(filePath: string): Promise<Row[]> {
+  try {
+    const workbook = XLSX.readFileSync(filePath);    
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const json = XLSX.utils.sheet_to_json(worksheet);
+    logger.info(`[loadExcel] Successfully read Excel file: ${filePath}`);
+    return json;
+  } catch (error) {
+    const err = new CustomError('Failed to read Excel file', 500);
+    logger.error(`[loadExcel] Error reading Excel file: ${err.message}`);                
+    throw err;
+  }
+};
+
+>>>>>>> feat(load file): add tests to the controller and transformation functions.
 export async function loadCSV(filePath: string): Promise<Row[]> {
   try {    
     const data = await fs.readFileSync(filePath, 'utf8');    
@@ -146,3 +165,17 @@ export async function loadFile(filePath: string): Promise<any[]> {
   logger.info(`[loadFile] Successfully loaded file: ${filePath}`);
   return rows;
 };
+<<<<<<< HEAD
+=======
+
+
+(async () => {
+  try {
+    await loadFile(workerData.filePath);
+    parentPort?.postMessage({ message: 'File loaded successfully'});
+  } catch (error: any) {
+    parentPort?.postMessage({ error: error.message });
+  }
+})();
+
+>>>>>>> feat(load file): add tests to the controller and transformation functions.
