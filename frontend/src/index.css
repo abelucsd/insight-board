@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-color-primary: rgb(247, 245, 245);
+    --nav-border: #e5e7eb;
+    --bg-nav: white;    
+    --bg-nav-dropdown: white;
+    --bg-card: white;    
+    --graph-border: #e5e7eb;
+    --graph-primary: blue;
+    --graph-active: pink;
+    --color-primary: red;
+    --color-secondary: orange;
+  }
+
+  html {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    max-width: 100vw;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: var(--bg-color-primary);      
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  p {
+    font-size: var(--text-xl);
+    color: #4b5563;
+  }
+
+  /* Top Heading */
+  h1 {
+      font-size: var(--text-5xl);
+      font-weight: bold;
+  }
+
+  /* Heading */
+  h2 {
+      font-size: var(--text-4xl);
+      font-weight: bold;
+  }
+
+  /* Subheading */
+  h3 {
+      font-size: var(--text-xl);
+      @apply font-medium;
+  }
+
+  h4 {
+      font-size: var(--text-md);
+  }
+
+  h5 {
+      font-size: var(--text-sm);
+  }
+
+  .btn-primary {
+    box-shadow: var(--shadow-md);
+    border-radius: calc(infinity * 1px);
+    background-color: var(--color-primary);
+    padding-inline: --spacing(5);
+    padding-block: --spacing(2);
+    color: white;    
+    &:hover {
+        @media (hover: hover) {
+            background-color: var(--color-primary-variant);
+        }
+    }
+  }
+
+  .input-box {
+    @apply border rounded-md p-1 invalid:border-pink-500 invalid:text-pink-600 
+    focus:border-sky-500 focus:outline focus:outline-sky-500
+    focus:invalid:border-pink-500 focus:invalid:outline-pink-500 
+    disabled:shadow-none disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 
+    dark:disabled:border-gray-700 dark:disabled:bg-gray-800/20;
+  }
+}
