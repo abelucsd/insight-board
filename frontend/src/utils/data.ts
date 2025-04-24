@@ -5,7 +5,7 @@ export const adminName = 'Blue Water';
 
 export const navItems = [
     {name: "Dashboard", link: "/"},
-    {name: "Users", link: "/link"},    
+    {name: "Products", link: "/products"},
 ];
 
 

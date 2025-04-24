@@ -21,7 +21,13 @@ const Sidenav = ({styles}: SidenavProps) => {
           <Link to={navItems[0].link}>
             <h3>{navItems[0].name}</h3>
           </Link>
-        </li>                
+        </li>
+
+        <li>
+          <Link to={navItems[1].link}>
+            <h3>{navItems[1].name}</h3>
+          </Link>
+        </li>
 
       </ul>
     </nav>
