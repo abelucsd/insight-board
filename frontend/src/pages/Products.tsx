@@ -1,5 +1,5 @@
 import { useFileUpload } from "../hooks/useFileUpload";
-
+import { API_URL } from "../utils/data";
 
 const Products = () => {
   const {
@@ -10,7 +10,7 @@ const Products = () => {
     handleFileChange,
     handleFileButtonClick,
     handleSubmit,
-   } = useFileUpload({postUrl: '/api/products/upload'});
+   } = useFileUpload({postUrl: `${API_URL}/worker/upload-file`});
 
 
   return (
