@@ -1,11 +1,11 @@
-const { parentPort, workerData } = require('worker_threads');
-const fs = require('fs');
-const path = require('path');
-const XLSX = require('xlsx');
+import fs from 'fs';
+import path from 'path';
+import mongoose from 'mongoose';
 
 import { createLogger } from "../utils/logger";
 import { CustomError } from "../errors/CustomError";
-import { Product, IProduct } from "../models/product";
+import { Product } from "../models/product";
+import { getDb } from '../db/db';
 
 
 const logger = createLogger('fileLoader.ts');
@@ -80,22 +80,6 @@ export async function cleanAndValidateData(rows: Row[]): Promise<any[]> {
 }
 
 
-// Loaders for handling Excel, CSV, and JSON file formats
-async function loadExcel(filePath: string): Promise<Row[]> {
-  try {
-    const workbook = XLSX.readFileSync(filePath);    
-    const sheetName = workbook.SheetNames[0];
-    const worksheet = workbook.Sheets[sheetName];
-    const json = XLSX.utils.sheet_to_json(worksheet);
-    logger.info(`[loadExcel] Successfully read Excel file: ${filePath}`);
-    return json;
-  } catch (error) {
-    const err = new CustomError('Failed to read Excel file', 500);
-    logger.error(`[loadExcel] Error reading Excel file: ${err.message}`);                
-    throw err;
-  }
-};
-
 export async function loadCSV(filePath: string): Promise<Row[]> {
   try {    
     const data = await fs.readFileSync(filePath, 'utf8');    
@@ -137,9 +121,11 @@ export async function loadJSON(filePath: string): Promise<Row[]> {
 
 
 // Function to load file based on its extension
-async function loadFile(filePath: string): Promise<any[]> {
+export async function loadFile(filePath: string): Promise<any[]> {
   const ext = path.extname(filePath).toLowerCase();
   let rows: Row[] = [];
+  logger.info(`[loadFile] File path: ${filePath}`);
+
   switch (ext) {    
     case '.csv':
       rows = await loadCSV(filePath);
@@ -152,19 +138,11 @@ async function loadFile(filePath: string): Promise<any[]> {
       logger.error(`[loadFile] Error: ${err.message}`);
       throw err;
   }
-  const cleanedRows = await cleanAndValidateData(rows);
+  const cleanedRows = await cleanAndValidateData(rows);      
+  await getDb();
   await Product.insertMany(cleanedRows);
+  const products = await Product.find({});  
+  await mongoose.disconnect();
   logger.info(`[loadFile] Successfully loaded file: ${filePath}`);
   return rows;
 };
-
-
-(async () => {
-  try {
-    await loadFile(workerData.filePath);
-    parentPort?.postMessage({ message: 'File loaded successfully'});
-  } catch (error: any) {
-    parentPort?.postMessage({ error: error.message });
-  }
-})();
-

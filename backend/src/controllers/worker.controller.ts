@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import fs from 'fs';
 import { createLogger } from '../utils/logger';
 import { runFileLoaderWorker } from '../services/file-loader-worker.service';
 
@@ -6,9 +7,11 @@ import { runFileLoaderWorker } from '../services/file-loader-worker.service';
 const logger = createLogger('worker.controller');
 
 export const loadFile = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-  try {
-    const { filePath } = req.query;
-    if (!filePath) {
+  try {    
+    logger.info('[loadFile] Request received to load file');    
+    const filePath = req.file?.path;   
+    logger.info(`[loadFile] File path: ${filePath}`); 
+    if (!filePath || !fs.existsSync(filePath)) {            
       logger.error('[loadFile] File path is required');
       res.status(400).json({ error: 'File path is required' });
       return;
