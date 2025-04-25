@@ -37,10 +37,22 @@ describe('loadFile function', () => {
     expect(next).not.toHaveBeenCalled();
   });
 
-  it('should call runFileLoaderWorker with filePath and return data on success', async () => {        
-    req.query = { filePath: '../fixtures/sample.csv' };
+  it('should call runFileLoaderWorker with filePath and return data on success', async () => {            
+    const req = {
+      file: {
+        path: '../fixtures/sample.csv',
+        originalname: 'sample.csv',
+        mimetype: 'text/csv',
+        filename: 'sample.csv',
+        destination: 'uploads/',
+        size: 1234,
+        buffer: Buffer.from(''),
+        fieldname: 'file'
+      }
+    } as Partial<Request>;    
         
     const mockData = { message: 'File loaded successfully' };
+    jest.spyOn(fs, 'existsSync').mockReturnValue(true);
     jest.spyOn(fileLoaderWorkerService, 'runFileLoaderWorker')
       .mockResolvedValue(mockData as {message: string});
     
@@ -54,8 +66,19 @@ describe('loadFile function', () => {
     expect(next).not.toHaveBeenCalled();
   });
 
-  it('should call next with an error if runFileLoaderWorker fails', async () => {
-    req.query = { filePath: '../fixtures/sample.csv' };
+  it('should call next with an error if runFileLoaderWorker fails', async () => {    
+    const req = {
+      file: {
+        path: '../fixtures/sample.csv',
+        originalname: 'sample.csv',
+        mimetype: 'text/csv',
+        filename: 'sample.csv',
+        destination: 'uploads/',
+        size: 1234,
+        buffer: Buffer.from(''),
+        fieldname: 'file'
+      }
+    } as Partial<Request>;
     
     const mockError = new Error('File loading failed');
     jest.spyOn(fileLoaderWorkerService, 'runFileLoaderWorker')
