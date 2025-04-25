@@ -1,3 +1,5 @@
+export const API_URL = 'http://localhost:3000/api';
+
 export { default as avatarImg }  from '../assets/images/avatar.jpg';
 export const logo = "LOGO";
 export const adminName = 'Blue Water';
@@ -5,7 +7,7 @@ export const adminName = 'Blue Water';
 
 export const navItems = [
     {name: "Dashboard", link: "/"},
-    {name: "Users", link: "/link"},    
+    {name: "Products", link: "/products"},
 ];
 
 
