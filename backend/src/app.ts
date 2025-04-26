@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-
 import { swaggerDocument } from './config/swagger';
 import {productRouter} from './routes/product.routes';
 import { workerRouter } from './routes/worker.routes';
