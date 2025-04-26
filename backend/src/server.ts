@@ -5,6 +5,7 @@ import { createLogger } from './utils/logger';
 
 const logger = createLogger('server.ts');
 
+
 async function startServer() {
   try {
     await getDb();
