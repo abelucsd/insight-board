@@ -1,0 +1,31 @@
+Product:
+  type: object
+  properties:
+    _id:
+      type: string
+      description: The unique identifier for the product
+    name:
+      type: string
+      description: The name of the product
+    price:
+      type: number
+      description: The price of the product
+    description:
+      type: string
+      description: The description of the product.
+
+CreateProductInput:
+  type: object
+  required:
+    - name
+    - price
+  properties:
+    name:
+      type: string
+      description: The name of the product
+    price:
+      type: number
+      description: The price of the product
+    description:
+      type: string
+      description: The description of the product.
