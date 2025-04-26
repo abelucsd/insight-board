@@ -1,0 +1,199 @@
+openapi: 3.0.4
+info:
+  title: Product API
+  description: A CRUD API for managing products.
+  version: 1.0.0
+
+/products:
+  get:
+    tags:
+      - Products
+    summary: Get all products.
+    description: Retrieves a list of all products.
+    responses:
+      '200':
+        description: A list of all products.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Product'
+
+  post:
+    tags:
+      - Products
+    summary: Create a new product.
+    description: Add a new product.
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateProductInput'
+    responses:
+      '201':
+        description: Product created successfully.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+
+/products/{id}:
+  get:
+    tags:
+      - Products
+    summary: Get a product by ID.
+    description: Retrieves a single product based on the product ID.
+    parameters:
+      - name: id
+        in: path
+        description: The unique ID of the product
+        required: true
+        schema:
+          type: string
+    responses:
+      '200':
+        description: A product object.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      '404':
+        description: Product not found.
+  put:
+    tags:
+      - Products
+    summary: Update a product by ID.
+    description: Update an existing product details based on Product ID.
+    parameters:
+      - name: id
+        in: path
+        description: The unique ID of the product.
+        required: true
+        schema:
+          type: string
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateProductInput'
+    responses:
+      '200':
+        description: Product updated successfully.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      '404':
+        description: Product not found.
+  delete:
+    tags:
+      - Products
+    summary: Delete a product by ID.
+    description: Delete an existing product based on Product ID.
+    parameters:
+      - name: id
+        in: path
+        description: The unique ID of the product
+        required: true
+        schema:
+          type: string
+    responses:
+      '204':
+        description: Product deleted successfully.
+      '404':
+        description: Product not found.
+
+/products/featured:
+  get:
+    tags:
+      - Products
+    summary: Get all featured products.
+    description: Retrieves a list of all featured products.
+    responses:
+      '200':
+        description: A list of all featured products.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Product'
+
+  post:
+    tags:
+      - Products
+    summary: Create a new featured product.
+    description: Add a new featured product.
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateProductInput'
+    responses:
+      '201':
+        description: Featured Product created successfully.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+
+/products/featured/{id}:
+  get:
+    tags:
+      - Products
+    summary: Get a featured product by ID.
+    description: Retrieves a single featured product based on the product ID.
+    parameters:
+      - name: id
+        in: path
+        description: The unique ID of the featured product
+        required: true
+        schema:
+          type: string
+    responses:
+      '200':
+        description: A featured product object.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      '404':
+        description: Featured Product not found.
+
+  delete:
+    tags:
+      - Products
+    summary: Delete a featured product by ID.
+    description: Delete an existing featured product based on Product ID.
+    parameters:
+      - name: id
+        in: path
+        description: The unique ID of the featured product
+        required: true
+        schema:
+          type: string
+    responses:
+      '204':
+        description: Featured product deleted successfully.
+      '404':
+        description: Featured product not found.
+
+/products/top:
+  get:
+    tags:
+      - Products
+    summary: Get the top products.
+    description: Retrieves a list of the top products.
+    responses:
+      '200':
+        description: A list of the top products.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Product'

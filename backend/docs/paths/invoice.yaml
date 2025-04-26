@@ -1,0 +1,107 @@
+openapi: 3.0.4
+info:
+  title: invoice API
+  description: A CRUD API for managing invoices.
+  version: 1.0.0
+
+/invoice:
+  get:
+    tags:
+      - Invoice
+    summary: Get all invoices.
+    description: Retrieves a list of all invoices.
+    responses:
+      '200':
+        description: A list of all invoices.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Invoice'
+
+  post:
+    tags:
+      - Invoice
+    summary: Create a new invoice.
+    description: Add a new invoice.
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateInvoiceInput'
+    responses:
+      '201':
+        description: invoice created successfully.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+
+/invoice/{id}:
+  get:
+    tags:
+      - Invoice
+    summary: Get a invoice by ID.
+    description: Retrieves a single invoice based on the invoice ID.
+    parameters:
+      - name: id
+        in: path
+        description: The unique ID of the invoice
+        required: true
+        schema:
+          type: string
+    responses:
+      '200':
+        description: A invoice object.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+      '404':
+        description: Invoice not found.
+  put:
+    tags:
+      - Invoice
+    summary: Update a invoice by ID.
+    description: Update an existing invoice details based on invoice ID.
+    parameters:
+      - name: id
+        in: path
+        description: The unique ID of the invoice.
+        required: true
+        schema:
+          type: string
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateInvoiceInput'
+    responses:
+      '200':
+        description: Invoice updated successfully.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+      '404':
+        description: invoice not found.
+  delete:
+    tags:
+      - Invoice
+    summary: Delete a invoice by ID.
+    description: Delete an existing invoice based on invoice ID.
+    parameters:
+      - name: id
+        in: path
+        description: The unique ID of the invoice
+        required: true
+        schema:
+          type: string
+    responses:
+      '204':
+        description: Invoice deleted successfully.
+      '404':
+        description: Invoice not found.
