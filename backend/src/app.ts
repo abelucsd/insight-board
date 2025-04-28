@@ -5,6 +5,7 @@ import { swaggerDocument } from './config/swagger';
 import {productRouter} from './routes/product.routes';
 import { workerRouter } from './routes/worker.routes';
 import { errorHandler } from './middlewares/errorHandler';
+import { limiter } from './config/rateLimiter';
 
 const app = express();
 
