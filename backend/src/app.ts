@@ -18,6 +18,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // TODO: update this in production.
 app.use(cors());
 
+app.use(limiter);
+
 // Routes
 app.use('/api/products', productRouter);
 
