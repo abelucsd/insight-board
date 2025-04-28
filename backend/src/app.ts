@@ -5,6 +5,7 @@ import { swaggerDocument } from './config/swagger';
 import {productRouter} from './routes/product.routes';
 import { workerRouter } from './routes/worker.routes';
 import { errorHandler } from './middlewares/errorHandler';
+import { limiter } from './config/rateLimiter';
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // TODO: update this in production.
 app.use(cors());
+
+app.use(limiter);
 
 // Routes
 app.use('/api/products', productRouter);
