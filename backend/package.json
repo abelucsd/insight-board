@@ -41,7 +41,6 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express-rate-limit": "^7.5.0",
     "js-yaml": "^4.1.0",
     "mongodb": "^6.15.0",
     "mongodb-memory-server": "^10.1.4",

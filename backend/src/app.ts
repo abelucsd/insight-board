@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+
 import { swaggerDocument } from './config/swagger';
 import {productRouter} from './routes/product.routes';
 import { workerRouter } from './routes/worker.routes';
@@ -16,8 +17,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // TODO: update this in production.
 app.use(cors());
-
-app.use(limiter);
 
 // Routes
 app.use('/api/products', productRouter);
