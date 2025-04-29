@@ -3,7 +3,7 @@ import { jest } from '@jest/globals';
 import { describe, it, expect, beforeEach } from '@jest/globals';
 
 import { Invoice, IInvoice } from '../src/models/invoice';
-import { createInvoice, getInvoiceById, getInvoices, updateInvoiceById } from '../src/controllers/invoice.controller';
+import { createInvoice, deleteInvoiceById, getInvoiceById, getInvoices, updateInvoiceById } from '../src/controllers/invoice.controller';
 import { invoiceService } from '../src/services/invoice.service';
 import { CustomError } from '../src/errors/CustomError';
 
@@ -200,5 +200,43 @@ describe("Invoice CRUD unit test", () => {
     });
   });
 
+  describe('Delete Invoice', () => {
+    it('should delete an invoice and return it', async () => {
+      const invoiceId = '1';
+      const deletedInvoice = { _id: invoiceId, ...invoices[0]};
+
+      jest.spyOn(invoiceService, 'deleteInvoiceById')
+        .mockResolvedValue(deletedInvoice as IInvoice);
+      req.params = { id: invoiceId };
+      
+      await deleteInvoiceById(req, res, next);
+
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith(deletedInvoice);
+    });
+
+    it('should return 404 if invoice not found', async () => {
+      const invoiceId = '1';
+      jest.spyOn(invoiceService, 'deleteInvoiceById').mockResolvedValue(null);
+      req.params = { id: invoiceId };
+
+      await deleteInvoiceById(req, res, next);
+
+      expect(res.status).toHaveBeenCalledWith(404);
+      expect(res.json).toHaveBeenCalledWith({ message: 'Invoice not found'});
+    });
+
+    it('should call next with an error if service throws', async () => {
+      const invoiceId = '1';
+      const mockError = new Error('Database failure');
+      req.params = { id: invoiceId };
+
+      jest.spyOn(invoiceService, 'deleteInvoiceById').mockRejectedValue(mockError);
+
+      await deleteInvoiceById(req, res, next);
+
+      expect(next).toHaveBeenCalledWith(mockError);
+    });
+  });
 
 });

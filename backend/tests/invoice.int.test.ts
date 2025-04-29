@@ -142,4 +142,18 @@ describe('Invoice Integration', () => {
         .toThrow('Failed to update invoice');
     });
   });
+
+  describe('delete product', () => {
+    it('should delete an invoice', async () => {
+      const newInvoice = await Invoice.create(invoices[0]);
+      const deletedInvoice = await invoiceService.deleteInvoiceById(newInvoice._id);      
+      expect(deletedInvoice!._id.toString()).toBe(newInvoice._id.toString());
+    });
+
+    it('should throw an error when deleting a product fails', async () => {
+      await expect(invoiceService.deleteInvoiceById('invalid-id'))
+        .rejects
+        .toThrow('Failed to delete invoice');
+    });
+  });
 });

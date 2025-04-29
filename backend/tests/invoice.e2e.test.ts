@@ -129,4 +129,18 @@ describe('Invoice API', () => {
       expect(response.body.customer).toBe(updatedInvoice.customer);
     });
   });
+
+  describe('DELETE /invoice/:id', () => {
+    it('should delete an invoice', async () => {
+      const newInvoice = await Invoice.create(invoices[0]);
+      const response = await request(app).delete(`/api/invoice/${newInvoice._id}`);
+      
+      expect(response.status).toBe(200);
+    });
+
+    it('should return 404 if invoice is not found', async () => {
+      const response = await request(app).delete(`/api/invoice/invalid-id`);
+      expect(response.status).toBe(404);
+    });
+  });
 });

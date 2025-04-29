@@ -52,4 +52,19 @@ export const updateInvoiceById = async (
   } catch (error) {
     next(error);
   }
-}
+};
+
+export const deleteInvoiceById = async (
+  req: Request, res: Response, next: NextFunction
+) : Promise<void> => {
+  try {
+    const invoiceId = req.params.id;
+    const response = await invoiceService.deleteInvoiceById(invoiceId);
+    if (!response) {
+      res.status(404).json({ message: 'Invoice not found'});
+    }
+    res.status(200).json(response);
+  } catch (error) {
+    next(error);
+  }
+};

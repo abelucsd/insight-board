@@ -51,9 +51,21 @@ const updateInvoiceById = async(
   }
 };
 
+const deleteInvoiceById = async(id: string): Promise<IInvoice | null> => {
+  try {
+    logger.info(`[deleteInvoiceById] Deleting invoice by ID: ${id}`);
+    return await Invoice.findByIdAndDelete(id);
+  } catch (error) {
+    const err = new CustomError('Failed to delete invoice', 404);
+    logger.error(`[deleteInvoiceById] Error deleting invoice: ${err.message}`);
+    throw(err);
+  }
+};
+
 export const invoiceService = {
   createInvoice,
   getInvoices,
   getInvoiceById,
   updateInvoiceById,
+  deleteInvoiceById,
 };
