@@ -27,7 +27,19 @@ const getInvoices = async(): Promise<IInvoice[]> => {
   } 
 };
 
+const getInvoiceById = async(id: string): Promise<IInvoice | null> => {
+  try {
+    logger.info(`[getInvoiceById] Fetching invoice with ID: ${id}`);    
+    return await Invoice.findById(id);
+  } catch (error) {
+    const err = new CustomError('Failed to fetch invoice by ID', 404);
+    logger.error(`[getInvoiceById] Error fetching invoice: ${err.message}`);
+    throw(err);
+  }
+};
+
 export const invoiceService = {
   createInvoice,
   getInvoices,
+  getInvoiceById,
 };

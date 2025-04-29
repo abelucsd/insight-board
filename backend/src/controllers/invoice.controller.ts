@@ -24,3 +24,17 @@ export const getInvoices = async(
   }
 };
 
+export const getInvoiceById = async(
+  req: Request, res: Response, next: NextFunction
+): Promise<void> => {
+  try {
+    const invoiceId = req.params.id;
+    const response = await invoiceService.getInvoiceById(invoiceId);
+    if (!response) {
+      res.status(404).json({ message: 'Invoice not found' });
+    }
+    res.status(200).json(response);    
+  } catch (error) {
+    next(error);
+  }
+};

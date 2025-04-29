@@ -4,7 +4,7 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 import request from 'supertest';
 
-import { Invoice } from '../src/models/invoice';
+import { IInvoice, Invoice } from '../src/models/invoice';
 import { invoiceRouter } from '../src/routes/invoice.routes';
 
 const app = express();
@@ -81,7 +81,7 @@ describe('Invoice API', () => {
 
   });
 
-  describe('Get /invoice', () => {
+  describe('GET /invoice', () => {
     it('should return an empty array of documents when no invoices exist', 
       async () => {
         const response = await request(app).get('/api/invoice');
@@ -97,6 +97,23 @@ describe('Invoice API', () => {
 
       expect(response.status).toBe(200);
       expect(response.body).toMatchObject(invoices);
+    });
+  });
+
+  describe('GET /invoice/:id', () => {
+    it('should return an invoice by ID', async () => {
+      const newInvoice = await Invoice.create(invoices[0]);
+      const response = await request(app).get(`/api/invoice/${newInvoice._id}`);
+      expect(response.status).toBe(200);
+      
+      for(const [field, value] of Object.entries(invoices[0])) {
+        expect(response.body[field as keyof IInvoice]).toBe(value);
+      }
+    });
+
+    it('should return 404 if invoice not found', async () => {
+      const response = await request(app).get('/api/products/invalid-id');
+      expect(response.status).toBe(404);
     });
   });
 });

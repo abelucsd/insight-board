@@ -104,4 +104,20 @@ describe('Invoice Integration', () => {
       expect(cleanedresult).toEqual(invoices);
     });
   });
+
+  describe('get invoice by id', () => {
+    it('should return an invoice by ID', async () => {
+      const newInvoice = await Invoice.create(invoices[0]);
+      const result = await invoiceService.getInvoiceById(newInvoice._id);
+      for(const [field, value] of Object.entries(invoices[0])) {
+        expect(result![field as keyof IInvoice]).toBe(value);
+      }
+    });
+
+    it('should throw an error when invoice not found', async () => {
+      await expect(invoiceService.getInvoiceById('invalid-id'))
+        .rejects
+        .toThrow('Failed to fetch invoice by ID');
+    });
+  });
 });
