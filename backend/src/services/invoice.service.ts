@@ -38,8 +38,22 @@ const getInvoiceById = async(id: string): Promise<IInvoice | null> => {
   }
 };
 
+const updateInvoiceById = async(
+  id: string, invoiceData: Partial<CreateInvoiceInput>
+): Promise<IInvoice | null> => {
+  try {
+    logger.info(`[updateInvoiceById] Updating invoice by ID: ${id}`);    
+    return await Invoice.findByIdAndUpdate(id, invoiceData, { new: true });
+  } catch (error) {
+    const err = new CustomError('Failed to update invoice by ID', 404);
+    logger.error(`[updateInvoiceById] Error updating invoice: ${err.message}`);
+    throw(err);
+  }
+};
+
 export const invoiceService = {
   createInvoice,
   getInvoices,
   getInvoiceById,
+  updateInvoiceById,
 };

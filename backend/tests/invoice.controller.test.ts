@@ -3,7 +3,7 @@ import { jest } from '@jest/globals';
 import { describe, it, expect, beforeEach } from '@jest/globals';
 
 import { Invoice, IInvoice } from '../src/models/invoice';
-import { createInvoice, getInvoiceById, getInvoices } from '../src/controllers/invoice.controller';
+import { createInvoice, getInvoiceById, getInvoices, updateInvoiceById } from '../src/controllers/invoice.controller';
 import { invoiceService } from '../src/services/invoice.service';
 import { CustomError } from '../src/errors/CustomError';
 
@@ -158,7 +158,47 @@ describe("Invoice CRUD unit test", () => {
     });
   });
   
-  
+  describe('Update Invoice by ID', () => {
+    it('should update invoice and return it', async () => {
+      const invoiceId = '1';
+      const updatedInvoice = invoices[0];
+      const fetchedInvoice = { _id: invoiceId, ...invoices[0]};
+
+      jest.spyOn(invoiceService, 'updateInvoiceById')
+        .mockResolvedValue(fetchedInvoice as IInvoice);
+      req.params = { id: invoiceId };
+      req.body = updatedInvoice;
+
+      await updateInvoiceById(req, res, next);
+
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith(fetchedInvoice);
+    });
+
+    it('should return 404 if product not found', async () => {
+      const invoiceId = '1';
+      jest.spyOn(invoiceService, 'updateInvoiceById').mockResolvedValue(null);
+      req.params = { id: invoiceId };
+      req.body = invoices[0];
+
+      await updateInvoiceById(req, res, next);
+
+      expect(res.status).toHaveBeenCalledWith(404);
+      expect(res.json).toHaveBeenCalledWith({ message: 'Invoice not found' });
+    });
+
+    it('should call next with an error if service throws', async () => {
+      const invoiceId = '1';
+      const mockError = new Error('Database Failure');
+      req.params = { id: invoiceId };
+      req.body = invoices[0];
+      jest.spyOn(invoiceService, 'updateInvoiceById').mockRejectedValue(mockError);
+
+      await updateInvoiceById(req, res, next);
+
+      expect(next).toHaveBeenCalledWith(mockError);
+    });
+  });
 
 
 });

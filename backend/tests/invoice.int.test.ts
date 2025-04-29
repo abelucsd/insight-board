@@ -1,3 +1,4 @@
+import { Request } from 'express';
 import { describe, it, expect, beforeAll, afterAll, beforeEach, afterEach } from '@jest/globals';
 import { jest } from '@jest/globals';
 import request from 'supertest';
@@ -118,6 +119,27 @@ describe('Invoice Integration', () => {
       await expect(invoiceService.getInvoiceById('invalid-id'))
         .rejects
         .toThrow('Failed to fetch invoice by ID');
+    });
+  });
+
+  describe('update invoice by id', () => {
+    it('should update an invoice', async () => {
+      const newInvoice = await Invoice.create(invoices[0]);
+
+      let req = {} as Request;
+      req.body = invoices[0];
+      const updatedInvoice = await invoiceService.updateInvoiceById(newInvoice._id, req.body);
+      for(const [field, value] of Object.entries(invoices[0])) {
+        expect(updatedInvoice![field as keyof IInvoice]).toBe(value);
+      }
+    });
+
+    it('should throw an error when updating an invoice fails', async () => {
+      let req = {} as Request;
+      req.body = invoices[0];
+      await expect(invoiceService.updateInvoiceById('invalid-id', req.body))
+        .rejects
+        .toThrow('Failed to update invoice');
     });
   });
 });

@@ -3,6 +3,7 @@ import {
   createInvoice,
   getInvoices,
   getInvoiceById,
+  updateInvoiceById,
 } from '../controllers/invoice.controller';
 
 export const invoiceRouter = express.Router();
@@ -10,3 +11,4 @@ export const invoiceRouter = express.Router();
 invoiceRouter.get('/', getInvoices);
 invoiceRouter.post('/', createInvoice);
 invoiceRouter.get('/:id', getInvoiceById);
+invoiceRouter.put('/:id', updateInvoiceById);

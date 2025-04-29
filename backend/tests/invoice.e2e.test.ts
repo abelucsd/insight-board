@@ -116,4 +116,17 @@ describe('Invoice API', () => {
       expect(response.status).toBe(404);
     });
   });
+
+  describe('PUT /invoice/:id', () => {
+    it('should update an invoice', async () => {
+      const newInvoice = await Invoice.create(invoices[0]);
+      const updatedInvoice = { ...invoices[0] };
+      updatedInvoice.customer = "Updated Customer Name";
+      const response = await request(app).put(`/api/invoice/${newInvoice._id}`)
+        .send(updatedInvoice);
+
+      expect(response.status).toBe(200);
+      expect(response.body.customer).toBe(updatedInvoice.customer);
+    });
+  });
 });

@@ -38,3 +38,18 @@ export const getInvoiceById = async(
     next(error);
   }
 };
+
+export const updateInvoiceById = async (
+  req: Request, res: Response, next: NextFunction
+): Promise<void> => {
+  try {
+    const invoiceId = req.params.id;
+    const response = await invoiceService.updateInvoiceById(invoiceId, req.body);
+    if (!response) {
+      res.status(404).json({ message: 'Invoice not found'});
+    }
+    res.status(200).json(response);
+  } catch (error) {
+    next(error);
+  }
+}
