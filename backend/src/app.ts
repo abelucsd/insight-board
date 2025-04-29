@@ -6,6 +6,7 @@ import {productRouter} from './routes/product.routes';
 import { workerRouter } from './routes/worker.routes';
 import { errorHandler } from './middlewares/errorHandler';
 import { limiter } from './config/rateLimiter';
+import { invoiceRouter } from './routes/invoice.routes';
 
 const app = express();
 
@@ -22,6 +23,9 @@ app.use(limiter);
 
 // Routes
 app.use('/api/products', productRouter);
+app.use('/api/invoice', invoiceRouter);
+
+app.use('/api/worker', workerRouter);
 
 app.use('/api/worker', workerRouter);
 

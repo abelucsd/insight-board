@@ -13,18 +13,22 @@ app.use('/api/products', productRouter);
 
 describe('Products API', () => {  
   let mongoServer: MongoMemoryServer;
+  let server: any;
 
   // setup and teardown
   beforeAll(async () => {
     mongoServer = await MongoMemoryServer.create();
     const uri = mongoServer.getUri();
     await mongoose.connect(uri);
+
+    server = app.listen(3009);
   });
 
   afterAll(async () => {
+    await server.close();
     await mongoose.connection.dropDatabase();
     await mongoose.connection.close();
-    await mongoServer.stop();
+    await mongoServer.stop();    
   });
 
   beforeEach(async () => {

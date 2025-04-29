@@ -1,0 +1,71 @@
+import { IInvoice, Invoice, CreateInvoiceInput } from "../models/invoice";
+import { createLogger } from "../utils/logger";
+import { CustomError } from "../errors/CustomError";
+
+const logger = createLogger('invoice.service');
+
+const createInvoice = async(invoice: CreateInvoiceInput): Promise<IInvoice> => {
+  try {
+    logger.info(`[createInvoice] Creating invoice for customer: ${invoice.customer}`);
+    const newInvoice = await Invoice.create(invoice);
+    logger.info(`[createInvoice] Invoice created with id: ${newInvoice._id}`);
+    return newInvoice;
+  } catch (error) {
+    const err = new CustomError('Failed to create the invoice', 400);
+    logger.error(`[createInvoice] Error creating the invoice: ${err.message}`);
+    throw(err);
+  }
+};
+
+const getInvoices = async(): Promise<IInvoice[]> => {
+  try {
+    return await Invoice.find({});
+  } catch (error) {
+    const err = new CustomError('Failed to fetch Invoices', 500);
+    logger.error(`[getInvoices] Error fetching invoices: ${err.message}`)
+    throw(err);
+  } 
+};
+
+const getInvoiceById = async(id: string): Promise<IInvoice | null> => {
+  try {
+    logger.info(`[getInvoiceById] Fetching invoice with ID: ${id}`);    
+    return await Invoice.findById(id);
+  } catch (error) {
+    const err = new CustomError('Failed to fetch invoice by ID', 404);
+    logger.error(`[getInvoiceById] Error fetching invoice: ${err.message}`);
+    throw(err);
+  }
+};
+
+const updateInvoiceById = async(
+  id: string, invoiceData: Partial<CreateInvoiceInput>
+): Promise<IInvoice | null> => {
+  try {
+    logger.info(`[updateInvoiceById] Updating invoice by ID: ${id}`);    
+    return await Invoice.findByIdAndUpdate(id, invoiceData, { new: true });
+  } catch (error) {
+    const err = new CustomError('Failed to update invoice by ID', 404);
+    logger.error(`[updateInvoiceById] Error updating invoice: ${err.message}`);
+    throw(err);
+  }
+};
+
+const deleteInvoiceById = async(id: string): Promise<IInvoice | null> => {
+  try {
+    logger.info(`[deleteInvoiceById] Deleting invoice by ID: ${id}`);
+    return await Invoice.findByIdAndDelete(id);
+  } catch (error) {
+    const err = new CustomError('Failed to delete invoice', 404);
+    logger.error(`[deleteInvoiceById] Error deleting invoice: ${err.message}`);
+    throw(err);
+  }
+};
+
+export const invoiceService = {
+  createInvoice,
+  getInvoices,
+  getInvoiceById,
+  updateInvoiceById,
+  deleteInvoiceById,
+};
