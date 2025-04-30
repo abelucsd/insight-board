@@ -14,8 +14,7 @@ export const createProduct = async( req: Request, res: Response, next: NextFunct
 
     logger.info(`[createProduct] Successfully created product with ID: ${newProduct._id}`);
     res.status(201).json(newProduct);
-  } catch (error) {
-    logger.error(`[createProduct] Failed to create product: ${(error as Error).message}`);
+  } catch (error) {    
     next(error);
   }
 };
@@ -28,8 +27,7 @@ export const getProducts = async (req: Request, res: Response, next: NextFunctio
 
     logger.info(`[getProducts] Successfully fetched ${response.length} product(s).`);
     res.status(200).json(response);    
-  } catch (error) {    
-    logger.error(`[getProducts] Failed to get products: ${(error as Error).message}`);
+  } catch (error) {        
     next(error);
   }  
 };
