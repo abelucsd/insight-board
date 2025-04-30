@@ -1,0 +1,180 @@
+openapi: 3.0.4
+info:
+  title: invoice API
+  description: A CRUD API for managing invoice analytics.
+  version: 1.0.0
+
+/invoice/top-products:
+  get:
+    tags:
+      - Invoice Analytics
+    summary: Get the top products.
+    description: Retrieves a list of the top products.
+    responses:
+      '200':
+        description: A list of top products.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Product'
+      '500':
+        description: Internal server error.
+
+/invoice/monthly-sales:
+  get:
+    tags:
+      - Invoice Analytics
+    summary: Get the monthly sales from the past year.
+    description: Retrieves the number of sales by month from the past year.
+    responses:
+      '200':
+        description: The number of sales per month.
+        content:
+          application/json:
+            schema:
+              type: array
+              properties:
+                month:
+                  type: string
+                  example: 'January'
+                sales_count:
+                  type: integer
+                  example: 100
+      '500':
+        description: Internal server error.
+
+/invoice/current-month-sales:
+  get:
+    tags:
+      - Invoice Analytics
+    summary: Get the number sales for the current month.
+    description: Retrieves the number of sales for the current month.
+    responses:
+      '200':
+        description: The number of sales transactions for the current month.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sales_count:
+                  type: integer
+                  example: 100
+      '500':
+        description: Internal server error.
+
+/invoice/monthly-revenue:
+  get:
+    tags:
+      - Invoice Analytics
+    summary: Get the monthly revenue from the past year.
+    description: Retrieves the revenue by month from the past year.
+    responses:
+      '200':
+        description: The revenue per month.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  month:
+                    type: string
+                    example: 'January'
+                  revenue:
+                    type: number
+                    format: float
+                    example: 100.50
+      '500':
+        description: Internal server error.
+
+/invoice/current-month-revenue:
+  get:
+    tags:
+      - Invoice Analytics
+    summary: Get the revenue for the current month.
+    description: Retrieves the revenue for the current month.
+    responses:
+      '200':
+        description: The revenue for the current month.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                revenue:
+                  type: integer
+                  example: 100
+      '500':
+        description: Internal server error.
+
+/invoice/monthly-profit:
+  get:
+    tags:
+      - Invoice Analytics
+    summary: Get the monthly profit from the past year.
+    description: Retrieves the profit by month from the past year.
+    responses:
+      '200':
+        description: The profit per month.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  month:
+                    type: string
+                    example: 'January'
+                  profit:
+                    type: number
+                    format: float
+                    example: 100.50
+      '500':
+        description: Internal server error.
+
+/invoice/current-monthly-profit:
+  get:
+    tags:
+      - Invoice Analytics
+    summary: Get the profit for the current month.
+    description: Retrieves the profit for the current month.
+    responses:
+      '200':
+        description: The profit for the current month.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                profit:
+                  type: integer
+                  example: 100
+      '500':
+        description: Internal server error.
+
+/invoice/top-locations:
+  get:
+    tags:
+      - Invoice Analytics
+    summary: Get the top locations by sales volume.
+    description: Retrieves the top locations by sales volume over the past year.
+    responses:
+      '200':
+        description: The top locations.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  location:
+                    type: string
+                    example: 'USA'
+      '500':
+        description: Internal server error.
