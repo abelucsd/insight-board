@@ -66,8 +66,7 @@ export async function cleanAndValidateData(rows: Row[]): Promise<any[]> {
     // Check for missing required fields
     for (const field of requiredFields) {
       if (cleanedRow[field] === undefined || cleanedRow[field] === '') {
-        const err = new CustomError(`Row ${rowIndex + 1}: Missing required field "${field}"`, 400);
-        logger.error(`[cleanAndValidateData] ${err.message}`);
+        const err = new CustomError(`Row ${rowIndex + 1}: Missing required field "${field}"`, 400);        
         throw err;
       }
     }
@@ -100,8 +99,7 @@ export async function loadCSV(filePath: string): Promise<Row[]> {
     logger.info(`[loadCSV] Successfully read CSV file: ${filePath}`);
     return rows;
   } catch (error) {
-    const err = new CustomError('Failed to read CSV file', 500);
-    logger.error(`[loadCSV] Error reading CSV file: ${err.message}`);
+    const err = new CustomError('Failed to read CSV file', 500);    
     throw err;
   }  
 };
@@ -113,8 +111,7 @@ export async function loadJSON(filePath: string): Promise<Row[]> {
     logger.info(`[loadJSON] Successfully read JSON file: ${filePath}`);
     return json;
   } catch (error) {
-    const err = new CustomError('Failed to read JSON file', 500);
-    logger.error(`[loadJSON] Error reading JSON file: ${err.message}`);    
+    const err = new CustomError('Failed to read JSON file', 500);    
     throw err;
   }
 };
@@ -134,8 +131,7 @@ export async function loadFile(filePath: string): Promise<any[]> {
       rows = await loadJSON(filePath);
       break;
     default:
-      const err = new CustomError('Unsupported file type', 400);
-      logger.error(`[loadFile] Error: ${err.message}`);
+      const err = new CustomError('Unsupported file type', 400);      
       throw err;
   }
   const cleanedRows = await cleanAndValidateData(rows);      

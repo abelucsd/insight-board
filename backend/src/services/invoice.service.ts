@@ -11,8 +11,7 @@ const createInvoice = async(invoice: CreateInvoiceInput): Promise<IInvoice> => {
     logger.info(`[createInvoice] Invoice created with id: ${newInvoice._id}`);
     return newInvoice;
   } catch (error) {
-    const err = new CustomError('Failed to create the invoice', 400);
-    logger.error(`[createInvoice] Error creating the invoice: ${err.message}`);
+    const err = new CustomError('Failed to create the invoice', 400);    
     throw(err);
   }
 };
@@ -21,8 +20,7 @@ const getInvoices = async(): Promise<IInvoice[]> => {
   try {
     return await Invoice.find({});
   } catch (error) {
-    const err = new CustomError('Failed to fetch Invoices', 500);
-    logger.error(`[getInvoices] Error fetching invoices: ${err.message}`)
+    const err = new CustomError('Failed to fetch Invoices', 500);    
     throw(err);
   } 
 };
@@ -32,8 +30,7 @@ const getInvoiceById = async(id: string): Promise<IInvoice | null> => {
     logger.info(`[getInvoiceById] Fetching invoice with ID: ${id}`);    
     return await Invoice.findById(id);
   } catch (error) {
-    const err = new CustomError('Failed to fetch invoice by ID', 404);
-    logger.error(`[getInvoiceById] Error fetching invoice: ${err.message}`);
+    const err = new CustomError('Failed to fetch invoice by ID', 404);    
     throw(err);
   }
 };
@@ -45,8 +42,7 @@ const updateInvoiceById = async(
     logger.info(`[updateInvoiceById] Updating invoice by ID: ${id}`);    
     return await Invoice.findByIdAndUpdate(id, invoiceData, { new: true });
   } catch (error) {
-    const err = new CustomError('Failed to update invoice by ID', 404);
-    logger.error(`[updateInvoiceById] Error updating invoice: ${err.message}`);
+    const err = new CustomError('Failed to update invoice by ID', 404);    
     throw(err);
   }
 };
@@ -56,8 +52,7 @@ const deleteInvoiceById = async(id: string): Promise<IInvoice | null> => {
     logger.info(`[deleteInvoiceById] Deleting invoice by ID: ${id}`);
     return await Invoice.findByIdAndDelete(id);
   } catch (error) {
-    const err = new CustomError('Failed to delete invoice', 404);
-    logger.error(`[deleteInvoiceById] Error deleting invoice: ${err.message}`);
+    const err = new CustomError('Failed to delete invoice', 404);    
     throw(err);
   }
 };
