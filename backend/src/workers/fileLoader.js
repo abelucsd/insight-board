@@ -6,7 +6,7 @@ const { loadFile } = require(path.resolve(__dirname, './fileLoader.ts'));
 
 (async () => {
   try {    
-    await loadFile(workerData.filePath);
+    await loadFile(workerData.filePath, workerData.fileCategory);
     parentPort?.postMessage({ message: 'File loaded successfully'});
   } catch (error) {
     console.error('Error loading file:', error.message);

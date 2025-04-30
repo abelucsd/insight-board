@@ -27,8 +27,6 @@ app.use('/api/invoice', invoiceRouter);
 
 app.use('/api/worker', workerRouter);
 
-app.use('/api/worker', workerRouter);
-
 app.use(errorHandler);
 
 export default app;

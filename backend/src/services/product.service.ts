@@ -7,7 +7,6 @@ import { CustomError } from "../errors/CustomError";
 const logger = createLogger('product.service');
 
 
-
 export const productService = {
   createProduct: async (productData: CreateProductInput): Promise<IProduct> => {
     try {
@@ -16,8 +15,7 @@ export const productService = {
       logger.info(`[createProduct] Product created with ID: ${newProduct._id}`);
       return newProduct;
     } catch (error) {
-      const err = new CustomError('Failed to create product', 400);      
-      logger.error(`[createProduct] Error creating product: ${err.message}`);
+      const err = new CustomError('Failed to create product', 400);            
       throw err;
     }
   },
@@ -26,8 +24,7 @@ export const productService = {
       logger.info(`[getProducts] Returning ${products.length} product(s).`);
       return await Product.find({});
     } catch (error) {
-      const err = new CustomError('Failed to fetch products', 500);
-      logger.error(`[getProducts] Error fetching products: ${err.message}`);
+      const err = new CustomError('Failed to fetch products', 500);      
       throw err;
     }
   },
@@ -36,8 +33,7 @@ export const productService = {
       logger.info(`[getProductById] Fetching product with ID: ${id}`);
       return await Product.findById(id);
     } catch (error) {
-      const err = new CustomError('Failed to fetch product by ID', 404);
-      logger.error(`[getProductById] Error fetching product: ${err.message}`);
+      const err = new CustomError('Failed to fetch product by ID', 404);      
       throw err;
     }
   },
@@ -46,8 +42,7 @@ export const productService = {
       logger.info(`[updateProduct] Updating product with ID: ${id}`);
       return await Product.findByIdAndUpdate(id, productData, { new: true });
     } catch (error) {
-      const err = new CustomError('Failed to update product', 404);
-      logger.error(`[updateProduct] Error updating product: ${err.message}`);
+      const err = new CustomError('Failed to update product', 404);      
       throw err;
     }
   },
@@ -56,8 +51,7 @@ export const productService = {
       logger.info(`[deleteProduct] Deleting product with ID: ${id}`);
       return await Product.findByIdAndDelete(id);
     } catch (error) {
-      const err = new CustomError('Failed to delete product', 404);
-      logger.error(`[deleteProduct] Error deleting product: ${err.message}`);
+      const err = new CustomError('Failed to delete product', 404);      
       throw err;
     }
   }
