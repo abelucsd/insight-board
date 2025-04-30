@@ -48,17 +48,20 @@ describe('loadFile function', () => {
         size: 1234,
         buffer: Buffer.from(''),
         fieldname: 'file'
+      },
+      params: {
+        fileCategory: 'product'
       }
-    } as Partial<Request>;    
+    } as unknown as Partial<Request>;    
         
     const mockData = { message: 'File loaded successfully' };
-    jest.spyOn(fs, 'existsSync').mockReturnValue(true);
+    jest.spyOn(fs, 'existsSync').mockReturnValue(true);    
     jest.spyOn(fileLoaderWorkerService, 'runFileLoaderWorker')
       .mockResolvedValue(mockData as {message: string});
     
     await loadFile(req as Request, res as Response, next);
     
-    expect(runFileLoaderWorker).toHaveBeenCalledWith('../fixtures/sample.csv');
+    expect(runFileLoaderWorker).toHaveBeenCalledWith('../fixtures/sample.csv', 'product');
     
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith(mockData);
@@ -77,10 +80,14 @@ describe('loadFile function', () => {
         size: 1234,
         buffer: Buffer.from(''),
         fieldname: 'file'
+      },
+      params: {
+        fileCategory: 'product'
       }
-    } as Partial<Request>;
+    } as unknown as Partial<Request>;
     
     const mockError = new Error('File loading failed');
+    jest.spyOn(fs, 'existsSync').mockReturnValue(true);
     jest.spyOn(fileLoaderWorkerService, 'runFileLoaderWorker')
       .mockRejectedValue(mockError);
     
