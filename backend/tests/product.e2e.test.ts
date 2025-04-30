@@ -79,8 +79,7 @@ describe('Products API', () => {
   describe('Get /products/:id', () => {
     it('should return a product by ID', async () => {
       const newProduct = await Product.create({ name: 'Product 1', price: 10 });
-      const response = await request(app).get(`/api/products/${newProduct._id}`);
-      console.log(response.body._id, newProduct._id);
+      const response = await request(app).get(`/api/products/${newProduct._id}`);      
       expect(response.status).toBe(200);
       expect(response.body.name).toBe(newProduct.name);
     });
