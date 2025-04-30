@@ -4,4 +4,4 @@ import { upload } from '../middlewares/multer.middleware';
 
 export const workerRouter = express.Router();
 
-workerRouter.post('/upload-file', upload.single('file'), loadFile);
+workerRouter.post('/upload-file/:fileCategory', upload.single('file'), loadFile);

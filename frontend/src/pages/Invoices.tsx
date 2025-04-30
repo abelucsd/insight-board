@@ -10,7 +10,7 @@ const Invoices = () => {
     handleFileChange,
     handleFileButtonClick,
     handleSubmit,
-  } = useFileUpload({postUrl: `${API_URL}/worker/upload-file`});
+  } = useFileUpload({postUrl: `${API_URL}/worker/upload-file/invoice`});
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">

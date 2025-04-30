@@ -1,11 +1,12 @@
 import fs from 'fs';
 import path from 'path';
-import mongoose from 'mongoose';
+import mongoose, { SchemaType } from 'mongoose';
 
 import { createLogger } from "../utils/logger";
 import { CustomError } from "../errors/CustomError";
 import { Product } from "../models/product";
 import { getDb } from '../db/db';
+import { Invoice } from '../models/invoice';
 
 
 const logger = createLogger('fileLoader.ts');
@@ -22,11 +23,25 @@ function toCamelCase(header: string): string {
     .replace(/^./, (str) => str.toLowerCase());
 }
 
-export async function cleanAndValidateData(rows: Row[]): Promise<any[]> {
+export async function cleanAndValidateData(
+  rows: Row[], fileCategory: string
+) : Promise<any[]> {
   const cleanedRows: any[] = [];
 
-  // Extract schema paths
-  const schemaPaths = Product.schema.paths;
+  // Extract schema paths  
+  let schemaPaths: Record<string, SchemaType> = {};
+  switch (fileCategory) {
+    case 'product':
+      schemaPaths = Product.schema.paths;
+      break;
+    case 'invoice':
+      schemaPaths = Invoice.schema.paths;
+      break;
+    default:
+      const err = new CustomError('Unsupported category type', 500);
+      throw err;
+  }
+
 
   // Get required fields
   const requiredFields = Object.keys(schemaPaths).filter(
@@ -42,6 +57,7 @@ export async function cleanAndValidateData(rows: Row[]): Promise<any[]> {
 
       // Clean value by inferring schema type
       if (schemaPaths[key]) {
+        // instance - Mongoose property that tells the field type.
         const schemaType = schemaPaths[key].instance;
 
         switch (schemaType) {
@@ -118,26 +134,40 @@ export async function loadJSON(filePath: string): Promise<Row[]> {
 
 
 // Function to load file based on its extension
-export async function loadFile(filePath: string): Promise<any[]> {
+// TODO: Add JSON functionality.
+export async function loadFile(
+  filePath: string, fileCategory: string
+) : Promise<any[]> {
+
   const ext = path.extname(filePath).toLowerCase();
   let rows: Row[] = [];
   logger.info(`[loadFile] File path: ${filePath}`);
 
-  switch (ext) {    
+  switch (ext) {
     case '.csv':
       rows = await loadCSV(filePath);
-      break;
-    case '.json':
-      rows = await loadJSON(filePath);
-      break;
+      break;    
     default:
       const err = new CustomError('Unsupported file type', 400);      
       throw err;
   }
-  const cleanedRows = await cleanAndValidateData(rows);      
-  await getDb();
-  await Product.insertMany(cleanedRows);
-  const products = await Product.find({});  
+
+  const cleanedRows = await cleanAndValidateData(rows, fileCategory);
+  
+  await getDb();  
+
+  switch (fileCategory){
+    case 'product':
+      await Product.insertMany(cleanedRows);
+      break
+    case 'invoice':
+      await Invoice.insertMany(cleanedRows);
+      break
+    default:
+      const err = new CustomError('Unsupported file type', 400);      
+      throw err;
+  }  
+
   await mongoose.disconnect();
   logger.info(`[loadFile] Successfully loaded file: ${filePath}`);
   return rows;

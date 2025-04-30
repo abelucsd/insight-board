@@ -10,7 +10,7 @@ const Products = () => {
     handleFileChange,
     handleFileButtonClick,
     handleSubmit,
-   } = useFileUpload({postUrl: `${API_URL}/worker/upload-file`});
+   } = useFileUpload({postUrl: `${API_URL}/worker/upload-file/product`});
 
 
   return (
