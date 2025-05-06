@@ -32,7 +32,8 @@ interface CurrentMonthGrowthData {
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
-const getTopProducts = async (): Promise<any[]> => {
+
+export const getTopProducts = async (): Promise<any[]> => {
   // find many
   const invoiceData = await Invoice.find({});
   

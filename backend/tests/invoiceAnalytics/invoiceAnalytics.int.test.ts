@@ -2,12 +2,11 @@ import express from 'express';
 import { describe, it, expect, beforeAll, afterAll, beforeEach, afterEach } from '@jest/globals';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
-import request from 'supertest';
 
 import { invoiceAnalyticsRouter } from '../../src/routes/invoiceAnalytics.routes';
 import { Invoice } from '../../src/models/invoice';
 import { invoiceData } from '../utils/data';
-import { getAnalytics, getMonthlyData, getCurrMonthData } from '../../src/workers/analytics/analyticsWorker';
+import { getMonthlyData, getCurrMonthData, getTopProducts } from '../../src/workers/analytics/analyticsWorker';
 
 
 const app = express();
@@ -39,9 +38,9 @@ describe('Invoice Analytics API', () => {
   });
 
 
-  describe('getAnalytics() /categoryType', () => {
+  describe('getTopProducts() helper function', () => {
     it('should return the top products', async() => {
-      const result = await getAnalytics('topProducts');
+      const result = await getTopProducts();
       expect(result).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
@@ -50,10 +49,37 @@ describe('Invoice Analytics API', () => {
           })
         ])
       );
-    });
+    });            
+  });
 
+  
+  describe('getMonthlyData() helper function', () => {
     it('should return the monthly sales', async() => {
-      const result = await getAnalytics('monthlySales');
+      const result = await getMonthlyData('sales');
+      expect(result).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            total: expect.any(Number),
+            month: expect.any(String)
+          })
+        ])
+      );
+    });    
+
+    it('should return the monthly revenue', async() => {
+      const result = await getMonthlyData('revenue');
+      expect(result).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            total: expect.any(Number),
+            month: expect.any(String)
+          })
+        ])
+      );
+    });        
+
+    it('should return the monthly profit', async() => {
+      const result = await getMonthlyData('profit');
       expect(result).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
@@ -64,8 +90,15 @@ describe('Invoice Analytics API', () => {
       );
     });
 
+    it('should throw an error when injected an invalid category', async() => {
+      await expect(getMonthlyData('invalidType')).rejects.toThrow('Unhandled');
+    });
+  });
+
+  
+  describe('getCurrMonthData() helper function', () => {
     it('should return the current month sales data', async() => {
-      const result = await getAnalytics('currMonthSales');
+      const result = await getCurrMonthData('sales');
       expect(result).toEqual(        
         expect.objectContaining({
           total: expect.any(Number),
@@ -74,20 +107,8 @@ describe('Invoice Analytics API', () => {
       );
     });
 
-    it('should return the monthly revenue', async() => {
-      const result = await getAnalytics('monthlyRevenue');
-      expect(result).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            total: expect.any(Number),
-            month: expect.any(String)
-          })
-        ])
-      );
-    });
-
     it('should return the current month revenue data', async() => {
-      const result = await getAnalytics('currMonthRevenue');
+      const result = await getCurrMonthData('revenue');
       console.log(result)
       expect(result).toEqual(        
         expect.objectContaining({
@@ -95,22 +116,10 @@ describe('Invoice Analytics API', () => {
           growth: expect.any(Number)
         })        
       );
-    });    
-
-    it('should return the monthly profit', async() => {
-      const result = await getAnalytics('monthlyProfit');
-      expect(result).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            total: expect.any(Number),
-            month: expect.any(String)
-          })
-        ])
-      );
     });
 
     it('should return the current month profit data', async() => {
-      const result = await getAnalytics('currMonthProfit');
+      const result = await getCurrMonthData('profit');
       expect(result).toEqual(        
         expect.objectContaining({
           total: expect.any(Number),
@@ -119,21 +128,6 @@ describe('Invoice Analytics API', () => {
       );
     });
 
-    it('should throw an error when injected an invalid analysis type', async() => {      
-      await expect(getAnalytics('invalidType')).rejects.toThrow('Unhandled');      
-    })
-
-  });
-
-  // Success tests: Refer to getAnalytics() integration test suite.
-  describe('getMonthlyData() helper functions', () => {
-    it('should throw an error when injected an invalid category', async() => {
-      await expect(getMonthlyData('invalidType')).rejects.toThrow('Unhandled');
-    });
-  });
-
-  // Success tests: Refer to getAnalytics() integration test suite.
-  describe('getCurrMonthData() helper functions', () => {
     it('should throw an error when injected an invalid category', async() => {
       await expect(getCurrMonthData('invalidType')).rejects.toThrow('Unhandled');
     });
