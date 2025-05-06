@@ -10,6 +10,8 @@ import {
   getCurrAndPastMonthLabels,
   getNumericalSumCurrAndPastMonth,
  } from "./helpers";
+import { getDb } from "../../db/db";
+import mongoose from "mongoose";
 
 
 // Currently O(N^2) through the rows.
@@ -84,7 +86,13 @@ export const getMonthlyData = async (
     []
   );
 
-  const invoiceData = await Invoice.find({});
+  let invoiceData: IInvoice[] = [];
+  try {
+    invoiceData = await Invoice.find({});
+  } catch (error) {
+    const err = new CustomError(`${error}`, 500);
+    throw(err);
+  }
   const data: MonthlyData[] = [];
 
   for (let i = 0; i < 12; i++) {
@@ -137,6 +145,9 @@ export async function getAnalytics(
   let result: MonthlyData[] | CurrentMonthGrowthData | Error | null = [];
 
   logger.info(`[getAnalytics] Handle ${analyticsType}.`)
+
+  await getDb();
+
   switch (analyticsType) {
     case 'topProducts':
       result = await getTopProducts();
@@ -144,19 +155,19 @@ export async function getAnalytics(
     case 'monthlySales':
       result = await getMonthlyData('sales');
       break;
-    case 'currMonthSales':
+    case 'currentMonthSales':
       result = await getCurrMonthData('sales');
       break;
     case 'monthlyRevenue':
       result = await getMonthlyData('revenue');
       break;
-    case 'currMonthRevenue':
+    case 'currentMonthRevenue':
       result = await getCurrMonthData('revenue');
       break;
     case 'monthlyProfit':
       result = await getMonthlyData('profit');
       break;
-    case 'currMonthProfit':
+    case 'currentMonthProfit':
       result = await getCurrMonthData('profit');
       break;
     default:
@@ -166,5 +177,8 @@ export async function getAnalytics(
 
   logger.info(`Result: ${result}`)
   logger.info(`[getAnalytics] Successful transformation for ${analyticsType}.`)
+
+  await mongoose.disconnect();
+
   return result;
 };

@@ -17,11 +17,15 @@ export function runInvoiceAnalyticsWorker(
   );
 
   return new Promise((resolve, reject) => {
-    const worker = new Worker(__filename, {
-      workerData: analyticsType,
+    const worker = new Worker(path.join(
+      __dirname, 
+      '../workers/analytics/analyticsWorker.js'
+    ), {
+      workerData: {analyticsType},
     });
 
     worker.on('message', (data) => {
+      logger.info('[runInvoiceAnalyticsWorker] successful worker - resolving data.')
       resolve(data);
     });
 
