@@ -90,6 +90,7 @@ export const getCurrentMonthProfit = async (
   }
 };
 
+// TODO: full workflow
 export const getTopLocations = async (
   req: Request, res: Response, next: NextFunction
 ) : Promise<void> => {
