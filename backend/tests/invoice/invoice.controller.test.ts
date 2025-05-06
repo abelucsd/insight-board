@@ -2,10 +2,10 @@ import { Request, Response } from 'express';
 import { jest } from '@jest/globals';
 import { describe, it, expect, beforeEach } from '@jest/globals';
 
-import { Invoice, IInvoice } from '../src/models/invoice';
-import { createInvoice, deleteInvoiceById, getInvoiceById, getInvoices, updateInvoiceById } from '../src/controllers/invoice.controller';
-import { invoiceService } from '../src/services/invoice.service';
-import { CustomError } from '../src/errors/CustomError';
+import { Invoice, IInvoice } from '../../src/models/invoice';
+import { createInvoice, deleteInvoiceById, getInvoiceById, getInvoices, updateInvoiceById } from '../../src/controllers/invoice.controller';
+import { invoiceService } from '../../src/services/invoice.service';
+import { CustomError } from '../../src/errors/CustomError';
 
 describe("Invoice CRUD unit test", () => {
   let req: Request;

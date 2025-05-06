@@ -1,12 +1,12 @@
 import { Request } from 'express';
 import { describe, it, expect, beforeAll, afterAll, beforeEach, afterEach } from '@jest/globals';
 import { jest } from '@jest/globals';
-import request from 'supertest';
+
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 
-import { IInvoice, Invoice } from '../src/models/invoice';
-import { invoiceService } from '../src/services/invoice.service';
+import { IInvoice, Invoice } from '../../src/models/invoice';
+import { invoiceService } from '../../src/services/invoice.service';
 
 describe('Invoice Integration', () => {
   let mongoServer: MongoMemoryServer;
