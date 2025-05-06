@@ -5,9 +5,9 @@ import {
   getProductById, 
   updateProduct, 
   deleteProduct
-} from '../src/controllers/product.controller';
-import { productService } from '../src/services/product.service';
-import { products, Product, IProduct } from '../src/models/product';
+} from '../../src/controllers/product.controller';
+import { productService } from '../../src/services/product.service';
+import { products, Product, IProduct } from '../../src/models/product';
 import { jest } from '@jest/globals';
 import { describe, it, expect, beforeEach } from '@jest/globals';
 

@@ -1,10 +1,10 @@
 import { describe, it, expect, beforeEach } from '@jest/globals';
 import { jest } from '@jest/globals';
 
-import { productService } from '../src/services/product.service';
-import { Product, IProduct, CreateProductInput } from '../src/models/product';
+import { productService } from '../../src/services/product.service';
+import { Product, IProduct, CreateProductInput } from '../../src/models/product';
 
-jest.mock('../src/models/product');
+jest.mock('../../src/models/product');
 
 describe('Product Service', () => {
 

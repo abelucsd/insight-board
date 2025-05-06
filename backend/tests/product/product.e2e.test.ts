@@ -4,8 +4,8 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 import request from 'supertest';
 
-import { Product } from '../src/models/product';
-import { productRouter } from '../src/routes/product.routes';
+import { Product } from '../../src/models/product';
+import { productRouter } from '../../src/routes/product.routes';
 
 const app = express();
 app.use(express.json());
@@ -33,7 +33,7 @@ describe('Products API', () => {
 
   beforeEach(async () => {
     await Product.deleteMany({});
-  })
+  });
 
 
   describe('POST /products', () => {
@@ -52,7 +52,7 @@ describe('Products API', () => {
       const invalidProduct = { name: '', price: -10 };
       const response = await request(app).post('/api/products').send(invalidProduct);
       expect(response.status).toBe(400);
-    });    
+    });
   });
 
   

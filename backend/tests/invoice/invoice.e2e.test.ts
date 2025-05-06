@@ -4,8 +4,8 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 import request from 'supertest';
 
-import { IInvoice, Invoice } from '../src/models/invoice';
-import { invoiceRouter } from '../src/routes/invoice.routes';
+import { IInvoice, Invoice } from '../../src/models/invoice';
+import { invoiceRouter } from '../../src/routes/invoice.routes';
 
 const app = express();
 app.use(express.json());
