@@ -4,8 +4,8 @@ import request from 'supertest';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 
-import { Product } from '../src/models/product';
-import { productService } from '../src/services/product.service';
+import { Product } from '../../src/models/product';
+import { productService } from '../../src/services/product.service';
 
 
 describe('Products Integration', () => {
