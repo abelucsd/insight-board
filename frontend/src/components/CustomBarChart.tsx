@@ -13,11 +13,6 @@ import {
  
 interface DataProps {
   [key: string]: any;
-}
-
-interface MonthlyData {
-  total: number;
-  month: string;
 };
 
 interface CustomBarChartProps {

@@ -1,27 +1,27 @@
 import axios from 'axios';
 import { API_URL } from "../utils/data";
+import { TopProducts, MonthlyData, CurrMonthData } from '../types/invoiceAnalytics';
 
-export interface TopProducts {
+
+interface RawTopProduct {
   itemName: string;
   quantitySold: number;
-};
-
-export interface MonthlyData {
-  total: number;
-  month: string;
-};
-
-export interface CurrMonthData {
-  total: number;
-  growth: number;
 };
 
 export const getTopProducts = async (): Promise<TopProducts[]> => {
   const response = await axios.get(
     `${API_URL}/invoice/analytics/top-products`
   );
-  return response.data.message;
-}
+
+  const cleanedData: TopProducts[] = response.data.message.map(
+    (row: RawTopProduct) => ({
+      "Item Name": row.itemName,
+      "Quantity Sold": row.quantitySold
+    })
+  );
+  
+  return cleanedData;
+};
 
 export const getMonthlySales = async (): Promise<MonthlyData[]> => {
   const response = await axios.get(
@@ -56,16 +56,4 @@ export const getMonthlyProfit = async (): Promise<MonthlyData[]> => {
     `${API_URL}/invoice/analytics/monthly-profit`
   );
   return response.data.message;
-}; 
-
-// TODO:
-// export const getCurrMonthProfit = async (): Promise<CurrMonthData> => {
-//   const response = await axios.get(
-//     `${API_URL}/invoice/analytics/current-month-profit`
-//   );
-//   return response.data.message;
-// }; 
-
-// export const getTopLocations = async () => axios.get(
-//   `${API_URL}/invoice/analytics/top-locations`
-// );
+};
