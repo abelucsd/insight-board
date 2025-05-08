@@ -18,6 +18,8 @@ services:
       - 3000:3000
     depends_on:
       - mongo    
+    networks:
+      - backend
     volumes:
       - ./logs:/usr/src/app/logs  # Mount the logs directory from host to container
   
@@ -25,11 +27,18 @@ services:
     image: mongo:6
     ports:
       - 27017:27017
+    networks:
+      - backend
     volumes:
       - mongo-data:/data/db
   
 volumes:
   mongo-data:
+
+networks:
+  backend:
+    driver: bridge
+
       
 
 # The commented out section below is an example of how to define a PostgreSQL
