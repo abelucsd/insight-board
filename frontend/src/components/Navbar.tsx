@@ -6,8 +6,7 @@ import { adminName } from "../utils/data";
 import { userMenuList } from "../utils/data";
 import { avatarImg } from "../utils/data";
 
-const Navbar = () => {    
-  const avatar = new URL('./assets/avatar.jpg', import.meta.url).href
+const Navbar = () => {      
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState<boolean>(false);
   const [isSideNavOpen, setIsSideNavOpen] = useState<boolean>(false);
 

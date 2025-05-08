@@ -3,13 +3,11 @@ import { API_URL } from "../utils/data";
 
 const Products = () => {
   const {
-    fileInputRef,
-    file,
+    fileInputRef,    
     fileName,
     message,
     handleFileChange,
-    handleFileButtonClick,
-    handleSubmit,
+    handleFileButtonClick,    
    } = useFileUpload({postUrl: `${API_URL}/worker/upload-file/product`});
 
 
