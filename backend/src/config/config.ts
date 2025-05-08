@@ -17,7 +17,7 @@ export const config: Config = {
   port: Number(process.env.PORT) || 3000,
   nodeEnv: process.env.NODE_ENV || 'development',
   db: {
-    mongodbUri: process.env.MONGODB_URI || 'mongodb://localhost:27017',
+    mongodbUri: process.env.MONGO_URI || 'mongodb://localhost:27017',
     name: process.env.DB_NAME || 'ecommerce',
   }
 };

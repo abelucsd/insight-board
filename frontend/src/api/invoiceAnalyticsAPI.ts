@@ -27,6 +27,7 @@ export const getMonthlySales = async (): Promise<MonthlyData[]> => {
   const response = await axios.get(
     `${API_URL}/invoice/analytics/monthly-sales`
   );
+  
   return response.data.message;
 };
 
