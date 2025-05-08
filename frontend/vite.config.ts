@@ -1,12 +1,7 @@
-import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -16,7 +11,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'),
+      '@': '/src',
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   }
