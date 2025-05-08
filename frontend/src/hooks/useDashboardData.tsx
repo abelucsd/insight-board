@@ -16,12 +16,12 @@ const defaultMonthlyData: MonthlyData[] = [];
 const defaultCurrMonthData: CurrMonthData = {total: 0, growth: 0};
 
 export const useDashboardData = () => {
-  const topProductsQuery = useQuery({queryKey: ['topProducts'], queryFn: getTopProducts, staleTime: 1000 * 60 * 10 });
-  const monthlySalesQuery = useQuery({queryKey: ['monthlySales'], queryFn: getMonthlySales, staleTime: 1000 * 60 * 10});
-  const currMonthSalesQuery = useQuery({queryKey: ['currMonthSales'], queryFn: getCurrMonthSales, staleTime: 1000 * 60 * 10});
-  const monthlyRevenueQuery = useQuery({queryKey: ['monthlyRevenue'], queryFn: getMonthlyRevenue, staleTime: 1000 * 60 * 10});
-  const currMonthRevenueQuery = useQuery({queryKey: ['currMonthRevenue'], queryFn: getCurrMonthRevenue, staleTime: 1000 * 60 * 10});
-  const monthlyProfitQuery = useQuery({queryKey: ['monthlyProfit'], queryFn: getMonthlyProfit, staleTime: 1000 * 60 * 10});  
+  const topProductsQuery = useQuery({queryKey: ['topProducts'], queryFn: getTopProducts, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});
+  const monthlySalesQuery = useQuery({queryKey: ['monthlySales'], queryFn: getMonthlySales, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});
+  const currMonthSalesQuery = useQuery({queryKey: ['currMonthSales'], queryFn: getCurrMonthSales, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});
+  const monthlyRevenueQuery = useQuery({queryKey: ['monthlyRevenue'], queryFn: getMonthlyRevenue, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});
+  const currMonthRevenueQuery = useQuery({queryKey: ['currMonthRevenue'], queryFn: getCurrMonthRevenue, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});
+  const monthlyProfitQuery = useQuery({queryKey: ['monthlyProfit'], queryFn: getMonthlyProfit, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});  
   
   const isLoading = topProductsQuery.isLoading || 
     monthlySalesQuery.isLoading ||

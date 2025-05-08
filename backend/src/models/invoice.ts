@@ -33,4 +33,4 @@ const invoiceSchema = new Schema<IInvoice>({
 
 // export let invoices: Invoice[] = [];
 
-export const Invoice = mongoose.model<IInvoice>('Invoice', invoiceSchema);
+export const Invoice = mongoose.model<IInvoice>('Invoice', invoiceSchema, "invoices");
