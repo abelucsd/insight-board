@@ -2,6 +2,7 @@ import app from './app';
 import { config } from './config/config';
 import { getDb } from './db/db';
 import { createLogger } from './utils/logger';
+import dotenv from 'dotenv';
 
 const logger = createLogger('server.ts');
 

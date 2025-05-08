@@ -1,21 +1,44 @@
-# Use official Node.js LTS image
-FROM node:18-alpine
+# syntax=docker/dockerfile:1
 
-# Set working directory
-WORKDIR /app
+ARG NODE_VERSION=20.15.0
 
-# Install dependencies
-COPY package*.json ./
-RUN npm install
+# Base image with Node
+FROM node:${NODE_VERSION}-alpine as base
+WORKDIR /usr/src/app
 
-# Copy the rest of the code
+################################################################################
+# Stage for installing dependencies and building the app
+FROM base as build
+
+# Install all dependencies (including dev dependencies for build)
+COPY package.json package-lock.json ./
+RUN npm ci
+
+# Copy application code and build
 COPY . .
-
-# Build TypeScript code
 RUN npm run build
 
-# Expose your app's port (adjust if needed)
+################################################################################
+# Create minimal runtime image (production only)
+FROM node:${NODE_VERSION}-alpine as final
+
+# Set environment and working directory
+ENV NODE_ENV=production
+WORKDIR /usr/src/app
+
+# Copy only production dependencies from build stage
+COPY --from=build /usr/src/app/node_modules ./node_modules
+
+# Copy app build and other necessary files
+COPY --from=build /usr/src/app/dist ./dist
+COPY --from=build /usr/src/app/package.json ./
+COPY --from=build /usr/src/app/docs ./docs
+
+# Use non-root user
+USER node
+
+# Expose app port
 EXPOSE 3000
 
 # Start the app
-CMD ["node", "dist/server.js"]
+CMD ["npm", "start"]

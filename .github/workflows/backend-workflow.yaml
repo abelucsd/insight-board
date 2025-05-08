@@ -65,7 +65,7 @@ jobs:
           docker-compose --version  # Verify the installation
 
       - name: Set up Docker Compose
-        run: docker-compose -f docker-compose.yml up -d --build
+        run: docker-compose -f backend/compose.yaml up -d --build
 
       - name: Wait for MongoDB to be ready
         run: |
@@ -86,4 +86,4 @@ jobs:
 
       - name: Shut down docker-compose
         if: always()
-        run: docker-compose -f docker.compose.yml down
+        run: docker-compose -f backend/compose.yaml down
