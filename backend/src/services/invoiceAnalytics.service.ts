@@ -14,7 +14,7 @@ export function runInvoiceAnalyticsWorker(
   return new Promise((resolve, reject) => {
     const worker = new Worker(path.join(
       __dirname, 
-      '../workers/analytics/analyticsWorker.js'
+      '../workers/analytics/worker.js'
     ), {
       workerData: {analyticsType},
     });

@@ -2,11 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import mongoose, { SchemaType } from 'mongoose';
 
-import { createLogger } from "../utils/logger";
-import { CustomError } from "../errors/CustomError";
-import { Product } from "../models/product";
-import { getDb } from '../db/db';
-import { Invoice } from '../models/invoice';
+import { createLogger } from "../../utils/logger";
+import { CustomError } from "../../errors/CustomError";
+import { Product } from "../../models/product";
+import { getDb } from '../../db/db';
+import { Invoice } from '../../models/invoice';
 
 
 const logger = createLogger('fileLoader.ts');

@@ -7,9 +7,11 @@ export function runFileLoaderWorker(
 ) : Promise<{message: string}> {
 
   return new Promise((resolve, reject) => {
-    const worker = new Worker(path.join(__dirname, '../workers/fileLoader.js'), {
-      workerData: { filePath, fileCategory },
-    });
+    const worker = new Worker(
+      path.join(__dirname, '../workers/fileLoader/worker.js'), {
+        workerData: { filePath, fileCategory },
+      }
+    );
 
     worker.on('message', (data) => {
       resolve(data);

@@ -4,7 +4,7 @@ import { describe, it, expect, beforeEach, beforeAll, afterAll } from '@jest/glo
 import fs from 'fs';
 import path from 'path';
 
-import { loadCSV, loadJSON } from '../src/workers/fileLoader';
+import { loadCSV, loadJSON } from '../src/workers/fileLoader/fileLoader';
 import { runFileLoaderWorker } from '../src/services/file-loader-worker.service';
 import { IProduct } from '../src/models/product';
 import { loadFile } from '../src/controllers/worker.controller';
