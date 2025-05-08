@@ -10,11 +10,6 @@ export function runInvoiceAnalyticsWorker(
 ) : Promise<IInvoice[]> {
   
   logger.info(`[runInvoiceAnalyticsWorker] Creating a worker.`);
-  
-  const __filename = path.join(
-    __dirname, 
-    '../workers/analytics/analyticsWorker.js'
-  );
 
   return new Promise((resolve, reject) => {
     const worker = new Worker(path.join(

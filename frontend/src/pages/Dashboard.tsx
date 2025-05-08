@@ -85,14 +85,14 @@ const Dashboard = () => {
           y="total" 
         />
       </div>
-    
+
       <div className="row-start-4 col-start-1 col-end-3">
         <CustomTable 
           containerStyles={"h-110"}
           styles={""}
           title={"Top Products"}
           rows={topProducts}
-          columns={Object.keys(topProducts[0])}
+          columns={Object.keys(topProducts[0] ?? [])}
         />
       </div>
 

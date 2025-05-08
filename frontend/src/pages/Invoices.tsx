@@ -35,7 +35,7 @@ const Invoices = () => {
           Upload File
         </button>
         <p>{fileName}</p>
-        <button className="btn-primary" onClick={handleSubmit}>Submit</button>
+        <button className="btn-primary">Submit (Disabled for Demo)</button>
       </div>
 
       {message && <p>{message}</p>}
