@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cpx \"src/**/*.js\" dist",
     "start": "node dist/server.js",
     "dev": "nodemon",
     "lint": "eslint 'src/**/*.ts'",
@@ -26,6 +26,7 @@
     "@types/multer": "^1.4.12",
     "@types/node": "^22.14.1",
     "@types/supertest": "^6.0.3",
+    "cpx": "^1.5.0",
     "dotenv": "^16.5.0",
     "eslint": "^9.24.0",
     "express": "^5.1.0",
@@ -42,9 +43,9 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express-rate-limit": "^7.5.0",
-    "express": "^4.21.2",
     "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
     "js-yaml": "^4.1.0",
     "mongodb": "^6.15.0",
     "mongodb-memory-server": "^10.1.4",
