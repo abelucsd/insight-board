@@ -2,7 +2,7 @@ const { workerData, parentPort } = require('worker_threads');
 const path = require('path');
 
 require('ts-node').register();
-const { getAnalytics } = require(path.resolve(__dirname, './analyticsWorker.ts'));
+const { getAnalytics } = require(path.resolve(__dirname, './analyticsWorker'));
 
 const { createLogger } = require('../../utils/logger');
 const logger = createLogger('analyticsWorker(js)');
