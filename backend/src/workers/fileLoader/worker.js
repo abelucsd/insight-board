@@ -2,7 +2,7 @@ const { workerData, parentPort } = require('worker_threads');
 const path = require('path');
 
 require('ts-node').register();
-const { loadFile } = require(path.resolve(__dirname, './fileLoader.ts'));
+const { loadFile } = require(path.resolve(__dirname, './fileLoader'));
 
 (async () => {
   try {    
