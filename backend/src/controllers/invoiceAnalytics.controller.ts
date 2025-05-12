@@ -24,7 +24,7 @@ export const getMonthlySales = async (
   try {
     logger.info(`[getMonthlySales] Request receieved.`)
     const response = await runInvoiceAnalyticsWorker('monthlySales');    
-    res.status(200).json(response);
+    res.status(200).json(response);    
   } catch (error) {
     next(error);
   }
