@@ -6,45 +6,42 @@ const logger = createLogger('analyticsStrategies.ts');
 
 const queueEvents = new QueueEvents('analytics');
 
-export const analyticsStrategies: Record<string, () => Promise<void>> = {  
+type AnalyticsStrategyResult = { jobId: string | undefined; status: string };
+
+export const analyticsStrategies: Record<string, () => Promise<AnalyticsStrategyResult>> = {  
   topProducts: async () => {    
     const analyticsQueue = getAnalyticsQueue()
-    const job = await analyticsQueue.add('topProducts', {});
-    const result = await job.waitUntilFinished(queueEvents, 1000);    
-    return result;
+    const job = await analyticsQueue.add('topProducts', {});    
+    return { jobId: job.id, status: 'queued'};
   },
   monthlySales: async () => {
     const analyticsQueue = getAnalyticsQueue()
-    const job = await analyticsQueue.add('monthlySales', {});
-    const result = await job.waitUntilFinished(queueEvents, 1000);
-    // const result = await job.returnvalue;
-    // logger.info(`[monthlySales] Job completed: ${job.id}, result: ${result}`);
-    // console.log("HI")
-    return result;
+    const job = await analyticsQueue.add('monthlySales', {});    
+    return { jobId: job.id, status: 'queued'};
   },
   currentMonthSales: async () => {
     const analyticsQueue = getAnalyticsQueue()
     const job = await analyticsQueue.add('currentMonthSales', {});
-    await job.waitUntilFinished(queueEvents, 1000);
+    return { jobId: job.id, status: 'queued'};
   },
   monthlyRevenue: async () => {
     const analyticsQueue = getAnalyticsQueue()
     const job = await analyticsQueue.add('monthlyRevenue', {});
-    await job.waitUntilFinished(queueEvents, 1000);
+    return { jobId: job.id, status: 'queued'};
   },
   currentMonthRevenue: async () => {
     const analyticsQueue = getAnalyticsQueue()
     const job = await analyticsQueue.add('currentMonthRevenue', {});
-    await job.waitUntilFinished(queueEvents, 1000);
+    return { jobId: job.id, status: 'queued'};
   },
   monthlyProfit: async () => {
     const analyticsQueue = getAnalyticsQueue()
     const job = await analyticsQueue.add('monthlyProfit', {});
-    await job.waitUntilFinished(queueEvents, 1000);
+    return { jobId: job.id, status: 'queued'};
   },
   currentMonthProfit: async () => {
     const analyticsQueue = getAnalyticsQueue()
     const job = await analyticsQueue.add('currentMonthProfit', {});
-    await job.waitUntilFinished(queueEvents, 1000);
+    return { jobId: job.id, status: 'queued'};
   }
 };

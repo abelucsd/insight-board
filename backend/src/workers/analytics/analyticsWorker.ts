@@ -7,29 +7,27 @@ const logger = createLogger('analyticsWorker.ts')
 
 let analyticsWorker: Worker | null = null;
 
-export function startAnalyticsWorker(): Promise<void> {
-  return new Promise((resolve) => {
+export function startAnalyticsWorker() {  
     if (!analyticsWorker) {
       analyticsWorker = new Worker(
         'analytics',
         async (job) => {
           const result = await getAnalytics(job.name);
-          return result;
+          console.log(`[Worker] Job ${job.name} completed with result:`, result);
+          await redis.set(`invoiceAnalytics:${job.name}`, JSON.stringify(result));
         },
         { connection: redis }
       );
 
       analyticsWorker.on('completed', (job) => {
-        logger.info(`[Worker] Completed job ${job.id} ${job.returnvalue}.`);
-        resolve(job.returnvalue);
+        logger.info(`[Worker] Completed job ${job.id} ${job.returnvalue}.`);        
       });
 
       analyticsWorker.on('failed', (job, err) => {
         logger.error(`[Worker] Failed job ${job?.id}, ${err}`);
       });
     }
-
-  });
+  
 }
 export async function stopAnalyticsWorker() {
   if (analyticsWorker) {
