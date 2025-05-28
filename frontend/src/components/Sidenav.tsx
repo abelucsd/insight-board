@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { logo } from "../utils/data";
 import { navItems } from "../utils/data";
+import { productsDropdownLinks } from "../utils/data";
+import DropdownLinks from "./DropdownLinks";
 
 interface SidenavProps {
   styles?: string;
@@ -23,15 +25,19 @@ const Sidenav = ({styles}: SidenavProps) => {
           </Link>
         </li>
 
-        <li>
+        {/* <li>
           <Link to={navItems[1].link}>
             <h3>{navItems[1].name}</h3>
           </Link>
+        </li> */}
+
+        <li>
+          <DropdownLinks title={`Products`} links={productsDropdownLinks} />
         </li>
 
         <li>
-          <Link to={navItems[2].link}>
-            <h3>{navItems[2].name}</h3>
+          <Link to={navItems[1].link}>
+            <h3>{navItems[1].name}</h3>
           </Link>
         </li>
 

@@ -4,6 +4,7 @@ import Invoices from "./pages/Invoices"
 import Layout from "./pages/Layout"
 import Products from "./pages/Products"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import ViewProducts from "./pages/products/ViewProducts"
 
 const queryClient = new QueryClient();
 // TODO: consider persister.
@@ -20,7 +21,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Dashboard />} />
-              <Route path="/products" element={<Products />} />
+              <Route path="/products/view" element={<ViewProducts />} />
+              <Route path="/products/add" element={<Products />} />              
               <Route path="/invoices" element={<Invoices />} />
             </Route>
           </Routes>
