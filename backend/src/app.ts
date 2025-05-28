@@ -9,6 +9,7 @@ import { limiter } from './config/rateLimiter';
 import { invoiceRouter } from './routes/invoice.routes';
 import { invoiceAnalyticsRouter } from './routes/invoiceAnalytics.routes';
 import { startAnalyticsWorker, stopAnalyticsWorker } from './workers/analytics/analyticsWorker';
+import { setupCronJobs } from './utils/cronjob';
 
 
 const app = express();
@@ -27,7 +28,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 //   credentials: true
 // }));
 
-app.use(cors())
+app.use(cors());
 
 app.use(limiter);
 
@@ -42,6 +43,9 @@ app.use('/api/invoice/analytics', invoiceAnalyticsRouter);
 app.use('/api/worker', workerRouter);
 
 app.use(errorHandler);
+
+// Cronjobs
+setupCronJobs();
 
 // Shutdown Worker
 // process.on('SIGINT', async () => {

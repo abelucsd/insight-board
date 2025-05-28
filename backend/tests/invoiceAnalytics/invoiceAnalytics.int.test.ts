@@ -46,7 +46,7 @@ describe('Invoice Analytics API', () => {
           expect.objectContaining({
             itemName: expect.any(String),
             quantitySold: expect.any(Number)
-          })
+          }),          
         ])
       );
     });
