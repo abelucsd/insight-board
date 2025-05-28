@@ -6,12 +6,12 @@ import mongoose from 'mongoose';
 import { invoiceAnalyticsRouter } from '../../src/routes/invoiceAnalytics.routes';
 import { Invoice } from '../../src/models/invoice';
 import { invoiceData } from '../utils/data';
-import { getMonthlyData, getCurrMonthData, getTopProducts } from '../../src/workers/analytics/analyticsWorker';
+import { getMonthlyData, getCurrMonthData, getTopProducts } from '../../src/workers/analytics/handleAnalyticsJob';
 
 
-const app = express();
-app.use(express.json());
-app.use('/api/invoice/analytics', invoiceAnalyticsRouter);
+// const app = express();
+// app.use(express.json());
+// app.use('/api/invoice/analytics', invoiceAnalyticsRouter);
 
 
 describe('Invoice Analytics API', () => {
@@ -26,7 +26,7 @@ describe('Invoice Analytics API', () => {
   afterAll(async () => {    
     await mongoose.connection.dropDatabase();
     await mongoose.connection.close();
-    await mongoServer.stop();
+    await mongoServer.stop();    
   });
 
   beforeEach(async () => {    
@@ -46,10 +46,10 @@ describe('Invoice Analytics API', () => {
           expect.objectContaining({
             itemName: expect.any(String),
             quantitySold: expect.any(Number)
-          })
+          }),          
         ])
       );
-    });            
+    });
   });
 
   
@@ -76,7 +76,7 @@ describe('Invoice Analytics API', () => {
           })
         ])
       );
-    });        
+    });
 
     it('should return the monthly profit', async() => {
       const result = await getMonthlyData('profit');

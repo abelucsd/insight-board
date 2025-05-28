@@ -27,7 +27,10 @@ describe("Invoice Analytics end points unit tests", () => {
   describe('getTopProducts', () => {
     it('should return 200 with mocked variable from service', 
     async () => {
-      const mockedResult = true;
+      const mockedResult = {
+        message: expect.stringContaining('success'),
+        data: true
+      };
       (runInvoiceAnalyticsWorker as jest.Mock).mockImplementationOnce(() => {
         return true;
       });
@@ -55,7 +58,10 @@ describe("Invoice Analytics end points unit tests", () => {
   describe('getMonthlySales', () => {
     it('should return 200 with mocked variable from service', 
     async () => {
-      const mockedResult = true;
+      const mockedResult = {
+        message: expect.stringContaining('success'),
+        data: true
+      };
       (runInvoiceAnalyticsWorker as jest.Mock).mockImplementationOnce(() => {
         return true;
       });
@@ -83,7 +89,10 @@ describe("Invoice Analytics end points unit tests", () => {
   describe('getCurrentMonthSales', () => {
     it('should return 200 with mocked variable from service', 
     async () => {
-      const mockedResult = true;
+      const mockedResult = {
+        message: expect.stringContaining('success'),
+        data: true
+      };
       (runInvoiceAnalyticsWorker as jest.Mock).mockImplementationOnce(() => {
         return true;
       });
@@ -111,7 +120,10 @@ describe("Invoice Analytics end points unit tests", () => {
   describe('getMonthlyRevenue', () => {
     it('should return 200 with mocked variable from service', 
     async () => {
-      const mockedResult = true;
+      const mockedResult = {
+        message: expect.stringContaining('success'),
+        data: true
+      };
       (runInvoiceAnalyticsWorker as jest.Mock).mockImplementationOnce(() => {
         return true;
       });
@@ -139,7 +151,10 @@ describe("Invoice Analytics end points unit tests", () => {
   describe('getCurrentMonthRevenue', () => {
     it('should return 200 with mocked variable from service', 
     async () => {
-      const mockedResult = true;
+      const mockedResult = {
+        message: expect.stringContaining('success'),
+        data: true
+      };
       (runInvoiceAnalyticsWorker as jest.Mock).mockImplementationOnce(() => {
         return true;
       });
@@ -167,7 +182,10 @@ describe("Invoice Analytics end points unit tests", () => {
   describe('getMonthlyProfit', () => {
     it('should return 200 with mocked variable from service', 
     async () => {
-      const mockedResult = true;
+      const mockedResult = {
+        message: expect.stringContaining('success'),
+        data: true
+      };
       (runInvoiceAnalyticsWorker as jest.Mock).mockImplementationOnce(() => {
         return true;
       });
@@ -195,7 +213,10 @@ describe("Invoice Analytics end points unit tests", () => {
   describe('getCurrentMonthProfit', () => {
     it('should return 200 with mocked variable from service', 
     async () => {
-      const mockedResult = true;
+      const mockedResult = {
+        message: expect.stringContaining('success'),
+        data: true
+      };
       (runInvoiceAnalyticsWorker as jest.Mock).mockImplementationOnce(() => {
         return true;
       });
@@ -223,7 +244,10 @@ describe("Invoice Analytics end points unit tests", () => {
   describe('getTopLocations', () => {
     it('should return 200 with mocked variable from service', 
     async () => {
-      const mockedResult = true;
+      const mockedResult = {
+        message: expect.stringContaining('success'),
+        data: true
+      };
       (runInvoiceAnalyticsWorker as jest.Mock).mockImplementationOnce(() => {
         return true;
       });
