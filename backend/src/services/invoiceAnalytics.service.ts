@@ -1,36 +1,22 @@
-import { Worker } from 'worker_threads';
-import path from 'path';
-import { IInvoice } from '../models/invoice';
 import { createLogger } from '../utils/logger';
+import { analyticsStrategies } from './strategies/analyticsStrategies';
+import { redis } from "../redis/redisClient";
 
 const logger = createLogger('invoiceAnalytics.service');
 
-export function runInvoiceAnalyticsWorker(
-  analyticsType: string
-) : Promise<IInvoice[]> {
-  
-  logger.info(`[runInvoiceAnalyticsWorker] Creating a worker.`);
 
-  return new Promise((resolve, reject) => {
-    const worker = new Worker(path.join(
-      __dirname, 
-      '../workers/analytics/worker.js'
-    ), {
-      workerData: {analyticsType},
-    });
+export async function runInvoiceAnalyticsWorker(strategy: string) {
+  const cacheKey = `invoiceAnalytics:${strategy}`;
+  const cached = await redis.get(cacheKey);
+  if (cached) {
+    logger.info(`[runInvoiceAnalyticsWorker] Cache hit for strategy: ${strategy}`);
+    return JSON.parse(cached);
+  }
 
-    worker.on('message', (data) => {
-      logger.info('[runInvoiceAnalyticsWorker] successful worker - resolving data.')
-      resolve(data);
-    });
+  const fn = analyticsStrategies[strategy];
+  if (!fn) throw new Error('Invalid strategy');
+  const result = await fn();  
 
-    worker.on('error', (error) => {
-      reject(error);
-    });
-
-    worker.on('exit', (code) => {
-      if (code !== 0)
-        reject(new Error(`Worker stopped with exit code ${code}`));
-    });
-  });
+  logger.info(`[runInvoiceAnalyticsWorker] Strategy: ${strategy}, Result: ${result}`);
+  return result;
 };
