@@ -10,28 +10,31 @@ import {
 
 
 // TODO: Get products from API
-import { products } from '../../utils/data';
+// import { products } from '../../utils/data';
 import { useState } from 'react';
-
-const columnHelper = createColumnHelper<typeof products[0]>();
-
-const columns = [
-  columnHelper.accessor('name', {
-    header: () => 'Product Name',
-    cell: info => info.getValue(),
-  }),
-  columnHelper.accessor('price', {
-    header: () => 'Price ($)',
-    cell: info => info.getValue().toFixed(2),
-  }),
-  columnHelper.accessor('stock', {
-    header: () => 'Stock',
-    cell: info => info.getValue(),
-  }),
-];
+import { useProductsTableData } from '../../hooks/useProductsTableData';
 
 const ViewProducts = () => {
+  const { products } = useProductsTableData();
   const [globalFilter, setGlobalFilter] = useState('');
+
+
+  const columnHelper = createColumnHelper<typeof products[0]>();
+
+  const columns = [
+    columnHelper.accessor('name', {
+      header: () => 'Product Name',
+      cell: info => info.getValue(),
+    }),
+    columnHelper.accessor('price', {
+      header: () => 'Price ($)',
+      cell: info => info.getValue().toFixed(2),
+    }),
+    columnHelper.accessor('description', {
+      header: () => 'Description',
+      cell: info => info.getValue(),
+    }),
+  ];
   
   const table = useReactTable({
     data: products,
