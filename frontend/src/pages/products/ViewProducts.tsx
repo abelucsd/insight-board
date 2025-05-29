@@ -15,7 +15,16 @@ import { useState } from 'react';
 import { useProductsTableData } from '../../hooks/useProductsTableData';
 
 const ViewProducts = () => {
-  const { products } = useProductsTableData();
+  const {
+    products,
+    total,
+    isLoading,
+    isError,
+    pageIndex,
+    pageSize,
+    setPageIndex,
+    setPageSize,
+  } = useProductsTableData();
   const [globalFilter, setGlobalFilter] = useState('');
 
 
@@ -37,7 +46,7 @@ const ViewProducts = () => {
   ];
   
   const table = useReactTable({
-    data: products,
+    data: products ?? [],
     columns,    
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -45,12 +54,23 @@ const ViewProducts = () => {
     getFilteredRowModel: getFilteredRowModel(),
     state: {
       globalFilter,
+      pagination: {
+        pageIndex,
+        pageSize,
+      }
     },
     globalFilterFn: (row, columnId, filterValue) => {
       const value = row.getValue(columnId);
       return String(value).toLowerCase().includes(filterValue.toLowerCase());
     },
+    pageCount: Math.ceil((total ?? 0) / pageSize),
+    manualPagination: true,
+    onPaginationChange: updater => {
+      const newState = typeof updater === 'function' ? updater({ pageIndex, pageSize }) : updater;
+      setPageIndex(newState.pageIndex);
+    },    
   });
+
 
   return (
     <table className="min-w-full border border-gray-300">
@@ -110,13 +130,15 @@ const ViewProducts = () => {
           Previous
         </button>
         <span>
-          Page{' '}
+          Page {' '}
           <strong>
             {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
           </strong>
         </span>
         <button 
           className="px-3 py-1 border rounded disabled:opacity-50"
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}          
         >
           Next
         </button>
