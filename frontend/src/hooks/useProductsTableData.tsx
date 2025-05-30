@@ -18,7 +18,7 @@ export const useProductsTableData = () => {
     queryFn: getProducts,
     staleTime: 1000 * 60 * 60 * 24 * 30,
     refetchInterval: false,
-    placeholderData: (previousData, previousQuery) => previousData,
+    placeholderData: (previousData) => previousData,
   });
 
   // const isLoading = productsQuery.isLoading;

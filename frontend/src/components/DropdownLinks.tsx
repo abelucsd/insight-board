@@ -32,7 +32,7 @@ const DropdownLinks = ({title, links}: DropdownLinksProps) => {
       {isOpen && (
         <div className="p-4 flex flex-col gap-4">
           {links.map((link, index) => (
-            <Link to={link.link}>
+            <Link to={link.link} key={index}>
               <h3>{link.name}</h3>
             </Link>
           ))}

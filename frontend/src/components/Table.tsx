@@ -8,7 +8,7 @@ import {
   ColumnDef
 } from '@tanstack/react-table';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 interface TableProps {
   data: Record<number, any>[];

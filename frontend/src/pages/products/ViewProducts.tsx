@@ -45,6 +45,7 @@ const ViewProducts = () => {
     }),
   ];
 
+
   return (
     <div className="container mx-auto h-screen">
       <h2 className="my-8">Products</h2>
