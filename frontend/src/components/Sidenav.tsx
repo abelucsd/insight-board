@@ -25,12 +25,6 @@ const Sidenav = ({styles}: SidenavProps) => {
           </Link>
         </li>
 
-        {/* <li>
-          <Link to={navItems[1].link}>
-            <h3>{navItems[1].name}</h3>
-          </Link>
-        </li> */}
-
         <li>
           <DropdownLinks title={`Products`} links={productsDropdownLinks} />
         </li>
