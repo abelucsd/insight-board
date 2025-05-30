@@ -11,12 +11,14 @@ const defaultProductsData: Product[] = [];
 export const useProductsTableData = () => {
   const [pageIndex, setPageIndex] = useState(0);
   const [pageSize, setPageSize] = useState(10);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['products', pageIndex, pageSize],
+    queryKey: ['products', pageIndex, pageSize, searchQuery],
     queryFn: getProducts,
     staleTime: 1000 * 60 * 60 * 24 * 30,
-    refetchInterval: false
+    refetchInterval: false,
+    placeholderData: (previousData, previousQuery) => previousData,
   });
 
   // const isLoading = productsQuery.isLoading;
@@ -30,8 +32,10 @@ export const useProductsTableData = () => {
     isError,
     pageIndex,
     pageSize,
+    searchQuery,
     setPageIndex,
     setPageSize,
+    setSearchQuery,
   };
 };
 

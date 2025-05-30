@@ -3,16 +3,17 @@ import { QueryFunctionContext } from '@tanstack/react-query';
 import { API_URL } from '../utils/data';
 import { Product } from '../types/products';
 
-export const getProducts = async ({ queryKey }: QueryFunctionContext<[string, number, number]> ) 
+export const getProducts = async ({ queryKey }: QueryFunctionContext<[string, number, number, string]> ) 
   : Promise<{ data: Product[]; total: number }> => {
     
-  const [, pageIndex, pageSize] = queryKey;
+  const [, pageIndex, pageSize, searchQuery] = queryKey;
 
   const response = await axios.get(
     `${API_URL}/products/`, {
       params: {
         page: pageIndex + 1,
-        limit: pageSize
+        limit: pageSize,
+        search: searchQuery,
       },
     }
   );

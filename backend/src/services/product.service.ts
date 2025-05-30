@@ -19,13 +19,17 @@ export const productService = {
       throw err;
     }
   },
-  getProducts: async(page: number, limit: number): Promise<{data: IProduct[], total: number}>  => {
+  getProducts: async(search: string, page: number, limit: number): Promise<{data: IProduct[], total: number}>  => {
     try {
       logger.info(`[getProducts] Returning ${products.length} product(s).`);
+
+      const query = search
+        ? { name: {$regex: search, $options: 'i'}}
+        : {};
       const skip = (page - 1) * limit;
       const [data, total] = await Promise.all([
-        Product.find().skip(skip).limit(limit),
-        Product.countDocuments()
+        Product.find(query).skip(skip).limit(limit),
+        Product.countDocuments(query),
       ]);
 
       // return await Product.find({});
