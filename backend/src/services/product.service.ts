@@ -19,10 +19,21 @@ export const productService = {
       throw err;
     }
   },
-  getProducts: async(): Promise<IProduct[]>  => {
+  getProducts: async(search: string, page: number, limit: number): Promise<{data: IProduct[], total: number}>  => {
     try {
       logger.info(`[getProducts] Returning ${products.length} product(s).`);
-      return await Product.find({});
+
+      const query = search
+        ? { name: {$regex: search, $options: 'i'}}
+        : {};
+      const skip = (page - 1) * limit;
+      const [data, total] = await Promise.all([
+        Product.find(query).skip(skip).limit(limit),
+        Product.countDocuments(query),
+      ]);
+
+      // return await Product.find({});
+      return { data, total };
     } catch (error) {
       const err = new CustomError('Failed to fetch products', 500);      
       throw err;

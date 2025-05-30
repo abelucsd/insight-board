@@ -1,7 +1,7 @@
-import { useFileUpload } from "../hooks/useFileUpload";
-import { API_URL } from "../utils/data";
+import { useFileUpload } from "../../hooks/useFileUpload";
+import { API_URL } from "../../utils/data";
 
-const Products = () => {
+const LoadProducts = () => {
   const {
     fileInputRef,    
     fileName,
@@ -44,4 +44,4 @@ const Products = () => {
   )
 };
 
-export default Products;
+export default LoadProducts;

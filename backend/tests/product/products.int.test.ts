@@ -51,8 +51,8 @@ describe('Products Integration', () => {
 
   describe('get products', () => {
     it('should return an empty array when no products exist', async () => {
-      const result = await productService.getProducts();
-      expect(result).toEqual([]);
+      const result = await productService.getProducts('', 1, 10);
+      expect(result).toEqual({data: [], total: 0});
     });
 
     it('should return a list of products', async () => {
@@ -61,9 +61,9 @@ describe('Products Integration', () => {
         await Product.create(product);
       }
       
-      const result = await productService.getProducts();
+      const {data, total} = await productService.getProducts('', 1, 100);
 
-      const cleanResult = result.map((item) => ({
+      const cleanResult = data.map((item) => ({
         name: item.name,
         price: item.price
       }));

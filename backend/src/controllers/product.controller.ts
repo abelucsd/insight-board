@@ -23,10 +23,14 @@ export const getProducts = async (req: Request, res: Response, next: NextFunctio
   try {
     logger.info('[getProducts] Received request to get all products.');
 
-    const response = await productService.getProducts();
+    const search = req.query.search as string || '';
+    const page = parseInt(req.query.page as string) || 1;
+    const limit = parseInt(req.query.limit as string) || 10;
 
-    logger.info(`[getProducts] Successfully fetched ${response.length} product(s).`);
-    res.status(200).json(response);    
+    const { data, total } = await productService.getProducts(search, page, limit);
+
+    logger.info(`[getProducts] Successfully fetched product(s).`);
+    res.status(200).json({ data, total });    
   } catch (error) {        
     next(error);
   }  
