@@ -60,7 +60,7 @@ describe('Products API', () => {
     it('should return an empty array when no products exist', async () => {
       const response = await request(app).get('/api/products');
       expect(response.status).toBe(200);
-      expect(response.body).toEqual([]);
+      expect(response.body).toEqual({data: [], total: 0});
     });
 
     it('should return products from MongoDB', async () => {
@@ -69,9 +69,9 @@ describe('Products API', () => {
       
       const response = await request(app).get('/api/products');
       expect(response.status).toBe(200);
-      expect(response.body).toHaveLength(2);
-      expect(response.body[0].name).toBe('Product 1');
-      expect(response.body[1].name).toBe('Product 2');
+      expect(response.body.data).toHaveLength(2);
+      expect(response.body.data[0].name).toBe('Product 1');
+      expect(response.body.data[1].name).toBe('Product 2');
     });
   });
 

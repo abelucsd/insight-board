@@ -74,22 +74,31 @@ describe('Product Controller', () => {
   describe('Get Products', () => {
 
     it('should return an empty array when no items exist', async () => {  
-      
+      const mockProducts = {data: [], total: 0};
       jest.spyOn(productService, 'getProducts').mockResolvedValue(mockProducts);  
+
+      req = {
+        query: { search: '', page: '1', limit: '10' },
+      } as any;
       
       await getProducts(req, res, next);
       
-      expect(res.json).toHaveBeenCalledWith([]);
+      expect(res.json).toHaveBeenCalledWith({data: [], total: 0});
     });
 
     it('should return all products', async () => {
       // Mock Service with sample data
-      mockProducts = [
+      const products = [
         { _id: '1', name: 'Product 1', price: 10 },
         { _id: '2', name: 'Product 2', price: 20 },
       ];
+      const mockProducts = {data: products, total: 2};
 
       jest.spyOn(productService, 'getProducts').mockResolvedValue(mockProducts);
+
+      req = {
+        query: { search: '', page: '1', limit: '10' },
+      } as any;
       
       await getProducts(req, res, jest.fn());
       
@@ -99,6 +108,9 @@ describe('Product Controller', () => {
 
     it('should call next with an error if service throws', async () => {
       const mockError = new Error('Database failure');
+      req = {        
+        query: { search: '', page: '1', limit: '10'},
+      } as any;
     
       jest.spyOn(productService, 'getProducts').mockRejectedValue(mockError);    
     
@@ -109,7 +121,16 @@ describe('Product Controller', () => {
     });
 
     it('should return 200 status code', async () => {
+      const products = [
+        { _id: '1', name: 'Product 1', price: 10 },
+        { _id: '2', name: 'Product 2', price: 20 },
+      ];
+      const mockProducts = {data: products, total: 2};
       jest.spyOn(productService, 'getProducts').mockResolvedValue(mockProducts);
+
+      req = {
+        query: { search: '', page: '1', limit: '100'}
+      } as any;
     
       await getProducts(req, res, next);
 
@@ -144,9 +165,9 @@ describe('Product Controller', () => {
     });
 
     it('should call next with an error if service throws', async () => {
-      const mockError = new Error('Database failure');
-      req.params = { id: '1' };
-      
+      const mockError = new Error('Database failure');     
+      req.params = { id: '1' }
+    
       jest.spyOn(productService, 'getProductById').mockRejectedValue(mockError);
 
       await getProductById(req, res, next);
