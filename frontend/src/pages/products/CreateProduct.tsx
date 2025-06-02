@@ -24,28 +24,31 @@ const CreateProduct = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md">
-      <div>
-        <label className="block font-medium">Name</label>
-        <input {...register('name')} className="input w-full"/>
-        {errors.name && <p className="text-red-500">{errors.name.message}</p>}
-      </div>
+    <form onSubmit={handleSubmit(onSubmit)} className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">
+      <h2>Add Product</h2>
+      <div className="flex flex-col gap-6 max-w-md rounded-lg bg-white p-8">
+        <div>
+          <label className="block font-medium">Name</label>
+          <input {...register('name')} className="input w-full my-2 border border-gray-300 rounded-lg"/>
+          {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+        </div>
 
-      <div>
-        <label className="block font-medium">Price</label>
-        <input type="number" {...register('price')} className="input w-full" />
-        {errors.price && <p className="text-red-500">{errors.price.message}</p>}
-      </div>
+        <div>
+          <label className="block font-medium">Price</label>
+          <input type="number" {...register('price')} className="input w-full my-2 border border-gray-300 rounded-lg " />
+          {errors.price && <p className="text-red-500">{errors.price.message}</p>}
+        </div>
 
-      <div>
-        <label className="block font-medium">Description</label>
-        <textarea {...register('description')} className="input w-full h-24" />
-        {errors.description && <p className="text-red-500">{errors.description.message}</p>}
-      </div>
+        <div>
+          <label className="block font-medium">Description</label>
+          <textarea {...register('description')} className="input w-full h-24 my-2 border border-gray-300 rounded-lg " />
+          {errors.description && <p className="text-red-500">{errors.description.message}</p>}
+        </div>
 
-      <button type="submit" disabled={isSubmitting} className="btn btn-primary">
-        {isSubmitting ? 'Creating...' : 'Create Product'}
-      </button>
+        <button type="submit" disabled={isSubmitting} className="btn btn-primary">
+          {isSubmitting ? 'Creating...' : 'Create Product'}
+        </button>
+      </div>
 
     </form>
   );

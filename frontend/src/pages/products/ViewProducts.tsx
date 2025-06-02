@@ -47,21 +47,23 @@ const ViewProducts = () => {
 
 
   return (
-    <div className="container mx-auto h-screen">
-      <h2 className="my-8">Products</h2>
-      <Table
-        data={products}
-        total={total}
-        pageIndex={pageIndex}
-        pageSize={pageSize}
-        searchQuery={searchQuery}
-        setPageIndex={setPageIndex}
-        setPageSize={setPageSize}
-        setSearchQuery={setSearchQuery}
-        columns={columns}
-        isLoading={isLoading}
-        isError={isError}
-      />
+    <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">
+      <h2 className="">Products</h2>
+      <div>
+        <Table
+          data={products}
+          total={total}
+          pageIndex={pageIndex}
+          pageSize={pageSize}
+          searchQuery={searchQuery}
+          setPageIndex={setPageIndex}
+          setPageSize={setPageSize}
+          setSearchQuery={setSearchQuery}
+          columns={columns}
+          isLoading={isLoading}
+          isError={isError}
+        />
+      </div>
     </div>
   )
 
