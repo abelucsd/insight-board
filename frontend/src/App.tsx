@@ -24,7 +24,7 @@ function App() {
               <Route index element={<Dashboard />} />
               <Route path="/products/view" element={<ViewProducts />} />
               <Route path="/products/add" element={<CreateProduct />} />              
-              <Route path="/products/load-many" element={<LoadProducts />} />              
+              <Route path="/products/add-batch" element={<LoadProducts />} />              
               <Route path="/invoices" element={<Invoices />} />
             </Route>
           </Routes>
