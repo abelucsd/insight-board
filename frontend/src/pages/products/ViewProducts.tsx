@@ -1,12 +1,11 @@
 import {  
   createColumnHelper,
 } from '@tanstack/react-table';
-import { Dialog } from '@headlessui/react';
 
 import { useProductsTableData } from '../../hooks/useProductsTableData';
 import Table from '../../components/Table';
 import { ConfirmDialog } from '../../components/ConfirmDialog';
-import UpdateProductModal from '../../components/updateProductModal';
+import { UpdateProductModal } from '../../components/updateProductModal';
 
 const ViewProducts = () => {
   const {
@@ -20,12 +19,10 @@ const ViewProducts = () => {
     isUpdateOpen,
     selectedProduct,
     isDialogOpen,
-    selectedProductId,
     setPageIndex,
     setPageSize,
     setSearchQuery,
-    handleUpdate,
-    handleDelete,
+    handleUpdate,    
     handleOpenEdit,
     handleCloseEdit,
     handleOpenConfirm,

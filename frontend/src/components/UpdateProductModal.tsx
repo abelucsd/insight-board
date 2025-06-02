@@ -1,4 +1,4 @@
-import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
+import { Dialog, DialogTitle } from '@headlessui/react';
 import { useState, useEffect } from 'react';
 import { Product } from '../types/products';
 
@@ -9,7 +9,7 @@ type UpdateModalProps = {
   onUpdate: (id: string, updatedProduct: Partial<Product>) => void;
 };
 
-export default function UpdateProductModal({ isOpen, onClose, product, onUpdate }: UpdateModalProps) {
+export function UpdateProductModal({ isOpen, onClose, product, onUpdate }: UpdateModalProps) {
   const [formData, setFormData] = useState<Partial<Product>>({
     name: '',
     price: 0,
