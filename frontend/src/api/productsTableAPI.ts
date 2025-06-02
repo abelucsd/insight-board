@@ -18,6 +18,8 @@ export const getProducts = async ({ queryKey }: QueryFunctionContext<[string, nu
   return response.data;
 };
 
-export async function deleteProduct(id: string) {
-  await apiClient.delete(`/products/${id}`);
+export async function deleteProduct(id: string): Promise<string> {
+  const response = await apiClient.delete(`/products/${id}`);
+
+  return response.data?.message ?? 'Deleted successfully';
 };

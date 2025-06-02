@@ -1,9 +1,11 @@
 import {  
   createColumnHelper,
 } from '@tanstack/react-table';
+import { Dialog } from '@headlessui/react';
 
 import { useProductsTableData } from '../../hooks/useProductsTableData';
 import Table from '../../components/Table';
+import { ConfirmDialog } from '../../components/ConfirmDialog';
 
 const ViewProducts = () => {
   const {
@@ -14,10 +16,15 @@ const ViewProducts = () => {
     pageIndex,
     pageSize,
     searchQuery,
+    isDialogOpen,
+    selectedProductId,
     setPageIndex,
     setPageSize,
     setSearchQuery,
-    handleDelete
+    handleDelete,
+    handleOpenConfirm,
+    handleConfirmDelete,
+    handleCancelDelete,
   } = useProductsTableData();
 
   const columnHelper = createColumnHelper<typeof products[0]>();
@@ -49,7 +56,7 @@ const ViewProducts = () => {
       header: () => 'Actions',
       cell: ({ row }) => (
         <button
-          onClick={() => handleDelete(row.original._id)}
+          onClick={() => handleOpenConfirm(row.original._id)}
           className="text-red-600 hover:text-red-800"
         >
          Delete 
@@ -77,8 +84,14 @@ const ViewProducts = () => {
           isError={isError}
         />
       </div>
+
+      <ConfirmDialog
+        isOpen={isDialogOpen}
+        onConfirm={handleConfirmDelete}
+        onCancel={handleCancelDelete}
+      />
     </div>
-  )
+  );
 
 };
 
