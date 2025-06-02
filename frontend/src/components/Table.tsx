@@ -76,13 +76,13 @@ const ViewProducts = ({
 
 
   return (
-    <div className="self-start container mx-auto">
+    <div className="self-start container mx-auto flex flex-col gap-8 items-end">
 
       {/* Search Input */}
       <div className="size-1/3 float-right my-4">
         <input
           type="text"
-          placeholder="Search products..."          
+          placeholder="Search products..."
           value={searchQuery}
           onChange={e => {
             setSearchQuery(e.target.value);

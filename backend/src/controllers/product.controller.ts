@@ -25,7 +25,7 @@ export const getProducts = async (req: Request, res: Response, next: NextFunctio
 
     const search = req.query.search as string || '';
     const page = parseInt(req.query.page as string) || 1;
-    const limit = parseInt(req.query.limit as string) || 10;
+    const limit = parseInt(req.query.limit as string) || 10;    
 
     const { data, total } = await productService.getProducts(search, page, limit);
 
@@ -42,7 +42,7 @@ export const getProductById = async (req: Request, res: Response, next: NextFunc
     const product = await productService.getProductById(productId);
     if (!product) {
       res.status(404).json({ message: 'Product not found' });
-    }    
+    }
 
     res.status(200).json(product);
   } catch (error) {

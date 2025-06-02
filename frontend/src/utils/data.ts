@@ -12,8 +12,9 @@ export const navItems = [
 ];
 
 export const productsDropdownLinks = [
-    {name: "View Products", link: "/products/view"},    
-    {name: "Load Products", link: "/products/load-many"},
+    {name: "View Products", link: "/products/view"},
+    {name: "Add Product", link: "/products/add"},
+    {name: "Add Batch Products", link: "/products/add-batch"},
 ]
 
 
