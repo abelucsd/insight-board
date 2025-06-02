@@ -17,6 +17,7 @@ const ViewProducts = () => {
     setPageIndex,
     setPageSize,
     setSearchQuery,
+    handleDelete
   } = useProductsTableData();
 
   const columnHelper = createColumnHelper<typeof products[0]>();
@@ -41,8 +42,20 @@ const ViewProducts = () => {
       cell: info => info.getValue(),
       meta: {
         className: 'w-48 truncate',
-      },
+      },         
     }),
+    columnHelper.display({
+      id: 'actions',
+      header: () => 'Actions',
+      cell: ({ row }) => (
+        <button
+          onClick={() => handleDelete(row.original._id)}
+          className="text-red-600 hover:text-red-800"
+        >
+         Delete 
+        </button>
+      ),
+    })
   ];
 
 

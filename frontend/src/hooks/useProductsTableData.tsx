@@ -1,7 +1,8 @@
 import '@tanstack/react-query';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
-  getProducts
+  getProducts,
+  deleteProduct
 } from '../api/productsTableAPI';
 import { Product } from '../types/products';
 import { useState } from 'react';
@@ -13,6 +14,8 @@ export const useProductsTableData = () => {
   const [pageSize, setPageSize] = useState(10);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const queryClient = useQueryClient();
+
   const { data, isLoading, isError } = useQuery({
     queryKey: ['products', pageIndex, pageSize, searchQuery],
     queryFn: getProducts,
@@ -21,9 +24,19 @@ export const useProductsTableData = () => {
     placeholderData: (previousData) => previousData,
   });
 
-  // const isLoading = productsQuery.isLoading;
+  const deleteMutation = useMutation<void, Error, string>({
+    mutationFn: deleteProduct,
+    onSuccess: () => {
+        queryClient.invalidateQueries({
+          predicate: query => query.queryKey[0] === 'products',
+      });
+    },
+  });
 
-  // const isError = productsQuery.isError;
+  const handleDelete = (id: string) => {
+    deleteMutation.mutate(id);
+  };
+  
 
   return {
     products: data?.data ?? defaultProductsData,
@@ -36,6 +49,7 @@ export const useProductsTableData = () => {
     setPageIndex,
     setPageSize,
     setSearchQuery,
+    handleDelete,
   };
 };
 
