@@ -6,6 +6,7 @@ import { Dialog } from '@headlessui/react';
 import { useProductsTableData } from '../../hooks/useProductsTableData';
 import Table from '../../components/Table';
 import { ConfirmDialog } from '../../components/ConfirmDialog';
+import UpdateProductModal from '../../components/updateProductModal';
 
 const ViewProducts = () => {
   const {
@@ -16,12 +17,17 @@ const ViewProducts = () => {
     pageIndex,
     pageSize,
     searchQuery,
+    isUpdateOpen,
+    selectedProduct,
     isDialogOpen,
     selectedProductId,
     setPageIndex,
     setPageSize,
     setSearchQuery,
+    handleUpdate,
     handleDelete,
+    handleOpenEdit,
+    handleCloseEdit,
     handleOpenConfirm,
     handleConfirmDelete,
     handleCancelDelete,
@@ -55,12 +61,21 @@ const ViewProducts = () => {
       id: 'actions',
       header: () => 'Actions',
       cell: ({ row }) => (
-        <button
-          onClick={() => handleOpenConfirm(row.original._id)}
-          className="text-red-600 hover:text-red-800"
-        >
-         Delete 
-        </button>
+        <div className="flex gap-2">
+          <button 
+            onClick={() => handleOpenEdit(row.original)}
+            className="text-blue-600 hover:text-blue-800"
+          >
+            Update
+          </button>
+
+          <button
+            onClick={() => handleOpenConfirm(row.original._id)}
+            className="text-red-600 hover:text-red-800"
+          >
+          Delete 
+          </button>
+        </div>
       ),
     })
   ];
@@ -85,12 +100,19 @@ const ViewProducts = () => {
         />
       </div>
 
+      <UpdateProductModal
+        isOpen={isUpdateOpen}
+        onClose={handleCloseEdit}
+        product={selectedProduct}
+        onUpdate={handleUpdate}
+      />
+
       <ConfirmDialog
         isOpen={isDialogOpen}
         onConfirm={handleConfirmDelete}
         onCancel={handleCancelDelete}
       />
-    </div>
+    </div>    
   );
 
 };

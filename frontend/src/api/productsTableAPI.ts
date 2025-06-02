@@ -18,8 +18,15 @@ export const getProducts = async ({ queryKey }: QueryFunctionContext<[string, nu
   return response.data;
 };
 
-export async function deleteProduct(id: string): Promise<string> {
+
+export const deleteProduct = async(id: string): Promise<string> => {
   const response = await apiClient.delete(`/products/${id}`);
 
   return response.data?.message ?? 'Deleted successfully';
+};
+
+export const updateProduct = async ({id, updatedProduct,}: {id: string, updatedProduct: Partial<Product>}): Promise<string> => {
+  const response = await apiClient.put(`/products/${id}`, updatedProduct);
+
+  return response.data?.message ?? 'Updated successfully';
 };
