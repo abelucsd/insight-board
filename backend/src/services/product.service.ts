@@ -15,16 +15,27 @@ export const productService = {
       logger.info(`[createProduct] Product created with ID: ${newProduct._id}`);
       return newProduct;
     } catch (error) {
-      const err = new CustomError('Failed to create product', 400);            
+      const err = new CustomError('Failed to create product', 400);
       throw err;
     }
   },
-  getProducts: async(): Promise<IProduct[]>  => {
+  getProducts: async(search: string, page: number, limit: number): Promise<{data: IProduct[], total: number}>  => {
     try {
-      logger.info(`[getProducts] Returning ${products.length} product(s).`);
-      return await Product.find({});
+      logger.info(`[getProducts] Returning ${products.length} product(s).`);      
+
+      const query = search
+        ? { name: {$regex: search, $options: 'i'}}
+        : {};              
+      const skip = (page - 1) * limit;
+      const [data, total] = await Promise.all([
+        Product.find(query).skip(skip).limit(limit),
+        Product.countDocuments(query),
+      ]);
+
+      // return await Product.find({});
+      return { data, total };
     } catch (error) {
-      const err = new CustomError('Failed to fetch products', 500);      
+      const err = new CustomError('Failed to fetch products', 500);
       throw err;
     }
   },
