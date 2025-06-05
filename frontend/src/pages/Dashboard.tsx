@@ -1,7 +1,10 @@
+import axios from 'axios';
 import CustomBarChart from "../components/CustomBarChart";
 import { useDashboardData } from "../hooks/useDashboardData";
 import CustomStatTrackerBox from "../components/CustomStatTrackerBox";
 import CustomTable from "../components/CustomTable";
+import { useEffect } from 'react';
+import { useVisitAnalytics } from '../hooks/useVisitAnalytics';
 
 const Dashboard = () => {
   const {
@@ -15,7 +18,16 @@ const Dashboard = () => {
     topLocationsBySales,
     isLoading,
     isError, 
-  } = useDashboardData();  
+  } = useDashboardData();
+
+  const {
+    handleVisit,
+  } = useVisitAnalytics();
+
+  // visiting the dashboard increments a visit.
+  useEffect(() => {    
+    handleVisit(new Date());
+  }, []);
 
   if (isLoading) {
     return (
@@ -31,7 +43,7 @@ const Dashboard = () => {
         <div className="text-xl mt-4">Oops! Something went wrong. Please try again.</div>        
       </div>
     );
-  };
+  };  
 
   return (
     <div className="
