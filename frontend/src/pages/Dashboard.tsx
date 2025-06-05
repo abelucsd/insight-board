@@ -10,7 +10,9 @@ const Dashboard = () => {
     currMonthSales,
     monthlyRevenue,
     currMonthRevenue,
-    monthlyProfit,    
+    monthlyProfit,
+    currMonthProfit,
+    topLocationsBySales,
     isLoading,
     isError, 
   } = useDashboardData();  
@@ -36,8 +38,8 @@ const Dashboard = () => {
       md:container mx-auto flex flex-col lg:grid grid-cols-4 gap-8 
       max-w-[500px] py-8 md:p-8 px-2
     ">      
-      <div className="row-start-1 col-start-1 col-end-3">
-        <div className="flex flex-row w-full h-1/2 gap-8">
+      <div className="row-start-1 col-start-1 col-end-3">        
+        <div className="grid grid-cols-2 gap-8 h-full">
           <CustomStatTrackerBox 
             style={"w-full h-full"}
             title={"Sales"} 
@@ -49,6 +51,12 @@ const Dashboard = () => {
             title={"Revenue"} 
             total={currMonthRevenue.total} 
             growth={currMonthRevenue.growth} 
+          />
+          <CustomStatTrackerBox
+            style={"w-full h-full"}
+            title={"Profit"}
+            total={currMonthProfit.total}
+            growth={currMonthProfit.growth}
           />
         </div>
       </div>
@@ -93,6 +101,16 @@ const Dashboard = () => {
           title={"Top Products"}
           rows={topProducts}
           columns={Object.keys(topProducts[0] ?? [])}
+        />
+      </div>
+
+      <div className="row-start-4 col-start-3 col-end-5">
+        <CustomTable 
+          containerStyles={"h-110"}
+          styles={""}
+          title={"Top Locations"}
+          rows={topLocationsBySales}
+          columns={Object.keys(topLocationsBySales[0] ?? [])}
         />
       </div>
 

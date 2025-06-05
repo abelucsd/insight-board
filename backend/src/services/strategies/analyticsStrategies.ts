@@ -43,5 +43,10 @@ export const analyticsStrategies: Record<string, () => Promise<AnalyticsStrategy
     const analyticsQueue = getAnalyticsQueue()
     const job = await analyticsQueue.add('currentMonthProfit', {});
     return { jobId: job.id, status: 'queued'};
-  }
+  },
+  topLocationsBySales: async () => {
+    const analyticsQueue = getAnalyticsQueue()
+    const job = await analyticsQueue.add('topLocationsBySales', {});
+    return { jobId: job.id, status: 'queued'};
+  },
 };

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { API_URL } from "../utils/data";
-import { TopProducts, MonthlyData, CurrMonthData } from '../types/invoiceAnalytics';
+import { TopProducts, MonthlyData, CurrMonthData, TopLocations } from '../types/invoiceAnalytics';
 
 
 interface RawTopProduct {
@@ -60,3 +60,17 @@ export const getMonthlyProfit = async (): Promise<MonthlyData[]> => {
   );
   return response.data.data;
 };
+
+export const getCurrMonthProfit = async (): Promise<CurrMonthData> => {
+  const response = await axios.get(
+    `${API_URL}/invoice/analytics/current-month-profit`
+  );
+  return response.data.data;
+}; 
+
+export const getTopLocationsBySales = async (): Promise<TopLocations[]> => {
+  const response = await axios.get(
+    `${API_URL}/invoice/analytics/top-locations-by-sales`
+  );
+  return response.data.data;
+}; 

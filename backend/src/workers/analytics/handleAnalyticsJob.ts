@@ -60,6 +60,31 @@ export const getTopProducts = async (): Promise<any[]> => {
 };
 
 
+export const getTopLocationsBySales = async (): Promise<any[]> => {
+  // find many
+  const invoiceData = await Invoice.find({});
+
+  const locations: { [location: string]: number } = {};
+
+  invoiceData.forEach(row => {
+    locations[row.location] = (locations[row.location] || 0 ) + 1
+  });
+
+  // sort in descending order
+  const entries = Object.entries(locations);
+  const sortedEntries = entries.sort((a, b) => a[1] - b[1]);
+
+  const topLocations = sortedEntries.slice(0, 10)
+    .map(([location, sales]) => ({
+      location,
+      sales
+    })
+  );
+
+  return topLocations;
+};
+
+
 export const getMonthlyData = async (
   category: string
 ): Promise<MonthlyData[] | null> => {        
@@ -170,6 +195,9 @@ export async function getAnalytics(
       break;
     case 'currentMonthProfit':
       result = await getCurrMonthData('profit');
+      break;
+    case 'topLocationsBySales':
+      result = await getTopLocationsBySales();
       break;
     default:
       const error = new CustomError('Unhandled analytics type.', 400);
