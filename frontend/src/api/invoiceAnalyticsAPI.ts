@@ -1,17 +1,7 @@
 import axios from 'axios';
 import { API_URL } from "../utils/data";
-import { TopProducts, MonthlyData, CurrMonthData, TopLocations } from '../types/invoiceAnalytics';
+import { TopProducts, MonthlyData, CurrMonthData, TopLocations, RawTopData } from '../types/invoiceAnalytics';
 
-
-interface RawTopData {
-  attribute: string;
-  count: number;
-};
-
-interface RawTopProduct {
-  itemName: string;
-  quantitySold: number;
-};
 
 export const getTopProducts = async (): Promise<TopProducts[]> => {
   const response = await axios.get(
