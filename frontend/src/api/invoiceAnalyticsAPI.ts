@@ -3,6 +3,11 @@ import { API_URL } from "../utils/data";
 import { TopProducts, MonthlyData, CurrMonthData, TopLocations } from '../types/invoiceAnalytics';
 
 
+interface RawTopData {
+  attribute: string;
+  count: number;
+};
+
 interface RawTopProduct {
   itemName: string;
   quantitySold: number;
@@ -13,10 +18,12 @@ export const getTopProducts = async (): Promise<TopProducts[]> => {
     `${API_URL}/invoice/analytics/top-products`
   );
 
+  console.log(response.data.data)
+
   const cleanedData: TopProducts[] = response.data.data.map(
-    (row: RawTopProduct) => ({
-      "Item Name": row.itemName,
-      "Quantity Sold": row.quantitySold
+    (row: RawTopData) => ({
+      "Item Name": row.attribute,
+      "Quantity Sold": row.count
     })
   );  
   
@@ -72,5 +79,12 @@ export const getTopLocationsBySales = async (): Promise<TopLocations[]> => {
   const response = await axios.get(
     `${API_URL}/invoice/analytics/top-locations-by-sales`
   );
-  return response.data.data;
+
+  const cleanedData: TopLocations[] = response.data.data.map(
+    (row: RawTopData) => ({
+      "Location": row.attribute,
+      "Sales": row.count
+    })
+  );
+  return cleanedData;
 }; 

@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { jest } from '@jest/globals';
 import { describe, it, expect, beforeEach } from '@jest/globals';
 
-import { getCurrentMonthProfit, getCurrentMonthRevenue, getCurrentMonthSales, getMonthlyProfit, getMonthlyRevenue, getMonthlySales, getTopLocations, getTopProducts } from '../../src/controllers/invoiceAnalytics.controller';
+import { getCurrentMonthProfit, getCurrentMonthRevenue, getCurrentMonthSales, getMonthlyProfit, getMonthlyRevenue, getMonthlySales, getTopLocationsBySales, getTopProducts } from '../../src/controllers/invoiceAnalytics.controller';
 import { runInvoiceAnalyticsWorker } from '../../src/services/invoiceAnalytics.service';
 
 
@@ -252,7 +252,7 @@ describe("Invoice Analytics end points unit tests", () => {
         return true;
       });
       
-      await getTopLocations(req, res, next);
+      await getTopLocationsBySales(req, res, next);
 
       expect(res.status).toHaveBeenCalledWith(200);
       expect(res.json).toHaveBeenCalledWith(mockedResult);
@@ -264,7 +264,7 @@ describe("Invoice Analytics end points unit tests", () => {
         throw mockError;
       });    
     
-      await getTopLocations(req, res, next);
+      await getTopLocationsBySales(req, res, next);
     
       expect(next).toHaveBeenCalledWith(mockError);
       expect(res.json).not.toHaveBeenCalled();
