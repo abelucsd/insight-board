@@ -125,7 +125,11 @@ const Dashboard = () => {
 
       <div className="row-start-4 col-start-3 col-end-5">
         <CustomTable 
+<<<<<<< HEAD
           containerStyles={"h-175"}
+=======
+          containerStyles={"h-110"}
+>>>>>>> Feat/add profit and locations analytics (#69)
           styles={""}
           title={"Top Locations"}
           rows={topLocationsBySales}
