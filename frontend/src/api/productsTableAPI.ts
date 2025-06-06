@@ -1,5 +1,5 @@
 import { QueryFunctionContext } from '@tanstack/react-query';
-import { Product } from '../types/products';
+import { Product } from '../types/product';
 import apiClient from './apiClient';
 
 export const getProducts = async ({ queryKey }: QueryFunctionContext<[string, number, number, string]> ) 

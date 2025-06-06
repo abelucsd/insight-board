@@ -1,9 +1,9 @@
-import { useFileUpload } from "../hooks/useFileUpload";
-import { API_URL } from "../utils/data";
+import { useFileUpload } from "../../hooks/useFileUpload";
+import { API_URL } from "../../utils/data";
 
-const Invoices = () => {
+const LoadInvoices = () => {
   const { 
-    fileInputRef,    
+    fileInputRef,
     fileName,
     message,
     handleFileChange,
@@ -33,7 +33,7 @@ const Invoices = () => {
           Upload File
         </button>
         <p>{fileName}</p>
-        <button className="btn-primary">Submit (Disabled for Demo)</button>
+        <button className="btn-primary">Submit</button>
       </div>
 
       {message && <p>{message}</p>}
@@ -43,4 +43,4 @@ const Invoices = () => {
   );
 };
 
-export default Invoices;
+export default LoadInvoices;

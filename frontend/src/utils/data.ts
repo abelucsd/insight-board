@@ -1,5 +1,5 @@
-// export const API_URL = import.meta.env.VITE_API_URL;
-export const API_URL = 'http://localhost:3000/api';
+export const API_URL = import.meta.env.VITE_API_URL;
+// export const API_URL = 'http://localhost:3000/api';
 
 export { default as avatarImg }  from '../assets/images/avatar.jpg';
 export const logo = "LOGO";
@@ -7,14 +7,18 @@ export const adminName = 'Blue Water';
 
 
 export const navItems = [
-    {name: "Dashboard", link: "/"},    
-    {name: "Invoices", link: "/invoices"},
+    {name: "Dashboard", link: "/"},        
 ];
 
 export const productsDropdownLinks = [
     {name: "View Products", link: "/products/view"},
     {name: "Add Product", link: "/products/add"},
     {name: "Add Batch Products", link: "/products/add-batch"},
+]
+
+export const invoiceDropdownLinks = [
+    {name: "View Invoices", link: "/invoices/view"},
+    {name: "Add Batch Invoices", link: "/invoices/add-batch"},
 ]
 
 

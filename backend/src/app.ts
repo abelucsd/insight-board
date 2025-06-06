@@ -8,6 +8,7 @@ import { errorHandler } from './middlewares/errorHandler';
 import { limiter } from './config/rateLimiter';
 import { invoiceRouter } from './routes/invoice.routes';
 import { invoiceAnalyticsRouter } from './routes/invoiceAnalytics.routes';
+import { visitAnalyticsRouter } from './routes/visitAnalytics.routes';
 import { startAnalyticsWorker, stopAnalyticsWorker } from './workers/analytics/analyticsWorker';
 import { setupCronJobs } from './utils/cronjob';
 
@@ -21,14 +22,14 @@ const swaggerUi = require('swagger-ui-express');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // TODO: update this in production.
-// app.use(cors({
-//   origin: ['https://ecommerce-api-dashboard.vercel.app', 'localhost:3000'],
-//   methods: ['GET'],
-//   allowedHeaders: ['Content-Type', 'Authorization'],
-//   credentials: true
-// }));
+app.use(cors({
+  origin: ['https://ecommerce-api-dashboard.vercel.app', 'localhost:3000'],
+  methods: ['GET'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
 
-app.use(cors());
+// app.use(cors());
 
 app.use(limiter);
 
@@ -39,6 +40,7 @@ startAnalyticsWorker();
 app.use('/api/products', productRouter);
 app.use('/api/invoice', invoiceRouter);
 app.use('/api/invoice/analytics', invoiceAnalyticsRouter);
+app.use('/api/visit/analytics', visitAnalyticsRouter);
 
 app.use('/api/worker', workerRouter);
 
@@ -48,12 +50,6 @@ app.use(errorHandler);
 setupCronJobs();
 
 // Shutdown Worker
-// process.on('SIGINT', async () => {
-//   console.log('\Gracefully shutting down...');
-//   await analyticsWorker.close();
-//   process.exit(0);
-// });
-
 process.on('SIGINT', async () => {
   console.log('SIGINT received. Closing worker...');
   await stopAnalyticsWorker();

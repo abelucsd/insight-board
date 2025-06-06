@@ -16,9 +16,20 @@ const createInvoice = async(invoice: CreateInvoiceInput): Promise<IInvoice> => {
   }
 };
 
-const getInvoices = async(): Promise<IInvoice[]> => {
+const getInvoices = async(search: string, page: number, limit: number): Promise<{data: IInvoice[], total: number}> => {
   try {
-    return await Invoice.find({});
+    const query = search
+      ? { name: {$regex: search, $options: 'i'}}
+      : {};    
+    const skip = (page - 1) * limit;
+    
+    const [data, total] = await Promise.all([
+      Invoice.find(query).skip(skip).limit(limit),
+      Invoice.countDocuments(query),
+    ]);
+
+    return { data, total }
+    // return await Invoice.find({});
   } catch (error) {
     const err = new CustomError('Failed to fetch Invoices', 500);    
     throw(err);

@@ -1,5 +1,14 @@
 import express, { Router } from 'express';
-import { getCurrentMonthProfit, getCurrentMonthRevenue, getCurrentMonthSales, getMonthlyProfit, getMonthlyRevenue, getMonthlySales, getTopLocations, getTopProducts } from '../controllers/invoiceAnalytics.controller';
+import { 
+  getCurrentMonthProfit, 
+  getCurrentMonthRevenue, 
+  getCurrentMonthSales, 
+  getMonthlyProfit, 
+  getMonthlyRevenue, 
+  getMonthlySales, 
+  getTopLocationsBySales, 
+  getTopProducts 
+} from '../controllers/invoiceAnalytics.controller';
 
 export const invoiceAnalyticsRouter = express.Router();
 
@@ -10,4 +19,5 @@ invoiceAnalyticsRouter.get('/monthly-revenue', getMonthlyRevenue);
 invoiceAnalyticsRouter.get('/current-month-revenue', getCurrentMonthRevenue);
 invoiceAnalyticsRouter.get('/monthly-profit', getMonthlyProfit);
 invoiceAnalyticsRouter.get('/current-monthly-profit', getCurrentMonthProfit);
-invoiceAnalyticsRouter.get('/top-locations', getTopLocations);
+invoiceAnalyticsRouter.get('/current-month-profit', getCurrentMonthProfit);
+invoiceAnalyticsRouter.get('/top-locations-by-sales', getTopLocationsBySales);
