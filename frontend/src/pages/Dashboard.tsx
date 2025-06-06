@@ -21,7 +21,10 @@ const Dashboard = () => {
   } = useDashboardData();
 
   const {
+    visits,
     handleVisit,
+    isVisitLoading,
+    isVisitError,
   } = useVisitAnalytics();
 
   // visiting the dashboard increments a visit.
@@ -29,7 +32,7 @@ const Dashboard = () => {
     handleVisit(new Date());
   }, []);
 
-  if (isLoading) {
+  if (isLoading || isVisitLoading) {
     return (
       <div className="flex justify-center items-center h-screen bg-gray-100">        
         <div className="text-lg mt-4">Loading dashboard...</div>
@@ -37,7 +40,7 @@ const Dashboard = () => {
     );
   };
   
-  if (isError) {
+  if (isError || isVisitError) {
     return (
       <div className="flex justify-center items-center h-screen bg-gray-100 text-center text-red-600">
         <div className="text-xl mt-4">Oops! Something went wrong. Please try again.</div>        
@@ -69,6 +72,12 @@ const Dashboard = () => {
             title={"Profit"}
             total={currMonthProfit.total}
             growth={currMonthProfit.growth}
+          />
+          <CustomStatTrackerBox 
+            style={"w-full h-full"}
+            title={"Visits"} 
+            total={visits} 
+            growth={1.0} 
           />
         </div>
       </div>

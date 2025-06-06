@@ -7,7 +7,7 @@ interface CustomStatTrackerBox {
 };
 
 const CustomStatTrackerBox = ({style, title, total, growth}: CustomStatTrackerBox) => {  
-  const growthText = growth < 0 ? `-${growth*-1}`: `+${growth}`  
+  const growthText = growth < 0 ? `-${growth*-1}`: `+${growth}`
 
   return (
     <div className={`
@@ -20,7 +20,7 @@ const CustomStatTrackerBox = ({style, title, total, growth}: CustomStatTrackerBo
       <div className="flex flex-row justify-between items-end">
         <p className="text-2xl font-bold">{total}</p>
         <p
-          className={`            
+          className={`
             rounded-md p-1
             text-sm
             ${growth < 0 ? 
