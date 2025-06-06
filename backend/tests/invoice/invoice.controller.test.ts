@@ -54,6 +54,10 @@ describe("Invoice CRUD unit test", () => {
     it('should create a invoice and return it', async() => {
       const newInvoice = invoices[0];
       const createdInvoice = { _id: '1', ...newInvoice };
+      const expectedResponse = {
+        message: expect.stringContaining('success'),
+        data: createdInvoice
+      }
 
       jest.spyOn(invoiceService, 'createInvoice').mockResolvedValue(createdInvoice as IInvoice);
       req.body = newInvoice; // Mock request body - uses CreateInvoiceInput
@@ -61,7 +65,7 @@ describe("Invoice CRUD unit test", () => {
       await createInvoice(req, res, next);
 
       expect(res.status).toHaveBeenCalledWith(201);
-      expect(res.json).toHaveBeenCalledWith(createdInvoice);
+      expect(res.json).toHaveBeenCalledWith(expectedResponse);
     });
 
     it('should call next with an error if service throws', async() => {
@@ -79,15 +83,27 @@ describe("Invoice CRUD unit test", () => {
 
   describe('Get Invoice', () => {
     it("Get empty invoice list", async () => {      
-      const mockInvoices: IInvoice[] = [];
+      req = {
+        query: { search: '', page: '1', limit: '100'}
+      } as any;      
+
+      const mockInvoices = {data: [], total: 0}
+      const expectedResponse = {
+        message: expect.stringContaining('success'),
+        data: mockInvoices
+      }
+
       jest.spyOn(invoiceService, 'getInvoices').mockResolvedValue(mockInvoices);
 
       await getInvoices(req, res, next);
       expect(res.status).toHaveBeenCalledWith(200);    
-      expect(res.json).toHaveBeenCalledWith(mockInvoices);
+      expect(res.json).toHaveBeenCalledWith(expectedResponse);
     });
 
     it("Get created invoice list", async () => {    
+      req = {
+        query: { search: '', page: '1', limit: '100'}
+      } as any;
       const mockInvoices: IInvoice[] = [
         {
           _id: '1',
@@ -104,15 +120,26 @@ describe("Invoice CRUD unit test", () => {
         }
       ];
 
-      jest.spyOn(invoiceService, 'getInvoices').mockResolvedValue(mockInvoices);
+      const mockResult = {data: mockInvoices, total: 1};
+
+      const expectedResponse = {
+        message: expect.stringContaining('success'),
+        data: mockResult
+      }
+
+      jest.spyOn(invoiceService, 'getInvoices').mockResolvedValue(mockResult);
 
       await getInvoices(req, res, next);
 
       expect(res.status).toHaveBeenCalledWith(200);
-      expect(res.json).toHaveBeenCalledWith(mockInvoices);
+      expect(res.json).toHaveBeenCalledWith(expectedResponse);
     });
 
     it('should call next with an error if service throws', async () => {
+      req = {
+        query: { search: '', page: '1', limit: '100'}
+      } as any;
+
       const mockError = new CustomError('Database failure', 500);
       jest.spyOn(invoiceService, 'getInvoices').mockRejectedValue(mockError);
 
@@ -128,16 +155,22 @@ describe("Invoice CRUD unit test", () => {
       const invoiceId = '1';
       const invoice = { _id: invoiceId, ...invoices[0] };
 
+      const expectedResponse = {
+        message: expect.stringContaining('success'),
+        data: invoice
+      }
+
       jest.spyOn(invoiceService, 'getInvoiceById').mockResolvedValue(invoice);
       req.params = { id: invoiceId };
       await getInvoiceById(req, res, next);
 
       expect(res.status).toHaveBeenCalledWith(200);
-      expect(res.json).toBeCalledWith(invoice);
+      expect(res.json).toBeCalledWith(expectedResponse);
     });
 
     it('should return 404 if invoice not found', async () => {
       const invoiceId = '1';
+
       jest.spyOn(invoiceService, 'getInvoiceById').mockResolvedValue(null);
       req.params = { id: invoiceId };
 
@@ -164,6 +197,11 @@ describe("Invoice CRUD unit test", () => {
       const updatedInvoice = invoices[0];
       const fetchedInvoice = { _id: invoiceId, ...invoices[0]};
 
+      const expectedResponse = {
+        message: expect.stringContaining('success'),
+        data: fetchedInvoice
+      }
+
       jest.spyOn(invoiceService, 'updateInvoiceById')
         .mockResolvedValue(fetchedInvoice as IInvoice);
       req.params = { id: invoiceId };
@@ -172,7 +210,7 @@ describe("Invoice CRUD unit test", () => {
       await updateInvoiceById(req, res, next);
 
       expect(res.status).toHaveBeenCalledWith(200);
-      expect(res.json).toHaveBeenCalledWith(fetchedInvoice);
+      expect(res.json).toHaveBeenCalledWith(expectedResponse);
     });
 
     it('should return 404 if product not found', async () => {
@@ -205,6 +243,11 @@ describe("Invoice CRUD unit test", () => {
       const invoiceId = '1';
       const deletedInvoice = { _id: invoiceId, ...invoices[0]};
 
+      const expectedResponse = {
+        message: expect.stringContaining('success'),
+        data: deletedInvoice
+      }
+      
       jest.spyOn(invoiceService, 'deleteInvoiceById')
         .mockResolvedValue(deletedInvoice as IInvoice);
       req.params = { id: invoiceId };
@@ -212,7 +255,7 @@ describe("Invoice CRUD unit test", () => {
       await deleteInvoiceById(req, res, next);
 
       expect(res.status).toHaveBeenCalledWith(200);
-      expect(res.json).toHaveBeenCalledWith(deletedInvoice);
+      expect(res.json).toHaveBeenCalledWith(expectedResponse);
     });
 
     it('should return 404 if invoice not found', async () => {
