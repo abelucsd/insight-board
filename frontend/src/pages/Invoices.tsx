@@ -7,8 +7,7 @@ const Invoices = () => {
     fileName,
     message,
     handleFileChange,
-    handleFileButtonClick,
-    handleSubmit,
+    handleFileButtonClick,    
   } = useFileUpload({postUrl: `${API_URL}/worker/upload-file/invoice`});
 
   return (
