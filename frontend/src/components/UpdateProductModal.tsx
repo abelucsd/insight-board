@@ -1,6 +1,6 @@
 import { Dialog, DialogTitle } from '@headlessui/react';
 import { useState, useEffect } from 'react';
-import { Product } from '../types/products';
+import { Product } from '../types/product';
 
 type UpdateModalProps = {
   isOpen: boolean;

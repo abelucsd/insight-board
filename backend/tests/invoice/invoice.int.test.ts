@@ -76,9 +76,9 @@ describe('Invoice Integration', () => {
   });
 
   describe('get invoices', () => {
-    it('get empty list of invoice documents', async () => {
-      const result = await invoiceService.getInvoices();
-      expect(result).toEqual([]);
+    it('get empty list of invoice documents', async () => {      
+      const {data, total} = await invoiceService.getInvoices('', 1, 10);
+      expect(data).toEqual([]);
     });
 
     it('get created invoice documents', async () => {
@@ -87,9 +87,9 @@ describe('Invoice Integration', () => {
         await Invoice.create(invoice);
       }
 
-      const result = await invoiceService.getInvoices();
+      const {data, total} = await invoiceService.getInvoices('', 1, 10);
       // cleanup mongoose added variables
-      const cleanedresult = result.map((item) => ({
+      const cleanedresult = data.map((item) => ({
         customer: item.customer,
         itemName: item.itemName,
         itemNumber: item.itemNumber,
