@@ -3,7 +3,7 @@ import { API_URL } from "../utils/data";
 
 const Invoices = () => {
   const { 
-    fileInputRef,    
+    fileInputRef,
     fileName,
     message,
     handleFileChange,
@@ -33,7 +33,7 @@ const Invoices = () => {
           Upload File
         </button>
         <p>{fileName}</p>
-        <button className="btn-primary">Submit (Disabled for Demo)</button>
+        <button className="btn-primary">Submit</button>
       </div>
 
       {message && <p>{message}</p>}
