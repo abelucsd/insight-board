@@ -119,7 +119,7 @@ const Dashboard = () => {
 
       <div className="row-start-4 col-start-3 col-end-5">
         <CustomTable 
-          containerStyles={"h-175"}          
+          containerStyles={"h-175"}
           styles={""}
           title={"Top Locations"}
           rows={topLocationsBySales}
