@@ -2,6 +2,8 @@ import CustomBarChart from "../components/CustomBarChart";
 import { useDashboardData } from "../hooks/useDashboardData";
 import CustomStatTrackerBox from "../components/CustomStatTrackerBox";
 import CustomTable from "../components/CustomTable";
+import { useEffect } from 'react';
+import { useVisitAnalytics } from '../hooks/useVisitAnalytics';
 
 const Dashboard = () => {
   const {
@@ -15,9 +17,21 @@ const Dashboard = () => {
     topLocationsBySales,
     isLoading,
     isError, 
-  } = useDashboardData();  
+  } = useDashboardData();
 
-  if (isLoading) {
+  const {
+    visits,
+    handleVisit,
+    isVisitLoading,
+    isVisitError,
+  } = useVisitAnalytics();
+
+  // visiting the dashboard increments a visit.
+  useEffect(() => {    
+    handleVisit(new Date());
+  }, []);
+
+  if (isLoading || isVisitLoading) {
     return (
       <div className="flex justify-center items-center h-screen bg-gray-100">        
         <div className="text-lg mt-4">Loading dashboard...</div>
@@ -25,13 +39,13 @@ const Dashboard = () => {
     );
   };
   
-  if (isError) {
+  if (isError || isVisitError) {
     return (
       <div className="flex justify-center items-center h-screen bg-gray-100 text-center text-red-600">
         <div className="text-xl mt-4">Oops! Something went wrong. Please try again.</div>        
       </div>
     );
-  };
+  };  
 
   return (
     <div className="
@@ -57,6 +71,11 @@ const Dashboard = () => {
             title={"Profit"}
             total={currMonthProfit.total}
             growth={currMonthProfit.growth}
+          />
+          <CustomStatTrackerBox 
+            style={"w-full h-full"}
+            title={"Visits"} 
+            total={visits}             
           />
         </div>
       </div>
