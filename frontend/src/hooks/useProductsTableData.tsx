@@ -5,7 +5,7 @@ import {
   deleteProduct,
   updateProduct
 } from '../api/productsTableAPI';
-import { Product } from '../types/products';
+import { Product } from '../types/product';
 import { useState } from 'react';
 
 const defaultProductsData: Product[] = [];
