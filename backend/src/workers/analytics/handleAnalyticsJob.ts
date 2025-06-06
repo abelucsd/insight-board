@@ -3,6 +3,10 @@ import { CustomError } from "../../errors/CustomError";
 import { IInvoice, Invoice } from "../../models/invoice";
 import { NumericalSumStrategyContext } from "./NumericalStrategyContext";
 import { NumericalSumStrategy, SumProfitStrategy, SumRevenueStrategy, SumSalesStrategy } from "./NumericalSumStrategy";
+import { TopStrategyContext } from "./TopStrategyContext";
+import { TopLocationsBySalesStrategy, TopProductsStrategy, TopStrategy } from "./TopStrategy";
+
+import { MonthlyData, CurrentMonthGrowthData, TopAttributeData } from "./analyticsTypes";
 
 import { 
   filterByMonth,
@@ -20,44 +24,45 @@ import mongoose from "mongoose";
 
 const logger = createLogger('handleAnalyticsJob.ts');
 
-interface MonthlyData {
-  month: string, 
-  total: number
-};
-
-interface CurrentMonthGrowthData {
-  total: number,
-  growth: number;
-};
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
 
-export const getTopProducts = async (): Promise<any[]> => {
-  // find many
-  const invoiceData = await Invoice.find({});
-  
-  // O(N) - N rows  
-  // use a hashmap  
-  const productsSold: { [itemName: string]: number } = {};
-  
-  invoiceData.forEach(row => {
-    productsSold[row.itemName] = (productsSold[row.itemName] || 0) + 
-      row.quantity;    
-  });
+export const getTopByAttribute = async (attribute: string): Promise<TopAttributeData[]> => {
+  let invoiceData: IInvoice[] = [];
+  try {
+    invoiceData = await Invoice.find({});
+  } catch (error) {
+    const err = new CustomError(`${error}`, 500);
+    throw(err);
+  }
 
-  // sort the products in descending order
-  const entries = Object.entries(productsSold);
-  const sortedProducts = entries.sort((a, b) => a[1] - b[1]);
+  let strategy;
+  switch(attribute) {
+    case 'products':
+      strategy = new TopProductsStrategy();
+      break;
+    case 'locationsBySales':
+      strategy = new TopLocationsBySalesStrategy();      
+      break;
+    default:
+      const error = new CustomError(
+        'Unhandled attribute type for getTopByAttribute.',
+        400
+      );
+      throw error;
+  }
 
-  const topProducts = sortedProducts.slice(0, 10)
-    .map(([itemName, quantitySold]) => ({
-      itemName,
-      quantitySold
-  }));
-    
-  return topProducts;
+  const topStrategyCtx = new TopStrategyContext(
+    strategy!,
+    []
+  );
+
+  topStrategyCtx.setData(invoiceData);
+
+  return topStrategyCtx.findTopByAttribute();
 };
+
 
 
 export const getMonthlyData = async (
@@ -129,7 +134,7 @@ export const getCurrMonthData= async (
   const {currMonthSum, prevMonthSum} = getNumericalSumCurrAndPastMonth(
     invoiceData,
     strategy!
-  );  
+  );
 
   let growthLoss = growthLossCalculator(currMonthSum, prevMonthSum);
   if (Number.isNaN(growthLoss) || growthLoss == Infinity) {
@@ -142,8 +147,8 @@ export const getCurrMonthData= async (
 
 export async function getAnalytics(
   analyticsType: string
-) : Promise<MonthlyData[] | CurrentMonthGrowthData | null> {
-  let result: MonthlyData[] | CurrentMonthGrowthData | Error | null = [];
+) : Promise<MonthlyData[] | CurrentMonthGrowthData | TopAttributeData[] | null> {
+  let result: MonthlyData[] | CurrentMonthGrowthData | TopAttributeData[] | Error | null = [];
 
   logger.info(`[getAnalytics] Handle ${analyticsType}.`)
 
@@ -151,7 +156,7 @@ export async function getAnalytics(
 
   switch (analyticsType) {
     case 'topProducts':
-      result = await getTopProducts();
+      result = await getTopByAttribute('products');      
       break;
     case 'monthlySales':
       result = await getMonthlyData('sales');
@@ -171,12 +176,14 @@ export async function getAnalytics(
     case 'currentMonthProfit':
       result = await getCurrMonthData('profit');
       break;
+    case 'topLocationsBySales':
+      result = await getTopByAttribute('locationsBySales');      
+      break;
     default:
       const error = new CustomError('Unhandled analytics type.', 400);
       throw error;
   }
-
-  logger.info(`Result: ${result}`)
+  
   logger.info(`[getAnalytics] Successful transformation for ${analyticsType}.`)
 
   await mongoose.disconnect();

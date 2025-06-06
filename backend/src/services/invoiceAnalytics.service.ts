@@ -6,12 +6,12 @@ const logger = createLogger('invoiceAnalytics.service');
 
 
 export async function runInvoiceAnalyticsWorker(strategy: string) {
-  const cacheKey = `invoiceAnalytics:${strategy}`;
+  const cacheKey = `invoiceAnalytics:${strategy}`;  
   const cached = await redis.get(cacheKey);
   if (cached) {
-    logger.info(`[runInvoiceAnalyticsWorker] Cache hit for strategy: ${strategy}`);
+    logger.info(`[runInvoiceAnalyticsWorker] Cache hit for strategy: ${strategy}`);    
     return JSON.parse(cached);
-  }
+  }  
 
   const fn = analyticsStrategies[strategy];
   if (!fn) throw new Error('Invalid strategy');
