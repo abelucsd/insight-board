@@ -99,14 +99,17 @@ export async function loadCSV(filePath: string): Promise<Row[]> {
   try {    
     const data = await fs.readFileSync(filePath, 'utf8');    
     const lines = data.trim().split('\n');
-    const headers = lines[0].split(',');
+    const headersRaw = lines[0].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || [];
+    const headers = headersRaw.map(h => h.replace(/^"|"$/g, '').trim());
+
 
     const rows: Row[] = lines.slice(1).map((line: string) => {
-      const values = line.split(',');
+      const values = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || [];
+      const cleanedValues = values.map(v => v.replace(/^"|"$/g, '').trim());
       const row: Row = {};
 
       headers.forEach((header: string, i: number) => {
-        row[header.trim()] = values[i]?.trim() ?? '';
+        row[header.trim()] = cleanedValues[i]?.trim() ?? '';
       });
 
       return row;
