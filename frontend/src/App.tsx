@@ -1,11 +1,12 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import Dashboard from "./pages/Dashboard"
-import Invoices from "./pages/Invoices"
 import Layout from "./pages/Layout"
 import LoadProducts from "./pages/products/LoadProducts"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import ViewProducts from "./pages/products/ViewProducts"
 import CreateProduct from "./pages/products/CreateProduct"
+import ViewInvoices from "./pages/invoices/ViewInvoices"
+import LoadInvoices from "./pages/invoices/LoadInvoices"
 
 const queryClient = new QueryClient();
 // TODO: consider persister.
@@ -25,7 +26,8 @@ function App() {
               <Route path="/products/view" element={<ViewProducts />} />
               <Route path="/products/add" element={<CreateProduct />} />              
               <Route path="/products/add-batch" element={<LoadProducts />} />              
-              <Route path="/invoices" element={<Invoices />} />
+              <Route path="/invoices/view" element={<ViewInvoices />} />
+              <Route path="/invoices/add-batch" element={<LoadInvoices />} />
             </Route>
           </Routes>
         
