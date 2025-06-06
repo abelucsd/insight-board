@@ -76,8 +76,7 @@ const Dashboard = () => {
           <CustomStatTrackerBox 
             style={"w-full h-full"}
             title={"Visits"} 
-            total={visits} 
-            growth={1.0} 
+            total={visits}             
           />
         </div>
       </div>

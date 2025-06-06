@@ -3,11 +3,13 @@ interface CustomStatTrackerBox {
   style?: string;
   title: string;
   total: number;
-  growth: number;
+  growth?: number;
 };
 
 const CustomStatTrackerBox = ({style, title, total, growth}: CustomStatTrackerBox) => {  
-  const growthText = growth < 0 ? `-${growth*-1}`: `+${growth}`
+  const growthText = typeof growth === 'number'
+    ? (growth < 0 ? `-${growth*-1}`: `+${growth}`)
+    : null;
 
   return (
     <div className={`
@@ -19,16 +21,18 @@ const CustomStatTrackerBox = ({style, title, total, growth}: CustomStatTrackerBo
 
       <div className="flex flex-row justify-between items-end">
         <p className="text-2xl font-bold">{total}</p>
-        <p
-          className={`
-            rounded-md p-1
-            text-sm
-            ${growth < 0 ? 
-              "bg-red-100": 
-              "bg-green-100"}
-            after:content-['%']
-          `}
-        >{growthText}</p>
+        {typeof growth === 'number' && (
+          <p
+            className={`
+              rounded-md p-1
+              text-sm
+              ${growth < 0 ? 
+                "bg-red-100": 
+                "bg-green-100"}
+              after:content-['%']
+            `}
+          >{growthText}</p>
+        )}
       </div>
     </div>
   );
