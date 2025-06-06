@@ -1,4 +1,3 @@
-import axios from 'axios';
 import CustomBarChart from "../components/CustomBarChart";
 import { useDashboardData } from "../hooks/useDashboardData";
 import CustomStatTrackerBox from "../components/CustomStatTrackerBox";
