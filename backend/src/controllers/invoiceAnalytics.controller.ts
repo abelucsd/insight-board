@@ -111,13 +111,12 @@ export const getCurrentMonthProfit = async (
   }
 };
 
-// TODO: full workflow
-export const getTopLocations = async (
+export const getTopLocationsBySales = async (
   req: Request, res: Response, next: NextFunction
 ) : Promise<void> => {
   try {
-    logger.info(`[getTopLocations] Request receieved.`)
-    const response = await runInvoiceAnalyticsWorker('topLocations');    
+    logger.info(`[getTopLocationsBySales] Request receieved.`)
+    const response = await runInvoiceAnalyticsWorker('topLocationsBySales');    
     res.status(200).json({
       message: 'Top locations data retrieved successfully',
       data: response

@@ -3,6 +3,16 @@ export interface TopProducts {
   "Quantity Sold": number;
 };
 
+export interface RawTopData {
+  attribute: string;
+  count: number;
+};
+
+export interface TopLocations {
+  "Location": string;
+  "Sales": number;
+};
+
 export interface MonthlyData {
   total: number;
   month: string;

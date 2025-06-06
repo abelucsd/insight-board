@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
 import { invoiceAnalyticsRouter } from '../../src/routes/invoiceAnalytics.routes';
 import { Invoice } from '../../src/models/invoice';
 import { invoiceData } from '../utils/data';
-import { getMonthlyData, getCurrMonthData, getTopProducts } from '../../src/workers/analytics/handleAnalyticsJob';
+import { getMonthlyData, getCurrMonthData, getTopByAttribute } from '../../src/workers/analytics/handleAnalyticsJob';
 
 
 // const app = express();
@@ -38,14 +38,14 @@ describe('Invoice Analytics API', () => {
   });
 
 
-  describe('getTopProducts() helper function', () => {
+  describe('getTopByAttribute() helper function', () => {
     it('should return the top products', async() => {
-      const result = await getTopProducts();
+      const result = await getTopByAttribute('products');
       expect(result).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            itemName: expect.any(String),
-            quantitySold: expect.any(Number)
+            attribute: expect.any(String),
+            count: expect.any(Number)
           }),          
         ])
       );

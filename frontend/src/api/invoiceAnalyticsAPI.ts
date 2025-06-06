@@ -1,22 +1,19 @@
 import axios from 'axios';
 import { API_URL } from "../utils/data";
-import { TopProducts, MonthlyData, CurrMonthData } from '../types/invoiceAnalytics';
+import { TopProducts, MonthlyData, CurrMonthData, TopLocations, RawTopData } from '../types/invoiceAnalytics';
 
-
-interface RawTopProduct {
-  itemName: string;
-  quantitySold: number;
-};
 
 export const getTopProducts = async (): Promise<TopProducts[]> => {
   const response = await axios.get(
     `${API_URL}/invoice/analytics/top-products`
   );
 
+  console.log(response.data.data)
+
   const cleanedData: TopProducts[] = response.data.data.map(
-    (row: RawTopProduct) => ({
-      "Item Name": row.itemName,
-      "Quantity Sold": row.quantitySold
+    (row: RawTopData) => ({
+      "Item Name": row.attribute,
+      "Quantity Sold": row.count
     })
   );  
   
@@ -60,3 +57,24 @@ export const getMonthlyProfit = async (): Promise<MonthlyData[]> => {
   );
   return response.data.data;
 };
+
+export const getCurrMonthProfit = async (): Promise<CurrMonthData> => {
+  const response = await axios.get(
+    `${API_URL}/invoice/analytics/current-month-profit`
+  );
+  return response.data.data;
+}; 
+
+export const getTopLocationsBySales = async (): Promise<TopLocations[]> => {
+  const response = await axios.get(
+    `${API_URL}/invoice/analytics/top-locations-by-sales`
+  );
+
+  const cleanedData: TopLocations[] = response.data.data.map(
+    (row: RawTopData) => ({
+      "Location": row.attribute,
+      "Sales": row.count
+    })
+  );
+  return cleanedData;
+}; 
