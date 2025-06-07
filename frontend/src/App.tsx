@@ -7,6 +7,7 @@ import ViewProducts from "./pages/products/ViewProducts"
 import CreateProduct from "./pages/products/CreateProduct"
 import ViewInvoices from "./pages/invoices/ViewInvoices"
 import LoadInvoices from "./pages/invoices/LoadInvoices"
+import { useEffect } from "react"
 
 const queryClient = new QueryClient();
 // TODO: consider persister.
@@ -15,6 +16,10 @@ const queryClient = new QueryClient();
 // })
 
 function App() {  
+
+  useEffect(() => {
+    document.title = "Insight Board";
+  }, []);
 
   return (
     <>
