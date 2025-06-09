@@ -20,16 +20,10 @@ const Dashboard = () => {
   } = useDashboardData();
 
   const {
-    visits,
-    handleVisit,
+    currMonthVisits,
     isVisitLoading,
     isVisitError,
   } = useVisitAnalytics();
-
-  // visiting the dashboard increments a visit.
-  useEffect(() => {    
-    handleVisit(new Date());
-  }, []);
 
   if (isLoading || isVisitLoading) {
     return (
@@ -75,7 +69,8 @@ const Dashboard = () => {
           <CustomStatTrackerBox 
             style={"w-full h-full"}
             title={"Visits"} 
-            total={visits}             
+            total={currMonthVisits.total}             
+            growth={currMonthVisits.growth}
           />
         </div>
       </div>

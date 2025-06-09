@@ -33,6 +33,7 @@ export const getCurrAndPastMonthLabels = (): {currMonth: number, pastMonth: numb
   return {currMonth, pastMonth}
 };
 
+// coupled to invoice
 export const getNumericalSumCurrAndPastMonth = (
   records: IInvoice[],
   strategy: NumericalSumStrategy
