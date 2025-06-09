@@ -2,7 +2,6 @@ import CustomBarChart from "../components/CustomBarChart";
 import { useDashboardData } from "../hooks/useDashboardData";
 import CustomStatTrackerBox from "../components/CustomStatTrackerBox";
 import CustomTable from "../components/CustomTable";
-import { useEffect } from 'react';
 import { useVisitAnalytics } from '../hooks/useVisitAnalytics';
 
 const Dashboard = () => {
