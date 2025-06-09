@@ -1,3 +1,10 @@
+/**
+ * NOTE: Visit KPI analysis is handled here temporarily to avoid 
+ * creating a full analytics layer for a single use case.
+ * If more Visit analyses are added in the future, extract into its own module.
+ */
+
+
 import { createLogger } from "../../utils/logger";
 import { CustomError } from "../../errors/CustomError";
 import { IInvoice, Invoice } from "../../models/invoice";
@@ -16,6 +23,7 @@ import {
  } from "./helpers";
 import { getDb } from "../../db/db";
 import mongoose from "mongoose";
+import { IVisit, Visit } from "../../models/visit";
 
 
 // Currently O(N^2) through the rows.
@@ -51,7 +59,7 @@ export const getTopByAttribute = async (attribute: string): Promise<TopAttribute
         400
       );
       throw error;
-  }
+  };
 
   const topStrategyCtx = new TopStrategyContext(
     strategy!,
@@ -179,6 +187,9 @@ export async function getAnalytics(
     case 'topLocationsBySales':
       result = await getTopByAttribute('locationsBySales');      
       break;
+    case 'currVisits':
+      result = await getCurrVisitData();
+      break;
     default:
       const error = new CustomError('Unhandled analytics type.', 400);
       throw error;
@@ -189,4 +200,39 @@ export async function getAnalytics(
   await mongoose.disconnect();
 
   return result;
+};
+
+
+
+// -----------------------------------------------
+// TEMPORARY: Visit KPI Analysis (Single Use Case)
+// -----------------------------------------------
+export async function getCurrVisitData(): Promise<Promise<CurrentMonthGrowthData>> {  
+  const data : IVisit[] = await Visit.find({});
+  const {currMonth, pastMonth} = getCurrAndPastMonthLabels();
+
+  // filter by month
+  const currRecords = data.filter((record) => new Date(record.timestamp).getMonth() === currMonth);
+  const pastRecords = data.filter((record) => new Date(record.timestamp).getMonth() === pastMonth);
+
+
+  let result = data
+    .reduce((sum, record) => sum + Number(record.timestamp), 0); 
+  result = Math.round(result * 100) / 100;
+
+  const reduceData = (records: IVisit[]) => records.length;    
+
+  const round2 = (num: number) => Math.round(num * 100) / 100;
+
+  const reducedCurrRecords = reduceData(currRecords);
+  const reducedPastRecords = reduceData(pastRecords);
+  const currMonthSum = round2(reducedCurrRecords);
+  const prevMonthSum = round2(reducedPastRecords);
+
+ let growthLoss = growthLossCalculator(currMonthSum, prevMonthSum);
+  if (Number.isNaN(growthLoss) || growthLoss == Infinity) {
+    growthLoss = 0;
+  }  
+
+  return {total: currMonthSum, growth: growthLoss}; 
 };
