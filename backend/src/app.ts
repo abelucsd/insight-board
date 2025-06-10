@@ -25,7 +25,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(cors({
   origin: [
     'https://ecommerce-api-dashboard.vercel.app', 
-    'https://insight-dboard.vercel.app/',
+    'https://insight-dboard.vercel.app',
     'localhost:3000'],
   methods: ['GET'],
   allowedHeaders: ['Content-Type', 'Authorization'],
