@@ -10,9 +10,10 @@ interface DropdownLink {
 interface DropdownLinksProps {
   title: string;
   links: DropdownLink[];
+  onLinkClick?: () => void;
 };
 
-const DropdownLinks = ({title, links}: DropdownLinksProps) => {
+const DropdownLinks = ({title, links, onLinkClick}: DropdownLinksProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -31,10 +32,16 @@ const DropdownLinks = ({title, links}: DropdownLinksProps) => {
 
       {isOpen && (
         <div className="p-4 flex flex-col gap-4">
-          {links.map((link, index) => (
-            <Link to={link.link} key={index}>
-              <h3>{link.name}</h3>
-            </Link>
+          {links.map((link, index) => (            
+              <Link 
+                to={link.link} key={index} 
+                onClick={() => {                
+                  onLinkClick?.();
+                }
+              }
+              >
+                <h3>{link.name}</h3>
+              </Link>            
           ))}
         </div>
       )}

@@ -21,7 +21,10 @@ const Navbar = () => {
           ${isSideNavOpen ? 'translate-x-0': 'max-[1080px]:-translate-x-full xl:hidden'}
           transition-transform duration-300 ease-in-out
         `}>
-          <Sidenav styles={"border-t border-[#e5e7eb] w-62"} />
+          <Sidenav 
+            styles={"border-t border-[#e5e7eb] w-62"}
+            onLinkClick={() => setIsSideNavOpen(false)}
+          />
       </div>
       
       <div>
