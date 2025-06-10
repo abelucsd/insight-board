@@ -9,7 +9,7 @@ import { createLogger } from "../../utils/logger";
 import { CustomError } from "../../errors/CustomError";
 import { IInvoice, Invoice } from "../../models/invoice";
 import { NumericalSumStrategyContext } from "./NumericalStrategyContext";
-import { NumericalSumStrategy, SumProfitStrategy, SumRevenueStrategy, SumSalesStrategy } from "./NumericalSumStrategy";
+import { NumericalSumStrategy, SumProfitStrategy, SumRevenueStrategy, SumInvoicesStrategy } from "./NumericalSumStrategy";
 import { TopStrategyContext } from "./TopStrategyContext";
 import { TopLocationsBySalesStrategy, TopProductsStrategy, TopStrategy } from "./TopStrategy";
 
@@ -78,8 +78,8 @@ export const getMonthlyData = async (
 ): Promise<MonthlyData[] | null> => {        
   let strategy;
   switch(category) {
-    case 'sales':
-      strategy = new SumSalesStrategy();
+    case 'invoices':
+      strategy = new SumInvoicesStrategy();
       break;
     case 'revenue':
       strategy = new SumRevenueStrategy();
@@ -125,8 +125,8 @@ export const getCurrMonthData= async (
   const invoiceData = await Invoice.find({});
   let strategy;
   switch(category) {
-    case 'sales':
-      strategy = new SumSalesStrategy();
+    case 'invoices':
+      strategy = new SumInvoicesStrategy();
       break;
     case 'revenue':
       strategy = new SumRevenueStrategy();
@@ -166,11 +166,11 @@ export async function getAnalytics(
     case 'topProducts':
       result = await getTopByAttribute('products');      
       break;
-    case 'monthlySales':
-      result = await getMonthlyData('sales');
+    case 'monthlyInvoices':
+      result = await getMonthlyData('invoices');
       break;
-    case 'currentMonthSales':
-      result = await getCurrMonthData('sales');
+    case 'currentMonthInvoices':
+      result = await getCurrMonthData('invoices');
       break;
     case 'monthlyRevenue':
       result = await getMonthlyData('revenue');
