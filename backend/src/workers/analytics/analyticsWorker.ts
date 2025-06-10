@@ -16,7 +16,12 @@ export function startAnalyticsWorker() {
           console.log(`[Worker] Job ${job.name} completed with result:`, result);
           await redis.set(`invoiceAnalytics:${job.name}`, JSON.stringify(result));
         },
-        { connection: redis }
+        { 
+          connection: {
+            url: process.env.UPSTASH_REDIS_URL,
+            maxRetriesPerRequest: null,
+          }
+        }
       );
 
       analyticsWorker.on('completed', (job) => {
