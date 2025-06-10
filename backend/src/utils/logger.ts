@@ -14,15 +14,22 @@ const writeToFile = (level: string, context: string, msg: string) => {
   fs.appendFileSync(logFilePath, logLine);
 }
 
-export const createLogger = (context: string) => ({
-  info: (msg: string) => {    
-    const formatted = `INFO [${context}]: ${msg}`;
-    console.log(formatted);
-    writeToFile('info', context, formatted);
-  },
-  error: (msg: string) => {
-    const formatted = `ERROR [${context}]: ${msg}`;
-    console.log(formatted);
-    writeToFile('info', context, formatted);
-  },
-});
+export const createLogger = (context: string) => {
+  const isTest = process.env.NODE_ENV === 'test';
+  return {    
+    info: (msg: string) => {
+      if (isTest) return;
+
+      const formatted = `INFO [${context}]: ${msg}`;
+      console.log(formatted);
+      writeToFile('info', context, formatted);
+    },
+    error: (msg: string) => {
+      if (isTest) return;
+
+      const formatted = `ERROR [${context}]: ${msg}`;
+      console.log(formatted);
+      writeToFile('info', context, formatted);
+    },
+  }
+};

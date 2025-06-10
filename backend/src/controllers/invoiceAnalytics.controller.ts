@@ -21,14 +21,14 @@ export const getTopProducts = async (
   }
 };
 
-export const getMonthlySales = async (
+export const getMonthlyInvoices = async (
   req: Request, res: Response, next: NextFunction
 ) : Promise<void> => {
   try {
-    logger.info(`[getMonthlySales] Request receieved.`)
-    const response = await runInvoiceAnalyticsWorker('monthlySales');    
+    logger.info(`[getMonthlyInvoices] Request receieved.`)
+    const response = await runInvoiceAnalyticsWorker('monthlyInvoices');    
     res.status(200).json({
-      message: 'Monthly sales data retrieved successfully',
+      message: 'Monthly invoices data retrieved successfully',
       data: response
     });
   } catch (error) {
@@ -36,14 +36,14 @@ export const getMonthlySales = async (
   }
 };
 
-export const getCurrentMonthSales = async (
+export const getCurrentMonthInvoices = async (
   req: Request, res: Response, next: NextFunction
 ) : Promise<void> => {
   try {
-    logger.info(`[getCurrentMonthSales] Request receieved.`)
-    const response = await runInvoiceAnalyticsWorker('currentMonthSales');    
+    logger.info(`[getCurrentMonthInvoices] Request receieved.`)
+    const response = await runInvoiceAnalyticsWorker('currentMonthInvoices');    
     res.status(200).json({
-      message: 'Current month sales data retrieved successfully',
+      message: 'Current month invoices data retrieved successfully',
       data: response
     });
   } catch (error) {
