@@ -6,31 +6,39 @@ import DropdownLinks from "./DropdownLinks";
 
 interface SidenavProps {
   styles?: string;
+  onLinkClick?: () => void;
 }
-const Sidenav = ({styles}: SidenavProps) => {  
-  
+const Sidenav = ({styles, onLinkClick}: SidenavProps) => {    
   return (
     <nav 
       className={`    
         ${styles}
         flex flex-col gap-8 overflow-hidden shadow-xs 
-        border-r border-[#e5e7eb] w-64 min-h-screen h-full px-6 bg-[var(--bg-nav)]
+        border-r border-[#e5e7eb] w-64 min-h-screen h-full px-6 bg-[var(--bg-nav)]        
       `}
       >
       <h1>{logo}</h1>
       <ul className="flex flex-col gap-6">
-        <li>
+        <li onClick={onLinkClick}>
           <Link to={navItems[0].link}>
             <h3>{navItems[0].name}</h3>
           </Link>
         </li>
 
         <li>
-          <DropdownLinks title={`Products`} links={productsDropdownLinks} />
+          <DropdownLinks 
+            title={`Products`} 
+            links={productsDropdownLinks} 
+            onLinkClick={onLinkClick}
+          />
         </li>
 
         <li>
-          <DropdownLinks title={`Invoices`} links={invoiceDropdownLinks} />
+          <DropdownLinks 
+            title={`Invoices`} 
+            links={invoiceDropdownLinks} 
+            onLinkClick={onLinkClick}
+          />
         </li>        
 
       </ul>
