@@ -54,8 +54,8 @@ describe('Invoice Analytics API', () => {
 
   
   describe('getMonthlyData() helper function', () => {
-    it('should return the monthly sales', async() => {
-      const result = await getMonthlyData('sales');
+    it('should return the monthly invoices', async() => {
+      const result = await getMonthlyData('invoices');
       expect(result).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
@@ -97,8 +97,8 @@ describe('Invoice Analytics API', () => {
 
   
   describe('getCurrMonthData() helper function', () => {
-    it('should return the current month sales data', async() => {
-      const result = await getCurrMonthData('sales');
+    it('should return the current month invoices data', async() => {
+      const result = await getCurrMonthData('invoices');
       expect(result).toEqual(        
         expect.objectContaining({
           total: expect.any(Number),

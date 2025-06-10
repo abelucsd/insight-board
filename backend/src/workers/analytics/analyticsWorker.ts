@@ -1,5 +1,5 @@
 import { Worker } from "bullmq";
-import { redis } from "../../redis/redisClient";
+import { getRedis } from "../../redis/redisClient";
 import { getAnalytics } from "./handleAnalyticsJob";
 import { createLogger } from "../../utils/logger";
 
@@ -14,7 +14,7 @@ export function startAnalyticsWorker() {
         async (job) => {
           const result = await getAnalytics(job.name);
           console.log(`[Worker] Job ${job.name} completed with result:`, result);
-          await redis.set(`invoiceAnalytics:${job.name}`, JSON.stringify(result));
+          await getRedis().set(`invoiceAnalytics:${job.name}`, JSON.stringify(result));
         },
         { 
           connection: {

@@ -43,7 +43,7 @@ export class SumCustomersStrategy implements NumericalSumStrategy {
   };
 };
 
-export class SumSalesStrategy implements NumericalSumStrategy {
+export class SumInvoicesStrategy implements NumericalSumStrategy {
   public sumNumericalData(data: IInvoice[]): number {
     return data.length;
   };

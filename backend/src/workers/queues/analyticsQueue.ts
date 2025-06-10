@@ -1,5 +1,4 @@
 import { Queue } from "bullmq";
-import { redis } from '../../redis/redisClient';
 
 let analyticsQueue: Queue | null = null;
 
