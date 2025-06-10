@@ -1,3 +1,12 @@
+/**
+ * NOTE: `currentVisits` is included here as a one-off analysis job for Visit KPIs,
+ * even though the rest of the strategies are Invoice-related.
+ * This avoids creating a separate queue/worker/module for a single analysis.
+ * If more Visit-related analytics are added in the future, refactor this strategy
+ * into a dedicated Visit analytics module.
+ */
+
+
 import { getAnalyticsQueue } from "../../workers/queues/analyticsQueue";
 import { QueueEvents } from "bullmq";
 import { createLogger } from "../../utils/logger";
@@ -47,6 +56,16 @@ export const analyticsStrategies: Record<string, () => Promise<AnalyticsStrategy
   topLocationsBySales: async () => {
     const analyticsQueue = getAnalyticsQueue()
     const job = await analyticsQueue.add('topLocationsBySales', {});
+    return { jobId: job.id, status: 'queued'};
+  },
+
+  // -----------------------------------------------
+  // TEMPORARY: Visit KPI Analysis (Single Use Case)
+  // This is a single use case implementation — no general analytics layer for Visits yet.
+  // -----------------------------------------------
+  currVisits: async () => {
+    const analyticsQueue = getAnalyticsQueue()
+    const job = await analyticsQueue.add('currVisits', {});
     return { jobId: job.id, status: 'queued'};
   },
 };

@@ -2,7 +2,6 @@ import CustomBarChart from "../components/CustomBarChart";
 import { useDashboardData } from "../hooks/useDashboardData";
 import CustomStatTrackerBox from "../components/CustomStatTrackerBox";
 import CustomTable from "../components/CustomTable";
-import { useEffect } from 'react';
 import { useVisitAnalytics } from '../hooks/useVisitAnalytics';
 
 const Dashboard = () => {
@@ -20,16 +19,10 @@ const Dashboard = () => {
   } = useDashboardData();
 
   const {
-    visits,
-    handleVisit,
+    currMonthVisits,
     isVisitLoading,
     isVisitError,
   } = useVisitAnalytics();
-
-  // visiting the dashboard increments a visit.
-  useEffect(() => {    
-    handleVisit(new Date());
-  }, []);
 
   if (isLoading || isVisitLoading) {
     return (
@@ -75,7 +68,8 @@ const Dashboard = () => {
           <CustomStatTrackerBox 
             style={"w-full h-full"}
             title={"Visits"} 
-            total={visits}             
+            total={currMonthVisits.total}             
+            growth={currMonthVisits.growth}
           />
         </div>
       </div>
