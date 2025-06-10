@@ -22,17 +22,17 @@ const swaggerUi = require('swagger-ui-express');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // TODO: update this in production.
-// app.use(cors({
-//   origin: [
-//     'https://ecommerce-api-dashboard.vercel.app', 
-//     'https://insight-dboard.vercel.app/',
-//     'localhost:3000'],
-//   methods: ['GET'],
-//   allowedHeaders: ['Content-Type', 'Authorization'],
-//   credentials: true
-// }));
+app.use(cors({
+  origin: [
+    'https://ecommerce-api-dashboard.vercel.app', 
+    'https://insight-dboard.vercel.app/',
+    'localhost:3000'],
+  methods: ['GET'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
 
-app.use(cors());
+// app.use(cors());
 
 app.use(limiter);
 
