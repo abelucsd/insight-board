@@ -7,8 +7,8 @@ import { useVisitAnalytics } from '../hooks/useVisitAnalytics';
 const Dashboard = () => {
   const {
     topProducts,
-    monthlySales,
-    currMonthSales,
+    monthlyInvoices,
+    currMonthInvoices,
     monthlyRevenue,
     currMonthRevenue,
     monthlyProfit,
@@ -49,9 +49,9 @@ const Dashboard = () => {
         <div className="grid grid-cols-2 gap-8 h-full">
           <CustomStatTrackerBox 
             style={"w-full h-full"}
-            title={"Sales"} 
-            total={currMonthSales.total} 
-            growth={currMonthSales.growth} 
+            title={"Invoices"}
+            total={currMonthInvoices.total} 
+            growth={currMonthInvoices.growth} 
           />
           <CustomStatTrackerBox 
             style={"w-full h-full"}
@@ -78,8 +78,8 @@ const Dashboard = () => {
         <CustomBarChart 
           containerStyles={"xl:w-auto h-100 xl:h-100"}
           styles={"w-[600px]"}
-          title={"Monthly Sales"} 
-          data={monthlySales}
+          title={"Monthly Invoices"} 
+          data={monthlyInvoices}
           x="month"
           y="total" 
         />
@@ -119,7 +119,7 @@ const Dashboard = () => {
 
       <div className="row-start-4 col-start-3 col-end-5">
         <CustomTable 
-          containerStyles={"h-175"}          
+          containerStyles={"h-175"}
           styles={""}
           title={"Top Locations"}
           rows={topLocationsBySales}

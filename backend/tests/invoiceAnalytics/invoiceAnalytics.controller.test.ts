@@ -2,7 +2,16 @@ import { Request, Response } from 'express';
 import { jest } from '@jest/globals';
 import { describe, it, expect, beforeEach } from '@jest/globals';
 
-import { getCurrentMonthProfit, getCurrentMonthRevenue, getCurrentMonthSales, getMonthlyProfit, getMonthlyRevenue, getMonthlySales, getTopLocationsBySales, getTopProducts } from '../../src/controllers/invoiceAnalytics.controller';
+import { 
+  getCurrentMonthProfit, 
+  getCurrentMonthRevenue, 
+  getCurrentMonthInvoices, 
+  getMonthlyProfit, 
+  getMonthlyRevenue, 
+  getMonthlyInvoices, 
+  getTopLocationsBySales, 
+  getTopProducts 
+} from '../../src/controllers/invoiceAnalytics.controller';
 import { runInvoiceAnalyticsWorker } from '../../src/services/invoiceAnalytics.service';
 
 
@@ -55,7 +64,7 @@ describe("Invoice Analytics end points unit tests", () => {
   });
 
 
-  describe('getMonthlySales', () => {
+  describe('getMonthlyInvoices', () => {
     it('should return 200 with mocked variable from service', 
     async () => {
       const mockedResult = {
@@ -66,7 +75,7 @@ describe("Invoice Analytics end points unit tests", () => {
         return true;
       });
       
-      await getMonthlySales(req, res, next);
+      await getMonthlyInvoices(req, res, next);
 
       expect(res.status).toHaveBeenCalledWith(200);
       expect(res.json).toHaveBeenCalledWith(mockedResult);
@@ -78,7 +87,7 @@ describe("Invoice Analytics end points unit tests", () => {
         throw mockError;
       });    
     
-      await getMonthlySales(req, res, next);
+      await getMonthlyInvoices(req, res, next);
     
       expect(next).toHaveBeenCalledWith(mockError);
       expect(res.json).not.toHaveBeenCalled();
@@ -86,7 +95,7 @@ describe("Invoice Analytics end points unit tests", () => {
   });
 
 
-  describe('getCurrentMonthSales', () => {
+  describe('getCurrentMonthInvoices', () => {
     it('should return 200 with mocked variable from service', 
     async () => {
       const mockedResult = {
@@ -97,7 +106,7 @@ describe("Invoice Analytics end points unit tests", () => {
         return true;
       });
       
-      await getCurrentMonthSales(req, res, next);
+      await getCurrentMonthInvoices(req, res, next);
 
       expect(res.status).toHaveBeenCalledWith(200);
       expect(res.json).toHaveBeenCalledWith(mockedResult);
@@ -109,7 +118,7 @@ describe("Invoice Analytics end points unit tests", () => {
         throw mockError;
       });    
     
-      await getCurrentMonthSales(req, res, next);
+      await getCurrentMonthInvoices(req, res, next);
     
       expect(next).toHaveBeenCalledWith(mockError);
       expect(res.json).not.toHaveBeenCalled();

@@ -76,10 +76,10 @@ const ViewProducts = ({
 
 
   return (
-    <div className="self-start container mx-auto flex flex-col gap-8 items-end">
+    <div className="flex flex-col gap-8 items-end">
 
       {/* Search Input */}
-      <div className="size-1/3 float-right my-4">
+      <div className="float-right my-4">
         <input
           type="text"
           placeholder="Search products..."
@@ -88,47 +88,50 @@ const ViewProducts = ({
             setSearchQuery(e.target.value);
             setPageIndex(0);
           }}
-          className="w-full border px-3 py-2 rounded"
+          className="border px-3 py-2 rounded"
         />
       </div>
 
-      <table className="table-fixed w-full border border-gray-300">
-        
+      {/* md:w-auto */}
+      <div className="mx-auto w-[400px] md:w-full overflow-x-auto">
+        <table className="w-full border border-gray-300">
+          
 
-        <thead>
-          {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id} className="bg-white">
-              {headerGroup.headers.map(header => {
-                const canSort = header.column.getCanSort();
-                const sortDir = header.column.getIsSorted();
-                return (
-                  <th 
-                    key={header.id}
-                    onClick={canSort ? header.column.getToggleSortingHandler() : undefined}
-                    className={`border px-4 py-4 text-left cursor-pointer select-none ${
-                      canSort ? 'hover:bg-gray-200' : ''
-                    }`}
-                  >
-                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                    {sortDir === 'asc' ? ' ▲' : sortDir === 'desc' ? ' ▼' : ''}
-                  </th>
-                )
-              })}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map(row => (
-            <tr key={row.id} className="border-b border-gray-200 bg-white shadow-sm rounded">
-              {row.getVisibleCells().map(cell => (
-                <td key={cell.id} className="px-4 py-4">
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>        
-      </table>
+          <thead>
+            {table.getHeaderGroups().map(headerGroup => (
+              <tr key={headerGroup.id} className="bg-white">
+                {headerGroup.headers.map(header => {
+                  const canSort = header.column.getCanSort();
+                  const sortDir = header.column.getIsSorted();
+                  return (
+                    <th 
+                      key={header.id}
+                      onClick={canSort ? header.column.getToggleSortingHandler() : undefined}
+                      className={`border px-4 py-4 text-left cursor-pointer select-none ${
+                        canSort ? 'hover:bg-gray-200' : ''
+                      }`}
+                    >
+                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                      {sortDir === 'asc' ? ' ▲' : sortDir === 'desc' ? ' ▼' : ''}
+                    </th>
+                  )
+                })}
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map(row => (
+              <tr key={row.id} className="border-b border-gray-200 bg-white shadow-sm rounded">
+                {row.getVisibleCells().map(cell => (
+                  <td key={cell.id} className="px-4 py-4">
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
 
       {/* Pagination Controls */}

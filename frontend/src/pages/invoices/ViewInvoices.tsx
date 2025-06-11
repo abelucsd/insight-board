@@ -115,23 +115,21 @@ const ViewInvoices = () => {
 
 
   return (
-    <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">
-      <h2 className="">Invoices</h2>
-      <div>
-        <Table
-          data={invoices}
-          total={total}
-          pageIndex={pageIndex}
-          pageSize={pageSize}
-          searchQuery={searchQuery}
-          setPageIndex={setPageIndex}
-          setPageSize={setPageSize}
-          setSearchQuery={setSearchQuery}
-          columns={columns}
-          isLoading={isLoading}
-          isError={isError}
-        />
-      </div>
+    <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">            
+      <h2 className="">Invoices</h2>      
+      <Table
+        data={invoices}
+        total={total}
+        pageIndex={pageIndex}
+        pageSize={pageSize}
+        searchQuery={searchQuery}
+        setPageIndex={setPageIndex}
+        setPageSize={setPageSize}
+        setSearchQuery={setSearchQuery}
+        columns={columns}
+        isLoading={isLoading}
+        isError={isError}
+      />
 
       <ConfirmDialog
         isOpen={isDialogOpen}

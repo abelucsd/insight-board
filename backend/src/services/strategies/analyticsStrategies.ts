@@ -8,12 +8,12 @@
 
 
 import { getAnalyticsQueue } from "../../workers/queues/analyticsQueue";
-import { QueueEvents } from "bullmq";
+// import { QueueEvents } from "bullmq";
 import { createLogger } from "../../utils/logger";
 
 const logger = createLogger('analyticsStrategies.ts');
 
-const queueEvents = new QueueEvents('analytics');
+// const queueEvents = new QueueEvents('analytics');
 
 type AnalyticsStrategyResult = { jobId: string | undefined; status: string };
 
@@ -23,14 +23,14 @@ export const analyticsStrategies: Record<string, () => Promise<AnalyticsStrategy
     const job = await analyticsQueue.add('topProducts', {});    
     return { jobId: job.id, status: 'queued'};
   },
-  monthlySales: async () => {
+  monthlyInvoices: async () => {
     const analyticsQueue = getAnalyticsQueue()
-    const job = await analyticsQueue.add('monthlySales', {});    
+    const job = await analyticsQueue.add('monthlyInvoices', {});    
     return { jobId: job.id, status: 'queued'};
   },
-  currentMonthSales: async () => {
+  currentMonthInvoices: async () => {
     const analyticsQueue = getAnalyticsQueue()
-    const job = await analyticsQueue.add('currentMonthSales', {});
+    const job = await analyticsQueue.add('currentMonthInvoices', {});
     return { jobId: job.id, status: 'queued'};
   },
   monthlyRevenue: async () => {

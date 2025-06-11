@@ -20,17 +20,17 @@ export const getTopProducts = async (): Promise<TopProducts[]> => {
   return cleanedData;
 };
 
-export const getMonthlySales = async (): Promise<MonthlyData[]> => {
+export const getMonthlyInvoices = async (): Promise<MonthlyData[]> => {
   const response = await axios.get(
-    `${API_URL}/invoice/analytics/monthly-sales`
+    `${API_URL}/invoice/analytics/monthly-invoices`
   );
   
   return response.data.data;
 };
 
-export const getCurrMonthSales = async (): Promise<CurrMonthData> => {
+export const getCurrMonthInvoices = async (): Promise<CurrMonthData> => {
   const response = await axios.get(
-    `${API_URL}/invoice/analytics/current-month-sales`
+    `${API_URL}/invoice/analytics/current-month-invoices`
   );  
   
   return response.data.data;

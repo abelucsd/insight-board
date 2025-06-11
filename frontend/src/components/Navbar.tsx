@@ -18,7 +18,7 @@ const Navbar = () => {
             
       <div className={`
           absolute z-50 top-full left-0 
-          ${isSideNavOpen ? 'translate-x-0': 'max-[1080px]:-translate-x-full xl:hidden'}
+          ${isSideNavOpen ? 'translate-x-0': 'max-[1280px]:-translate-x-full xl:hidden'}
           transition-transform duration-300 ease-in-out
         `}>
           <Sidenav 

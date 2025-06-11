@@ -1,13 +1,13 @@
 import { createLogger } from '../utils/logger';
 import { analyticsStrategies } from './strategies/analyticsStrategies';
-import { redis } from "../redis/redisClient";
+import { getRedis } from "../redis/redisClient";
 
 const logger = createLogger('invoiceAnalytics.service');
 
 
 export async function runInvoiceAnalyticsWorker(strategy: string) {
   const cacheKey = `invoiceAnalytics:${strategy}`;  
-  const cached = await redis.get(cacheKey);
+  const cached = await getRedis().get(cacheKey);
   if (cached) {
     logger.info(`[runInvoiceAnalyticsWorker] Cache hit for strategy: ${strategy}`);    
     return JSON.parse(cached);

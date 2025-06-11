@@ -2,10 +2,10 @@ import express, { Router } from 'express';
 import { 
   getCurrentMonthProfit, 
   getCurrentMonthRevenue, 
-  getCurrentMonthSales, 
+  getCurrentMonthInvoices, 
   getMonthlyProfit, 
   getMonthlyRevenue, 
-  getMonthlySales, 
+  getMonthlyInvoices, 
   getTopLocationsBySales, 
   getTopProducts 
 } from '../controllers/invoiceAnalytics.controller';
@@ -13,8 +13,8 @@ import {
 export const invoiceAnalyticsRouter = express.Router();
 
 invoiceAnalyticsRouter.get('/top-products', getTopProducts);
-invoiceAnalyticsRouter.get('/monthly-sales', getMonthlySales);
-invoiceAnalyticsRouter.get('/current-month-sales', getCurrentMonthSales);
+invoiceAnalyticsRouter.get('/monthly-invoices', getMonthlyInvoices);
+invoiceAnalyticsRouter.get('/current-month-invoices', getCurrentMonthInvoices);
 invoiceAnalyticsRouter.get('/monthly-revenue', getMonthlyRevenue);
 invoiceAnalyticsRouter.get('/current-month-revenue', getCurrentMonthRevenue);
 invoiceAnalyticsRouter.get('/monthly-profit', getMonthlyProfit);
