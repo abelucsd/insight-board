@@ -20,6 +20,8 @@ import {
   growthLossCalculator,
   getCurrAndPastMonthLabels,
   getNumericalSumCurrAndPastMonth,
+  getYearRange,
+  filterByMonthAndYear,
  } from "./helpers";
 import { getDb } from "../../db/db";
 import mongoose from "mongoose";
@@ -76,6 +78,8 @@ export const getTopByAttribute = async (attribute: string): Promise<TopAttribute
 export const getMonthlyData = async (
   category: string
 ): Promise<MonthlyData[] | null> => {        
+
+  // prepare the Strategy pattern
   let strategy;
   switch(category) {
     case 'invoices':
@@ -93,13 +97,14 @@ export const getMonthlyData = async (
         400
       );
       throw error;
-  }    
+  };
   
   const numericalSumCtx = new NumericalSumStrategyContext(
     strategy!,
     []
   );
 
+  // prepare the data
   let invoiceData: IInvoice[] = [];
   try {
     invoiceData = await Invoice.find({});
@@ -107,15 +112,23 @@ export const getMonthlyData = async (
     const err = new CustomError(`${error}`, 500);
     throw(err);
   }
-  const data: MonthlyData[] = [];
 
-  for (let i = 0; i < 12; i++) {
-    let monthRecords = filterByMonth(invoiceData, i);
-    numericalSumCtx.setData(monthRecords);
-    const total = numericalSumCtx.sumNumericalData();
-    data.push({ month: MONTHS[i], total: total });
-  }
+  // load the data into returned array
+  const data: MonthlyData[] = [];  
   
+  const earliestDate = await Invoice.findOne().sort({date: 1}).lean();
+  const now = new Date();
+  const yearsRange = getYearRange(new Date(earliestDate!.date), now);
+  
+  yearsRange.forEach((year) => {
+    for (let month = 0; month < 12; month++) {      
+      let monthRecords = filterByMonthAndYear(invoiceData, month, year)
+      numericalSumCtx.setData(monthRecords);
+      const total = numericalSumCtx.sumNumericalData();
+      data.push({ year: year.toString(), month: MONTHS[month], total: total });
+    };
+  });
+
   return data;
 };
 

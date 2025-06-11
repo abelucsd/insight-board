@@ -10,6 +10,29 @@ export const filterByMonth = (
   return records.filter((record) => new Date(record.date).getMonth() === month);
 };
 
+export const filterByMonthAndYear = (
+  records: IInvoice[], month: number, year: number
+): IInvoice[] => {
+  return records.filter((record) => {
+    const date = new Date(record.date);
+    const recordMonth = date.getMonth();
+    const recordYear = date.getFullYear();
+    return recordMonth === month && recordYear && year;
+  });
+};
+
+export const getYearRange = (earliestDate: Date, now: Date): Array<number> => {
+  const earliestYear = earliestDate.getFullYear();
+  const thisYear = now.getFullYear();  
+  
+  const yearRange = [];
+  for (let year = thisYear; year >= earliestYear; year--) {
+    yearRange.push(year);
+  }
+
+  return yearRange;
+};
+
 export const growthLossCalculator = (currAmount: number, pastAmount: number): number => {    
   let growth = currAmount / pastAmount;
   if (growth < 1) {

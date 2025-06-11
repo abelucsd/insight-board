@@ -1,4 +1,5 @@
 export interface MonthlyData {
+  year: string,
   month: string, 
   total: number
 };
