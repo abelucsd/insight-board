@@ -14,12 +14,15 @@ const CustomStatTrackerBox = ({style, title, total, growth}: CustomStatTrackerBo
   return (
     <div className={`
       ${style}
-      flex flex-col justify-between
+      flex flex-col justify-between gap-2 md:gap-0
       border border-[var(--graph-border)] rounded-2xl px-8 py-6 bg-white
     `}>
       <h3>{title}</h3>
 
-      <div className="flex flex-row justify-between items-end">
+      <div className="
+        flex flex-col md:flex-row items-start md:justify-between md:items-end 
+        gap-2 md:gap-0
+      ">
         <p className="text-2xl font-bold">{total}</p>
         {typeof growth === 'number' && (
           <p
