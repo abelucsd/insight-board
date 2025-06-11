@@ -43,7 +43,7 @@ const Dashboard = () => {
   return (
     <div className="
       md:container mx-auto flex flex-col lg:grid grid-cols-4 gap-8 
-      max-w-[500px] py-8 md:p-8 px-2
+      w-[430px] py-8 md:p-8 px-2
     ">      
       <div className="row-start-1 col-start-1 col-end-3">        
         <div className="grid grid-cols-2 gap-8 h-full">
