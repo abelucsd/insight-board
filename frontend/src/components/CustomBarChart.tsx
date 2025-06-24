@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { 
   BarChart, 
   Bar, 
@@ -26,10 +26,80 @@ interface CustomBarChartProps {
   y: string;
 };
 
+const monthLabels = {
+  "Jan": 1,
+  "Feb": 2,
+  "Mar": 3,
+  "Apr": 4,
+  "May": 5,
+  "Jun": 6,
+  "Jul": 7,
+  "Aug": 8,
+  "Sept": 9,
+  "Oct": 10,
+  "Nov": 11,
+  "Dec": 12,
+};
+
 
 const CustomBarChart = ({title, containerStyles, styles, data, x, y}: CustomBarChartProps) => {  
   // date filter. TODO: default range 1 year
-  const [dateRange, setDateRange] = useState<{ startDate: Date; endDate: Date } | null>(null);
+  const sixMonthsAgo = new Date();
+  sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+
+  const [dateRange, setDateRange] = useState<{ startDate: Date; endDate: Date } | null>({startDate: sixMonthsAgo, endDate: new Date()});
+  const [filteredData, setFilteredData] = useState<DataProps[]>([]);
+
+  const onDateChange = (range: {startDate: Date, endDate: Date}) => {
+    setDateRange(range);
+  };
+
+  useEffect(() => {    
+    const startYear = dateRange!.startDate.getFullYear();
+    const endYear = dateRange!.endDate.getFullYear();
+    const startMonth = dateRange!.startDate.getMonth();
+    const endMonth = dateRange!.endDate.getMonth();
+
+    console.log(startYear)
+    console.log(endYear)
+    console.log(startMonth)
+    console.log(endMonth)
+
+    const filtered = data.filter((entry) => {            
+      const entryYear: number = entry.year;
+      const entryMonth: number = monthLabels[entry.month as keyof typeof monthLabels];
+
+      console.log(`${startMonth}, ${endMonth} and ${entryMonth}`)
+      if (entryYear == endYear) {
+        console.log("HELLO")
+      }
+      if (entryMonth <= endMonth) {
+        console.log("passed")
+      }
+      
+
+      const isAfterStart =
+        entryYear > startYear ||
+        (entryYear === startYear && entryMonth >= startMonth);
+      
+      const isBeforeEnd = 
+        entryYear < endYear ||
+        (entryYear == endYear && entryMonth <= endMonth); 
+        
+      console.log(`${entryYear} and ${entryMonth}`);
+
+      console.log(`${isAfterStart} and ${isBeforeEnd}`)
+
+      return isAfterStart && isBeforeEnd;
+    });
+
+    console.log('setting filtered date.');
+    setFilteredData(filtered);
+  }, [dateRange]);
+  
+  useEffect(() => {
+    console.log(filteredData)
+  }, filteredData)
 
   return (
     <div className={`
@@ -39,13 +109,13 @@ const CustomBarChart = ({title, containerStyles, styles, data, x, y}: CustomBarC
     `}>
       <div className="flex flex-row justify-between">
         <h3>{title}</h3>
-        <DateRangeFilter onChange={setDateRange}/>
+        <DateRangeFilter onChange={onDateChange}/>
       </div>
 
       <div className={`${styles} relative h-full`}>
         <ResponsiveContainer className="absolute bottom-0" width="100%" height="80%">
           <BarChart 
-            data={data}
+            data={filteredData}
             margin={{
               top: 5,            
               bottom: 5,
