@@ -114,14 +114,14 @@ export const getMonthlyData = async (
   }
 
   // load the data into returned array
-  const data: MonthlyData[] = [];  
+  const data: MonthlyData[] = [];
   
   const earliestDate = await Invoice.findOne().sort({date: 1}).lean();
   const now = new Date();
   const yearsRange = getYearRange(new Date(earliestDate!.date), now);
   
   yearsRange.forEach((year) => {
-    for (let month = 0; month < 12; month++) {      
+    for (let month = 0; month < 12; month++) {
       let monthRecords = filterByMonthAndYear(invoiceData, month, year)
       numericalSumCtx.setData(monthRecords);
       const total = numericalSumCtx.sumNumericalData();

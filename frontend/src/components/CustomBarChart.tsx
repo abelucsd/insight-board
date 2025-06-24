@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { 
   BarChart, 
   Bar, 
@@ -9,6 +10,7 @@ import {
   ResponsiveContainer,
   Rectangle,  
 } from "recharts";
+import DateRangeFilter from "./DateRangeFilter";
 
  
 interface DataProps {
@@ -26,13 +28,20 @@ interface CustomBarChartProps {
 
 
 const CustomBarChart = ({title, containerStyles, styles, data, x, y}: CustomBarChartProps) => {  
+  // date filter. TODO: default range 1 year
+  const [dateRange, setDateRange] = useState<{ startDate: Date; endDate: Date } | null>(null);
+
   return (
     <div className={`
       ${containerStyles}
       flex flex-col justify-between overflow-x-auto overflow-y-hidden 
       border border-[var(--graph-border)] rounded-2xl px-8 py-6 bg-white
     `}>
-      <h3>{title}</h3>
+      <div className="flex flex-row justify-between">
+        <h3>{title}</h3>
+        <DateRangeFilter onChange={setDateRange}/>
+      </div>
+
       <div className={`${styles} relative h-full`}>
         <ResponsiveContainer className="absolute bottom-0" width="100%" height="80%">
           <BarChart 
