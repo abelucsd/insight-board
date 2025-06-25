@@ -40,7 +40,7 @@ export const getMonthlyRevenue = async (): Promise<MonthlyData[]> => {
   const response = await axios.get(
     `${API_URL}/invoice/analytics/monthly-revenue`
   );
-  
+  console.log(response)
   return response.data.data;
 }; 
 
