@@ -6,9 +6,7 @@ import { TopProducts, MonthlyData, CurrMonthData, TopLocations, RawTopData } fro
 export const getTopProducts = async (): Promise<TopProducts[]> => {
   const response = await axios.get(
     `${API_URL}/invoice/analytics/top-products`
-  );
-
-  console.log(response.data.data)
+  );  
 
   const cleanedData: TopProducts[] = response.data.data.map(
     (row: RawTopData) => ({
@@ -40,7 +38,7 @@ export const getMonthlyRevenue = async (): Promise<MonthlyData[]> => {
   const response = await axios.get(
     `${API_URL}/invoice/analytics/monthly-revenue`
   );
-  console.log(response)
+
   return response.data.data;
 }; 
 

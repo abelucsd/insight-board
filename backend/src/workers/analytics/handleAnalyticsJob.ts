@@ -129,6 +129,17 @@ export const getMonthlyData = async (
     };
   });
 
+  // sort the array
+  data.sort((a ,b) => {
+    const yearA = parseInt(a.year, 10);
+    const yearB = parseInt(b.year, 10);
+    const monthA = MONTHS.indexOf(a.month);
+    const monthB = MONTHS.indexOf(b.month);
+
+    if (yearA !== yearB) return yearA - yearB;
+    return monthA - monthB;
+  });
+
   return data;
 };
 

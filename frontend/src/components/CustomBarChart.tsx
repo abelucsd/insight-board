@@ -51,12 +51,9 @@ const CustomBarChart = ({title, containerStyles, styles, data, x, y}: CustomBarC
 
   useEffect(() => {            
     const startYear: number = dateRange!.startDate.getFullYear();
-    const endYear: number = dateRange!.endDate.getFullYear();
-    const startMonth: number = dateRange!.startDate.getMonth() + 1;
-    const endMonth: number = dateRange!.endDate.getMonth() + 1;
-    
-    console.log(`Selected Date Range: ${startYear}-${startMonth} to ${endYear}-${endMonth}`);
-
+    const endYear: number = dateRange!.endDate.getFullYear();    
+    const startMonth: number = dateRange!.startDate.getMonth();
+    const endMonth: number = dateRange!.endDate.getMonth();    
 
     const filtered = data.filter((entry) => {            
       const entryYear: number = parseInt(entry.year);
@@ -68,7 +65,7 @@ const CustomBarChart = ({title, containerStyles, styles, data, x, y}: CustomBarC
       
       const isBeforeEnd = 
         entryYear < endYear ||
-        (entryYear === endYear && entryMonth <= endMonth);         
+        (entryYear === endYear && entryMonth <= endMonth);
 
       return isAfterStart && isBeforeEnd;
     });
@@ -93,7 +90,7 @@ const CustomBarChart = ({title, containerStyles, styles, data, x, y}: CustomBarC
           <BarChart 
             data={filteredData}
             margin={{
-              top: 5,            
+              top: 5,
               bottom: 5,
             }}
           >
