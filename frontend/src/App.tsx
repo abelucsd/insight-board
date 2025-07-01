@@ -1,4 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { MantineProvider } from '@mantine/core';
+
 import Dashboard from "./pages/Dashboard"
 import Layout from "./pages/Layout"
 import LoadProducts from "./pages/products/LoadProducts"
@@ -24,19 +26,21 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Dashboard />} />
-              <Route path="/products/view" element={<ViewProducts />} />
-              <Route path="/products/add" element={<CreateProduct />} />              
-              <Route path="/products/add-batch" element={<LoadProducts />} />              
-              <Route path="/invoices/view" element={<ViewInvoices />} />
-              <Route path="/invoices/add-batch" element={<LoadInvoices />} />
-            </Route>
-          </Routes>
-        
-        </BrowserRouter>
+        <MantineProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Dashboard />} />
+                <Route path="/products/view" element={<ViewProducts />} />
+                <Route path="/products/add" element={<CreateProduct />} />              
+                <Route path="/products/add-batch" element={<LoadProducts />} />              
+                <Route path="/invoices/view" element={<ViewInvoices />} />
+                <Route path="/invoices/add-batch" element={<LoadInvoices />} />
+              </Route>
+            </Routes>
+          
+          </BrowserRouter>
+        </MantineProvider>
       </QueryClientProvider>
     </>
   )

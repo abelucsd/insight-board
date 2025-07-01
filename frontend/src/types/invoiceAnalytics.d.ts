@@ -16,6 +16,7 @@ export interface TopLocations {
 export interface MonthlyData {
   total: number;
   month: string;
+  year: string;
 };
 
 export interface CurrMonthData {
