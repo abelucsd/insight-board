@@ -9,8 +9,8 @@ export const createProduct = async( req: Request, res: Response, next: NextFunct
   try {
     logger.info('[createProduct] Received request to create a new product.');
 
-    const { name, price } = req.body;
-    const newProduct = await productService.createProduct({ name, price });
+    const { id, name, category, price, salePrice, cost, description } = req.body;
+    const newProduct = await productService.createProduct({ id, name, category, price, salePrice, cost, description });
 
     logger.info(`[createProduct] Successfully created product with ID: ${newProduct._id}`);
     res.status(201).json(newProduct);

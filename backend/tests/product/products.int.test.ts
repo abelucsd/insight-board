@@ -12,8 +12,8 @@ describe('Products Integration', () => {
   let mongoServer: MongoMemoryServer;
 
   const products = [
-    { name: 'Product 1', price: 10 },
-    { name: 'Product 2', price: 20 },
+    { id: 'prod-01', name: 'Product 1', category: 'Electronics', price: 10, salePrice: 10, cost: 4},
+    { id: 'prod-02', name: 'Product 2', category: 'Electronics', price: 20, salePrice: 20, cost: 8},
   ];  
 
   // setup and teardown
@@ -36,14 +36,15 @@ describe('Products Integration', () => {
 
   describe('create product', () => {
     it('should create a new product', async () => {
-      const newProduct = { name: 'Product 3', price: 30 };
+      const newProduct = { id: 'prod-01', name: 'Product 1', category: 'Electronics', price: 10, salePrice: 10, cost: 4};
+      
       const result = await productService.createProduct(newProduct);
       expect(result.name).toBe(newProduct.name);
       expect(result.price).toBe(newProduct.price);
     });
 
     it('should throw an error when creating a product fails', async () => {
-      const newProduct = { name: '', price: 30 }; // Invalid product name
+      const newProduct = { id: 'prod-01', name: '', category: 'Electronics', price: 10, salePrice: 10, cost: 4};
       await expect(productService.createProduct(newProduct)).rejects.toThrow('Failed to create product');
     });
   });
@@ -64,8 +65,12 @@ describe('Products Integration', () => {
       const {data, total} = await productService.getProducts('', 1, 100);
 
       const cleanResult = data.map((item) => ({
+        id: item.id,        
         name: item.name,
-        price: item.price
+        category: item.category,
+        price: item.price,
+        salePrice: item.salePrice,
+        cost: item.cost,
       }));
 
       expect(cleanResult).toEqual(products);
@@ -74,7 +79,8 @@ describe('Products Integration', () => {
 
   describe('get product by id', () => {
     it('should return a product by ID', async () => {
-      const newProduct = await Product.create({ name: 'Product 4', price: 40 });
+      const newProduct = await Product.create({ id: 'prod-01', name: 'Product 1', category: 'Electronics', price: 10, salePrice: 10, cost: 4});
+      
       const result = await productService.getProductById(newProduct._id);
       expect(result!.name).toBe(newProduct.name);
       expect(result!.price).toBe(newProduct.price);
@@ -88,7 +94,7 @@ describe('Products Integration', () => {
 
   describe('update product', () => {
     it('should update a product', async () => {
-      const newProduct = await Product.create({ name: 'Product 5', price: 50 });
+      const newProduct = await Product.create({ id: 'prod-01', name: 'Product 1', category: 'Electronics', price: 10, salePrice: 10, cost: 4},);
       const updatedProduct = await productService.updateProduct(newProduct._id, { price: 60 });
       expect(updatedProduct!.price).toBe(60);
     });
@@ -101,7 +107,7 @@ describe('Products Integration', () => {
 
   describe('delete product', () => {
     it('should delete a product', async () => {
-      const newProduct = await Product.create({ name: 'Product 6', price: 60 });
+      const newProduct = await Product.create({ id: 'prod-01', name: 'Product 1', category: 'Electronics', price: 10, salePrice: 10, cost: 4},);
       const deletedProduct = await productService.deleteProduct(newProduct._id);
       expect(deletedProduct!.name).toBe(newProduct.name);
     });
