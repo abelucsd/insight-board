@@ -24,6 +24,6 @@ export const getCurrentMonthVisits = async (): Promise<CurrMonthData> => {
   const response = await apiClient.get(
     `${API_URL}/visit/analytics/current-month-visits`
   );
-  console.log(response.data)
+  
   return response.data.data;
 };
