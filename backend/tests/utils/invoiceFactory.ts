@@ -12,7 +12,7 @@ function createInvoice(): CreateInvoiceInput {
     id: faker.string.ulid(),  
     customer: faker.internet.username(),
     itemName: faker.commerce.productName(),
-    itemNumber: faker.number.int(),
+    itemNumber: faker.string.ulid(),
     price,
     date: faker.date.past({ years: 1, refDate: new Date() }).toISOString(),
     quantity,

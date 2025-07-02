@@ -1,5 +1,6 @@
 export type Invoice = {
   _id: string;
+  id: string;
   customer: string;
   itemName: string;
   itemNumber: number;  
@@ -7,7 +8,7 @@ export type Invoice = {
   date: string;
   quantity: number;
   revenue: number;
-  totalCost: number;
+  cost: number;
   profit: number;
   location: string;
 };

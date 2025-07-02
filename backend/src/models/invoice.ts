@@ -5,7 +5,7 @@ export interface CreateInvoiceInput {
   id: string
   customer: string;
   itemName: string;
-  itemNumber: number;  
+  itemNumber: string;  
   price: number;
   date: string;
   quantity: number;
@@ -23,7 +23,7 @@ const invoiceSchema = new Schema<IInvoice>({
   id: { type: String, required: true},
   customer: { type: String, required: true},
   itemName: { type: String, required: true},
-  itemNumber:{ type: Number, required: true},
+  itemNumber:{ type: String, required: true},
   price: { type: Number, required: true},
   date: { type: String, required: true},
   quantity: { type: Number, required: true},

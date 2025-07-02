@@ -63,7 +63,7 @@ export async function cleanAndValidateData(
       if (schemaPaths[key]) {
         // instance - Mongoose property that tells the field type.
         const schemaType = schemaPaths[key].instance;
-
+        
         switch (schemaType) {
           case 'Number':
             value = Number(value);
