@@ -21,9 +21,9 @@ Invoice:
       items:
         type: object
         properties:
-          itemName:
+          id:
             type: string
-          itemNumber:
+          name:
             type: string
           salePrice:
             type: number
@@ -74,9 +74,9 @@ CreateInvoiceInput:
       items:
         type: object
         properties:
-          itemName:
+          id:
             type: string
-          itemNumber:
+          name:
             type: string
           salePrice:
             type: number

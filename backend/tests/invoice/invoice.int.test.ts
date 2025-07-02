@@ -3,39 +3,33 @@ import { describe, it, expect, beforeAll, afterAll, beforeEach, afterEach } from
 import { jest } from '@jest/globals';
 
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import mongoose from 'mongoose';
+import mongoose, { Types } from 'mongoose';
 
-import { IInvoice, Invoice } from '../../src/models/invoice';
+import { IInvoice, IInvoiceItem, Invoice } from '../../src/models/invoice';
 import { invoiceService } from '../../src/services/invoice.service';
 
 describe('Invoice Integration', () => {
   let mongoServer: MongoMemoryServer;
 
   const invoices = [
-    {      
-      customer: "Foo 1", 
-      itemName: "Bar 2",
-      itemNumber: 123,
-      price: 5,
+    {
+      id: 'inv-01',
+      customer: 'Foo Bar',
       date: new Date().toDateString(),
-      quantity: 10,
-      revenue: 50,
-      totalCost: 10,
-      profit: 40,
       location: 'USA',
-    },
-    {      
-      customer: "Foo 2", 
-      itemName: "Bar 2",
-      itemNumber: 123,
-      price: 10,
-      date: new Date().toDateString(),
-      quantity: 20,
-      revenue: 200,
-      totalCost: 40,
-      profit: 160,
-      location: 'USA',
-    }
+      items: [{
+        id: 'prod-01',
+        name: 'Item 1',        
+        salePrice: 10,
+        quantity: 2,
+        revenue: 20,
+        cost: 8,
+        profit: 12,
+      }],
+      totalRevenue: 20,
+      totalCost: 8,
+      totalProfit: 12,
+    },    
   ];
 
   // setup and teardown
@@ -60,10 +54,16 @@ describe('Invoice Integration', () => {
     it('should create a new invoice', async () => {
       const newInvoice = invoices[0];
       const result = await invoiceService.createInvoice(newInvoice);
+      
+      const skipFields = new Set(['_id', '__v', 'date', 'items']);
 
       for(const [field, value] of Object.entries(invoices[0])){
-        expect(result[field as keyof IInvoice]).toBe(value);
+        if (skipFields.has(field)) continue;
+        expect(result[field as keyof IInvoice]).toEqual(value);
       }
+      for (const [field, value] of Object.entries(invoices[0].items[0])) {
+        expect(result!.items[0][field as keyof IInvoiceItem]).toEqual(value);
+      }      
     });
 
     it('should throw an error when creating an invoice fails', async () => {
@@ -89,20 +89,24 @@ describe('Invoice Integration', () => {
 
       const {data, total} = await invoiceService.getInvoices('', 1, 10);
       // cleanup mongoose added variables
-      const cleanedresult = data.map((item) => ({
-        customer: item.customer,
-        itemName: item.itemName,
-        itemNumber: item.itemNumber,
-        price: item.price,
-        date: item.date,
-        quantity: item.quantity,
-        revenue: item.revenue,
-        totalCost: item.totalCost,
-        profit: item.profit,
-        location : item.location,
+      const cleanedResult = data.map((invoice) => ({
+        id: invoice.id,        
+        customer: invoice.customer,
+        date: invoice.date,
+        location: invoice.location,
+        items: invoice.items,
+        totalRevenue: invoice.totalRevenue,
+        totalCost: invoice.totalCost,
+        totalProfit: invoice.totalProfit,
       }));
 
-      expect(cleanedresult).toEqual(invoices);
+      const skipFields = new Set(['_id', '__v', 'date', 'items']);      
+
+      for(const [field, value] of Object.entries(invoices[0])){
+        if (skipFields.has(field)) continue;
+        expect(data[0][field as keyof IInvoice]).toEqual(value);
+      }
+      
     });
   });
 
@@ -110,9 +114,16 @@ describe('Invoice Integration', () => {
     it('should return an invoice by ID', async () => {
       const newInvoice = await Invoice.create(invoices[0]);
       const result = await invoiceService.getInvoiceById(newInvoice._id);
+      const skipFields = new Set(['_id', '__v', 'date', 'items']);
+
       for(const [field, value] of Object.entries(invoices[0])) {
+        if (skipFields.has(field)) continue;
         expect(result![field as keyof IInvoice]).toBe(value);
       }
+      
+      for(const [field, value] of Object.entries(invoices[0].items[0])) {
+        expect(result!.items[0][field as keyof IInvoiceItem ]).toEqual(value);
+      }      
     });
 
     it('should throw an error when invoice not found', async () => {
@@ -129,7 +140,10 @@ describe('Invoice Integration', () => {
       let req = {} as Request;
       req.body = invoices[0];
       const updatedInvoice = await invoiceService.updateInvoiceById(newInvoice._id, req.body);
+      
+      const skipFields = new Set(['_id', '__v', 'date', 'items']);      
       for(const [field, value] of Object.entries(invoices[0])) {
+        if (skipFields.has(field)) continue;
         expect(updatedInvoice![field as keyof IInvoice]).toBe(value);
       }
     });

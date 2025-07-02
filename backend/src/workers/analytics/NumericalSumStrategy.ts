@@ -7,9 +7,9 @@ export interface NumericalSumStrategy {
 };
 
 export class SumRevenueStrategy implements NumericalSumStrategy {
-  public sumNumericalData(data: IInvoice[]): number {
+  public sumNumericalData(data: IInvoice[]): number {    
     const result = data
-    .reduce((sum, record) => sum + Number(record.revenue), 0);    
+    .reduce((sum, record) => sum + Number(record.totalRevenue), 0);
 
     return round2(result);
   };
@@ -27,7 +27,7 @@ export class SumCostStrategy implements NumericalSumStrategy {
 export class SumProfitStrategy implements NumericalSumStrategy {
   public sumNumericalData(data: IInvoice[]): number {
     const revenue = data
-      .reduce((sum, record) => sum + Number(record.revenue), 0);    
+      .reduce((sum, record) => sum + Number(record.totalRevenue), 0);    
     const cost = data
       .reduce((sum, record) => sum + Number(record.totalCost), 0);    
 
@@ -39,7 +39,7 @@ export class SumProfitStrategy implements NumericalSumStrategy {
 
 export class SumCustomersStrategy implements NumericalSumStrategy {
   public sumNumericalData(data: IInvoice[]): number {
-    return data.length;    
+    return data.length;
   };
 };
 

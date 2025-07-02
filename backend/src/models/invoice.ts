@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
+
 export interface IInvoiceItem {
-  itemName: string;
-  itemNumber: string;
+  id: string;
+  name: string;  
   salePrice: number;
   quantity: number;
   revenue: number;
@@ -12,8 +13,11 @@ export interface IInvoiceItem {
 };
 
 const itemSchema = new Schema<IInvoiceItem>({
-  itemName: { type: String, required: true },
-  itemNumber: { type: String, required: true },
+  id: {
+    type: String,
+    required: true,
+  },
+  name: { type: String, required: true },  
   salePrice: { type: Number, required: true },
   quantity: { type: Number, required: true },
   revenue: { type: Number, required: true },

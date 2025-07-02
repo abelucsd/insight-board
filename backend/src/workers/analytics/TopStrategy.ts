@@ -5,15 +5,22 @@ export interface TopStrategy {
   findTopByAttribute(data: IInvoice[]): TopAttributeData[];
 };
 
+/**
+ * 
+ */
 export class TopProductsStrategy implements TopStrategy {
   public findTopByAttribute(data: IInvoice[]): TopAttributeData[] {
     // map
-    const attributeMap: {[itemName: string]: number} = {};
+    const attributeMap: {[name: string]: number} = {};
 
+    // create a dictionary key per item found.
+    // sum each item's quantity sold.
     data.forEach(row => {
-      attributeMap[row.itemName] = (attributeMap[row.itemName] || 0) + 
-      row.quantity;
-    });    
+      row.items.forEach(item => {
+        attributeMap[item.name] = (attributeMap[item.name] || 0) +
+        item.quantity;
+      })      
+    });
     return getTopByAttributeFromMap(attributeMap, 10);
   }
 };
@@ -27,7 +34,7 @@ export class TopLocationsBySalesStrategy implements TopStrategy {
       attributeMap[row.location] = (attributeMap[row.location] || 0) + 
       1;
     });
-    return getTopByAttributeFromMap(attributeMap, 10);    
+    return getTopByAttributeFromMap(attributeMap, 10);
   }
 };
 

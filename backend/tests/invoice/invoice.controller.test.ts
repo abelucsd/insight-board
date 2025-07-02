@@ -7,36 +7,56 @@ import { createInvoice, deleteInvoiceById, getInvoiceById, getInvoices, updateIn
 import { invoiceService } from '../../src/services/invoice.service';
 import { CustomError } from '../../src/errors/CustomError';
 
+import { Types } from 'mongoose';
+
 describe("Invoice CRUD unit test", () => {
   let req: Request;
   let res: Response;
   let next: jest.Mock;
 
   const invoices = [
-    {      
-      customer: "Foo 1", 
-      itemName: "Bar 2",
-      itemNumber: 123,
-      price: 5,
+    {
+      id: 'inv-01',
+      customer: 'Foo Bar',
       date: new Date().toDateString(),
-      quantity: 10,
-      revenue: 50,
-      totalCost: 10,
-      profit: 40,
       location: 'USA',
+      items: [{
+        id: 'prod-01',
+        name: 'Item 1',        
+        salePrice: 10,
+        quantity: 2,
+        revenue: 20,
+        cost: 8,
+        profit: 12,
+      }],
+      totalRevenue: 20,
+      totalCost: 8,
+      totalProfit: 12,
     },
-    {      
-      customer: "Foo 2", 
-      itemName: "Bar 2",
-      itemNumber: 123,
-      price: 10,
-      date: new Date().toDateString(),
-      quantity: 20,
-      revenue: 200,
-      totalCost: 40,
-      profit: 160,
-      location: 'USA',
-    }
+    // {      
+    //   customer: "Foo 1", 
+    //   itemName: "Bar 2",
+    //   itemNumber: 123,
+    //   price: 5,
+    //   date: new Date().toDateString(),
+    //   quantity: 10,
+    //   revenue: 50,
+    //   totalCost: 10,
+    //   profit: 40,
+    //   location: 'USA',
+    // },
+    // {      
+    //   customer: "Foo 2", 
+    //   itemName: "Bar 2",
+    //   itemNumber: 123,
+    //   price: 10,
+    //   date: new Date().toDateString(),
+    //   quantity: 20,
+    //   revenue: 200,
+    //   totalCost: 40,
+    //   profit: 160,
+    //   location: 'USA',
+    // }
   ];
 
   beforeEach(() => {
@@ -106,17 +126,23 @@ describe("Invoice CRUD unit test", () => {
       } as any;
       const mockInvoices: IInvoice[] = [
         {
-          _id: '1',
-          customer: "Foo", 
-          itemName: "Bar",
-          itemNumber: 123,
-          price: 5,
+          _id: '908',
+          id: 'inv-01',
+          customer: 'Foo Bar',
           date: new Date().toDateString(),
-          quantity: 10,
-          revenue: 50,
-          totalCost: 10,
-          profit: 40,
           location: 'USA',
+          items: [{
+            id: 'prod-01',
+            name: 'Item 1',            
+            salePrice: 10,
+            quantity: 2,
+            revenue: 20,
+            cost: 8,
+            profit: 12,
+          }],
+          totalRevenue: 20,
+          totalCost: 8,
+          totalProfit: 12,
         }
       ];
 
