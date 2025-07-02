@@ -13,6 +13,7 @@ describe('Invoice Integration', () => {
 
   const invoices = [
     {      
+      id: 'inv-01',
       customer: "Foo 1", 
       itemName: "Bar 2",
       itemNumber: 123,
@@ -20,11 +21,12 @@ describe('Invoice Integration', () => {
       date: new Date().toDateString(),
       quantity: 10,
       revenue: 50,
-      totalCost: 10,
+      cost: 10,
       profit: 40,
       location: 'USA',
     },
     {      
+      id: 'inv-02',
       customer: "Foo 2", 
       itemName: "Bar 2",
       itemNumber: 123,
@@ -32,7 +34,7 @@ describe('Invoice Integration', () => {
       date: new Date().toDateString(),
       quantity: 20,
       revenue: 200,
-      totalCost: 40,
+      cost: 40,
       profit: 160,
       location: 'USA',
     }
@@ -90,6 +92,7 @@ describe('Invoice Integration', () => {
       const {data, total} = await invoiceService.getInvoices('', 1, 10);
       // cleanup mongoose added variables
       const cleanedresult = data.map((item) => ({
+        id: item.id,
         customer: item.customer,
         itemName: item.itemName,
         itemNumber: item.itemNumber,
@@ -97,7 +100,7 @@ describe('Invoice Integration', () => {
         date: item.date,
         quantity: item.quantity,
         revenue: item.revenue,
-        totalCost: item.totalCost,
+        cost: item.cost,
         profit: item.profit,
         location : item.location,
       }));

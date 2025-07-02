@@ -5,10 +5,11 @@ function createInvoice(): CreateInvoiceInput {
   const price = faker.number.int({ min: 5, max: 100 });
   const quantity = faker.number.int({ min: 1, max: 20 });
   const revenue = price * quantity;
-  const totalCost = faker.number.int({ min: 1, max: price });
-  const profit = revenue - totalCost;
+  const cost = faker.number.int({ min: 1, max: price });
+  const profit = revenue - cost;
 
-  return {    
+  return {
+    id: faker.string.ulid(),  
     customer: faker.internet.username(),
     itemName: faker.commerce.productName(),
     itemNumber: faker.number.int(),
@@ -16,7 +17,7 @@ function createInvoice(): CreateInvoiceInput {
     date: faker.date.past({ years: 1, refDate: new Date() }).toISOString(),
     quantity,
     revenue,
-    totalCost,
+    cost,
     profit,
     location: faker.location.state({ abbreviated: true }),
   };
