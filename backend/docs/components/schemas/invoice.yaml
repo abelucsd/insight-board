@@ -4,78 +4,96 @@ Invoice:
     _id:
       type: string
       description: The unique identifier for the invoice
+    id:
+      type: string
+      description: The unique identifier for the invoice, assigned by the admin.
     customer:
       type: string
       description: The customer name.
-    itemName:
-      type: string
-      description: The item name.
-    itemNumber:
-      type: string
-      description: The item number.
-    price:
-      type: number
-      description: The price of the item.
     date:
       type: string
       description: The date of the sale.
-    quantity:
-      type: number
-      description: The number of items.
-    revenue:
-      type: number
-      description: The revenue of the sale.
-    totalCost:
-      type: number
-      description: The cost to make the items.
-    profit:
-      type: number
-      description: The profit of the sale.
     location:
       type: string
       description: The location of the sale.
+    items:
+      type: array
+      items:
+        type: object
+        properties:
+          itemName:
+            type: string
+          itemNumber:
+            type: string
+          salePrice:
+            type: number
+          quantity:
+            type: number
+          revenue:
+            type: number
+          cost:
+            type: number
+          profit:
+            type: number
+    totalRevenue:
+      type: number
+      description: The total revenue.
+    totalCost:
+      type: number
+      description: The total cost.
+    totalProfit:
+      type: number
+      description: The total profit.
 
 CreateInvoiceInput:
   type: object
   required:
+    - id
     - customer
-    - itemName
-    - itemNumber
-    - price
     - date
-    - quantity
-    - revenue
-    - totalCost
-    - profit
     - location
+    - items
+    - totalRevenue
+    - totalCost
+    - totalProfit
   properties:
+    id:
+      type: string
+      description: The unique identifier for the invoice, assigned by the admin.
     customer:
       type: string
       description: The customer name.
-    itemName:
-      type: string
-      description: The item name.
-    itemNumber:
-      type: string
-      description: The item number.
-    price:
-      type: number
-      description: The price of the item.
     date:
       type: string
       description: The date of the sale.
-    quantity:
-      type: number
-      description: The number of items.
-    revenue:
-      type: number
-      description: The revenue of the sale.
-    totalCost:
-      type: number
-      description: The cost to make the items.
-    profit:
-      type: number
-      description: The profit of the sale.
     location:
       type: string
       description: The location of the sale.
+    items:
+      type: array
+      items:
+        type: object
+        properties:
+          itemName:
+            type: string
+          itemNumber:
+            type: string
+          salePrice:
+            type: number
+          quantity:
+            type: number
+          revenue:
+            type: number
+          cost:
+            type: number
+          profit:
+            type: number
+    totalRevenue:
+      type: number
+      description: The total revenue.
+    totalCost:
+      type: number
+      description: The total cost.
+    totalProfit:
+      type: number
+      description: The total profit.

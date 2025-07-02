@@ -1,17 +1,35 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-export interface CreateInvoiceInput {
-  customer: string;
+export interface IInvoiceItem {
   itemName: string;
-  itemNumber: number;  
-  price: number;
-  date: string;
+  itemNumber: string;
+  salePrice: number;
   quantity: number;
   revenue: number;
-  totalCost: number;
+  cost: number;
   profit: number;
-  location: string;
+};
+
+const itemSchema = new Schema<IInvoiceItem>({
+  itemName: { type: String, required: true },
+  itemNumber: { type: String, required: true },
+  salePrice: { type: Number, required: true },
+  quantity: { type: Number, required: true },
+  revenue: { type: Number, required: true },
+  cost: { type: Number, required: true },
+  profit: { type: Number, required: true },
+}, { _id: false });
+
+export interface CreateInvoiceInput {
+  id: string;
+  customer: string;
+  date: string;
+  location: string;  
+  items: IInvoiceItem[];
+  totalRevenue: number;
+  totalCost: number;
+  totalProfit: number;  
 };
 
 export interface IInvoice extends CreateInvoiceInput {
@@ -19,16 +37,14 @@ export interface IInvoice extends CreateInvoiceInput {
 };
 
 const invoiceSchema = new Schema<IInvoice>({
+  id: { type: String, required: true},  
   customer: { type: String, required: true},
-  itemName: { type: String, required: true},
-  itemNumber:{ type: Number, required: true},
-  price: { type: Number, required: true},
   date: { type: String, required: true},
-  quantity: { type: Number, required: true},
-  revenue: { type: Number, required: true},
-  totalCost:{ type: Number, required: true},
-  profit: { type: Number, required: true},
   location: { type: String, required: true},
+  items: { type: [itemSchema], required: true},      
+  totalRevenue: { type: Number, required: true},
+  totalCost:{ type: Number, required: true},
+  totalProfit: { type: Number, required: true},  
 });
 
 // export let invoices: Invoice[] = [];
