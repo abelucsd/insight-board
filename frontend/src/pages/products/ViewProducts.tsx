@@ -33,6 +33,13 @@ const ViewProducts = () => {
   const columnHelper = createColumnHelper<typeof products[0]>();
 
   const columns = [
+    columnHelper.accessor('id', {
+      header: () => 'Id',
+      cell: info => info.getValue(),
+      meta: {
+        className: 'w-48 truncate',
+      },
+    }),
     columnHelper.accessor('name', {
       header: () => 'Product Name',
       cell: info => info.getValue(),
@@ -40,8 +47,29 @@ const ViewProducts = () => {
         className: 'w-48 truncate',
       },
     }),
+    columnHelper.accessor('category', {
+      header: () => 'Category',
+      cell: info => info.getValue(),
+      meta: {
+        className: 'w-48 truncate',
+      },
+    }),
     columnHelper.accessor('price', {
       header: () => 'Price ($)',
+      cell: info => info.getValue().toFixed(2),
+      meta: {
+        className: 'w-24 text-right',
+      },
+    }),
+    columnHelper.accessor('salePrice', {
+      header: () => 'Sale Price ($)',
+      cell: info => info.getValue().toFixed(2),
+      meta: {
+        className: 'w-24 text-right',
+      },
+    }),
+    columnHelper.accessor('cost', {
+      header: () => 'Cost ($)',
       cell: info => info.getValue().toFixed(2),
       meta: {
         className: 'w-24 text-right',
