@@ -18,7 +18,7 @@ export class SumRevenueStrategy implements NumericalSumStrategy {
 export class SumCostStrategy implements NumericalSumStrategy {
   public sumNumericalData(data: IInvoice[]): number {
     const result = data
-    .reduce((sum, record) => sum + Number(record.totalCost), 0);    
+    .reduce((sum, record) => sum + Number(record.cost), 0);    
 
     return round2(result)
   };
@@ -29,7 +29,7 @@ export class SumProfitStrategy implements NumericalSumStrategy {
     const revenue = data
       .reduce((sum, record) => sum + Number(record.revenue), 0);    
     const cost = data
-      .reduce((sum, record) => sum + Number(record.totalCost), 0);    
+      .reduce((sum, record) => sum + Number(record.cost), 0);
 
     const result =  revenue - cost;
 

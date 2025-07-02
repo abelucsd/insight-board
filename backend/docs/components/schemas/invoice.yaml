@@ -4,6 +4,9 @@ Invoice:
     _id:
       type: string
       description: The unique identifier for the invoice
+    id:
+      type: string
+      description: The unique identifier for the invoice, assigned by the admin.
     customer:
       type: string
       description: The customer name.
@@ -25,7 +28,7 @@ Invoice:
     revenue:
       type: number
       description: The revenue of the sale.
-    totalCost:
+    cost:
       type: number
       description: The cost to make the items.
     profit:
@@ -38,6 +41,7 @@ Invoice:
 CreateInvoiceInput:
   type: object
   required:
+    - id
     - customer
     - itemName
     - itemNumber
@@ -45,10 +49,13 @@ CreateInvoiceInput:
     - date
     - quantity
     - revenue
-    - totalCost
+    - cost
     - profit
     - location
   properties:
+    id:
+      type: string
+      description: The unique identifier for the invoice, assigned by the admin.
     customer:
       type: string
       description: The customer name.
@@ -70,7 +77,7 @@ CreateInvoiceInput:
     revenue:
       type: number
       description: The revenue of the sale.
-    totalCost:
+    cost:
       type: number
       description: The cost to make the items.
     profit:
