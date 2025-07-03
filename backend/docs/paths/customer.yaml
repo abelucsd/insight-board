@@ -1,0 +1,107 @@
+openapi: 3.0.4
+info:
+  title: Customer API
+  description: A CRUD API for managing customers.
+  version: 1.0.0
+
+/customers:
+  get:
+    tags:
+      - Customers
+    summary: Get all customers.
+    description: Retrieves a list of all customers.
+    responses:
+      '200':
+      description: A list of all customers.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Customer'
+
+  post:
+    tags:
+      - Customers
+    summary: Create a new customer.
+    description: Add a new customer.
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateCustomerInput'
+    responses:
+      '201':
+        description: Customer created successfully.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+
+/customers/{id}:
+  get:
+    tags:
+      - Customers
+    summary: Get a customer by ID.
+    description: Retrieves a single customer based on the customer ID.
+    parameters:
+      - name: id
+        in: path
+        description: The unique ID of the customer
+        required: true
+        schema:
+          type: string
+    responses:
+      '200':
+        description: A customer object.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      '404':
+        description: customer not found.
+  put:
+    tags:
+      - Customers
+    summary: Update a customer by ID.
+    description: Update an existing customer details based on customer ID.
+    parameters:
+      - name: id
+        in: path
+        description: The unique ID of the customer.
+        required: true
+        schema:
+          type: string
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateCustomerInput'
+    responses:
+      '200':
+        description: customer updated successfully.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      '404':
+        description: customer not found.
+  delete:
+    tags:
+      - Customers
+    summary: Delete a customer by ID.
+    description: Delete an existing customer based on customer ID.
+    parameters:
+      - name: id
+        in: path
+        description: The unique ID of the customer
+        required: true
+        schema:
+          type: string
+    responses:
+      '204':
+        description: customer deleted successfully.
+      '404':
+        description: customer not found.

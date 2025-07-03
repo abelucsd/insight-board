@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { logo } from "../utils/data";
 import { navItems } from "../utils/data";
-import { productsDropdownLinks, invoiceDropdownLinks } from "../utils/data";
+import { productsDropdownLinks, invoiceDropdownLinks, customerDropdownLinks } from "../utils/data";
 import DropdownLinks from "./DropdownLinks";
 
 interface SidenavProps {
@@ -39,7 +39,15 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
             links={invoiceDropdownLinks} 
             onLinkClick={onLinkClick}
           />
-        </li>        
+        </li>
+
+        <li>
+          <DropdownLinks 
+            title={`Customers`} 
+            links={customerDropdownLinks}
+            onLinkClick={onLinkClick}
+          />
+        </li>
 
       </ul>
     </nav>

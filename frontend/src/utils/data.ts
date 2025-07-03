@@ -21,6 +21,12 @@ export const invoiceDropdownLinks = [
     {name: "Add Batch Invoices", link: "/invoices/add-batch"},
 ]
 
+export const customerDropdownLinks = [
+    {name: "View Customers", link: "/customers/view"},
+    {name: "Add Customer", link: "/customers/add"},
+    {name: "Add Batch Customer", link: "/customers/add-batch"},
+]
+
 
 export const userMenuList = [
     "Sign Out",
