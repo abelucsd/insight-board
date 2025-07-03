@@ -108,8 +108,7 @@ describe('Invoice Analytics API', () => {
     });
 
     it('should return the current month revenue data', async() => {
-      const result = await getCurrMonthData('revenue');
-      console.log(result)
+      const result = await getCurrMonthData('revenue');      
       expect(result).toEqual(        
         expect.objectContaining({
           total: expect.any(Number),
