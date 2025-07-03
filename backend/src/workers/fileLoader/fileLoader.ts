@@ -8,6 +8,7 @@ import { Product } from "../../models/product";
 import { getDb } from '../../db/db';
 import { Invoice } from '../../models/invoice';
 import { Visit } from '../../models/visit';
+import { Customer } from '../../models/customer';
 
 
 const logger = createLogger('fileLoader.ts');
@@ -40,6 +41,9 @@ export async function cleanAndValidateData(
       break;
     case 'visit':
       schemaPaths = Visit.schema.paths;
+      break;
+    case 'customer':
+      schemaPaths = Customer.schema.paths;
       break;
     default:
       const err = new CustomError('Unsupported category type', 500);
@@ -172,6 +176,9 @@ export async function loadFile(
       break
     case 'visit':
       await Visit.insertMany(cleanedRows);
+      break;
+    case 'customer':
+      await Customer.insertMany(cleanedRows);
       break;
     default:
       const err = new CustomError('Unsupported file type', 400);      
