@@ -10,21 +10,25 @@ const productPaths = yaml.load(fs.readFileSync(path.join(__dirname, '../../docs/
 const categoryPaths = yaml.load(fs.readFileSync(path.join(__dirname, '../../docs/paths/category.yaml'), 'utf8'))
 const invoicePaths = yaml.load(fs.readFileSync(path.join(__dirname, '../../docs/paths/invoice.yaml'), 'utf8'))
 const invoiceAnalyticsPaths = yaml.load(fs.readFileSync(path.join(__dirname, '../../docs/paths/invoiceAnalytics.yaml'), 'utf8'))
+const customerPaths = yaml.load(fs.readFileSync(path.join(__dirname, '../../docs/paths/customer.yaml'), 'utf8'))
 
 const productComponents = yaml.load(fs.readFileSync(path.join(__dirname, '../../docs/components/schemas/product.yaml'), 'utf8'))
 const categoryComponents = yaml.load(fs.readFileSync(path.join(__dirname, '../../docs/components/schemas/category.yaml'), 'utf8'))
 const invoiceComponents = yaml.load(fs.readFileSync(path.join(__dirname, '../../docs/components/schemas/invoice.yaml'), 'utf8'))
+const customerPathsComponents = yaml.load(fs.readFileSync(path.join(__dirname, '../../docs/components/schemas/customer.yaml'), 'utf8'))
 
 swaggerDocument.paths = {
   ...productPaths,
   ...categoryPaths,
   ...invoicePaths,
   ...invoiceAnalyticsPaths,
+  ...customerPaths,
 };
 swaggerDocument.components = {
   schemas:{
     ...productComponents,
     ...categoryComponents,
     ...invoiceComponents,
+    ...customerPathsComponents,
   }
 };

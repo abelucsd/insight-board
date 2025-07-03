@@ -9,6 +9,7 @@ import { limiter } from './config/rateLimiter';
 import { invoiceRouter } from './routes/invoice.routes';
 import { invoiceAnalyticsRouter } from './routes/invoiceAnalytics.routes';
 import { visitAnalyticsRouter } from './routes/visitAnalytics.routes';
+import { customerRouter } from './routes/customer.route';
 import { startAnalyticsWorker, stopAnalyticsWorker } from './workers/analytics/analyticsWorker';
 import { setupCronJobs } from './utils/cronjob';
 
@@ -44,6 +45,7 @@ app.use('/api/products', productRouter);
 app.use('/api/invoice', invoiceRouter);
 app.use('/api/invoice/analytics', invoiceAnalyticsRouter);
 app.use('/api/visit/analytics', visitAnalyticsRouter);
+app.use('/api/customer', customerRouter);
 
 app.use('/api/worker', workerRouter);
 
