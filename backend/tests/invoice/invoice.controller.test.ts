@@ -112,10 +112,7 @@ describe("Invoice CRUD unit test", () => {
         {
           _id: '1',
           id: "inv-01",
-<<<<<<< HEAD
           customerId: 'cust-01',
-=======
->>>>>>> Refactor/invoice v2 (#98)
           customer: "Foo", 
           itemName: "Bar",
           itemNumber: 'prod-01',
