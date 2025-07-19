@@ -52,7 +52,6 @@ export function startWorker() {
     );
   }
 };
-
 export async function stopAnalyticsWorker() {
   if (customerAnalyticsWorker) {
     await customerAnalyticsWorker.close();
