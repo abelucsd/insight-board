@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
 import { invoiceAnalyticsRouter } from '../../src/routes/invoiceAnalytics.routes';
 import { Invoice } from '../../src/models/invoice';
 import { invoiceData } from '../utils/data';
-import { getMonthlyData, getCurrMonthData, getTopByAttribute } from '../../src/workers/analytics/handleAnalyticsJob';
+import { getMonthlyData, getCurrMonthData, getTopByAttribute } from '../../src/workers/analytics/invoice/handleAnalyticsJob';
 
 
 // const app = express();

@@ -1,5 +1,5 @@
 import { NumericalSumStrategy } from "./NumericalSumStrategy"
-import { IInvoice } from "../../models/invoice";
+import { IInvoice } from "../../../models/invoice";
 
 export class NumericalSumStrategyContext {
   private strategy: NumericalSumStrategy;
