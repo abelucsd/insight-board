@@ -3,6 +3,7 @@ import { Worker, Job } from 'bullmq';
 import { getRedis } from '../../../redis/redisClient';
 import { spawn } from 'child_process';
 import { createLogger } from '../../../utils/logger';
+import { ClusteringResult } from './types';
 
 const logger = createLogger(`[analytics/customer/worker.ts]`);
 
@@ -43,6 +44,7 @@ export function startWorker() {
           );
           customerAnalyticsWorker.on('completed', async (job: Job, returnvalue: any) => {
             logger.info(`[Worker]: Completed job ${job.id}`);
+            // TODO: Use strategy pattern to store result into redis cache.
             await getRedis().set(`customerAnalytics:${job.name}`, JSON.stringify(returnvalue));
           });
           customerAnalyticsWorker.on('failed', (job: Job | undefined, error: Error, prev: string) => {
@@ -56,7 +58,7 @@ export function startWorker() {
     );
   }
 };
-// TODO: worker teardown.
+
 export async function stopAnalyticsWorker() {
   if (customerAnalyticsWorker) {
     await customerAnalyticsWorker.close();

@@ -20,7 +20,7 @@ type AnalyticsStrategyResult = { jobId: string | undefined; status: string };
 export const analyticsStrategies: Record<string, () => Promise<AnalyticsStrategyResult>> = {  
   topProducts: async () => {    
     const analyticsQueue = getAnalyticsQueue()
-    const job = await analyticsQueue.add('topProducts', {});    
+    const job = await analyticsQueue.add('topProducts', {});        
     return { jobId: job.id, status: 'queued'};
   },
   monthlyInvoices: async () => {
