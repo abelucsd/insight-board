@@ -19,7 +19,7 @@ export class CustomerAnalyticsSerializationStrategyContext {
     this.data = data;
   };
 
-  public serializeData(): SerializedBehaviorClusteringResult {    
+  public serializeData(): SerializedBehaviorClusteringResult {
     return this.strategy.serializeData(this.data);
   };
 };
