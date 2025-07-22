@@ -1,14 +1,24 @@
 import { spawn } from 'child_process';
 import { createLogger } from '../../../utils/logger';
-import { CustomError } from '../../../errors/CustomError';
+import { config } from '../../../config/config';
+
 
 const logger = createLogger(`runPythonFile`)
 
+
+/**
+ * Creats a child process that executes a python script to delegate the machine learning analytics.
+ * Commands the python file by providing the type of analysis request, filename, mongo uri, and database name.
+ */
 export const runPythonFile = async (analysisType: string): Promise<string> => {
   return new Promise((resolve, reject) => {
     let result: string = '';  
-    const fileName = 'mlFile.py';
-    const args = [analysisType];
+
+    const fileName = 'customerTrendsAnalytics.py';
+    const mongoUri = config.db.mongodbUri;
+    const dbName = config.db.name;
+    const args = [mongoUri, dbName, analysisType];
+
     const pythonProcess = spawn('python', [fileName, ...args]);
 
     pythonProcess.stdout.on('data', (data) => {
