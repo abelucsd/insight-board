@@ -98,7 +98,8 @@ def run_ml_analysis(mongo_uri, db_name, analysis_type):
       sys.exit(1)
 
 if __name__ == '__main__':  
-   if len(sys.argv) < 4:      
+   if len(sys.argv) < 4:
+      print(f"ERROR: Insufficient number of arguments passed to the python script.")
       sys.exit(1)
 
    mongo_uri = sys.argv[1]
