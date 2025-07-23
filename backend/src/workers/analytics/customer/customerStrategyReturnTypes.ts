@@ -1,11 +1,12 @@
+import { CustomerRecord } from './types';
 export interface SerializedBehaviorClusteringResult {
-  spendHigh: string;
-  spendNormal: string;
-  spendLow: string;
-  frequencyHigh: string;
-  frequencyNormal: string;
-  frequencyLow: string;
-  recencyHigh: string;
-  recencyNormal: string;
-  recencyLow: string;
+  spendHigh: CustomerRecord[];
+  spendNormal: CustomerRecord[];
+  spendLow: CustomerRecord[];
+  frequencyHigh: CustomerRecord[];
+  frequencyNormal: CustomerRecord[];
+  frequencyLow: CustomerRecord[];
+  recencyHigh: CustomerRecord[];
+  recencyNormal: CustomerRecord[];
+  recencyLow: CustomerRecord[];
 };

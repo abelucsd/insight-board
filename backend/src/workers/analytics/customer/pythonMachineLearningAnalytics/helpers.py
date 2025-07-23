@@ -75,23 +75,23 @@ def create_customer_feature_matrix(df: pd.DataFrame) -> pd.DataFrame:
 
   # Revenue is a customer's total purchase amount.
   # total_spend
-  total_spend_series = df.groupby('Customer Id')['Revenue'].sum()
+  total_spend_series = df.groupby('customerId')['revenue'].sum()
   # total_spend_array = total_spend_series.reindex(unique_customers).values
 
   # num_purchase
-  num_purchase_series = df.groupby('Customer Id').size()
+  num_purchase_series = df.groupby('customerId').size()
 
   # recency
-  latest_invoice_series = df.groupby('Customer Id')['Date'].max()
+  latest_invoice_series = df.groupby('customerId')['date'].max()
   recency_series = (datetime.today() - latest_invoice_series).dt.days
 
   # average_purchase
-  average_purchase_series = df.groupby('Customer Id')['Revenue'].mean()
+  average_purchase_series = df.groupby('customerId')['revenue'].mean()
 
   # frequency
   # first to last invoice
-  first_invoice_series = df.groupby('Customer Id')['Date'].min()
-  last_invoice_series = df.groupby('Customer Id')['Date'].max()
+  first_invoice_series = df.groupby('customerId')['date'].min()
+  last_invoice_series = df.groupby('customerId')['date'].max()
   customer_lifetime_days_series = (last_invoice_series - first_invoice_series).dt.days + 1
   frequency_series = num_purchase_series / customer_lifetime_days_series
 

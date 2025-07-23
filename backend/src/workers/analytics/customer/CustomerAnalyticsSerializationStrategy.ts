@@ -2,22 +2,23 @@ import { ClusteringResult } from "./types";
 import { SerializedBehaviorClusteringResult } from "./customerStrategyReturnTypes";
 
 export interface CustomerAnalyticsSerializationStrategy {
-  serializeData(data: ClusteringResult): SerializedBehaviorClusteringResult;
+  serializeData(data: string): SerializedBehaviorClusteringResult;
 };
 
 export class CustomerBehaviorClusteringStrategy implements CustomerAnalyticsSerializationStrategy {
-  public serializeData(data: ClusteringResult): SerializedBehaviorClusteringResult {
-    const spendHigh = JSON.stringify(data.spend.high);
-    const spendNormal = JSON.stringify(data.spend.normal);
-    const spendLow = JSON.stringify(data.spend.low);
+  public serializeData(data: string): SerializedBehaviorClusteringResult {
+    const parsedData: ClusteringResult = JSON.parse(data);
+    const spendHigh = parsedData.spend.high;
+    const spendNormal = parsedData.spend.normal;
+    const spendLow = parsedData.spend.low;
 
-    const frequencyHigh = JSON.stringify(data.frequency.high);
-    const frequencyNormal = JSON.stringify(data.frequency.normal);
-    const frequencyLow = JSON.stringify(data.frequency.low);
+    const frequencyHigh = parsedData.frequency.high;
+    const frequencyNormal = parsedData.frequency.normal;
+    const frequencyLow = parsedData.frequency.low;
 
-    const recencyHigh = JSON.stringify(data.recency.high);
-    const recencyNormal = JSON.stringify(data.recency.normal);
-    const recencyLow = JSON.stringify(data.recency.low);
+    const recencyHigh = parsedData.recency.high;
+    const recencyNormal = parsedData.recency.normal;
+    const recencyLow = parsedData.recency.low;
 
     return {
       spendHigh,

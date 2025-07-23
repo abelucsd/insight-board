@@ -1,4 +1,6 @@
 import { spawn } from 'child_process';
+import path from 'path';
+import os from 'os';
 import { createLogger } from '../../../utils/logger';
 import { config } from '../../../config/config';
 
@@ -18,8 +20,12 @@ export const runPythonFile = async (analysisType: string): Promise<string> => {
     const mongoUri = config.db.mongodbUri;
     const dbName = config.db.name;
     const args = [mongoUri, dbName, analysisType];
+    const pythonExecutable = os.platform() === 'win32'
+      ? path.join(__dirname, '..', '..', '..', '..', '.venv', 'Scripts', 'python.exe')
+      : path.join(__dirname, '..', '..', '..', '..', '.venv', 'bin', 'python');
+    // const pythonExecutable = path.join(__dirname, '..', '..', '..', '..', '.venv', 'Scripts', 'python.exe');
 
-    const pythonProcess = spawn('python', [fileName, ...args]);
+    const pythonProcess = spawn(pythonExecutable, [fileName, ...args]);
 
     pythonProcess.stdout.on('data', (data) => {
       logger.info(`[Worker] Completed python child process.`)
@@ -27,8 +33,7 @@ export const runPythonFile = async (analysisType: string): Promise<string> => {
       
     });
       pythonProcess.stderr.on('data', (data) => {
-      logger.error(`[Worker] stderr: ${data}`);
-      console.log("HIHIHIHI")
+      logger.error(`[Worker] stderr: ${data}`);      
     });
     pythonProcess.on('error', (err) => {
       reject(err);

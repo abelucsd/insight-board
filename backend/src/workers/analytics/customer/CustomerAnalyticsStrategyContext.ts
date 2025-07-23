@@ -4,9 +4,9 @@ import { SerializedBehaviorClusteringResult } from "./customerStrategyReturnType
 
 export class CustomerAnalyticsSerializationStrategyContext {
   private strategy: CustomerAnalyticsSerializationStrategy;
-  private data: ClusteringResult;
+  private data: string;
 
-  constructor(strategy: CustomerAnalyticsSerializationStrategy, data: ClusteringResult) {
+  constructor(strategy: CustomerAnalyticsSerializationStrategy, data: string) {
     this.strategy = strategy;    
     this.data = data;
   };
@@ -15,7 +15,7 @@ export class CustomerAnalyticsSerializationStrategyContext {
     this.strategy = strategy;
   };
 
-  public setData(data: ClusteringResult) {
+  public setData(data: string) {
     this.data = data;
   };
 

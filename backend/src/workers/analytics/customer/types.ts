@@ -1,10 +1,10 @@
 type ClusterLevel = 'high' | 'normal' | 'low';
 
-interface CustomerRecord {
+export interface CustomerRecord {
   [key: string]: string | number | boolean | null;
 };
 
-interface ClusterCategory {
+export interface ClusterCategory {
   high: CustomerRecord[];
   normal: CustomerRecord[];
   low: CustomerRecord[];

@@ -10,6 +10,7 @@ function createInvoice(): CreateInvoiceInput {
 
   return {
     id: faker.string.ulid(),  
+    customerId: faker.string.ulid(),
     customer: faker.internet.username(),
     itemName: faker.commerce.productName(),
     itemNumber: faker.string.ulid(),
