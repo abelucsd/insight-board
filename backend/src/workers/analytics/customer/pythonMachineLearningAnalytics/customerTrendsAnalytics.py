@@ -93,7 +93,8 @@ def run_ml_analysis(mongo_uri, db_name, analysis_type):
       }      
 
       return result 
-   except Exception as e:      
+   except Exception as e:
+      print(f"ERROR: {str(e)}")
       sys.exit(1)
 
 if __name__ == '__main__':  
