@@ -34,7 +34,7 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
       });
 
       pythonProcess.stderr.on('data', (data) => {
-        console.error(`${data.toString()}`)
+        console.error(`Python stderr: ${data.toString()}`)
       });
 
       pythonProcess.on('close', (code) => {        
@@ -56,7 +56,7 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
       });      
 
       pythonProcess.stderr.on('data', (data) => {
-        console.error(`${data.toString()}`)
+        console.error(`Python stderr: ${data.toString()}`)
       });
 
       pythonProcess.on('close', (code) => {        
@@ -112,7 +112,7 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
       });
 
       pythonProcess.stderr.on('data', (data) => {
-        console.error(`${data.toString()}`)
+        console.error(`Python stderr: ${data.toString()}`)
       });
 
       pythonProcess.on('close', (code) => {        
@@ -133,7 +133,7 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
       });
 
       pythonProcess.stderr.on('data', (data) => {
-        console.error(`${data.toString()}`)
+        console.error(`Python stderr: ${data.toString()}`)
       });
 
       pythonProcess.on('close', (code) => {
