@@ -39,6 +39,11 @@ jobs:
         with:
           python-version: "3.10"
 
+      - name: Show Python & OpenSSL version
+        run: |
+          python --version
+          python -c "import ssl; print(ssl.OPENSSL_VERSION)"
+
       - name: Install Nodejs dependencies
         run: npm ci
         working-directory: ./backend
