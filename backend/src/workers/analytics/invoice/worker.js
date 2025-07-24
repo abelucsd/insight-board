@@ -4,7 +4,7 @@ const path = require('path');
 require('ts-node').register();
 const { getAnalytics } = require(path.resolve(__dirname, './analyticsWorker'));
 
-const { createLogger } = require('../../utils/logger');
+const { createLogger } = require('../../../utils/logger');
 const logger = createLogger('analyticsWorker(js)');
 
 (async () => {

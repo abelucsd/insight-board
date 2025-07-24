@@ -1,4 +1,4 @@
-import { IInvoice } from "../../models/invoice";
+import { IInvoice } from "../../../models/invoice";
 import { NumericalSumStrategy } from "./NumericalSumStrategy";
 import { NumericalSumStrategyContext } from "./NumericalStrategyContext";
 

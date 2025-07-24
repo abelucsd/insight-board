@@ -15,6 +15,7 @@ describe("Invoice CRUD unit test", () => {
   const invoices = [
     {
       id: "inv-01",
+      customerId: "cust-01",
       customer: "Foo 1", 
       itemName: "Bar 2",
       itemNumber: 'prod-01',
@@ -28,6 +29,7 @@ describe("Invoice CRUD unit test", () => {
     },
     {     
       id: "inv-02",
+      customerId: "cust-02",
       customer: "Foo 2", 
       itemName: "Bar 2",
       itemNumber: 'prod-02',
@@ -110,6 +112,7 @@ describe("Invoice CRUD unit test", () => {
         {
           _id: '1',
           id: "inv-01",
+          customerId: 'cust-01',
           customer: "Foo", 
           itemName: "Bar",
           itemNumber: 'prod-01',

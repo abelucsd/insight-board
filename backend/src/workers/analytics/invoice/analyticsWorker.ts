@@ -1,7 +1,7 @@
 import { Worker } from "bullmq";
-import { getRedis } from "../../redis/redisClient";
+import { getRedis } from "../../../redis/redisClient";
 import { getAnalytics } from "./handleAnalyticsJob";
-import { createLogger } from "../../utils/logger";
+import { createLogger } from "../../../utils/logger";
 
 const logger = createLogger('analyticsWorker.ts')
 
@@ -32,11 +32,11 @@ export function startAnalyticsWorker() {
         logger.error(`[Worker] Failed job ${job?.id}, ${err}`);
       });
     }
-  
-}
+};
+
 export async function stopAnalyticsWorker() {
   if (analyticsWorker) {
     await analyticsWorker.close();
     analyticsWorker = null;
   }
-}
+};

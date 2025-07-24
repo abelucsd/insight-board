@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 export interface CreateInvoiceInput {
   id: string
+  customerId: string;
   customer: string;
   itemName: string;
   itemNumber: string;  
@@ -21,6 +22,7 @@ export interface IInvoice extends CreateInvoiceInput {
 
 const invoiceSchema = new Schema<IInvoice>({
   id: { type: String, required: true},
+  customerId: { type: String, required: true},
   customer: { type: String, required: true},
   itemName: { type: String, required: true},
   itemNumber:{ type: String, required: true},

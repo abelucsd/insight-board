@@ -31,8 +31,7 @@ export const productService = {
         Product.find(query).skip(skip).limit(limit),
         Product.countDocuments(query),
       ]);
-
-      // return await Product.find({});
+      
       return { data, total };
     } catch (error) {
       const err = new CustomError('Failed to fetch products', 500);

@@ -14,6 +14,7 @@ describe('Invoice Integration', () => {
   const invoices = [
     {      
       id: 'inv-01',
+      customerId: "cust-01",
       customer: "Foo 1", 
       itemName: "Bar 2",
       itemNumber: 'prod-01',
@@ -27,6 +28,7 @@ describe('Invoice Integration', () => {
     },
     {      
       id: 'inv-02',
+      customerId: "cust-02",
       customer: "Foo 2", 
       itemName: "Bar 2",
       itemNumber: 'prod-02',
@@ -93,6 +95,7 @@ describe('Invoice Integration', () => {
       // cleanup mongoose added variables
       const cleanedresult = data.map((item) => ({
         id: item.id,
+        customerId: item.customerId,
         customer: item.customer,
         itemName: item.itemName,
         itemNumber: item.itemNumber,
