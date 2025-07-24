@@ -1,4 +1,4 @@
-import { IInvoice, Invoice } from "../../models/invoice";
+import { IInvoice, Invoice } from "../../../models/invoice";
 
 const round2 = (num: number) => Math.round(num * 100) / 100;
 

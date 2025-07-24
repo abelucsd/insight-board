@@ -5,9 +5,9 @@
  */
 
 
-import { createLogger } from "../../utils/logger";
-import { CustomError } from "../../errors/CustomError";
-import { IInvoice, Invoice } from "../../models/invoice";
+import { createLogger } from "../../../utils/logger";
+import { CustomError } from "../../../errors/CustomError";
+import { IInvoice, Invoice } from "../../../models/invoice";
 import { NumericalSumStrategyContext } from "./NumericalStrategyContext";
 import { NumericalSumStrategy, SumProfitStrategy, SumRevenueStrategy, SumInvoicesStrategy } from "./NumericalSumStrategy";
 import { TopStrategyContext } from "./TopStrategyContext";
@@ -23,9 +23,9 @@ import {
   getYearRange,
   filterByMonthAndYear,
  } from "./helpers";
-import { getDb } from "../../db/db";
+import { getDb } from "../../../db/db";
 import mongoose from "mongoose";
-import { IVisit, Visit } from "../../models/visit";
+import { IVisit, Visit } from "../../../models/visit";
 
 
 // Currently O(N^2) through the rows.

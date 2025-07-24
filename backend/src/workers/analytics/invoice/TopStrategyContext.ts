@@ -1,5 +1,5 @@
 import { TopStrategy } from "./TopStrategy";
-import { IInvoice } from "../../models/invoice";
+import { IInvoice } from "../../../models/invoice";
 import { TopAttributeData } from "./analyticsTypes";
 
 export class TopStrategyContext {

@@ -13,6 +13,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: test
+      MONGO_URI: ${{ secrets.MONGO_URI_DEV }}
+      DB_NAME: ${{ secrets.DB_NAME_DEV }}
+      NODE_ENV: development
 
     strategy:
       matrix:
@@ -22,21 +27,39 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+
+      - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
           cache-dependency-path: ./backend/package-lock.json
-      - name: Install dependencies
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Nodejs dependencies
         run: npm ci
         working-directory: ./backend
+
+      - name: Install Python dependencies
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+        working-directory: ./backend
+
       - name: Run tests
         run: npm test
         working-directory: ./backend
+
       - name: Build project
         run: npm run build --if-present
         working-directory: ./backend
+
       - name: Run code coverage
         run: npm run coverage
         working-directory: ./backend

@@ -10,7 +10,7 @@ import { invoiceRouter } from './routes/invoice.routes';
 import { invoiceAnalyticsRouter } from './routes/invoiceAnalytics.routes';
 import { visitAnalyticsRouter } from './routes/visitAnalytics.routes';
 import { customerRouter } from './routes/customer.route';
-import { startAnalyticsWorker, stopAnalyticsWorker } from './workers/analytics/analyticsWorker';
+import { startAnalyticsWorker, stopAnalyticsWorker } from './workers/analytics/invoice/analyticsWorker';
 import { setupCronJobs } from './utils/cronjob';
 
 
