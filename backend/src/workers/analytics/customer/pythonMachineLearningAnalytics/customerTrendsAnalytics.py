@@ -101,9 +101,13 @@ if __name__ == '__main__':
    if len(sys.argv) < 4:
       print(f"ERROR: Insufficient number of arguments passed to the python script.", file=sys.stderr)
       sys.exit(1)
-
+      
    mongo_uri = sys.argv[1]
    db_name = sys.argv[2]
-   analysis_type = sys.argv[3]   
-   result = run_ml_analysis(mongo_uri, db_name, analysis_type)
-   print(json.dumps(result))
+   analysis_type = sys.argv[3]
+   try:
+      result = run_ml_analysis(mongo_uri, db_name, analysis_type)
+      print(json.dumps(result))
+   except Exception as e:
+      print(f"ERROR: {str(e)}", file=sys.stderr)
+      sys.exit(1)
