@@ -13,6 +13,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: test
+      MONGO_URI: ${{ secrets.MONGO_URI_DEV }}
+      DB_NAME: ${{ secrets.DB_NAME_DEV }}
+      NODE_ENV: development
 
     strategy:
       matrix:
