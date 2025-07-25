@@ -24,6 +24,8 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
     it('should run the python file with a resolved promise.', done => {      
       const analysisType = 'behavior';
       const args = [mongoUri, dbName, analysisType];
+      console.log(`MONGO_URI: ${mongoUri}`)
+      console.log(`DB Name: ${dbName}`)
 
       const pythonProcess = spawn(pythonExecutable, [filePath, ...args]);
 
