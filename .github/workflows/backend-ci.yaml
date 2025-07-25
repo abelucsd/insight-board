@@ -56,6 +56,9 @@ jobs:
           pip install -r requirements.txt
         working-directory: ./backend
 
+      - name: Update CA certificates
+        run: sudo apt-get update && sudo apt-get install -y ca-certificates
+
       - name: Run tests
         run: npm test
         working-directory: ./backend
