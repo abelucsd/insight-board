@@ -32,7 +32,7 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
       // set up listeners
       let result = ''
       pythonProcess.stdout.on('data', (data) => {
-        result += data;        
+        result += data;
       });
 
       pythonProcess.stderr.on('data', (data) => {
