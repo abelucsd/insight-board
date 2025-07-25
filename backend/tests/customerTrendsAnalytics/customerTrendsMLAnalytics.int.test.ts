@@ -9,7 +9,7 @@ import { ClusteringResult, ClusterCategory } from '../../src/workers/analytics/c
 // Dependencies:
 const filePath = path.join(__dirname, '..', '..', 'src', 'workers', 'analytics', 'customer', 'pythonMachineLearningAnalytics', 'customerTrendsAnalytics.py');
 const mongoUri = config.db.mongodbUri;
-const dbName = 'test';
+const dbName = config.db.name;
 const pythonExecutable = os.platform() === 'win32'
   ? path.join(__dirname, '..', '..', '.venv', 'Scripts', 'python.exe')
   : path.join(__dirname, '..', '..', '.venv', 'bin', 'python');
@@ -24,17 +24,19 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
     it('should run the python file with a resolved promise.', done => {      
       const analysisType = 'behavior';
       const args = [mongoUri, dbName, analysisType];
+      console.log(`MONGO_URI: ${mongoUri}`)
+      console.log(`DB Name: ${dbName}`)
 
       const pythonProcess = spawn(pythonExecutable, [filePath, ...args]);
 
       // set up listeners
       let result = ''
       pythonProcess.stdout.on('data', (data) => {
-        result += data;        
+        result += data;
       });
 
       pythonProcess.stderr.on('data', (data) => {
-        console.error(`${data.toString()}`)
+        console.error(`Python stderr: ${data.toString()}`)
       });
 
       pythonProcess.on('close', (code) => {        
@@ -56,7 +58,7 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
       });      
 
       pythonProcess.stderr.on('data', (data) => {
-        console.error(`${data.toString()}`)
+        console.error(`Python stderr: ${data.toString()}`)
       });
 
       pythonProcess.on('close', (code) => {        
@@ -112,7 +114,7 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
       });
 
       pythonProcess.stderr.on('data', (data) => {
-        console.error(`${data.toString()}`)
+        console.error(`Python stderr: ${data.toString()}`)
       });
 
       pythonProcess.on('close', (code) => {        
@@ -133,7 +135,7 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
       });
 
       pythonProcess.stderr.on('data', (data) => {
-        console.error(`${data.toString()}`)
+        console.error(`Python stderr: ${data.toString()}`)
       });
 
       pythonProcess.on('close', (code) => {
