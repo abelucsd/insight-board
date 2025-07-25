@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import json
 import sys
+import certifi
 from datetime import datetime
 from pymongo import MongoClient
 from helpers import convert_json_serializable_doc, coerce_date_column_types, coerce_numerical_column_types, create_customer_feature_matrix
@@ -12,7 +13,7 @@ from ml import kmeans
 
 def run_ml_analysis(mongo_uri, db_name, analysis_type):  
    try:      
-      client = MongoClient(mongo_uri, serverSelectionTimeoutMS=3000)
+      client = MongoClient(mongo_uri, tlsCAFile=certifi.where(), serverSelectionTimeoutMS=3000)
       client.admin.command('ping')
 
       db = client[db_name]      
@@ -101,9 +102,13 @@ if __name__ == '__main__':
    if len(sys.argv) < 4:
       print(f"ERROR: Insufficient number of arguments passed to the python script.", file=sys.stderr)
       sys.exit(1)
-
-   mongo_uri = sys.argv[1]
-   db_name = sys.argv[2]
-   analysis_type = sys.argv[3]   
-   result = run_ml_analysis(mongo_uri, db_name, analysis_type)
-   print(json.dumps(result))
+   try:
+      mongo_uri = sys.argv[1]
+      db_name = sys.argv[2]
+      analysis_type = sys.argv[3]
+   
+      result = run_ml_analysis(mongo_uri, db_name, analysis_type)
+      print(json.dumps(result))
+   except Exception as e:
+      print(f"ERROR: {str(e)}", file=sys.stderr)
+      sys.exit(1)
