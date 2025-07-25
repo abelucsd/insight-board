@@ -9,7 +9,7 @@ import { ClusteringResult, ClusterCategory } from '../../src/workers/analytics/c
 // Dependencies:
 const filePath = path.join(__dirname, '..', '..', 'src', 'workers', 'analytics', 'customer', 'pythonMachineLearningAnalytics', 'customerTrendsAnalytics.py');
 const mongoUri = config.db.mongodbUri;
-const dbName = 'test';
+const dbName = config.db.name;
 const pythonExecutable = os.platform() === 'win32'
   ? path.join(__dirname, '..', '..', '.venv', 'Scripts', 'python.exe')
   : path.join(__dirname, '..', '..', '.venv', 'bin', 'python');
