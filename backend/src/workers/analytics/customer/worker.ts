@@ -2,8 +2,9 @@ import { isMainThread} from 'worker_threads';
 import { Worker, Job } from 'bullmq';
 import { getRedis } from '../../../redis/redisClient';
 import { createLogger } from '../../../utils/logger';
-import { CustomerAnalyticsSerializationStrategyContext } from './CustomerAnalyticsStrategyContext';
+import { CustomerAnalyticsBuilderStrategyContext} from './CustomerAnalyticsBuilderStrategyContext';
 import { CustomerBehaviorClusteringStrategy } from './CustomerAnalyticsSerializationStrategy';
+import { CustomerBehaviorClusteringAnalyticsBuilderStrategy } from './CustomerAnalyticsBuilderStrategy';
 import { runPythonFile } from './runPythonFile';
 
 const logger = createLogger(`[analytics/customer/worker.ts]`);
@@ -29,13 +30,18 @@ export function startWorker() {
           customerAnalyticsWorker.on('completed', async (job: Job, returnvalue: any) => {
             logger.info(`[Worker]: Completed job ${job.id}`);
             // Strategy algorithm will return a dictionary of stringified values.
-            const strategy = new CustomerBehaviorClusteringStrategy();
-            const serializationStrategyCtx = new CustomerAnalyticsSerializationStrategyContext(strategy, returnvalue);
-            const results = serializationStrategyCtx.serializeData();
+            const serializationStrategy = new CustomerBehaviorClusteringStrategy();
+            const analysisBuilderStrategy = new CustomerBehaviorClusteringAnalyticsBuilderStrategy();
+            const analysisBuilderStrategyCtx = new CustomerAnalyticsBuilderStrategyContext(
+              serializationStrategy, 
+              analysisBuilderStrategy, 
+              returnvalue
+            );            
+            const results = await analysisBuilderStrategyCtx.buildAnalytics();
 
             for (const [key, value] of Object.entries(results)) {
               await getRedis().set(`customerAnalytics:${key}`, value);
-            }            
+            }
           });
           customerAnalyticsWorker.on('failed', (job: Job | undefined, error: Error, prev: string) => {
             logger.error(`[Worker]: Failed job ${job?.id}, ${error}`)            
