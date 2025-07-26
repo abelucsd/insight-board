@@ -73,10 +73,13 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
 
         // Check if the data has CustomerRecord(s).        
         const spendHighData: ClusterCategory[] = parsedData.spend.high;
-        const expectedAttributes = ['total_spend', 'num_purchases', 'recency', 'avg_purchase', 'frequency', 'cluster']
-        Object.entries(spendHighData[0]).forEach(([key, value]) => {           
-          expect(typeof key).toBe('string');
-          expect(typeof value).toBe('number');
+        const expectedAttributes = ['customerId', 'total_spend', 'num_purchases', 'recency', 'avg_purchase', 'frequency', 'cluster']
+        const acceptedValuesTypes = ['string', 'number']
+        Object.entries(spendHighData[0]).forEach(([key, value]) => {
+          console.log(key)
+          console.log(value)
+          expect(typeof key).toBe('string');   
+          expect(acceptedValuesTypes).toContain(typeof value);
           expect(expectedAttributes).toContain(key);
         });
 
@@ -84,12 +87,12 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
         // Test CustomerRecord objects.
         const clusteringData: ClusteringResult = parsedData;
         Object.entries(clusteringData).forEach(([featKey, feature]) => {          
-          Object.entries(feature).forEach(([docsKey, documents]) => {            
+          Object.entries(feature).forEach(([docsKey, documents]) => {
             if (Array.isArray(documents) && documents.length > 0) {
               const sample = documents[0];
               Object.entries(sample).forEach(([attr, value]) => {                
                 expect(typeof attr).toBe('string');
-                expect(typeof value).toBe('number');
+                expect(acceptedValuesTypes).toContain(typeof value);
                 expect(expectedAttributes).toContain(attr);                 
               })
             }
@@ -102,8 +105,8 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
     }, 30000)
     
     it('should run the python file and receive an exit code 1', done => {      
-      const analysisType = 'behavior';
-      const args = [mongoUri, 'fail', analysisType];
+      const analysisType = 'fail';
+      const args = [mongoUri, dbName, analysisType];
 
       const pythonProcess = spawn(pythonExecutable, [filePath, ...args]);
 

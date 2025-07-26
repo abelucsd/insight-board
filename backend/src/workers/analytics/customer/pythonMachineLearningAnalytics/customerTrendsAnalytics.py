@@ -43,6 +43,9 @@ def run_ml_analysis(mongo_uri, db_name, analysis_type):
       # 3 Groups: Spend, Recency, Frequency
       # Each group divided into 3 categories: High, Normal, Low      
       cluster_means = cluster_matrix_df.groupby('cluster').mean()  
+
+      # Add customer id as a column in the cluster_matrix_df to apply business tags to customers
+      cluster_matrix_df = cluster_matrix_df.reset_index()
       
       # Spend
       sorted_spend_cluster = cluster_means.sort_values(by='total_spend', ascending=True)
@@ -106,9 +109,15 @@ if __name__ == '__main__':
       mongo_uri = sys.argv[1]
       db_name = sys.argv[2]
       analysis_type = sys.argv[3]
-   
-      result = run_ml_analysis(mongo_uri, db_name, analysis_type)
-      print(json.dumps(result))
+
+      match analysis_type:
+         case 'behavior':
+            result = run_ml_analysis(mongo_uri, db_name, analysis_type)
+            print(json.dumps(result))
+            sys.exit(0)
+         case _:
+            sys.exit(1)            
+      
    except Exception as e:
       print(f"ERROR: {str(e)}", file=sys.stderr)
       sys.exit(1)

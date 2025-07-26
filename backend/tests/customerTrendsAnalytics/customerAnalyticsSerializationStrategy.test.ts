@@ -1,14 +1,15 @@
 import { jest } from '@jest/globals';
 import { describe, it, expect, beforeEach } from '@jest/globals';
 import { CustomerBehaviorClusteringStrategy } from '../../src/workers/analytics/customer/CustomerAnalyticsSerializationStrategy';
-import { CustomerAnalyticsSerializationStrategyContext } from '../../src/workers/analytics/customer/CustomerAnalyticsStrategyContext';
+import { CustomerAnalyticsBuilderStrategyContext } from '../../src/workers/analytics/customer/CustomerAnalyticsBuilderStrategyContext';
+import { CustomerBehaviorClusteringAnalyticsBuilderStrategy } from '../../src/workers/analytics/customer/CustomerAnalyticsBuilderStrategy';
 
 describe("Customer Serialization Strategy Class unit tests", () => {
   describe("Customer Behavior", () => {
     /**
      * The Strategy Context takes the strategy object and the json string that it needs to serialize.
      */
-    it('should run the behavior strategy', () => {
+    it('should run the behavior strategy for serialization and analytics table builder', () => {
       const mockSerializedData = {
         'spendHigh': ['Name1', 'Name2'],
         'spendNormal': ['Name3', 'Name4'],
@@ -41,12 +42,26 @@ describe("Customer Serialization Strategy Class unit tests", () => {
 
       const jsonData = JSON.stringify(testDataMap);
 
-      const strategy = new CustomerBehaviorClusteringStrategy();
-      const ctx = new CustomerAnalyticsSerializationStrategyContext(strategy, jsonData);
+      const serializationStrategy = new CustomerBehaviorClusteringStrategy();
+      const buildAnalyticsStrategy = new CustomerBehaviorClusteringAnalyticsBuilderStrategy();
+      const ctx = new CustomerAnalyticsBuilderStrategyContext(
+        serializationStrategy,
+        buildAnalyticsStrategy,
+        jsonData
+      );
 
-      const result = ctx.serializeData();
+      const serializedData = ctx.serializeData();
+      expect(serializedData).toStrictEqual(mockSerializedData);
+      const result = ctx.buildAnalytics();
 
-      expect(result).toStrictEqual(mockSerializedData);
+      // Check the result's structure.
+      // A dictionary of tables.
+      const allowedCustomerAttributes = ['id', 'name', 'email']
+      Object.entries(result).forEach(([behaviorKey, table]) => {
+        Object.entries(table[0]).forEach(([customerAttribute, value]) => {
+          expect(allowedCustomerAttributes).toContain(customerAttribute);          
+        });
+      });
 
     });
   })
