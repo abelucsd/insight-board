@@ -1,6 +1,6 @@
 import express, { Router } from 'express';
 import { getCustomerTrends } from '../controllers/customerTrendsAnalytics.controller';
 
-export const analytics = express.Router();
+export const analyticsRouter = express.Router();
 
-analytics.get('/', getCustomerTrends);
+analyticsRouter.get('/customer-trends', getCustomerTrends);
