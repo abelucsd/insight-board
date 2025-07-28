@@ -8,7 +8,7 @@ import { CustomerTable, BehaviorType, LevelType } from '../../types/customerTren
 interface ViewCustomerGroupTableProps {
   behavior: BehaviorType;    
   behaviorObject: {
-    table: CustomerTable;
+    customerTable: CustomerTable;
     total: number;
     pageIndex: number;
     pageSize: number;
@@ -35,7 +35,7 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
     handleLevelChange(behavior, levelType);
   };
 
-  const columnHelper = createColumnHelper<typeof behaviorObject.table[0]>();
+  const columnHelper = createColumnHelper<typeof behaviorObject.customerTable[0]>();
   
   const columns = [
     columnHelper.accessor('id', {
@@ -73,7 +73,7 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
           <button onClick={() => handleClick(behavior, 'low')}>Low</button>
         </div>
         <Table
-          data={behaviorObject.table}
+          data={behaviorObject.customerTable}
           total={behaviorObject.total}
           pageIndex={behaviorObject.pageIndex}
           pageSize={behaviorObject.pageSize}
