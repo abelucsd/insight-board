@@ -3,7 +3,7 @@
  * Request a specific behavior for the backend to serve.
  */
 export interface BehaviorClusterCustomers {
-  table: { name: string; id: string; email: string }[];
+  customerTable: { name: string; id: string; email: string }[];
   total: number;
 };
 
