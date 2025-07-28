@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import {  
   createColumnHelper,
-} from '@tanstack/react-table'; 
+} from '@tanstack/react-table';
 import Table from '../../components/Table';
+import { BehaviorClusterCustomers } from '../../types/customerTrends';
 
 interface ViewCustomerGroupTableProps {
   behavior: string;    

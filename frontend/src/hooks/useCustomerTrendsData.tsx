@@ -1,3 +1,5 @@
+// TODO: Load and Error states
+
 import '@tanstack/react-query';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
@@ -15,172 +17,147 @@ import {
 import { BehaviorClusterCustomers } from '../types/customerTrends';
 
 
-const defaultHighSpenderCustomers: BehaviorClusterCustomers = {customerTable:[]};
-const defaultHighFrequencyCustomers: BehaviorClusterCustomers = {customerTable:[]};
-const defaultHighRecencyCustomers: BehaviorClusterCustomers = {customerTable:[]};
+const defaultRevenueTable: BehaviorClusterCustomers = {customerTable:[]};
+const defaultRecencyTable: BehaviorClusterCustomers = {customerTable:[]};
+const defaultFrequencyTable: BehaviorClusterCustomers = {customerTable:[]};
 
-export const useCustomerTrendsData = () => {
-  const [pageIndexSpend, setPageIndexSpend] = useState(0);
-  const [pageSizeSpend, setPageSizeSpend] = useState(10);
-  const [searchQuerySpend, setSearchQuerySpend] = useState('');
+// { table: BehaviorClusterCustomers; total: number }
 
-  const [pageIndexRecency, setPageIndexRecency] = useState(0);
-  const [pageSizeRecency, setPageSizeRecency] = useState(10);
-  const [searchQueryRecency, setSearchQueryRecency] = useState('');
+const usePaginatedSearch = () => {
+  const [pageIndex, setPageIndex] = useState(0);
+  const [pageSize, setPageSize] = useState(10);
+  const [searchQuery, setSearchQuery] = useState('');
+  return { pageIndex, setPageIndex, pageSize, setPageSize, searchQuery, setSearchQuery };
+};
 
-  const [pageIndexFrequency, setPageIndexFrequency] = useState(0);
-  const [pageSizeFrequency, setPageSizeFrequency] = useState(10);
-  const [searchQueryFrequency, setSearchQueryFrequency] = useState('');
-    
-  const highSpenderCustomers = useQuery({queryKey: ['high-spend', pageIndexSpend, pageSizeSpend, searchQuerySpend], queryFn: getHighSpenderCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});
-  const normalSpenderCustomers = useQuery({queryKey: ['normal-spend', pageIndexSpend, pageSizeSpend, searchQuerySpend], queryFn: getNormalSpenderCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});
-  const lowSpenderCustomers = useQuery({queryKey: ['low-spend', pageIndexSpend, pageSizeSpend, searchQuerySpend], queryFn: getLowSpenderCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});
+type TablesState = {
+  revenue: BehaviorClusterCustomers | undefined;
+  recency: BehaviorClusterCustomers | undefined;
+  frequency: BehaviorClusterCustomers | undefined;
+};
+type TotalsState = {
+  revenue: number;
+  recency: number;
+  frequency: number;
+};
+type LoadingState = {
+  revenue: boolean;
+  recency: boolean;
+  frequency: boolean;
+};
+type ErrorState = {
+  revenue: boolean;
+  recency: boolean;
+  frequency: boolean;
+};
 
-  const highRecencyCustomers = useQuery({queryKey: ['high-recency', pageIndexRecency, pageSizeRecency, searchQueryRecency], queryFn: getHighRecencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});
-  const normalRecencyCustomers = useQuery({queryKey: ['normal-recency', pageIndexRecency, pageSizeRecency, searchQueryRecency], queryFn: getNormalRecencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});
-  const lowRecencyCustomers = useQuery({queryKey: ['low-recency', pageIndexRecency, pageSizeRecency, searchQueryRecency], queryFn: getLowRecencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});
-
-  const highFrequencyCustomers = useQuery({queryKey: ['high-frequency', pageIndexFrequency, pageSizeFrequency, searchQueryFrequency], queryFn: getHighFrequencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});
-  const normalFrequencyCustomers = useQuery({queryKey: ['normal-frequency', pageIndexFrequency, pageSizeFrequency, searchQueryFrequency], queryFn: getNormalFrequencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});
-  const lowFrequencyCustomers = useQuery({queryKey: ['low-frequency', pageIndexFrequency, pageSizeFrequency, searchQueryFrequency], queryFn: getLowFrequencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false});
+export const useCustomerTrendsData = () => { 
+  const [tables, setTables] = useState<TablesState>({revenue: undefined, recency: undefined, frequency: undefined});
+  const [totals, setTotals] = useState<TotalsState>({revenue: 0, recency: 0, frequency: 0});
+  const [isLoadings, setIsLoadings] = useState<LoadingState>({revenue: false, recency: false, frequency: false});
+  const [isErrors, setIsErrors] = useState<ErrorState>({revenue: false, recency: false, frequency: false});
 
 
-  const isLoading = highSpenderCustomers.isLoading;
-  const isError = highSpenderCustomers.isError;
+  const behavior = 'customer-behavior';
 
+  const revenue = usePaginatedSearch();
+  const recency = usePaginatedSearch();
+  const frequency = usePaginatedSearch();
 
-  const [customerRevenueTable, setCustomerRevenueTable] = useState<BehaviorClusterCustomers | undefined >(undefined);
-  const [customerRecencyTable, setCustomerRecencyTable] = useState<BehaviorClusterCustomers | undefined>(undefined);
-  const [customerFrequencyTable, setCustomerFrequencyTable] = useState<BehaviorClusterCustomers | undefined>(undefined);
-
-  const [revenueTotal, setRevenueTotal] = useState<number | undefined>(0);
-  const [recencyTotal, setRecencyTotal] = useState<number | undefined>(0);
-  const [frequencyTotal, setFrequencyTotal] = useState<number | undefined>(0);
-
-  useEffect(() => {
-    if (highSpenderCustomers.data) {
-      setCustomerRevenueTable(highSpenderCustomers.data.table);
-      setRevenueTotal(highSpenderCustomers.data.total);
-    }
-  }, [highSpenderCustomers.data]);
-  useEffect(() => {
-    if (highRecencyCustomers.data) {
-      setCustomerRecencyTable(highRecencyCustomers.data.table);
-      setRecencyTotal(highRecencyCustomers.data.total);      
-    }
-  }, [highRecencyCustomers.data]);
-  useEffect(() => {
-    if (highFrequencyCustomers.data) {
-      setCustomerFrequencyTable(highFrequencyCustomers.data.table);
-      setFrequencyTotal(highFrequencyCustomers.data.total);
-    }
-  }, [highFrequencyCustomers.data]);
-
-  const handleLevelChange = (behavior: string, levelFilter: string) => {
-    switch(behavior) {
-      case 'revenue':
-        handleChangeLevelRevenue(levelFilter);
-        break;
-      case 'recency':
-        handleChangeLevelRecency(levelFilter);
-        break;
-      case 'frequency':
-        handleChangeLevelFrequency(levelFilter);
-        break;
-    }
-  };
-
-  const handleChangeLevelRevenue = (levelFilter: string) => {
-    switch(levelFilter) {
-      case 'high':
-        setCustomerRevenueTable(highSpenderCustomers.data?.table);
-        setRevenueTotal(highSpenderCustomers.data?.total);
-        break;
-      case 'normal':
-        setCustomerRevenueTable(normalSpenderCustomers.data?.table);
-        setRevenueTotal(normalSpenderCustomers.data?.total);
-        break;
-      case 'low':
-        setCustomerRevenueTable(lowSpenderCustomers.data?.table);
-        setRevenueTotal(lowSpenderCustomers.data?.total);
-        break;
-      // TODO: add toast.
-    };
-  };
-
-  const handleChangeLevelRecency = (levelFilter: string) => {
-    switch(levelFilter) {
-      case 'high':
-        setCustomerRecencyTable(highRecencyCustomers.data?.table);
-        setRecencyTotal(highRecencyCustomers.data?.total);
-        break;
-      case 'normal':
-        setCustomerRecencyTable(normalRecencyCustomers.data?.table);
-        setRecencyTotal(normalRecencyCustomers.data?.total);
-        break;
-      case 'low':
-        setCustomerRecencyTable(lowRecencyCustomers.data?.table);
-        setRecencyTotal(lowRecencyCustomers.data?.total);
-        break;
-      // TODO: add toast.
-    };
-  };
-
-  const handleChangeLevelFrequency = (levelFilter: string) => {
-    switch(levelFilter) {
-      case 'high':
-        setCustomerFrequencyTable(highFrequencyCustomers.data?.table);
-        setFrequencyTotal(highFrequencyCustomers.data?.total);
-        break;
-      case 'normal':
-        setCustomerFrequencyTable(normalFrequencyCustomers.data?.table);
-        setFrequencyTotal(normalFrequencyCustomers.data?.total);
-        break;
-      case 'low':
-        setCustomerFrequencyTable(lowFrequencyCustomers.data?.table);
-        setFrequencyTotal(lowFrequencyCustomers.data?.total);
-        break;
-      // TODO: add toast.
-    };
-  };
-
-  return {
+  const queries = {
     revenue: {
-      table: customerRevenueTable?.customerTable ?? defaultHighSpenderCustomers.customerTable,
-      total: revenueTotal ?? 0,
-      pageIndex: pageIndexSpend,
-      pageSize: pageSizeSpend,
-      searchQuery: searchQuerySpend,
-      setPageIndex: setPageIndexSpend,
-      setPageSize: setPageSizeSpend,
-      setSearchQuery: setSearchQuerySpend,
-      isLoading: isLoading, // If any isLoading or isError, then none should show.
-      isError: isError,     
+      high: useQuery({queryKey: [behavior, 'high-spend', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getHighSpenderCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      normal: useQuery({queryKey: [behavior, 'normal-spend', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getNormalSpenderCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),      
+      low: useQuery({queryKey: [behavior, 'low-spend', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getLowSpenderCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
     },
     recency: {
-      table: customerRecencyTable?.customerTable ?? defaultHighRecencyCustomers.customerTable,
-      total: recencyTotal ?? 0,
-      pageIndex: pageIndexRecency,
-      pageSize: pageSizeRecency,
-      searchQuery: searchQueryRecency,
-      setPageIndex: setPageIndexRecency,
-      setPageSize: setPageSizeRecency,
-      setSearchQuery: setSearchQueryRecency,
-      isLoading: isLoading,
-      isError: isError,
+      high: useQuery({queryKey: [behavior, 'high-recency', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getHighRecencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      normal: useQuery({queryKey: [behavior, 'normal-recency', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getNormalRecencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      low: useQuery({queryKey: [behavior, 'low-recency', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getLowRecencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
     },
     frequency: {
-      table: customerFrequencyTable?.customerTable ?? defaultHighFrequencyCustomers.customerTable,
-      total: frequencyTotal ?? 0,
-      pageIndex: pageIndexFrequency,
-      pageSize: pageSizeFrequency,
-      searchQuery: searchQueryFrequency,
-      setPageIndex: setPageIndexFrequency,
-      setPageSize: setPageSizeFrequency,
-      setSearchQuery: setSearchQueryFrequency,
-      isLoading: isLoading,
-      isError: isError,
-    },        
+      high: useQuery({queryKey: [behavior, 'high-frequency', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getHighFrequencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      normal: useQuery({queryKey: [behavior, 'normal-frequency', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getNormalFrequencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      low: useQuery({queryKey: [behavior, 'low-frequency', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getLowFrequencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+    }
+  }
+
+  // const isLoading = highSpenderCustomers.isLoading;
+  // const isError = highSpenderCustomers.isError;  
+
+  // Initialize table and total data.
+  useEffect(() => {
+    if (queries.revenue.high.data) {
+      setTables(prev => ({ ...prev, revenue: queries.revenue.high.data!.table}));
+      setTotals(prev => ({ ...prev, revenue: queries.revenue.high.data!.total}));
+    }
+  }, [queries.revenue.high.data]);
+  useEffect(() => {
+    if (queries.recency.high.data) {
+      setTables(prev => ({ ...prev, recency: queries.recency.high.data!.table}));
+      setTotals(prev => ({ ...prev, recency: queries.recency.high.data!.total}));
+    }
+  }, [queries.recency.high.data]);
+  useEffect(() => {
+    if (queries.frequency.high.data) {
+      setTables(prev => ({ ...prev, frequency: queries.frequency.high.data!.table}));
+      setTotals(prev => ({ ...prev, frequency: queries.frequency.high.data!.total}));
+    }
+  }, [queries.frequency.high.data]);
+
+  // TODO: Load and Error states
+  useEffect(() => {
+    const anyLoading = queries.revenue.high.isLoading || queries.revenue.normal.isLoading || queries.revenue.low.isLoading;
+
+    setIsLoadings(prev => ({ ...prev, revenue: true}));
+  }, [queries.revenue.high.isLoading, queries.revenue.normal.isLoading, queries.revenue.low.isLoading])
+
+  useEffect(() => {
+
+  }, [queries.revenue.high.isError, queries.revenue.normal.isError, queries.revenue.low.isError]);
+
+  // Event: On Filter  
+  const handleLevelChange = (
+    behavior: 'revenue' | 'recency' | 'frequency', levelFilter: 'high' | 'normal' | 'low') => {
+    setTables(prev => ({ ...prev, [behavior]: queries[behavior][levelFilter].data!.table}));
+    setTotals(prev => ({ ...prev, [behavior]: queries[behavior][levelFilter].data!.total}));
+  };
+
+  /**
+   * Flatten the object to return.   
+   */
+  return {
+    revenue: {
+      table: tables.revenue ?? defaultRevenueTable,
+      total: totals.revenue,
+      pageIndex: revenue.pageIndex,
+      pageSize: revenue.pageSize,
+      searchQuery: revenue.searchQuery,
+      setPageIndex: revenue.setPageIndex,
+      setPageSize: revenue.setPageSize,
+      setSearchQuery: revenue.setSearchQuery,
+      isLoading: 
+    },
+    recency: {
+      table: tables.recency ?? defaultRecencyTable,
+      total: totals.recency,
+      pageIndex: recency.pageIndex,
+      pageSize: recency.pageSize,
+      searchQuery: recency.searchQuery,
+      setPageIndex: recency.setPageIndex,
+      setPageSize: recency.setPageSize,
+      setSearchQuery: recency.setSearchQuery, 
+    },
+    frequency: {
+      table: tables.frequency ?? defaultFrequencyTable,
+      total: totals.recency,
+      pageIndex: frequency.pageIndex,
+      pageSize: frequency.pageSize,
+      searchQuery: frequency.searchQuery,
+      setPageIndex: frequency.setPageIndex,
+      setPageSize: frequency.setPageSize,
+      setSearchQuery: frequency.setSearchQuery,
+    },
     handleLevelChange,
   };
 };
