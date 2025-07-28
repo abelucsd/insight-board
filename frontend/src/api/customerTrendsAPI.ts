@@ -7,7 +7,7 @@ import apiClient from './apiClient';
 // Customer tables grouped by an attribute
 export const getHighSpenderCustomers = async (
   { queryKey }: QueryFunctionContext<[string, string, number, number, string]>)
-  : Promise<{ table: BehaviorClusterCustomers; total: number }> => {
+  : Promise<BehaviorClusterCustomers> => {
   const [, pageIndex, pageSize, searchQuery] = queryKey;
   const response = await apiClient.get('/analytics?behavior=high-spender', {
     params: {
@@ -22,7 +22,7 @@ export const getHighSpenderCustomers = async (
 
 export const getNormalSpenderCustomers = async (
   { queryKey }: QueryFunctionContext<[string, string, number, number, string]>)
-  : Promise<{ table: BehaviorClusterCustomers; total: number }> => {
+  : Promise<BehaviorClusterCustomers> => {
   const [, pageIndex, pageSize, searchQuery] = queryKey;
   const response = await apiClient.get('/analytics?behavior=normal-spender', {
     params: {
@@ -37,7 +37,7 @@ export const getNormalSpenderCustomers = async (
 
 export const getLowSpenderCustomers = async (
   { queryKey }: QueryFunctionContext<[string, string, number, number, string]>)
-  : Promise<{ table: BehaviorClusterCustomers; total: number }> => {
+  : Promise<BehaviorClusterCustomers> => {
   const [, pageIndex, pageSize, searchQuery] = queryKey;
   const response = await apiClient.get('/analytics?behavior=low-spender', {
     params: {
@@ -52,7 +52,7 @@ export const getLowSpenderCustomers = async (
 
 export const getHighRecencyCustomers = async (
   { queryKey }: QueryFunctionContext<[string, string, number, number, string]>)
-  : Promise<{ table: BehaviorClusterCustomers; total: number }> => {
+  : Promise<BehaviorClusterCustomers> => {
   const [, pageIndex, pageSize, searchQuery] = queryKey;
   const response = await apiClient.get('/analytics?behavior=high-recency', {
     params: {
@@ -67,7 +67,7 @@ export const getHighRecencyCustomers = async (
 
 export const getNormalRecencyCustomers = async (
   { queryKey }: QueryFunctionContext<[string, string, number, number, string]>)
-  : Promise<{ table: BehaviorClusterCustomers; total: number }> => {
+  : Promise<BehaviorClusterCustomers> => {
   const [, pageIndex, pageSize, searchQuery] = queryKey;
   const response = await apiClient.get('/analytics?behavior=normal-recency', {
     params: {
@@ -82,7 +82,7 @@ export const getNormalRecencyCustomers = async (
 
 export const getLowRecencyCustomers = async (
   { queryKey }: QueryFunctionContext<[string, string, number, number, string]>)
-  : Promise<{ table: BehaviorClusterCustomers; total: number }> => {
+  : Promise<BehaviorClusterCustomers> => {
   const [, pageIndex, pageSize, searchQuery] = queryKey;
   const response = await apiClient.get('/analytics?behavior=low-recency', {
     params: {
@@ -97,7 +97,7 @@ export const getLowRecencyCustomers = async (
 
 export const getHighFrequencyCustomers = async (
   { queryKey }: QueryFunctionContext<[string, string, number, number, string]>)
-  : Promise<{ table: BehaviorClusterCustomers; total: number }> => {
+  : Promise<BehaviorClusterCustomers> => {
   const [, pageIndex, pageSize, searchQuery] = queryKey;
   const response = await apiClient.get('/analytics?behavior=high-frequency', {
     params: {
@@ -112,7 +112,7 @@ export const getHighFrequencyCustomers = async (
 
 export const getNormalFrequencyCustomers = async (
   { queryKey }: QueryFunctionContext<[string, string, number, number, string]>)
-  : Promise<{ table: BehaviorClusterCustomers; total: number }> => {
+  : Promise<BehaviorClusterCustomers> => {
   const [, pageIndex, pageSize, searchQuery] = queryKey;
   const response = await apiClient.get('/analytics?behavior=normal-frequency', {
     params: {
@@ -127,7 +127,7 @@ export const getNormalFrequencyCustomers = async (
 
 export const getLowFrequencyCustomers = async (
   { queryKey }: QueryFunctionContext<[string, string, number, number, string]>)
-  : Promise<{ table: BehaviorClusterCustomers; total: number }> => {
+  : Promise<BehaviorClusterCustomers> => {
   const [, pageIndex, pageSize, searchQuery] = queryKey;
   const response = await apiClient.get('/analytics?behavior=low-frequency', {
     params: {

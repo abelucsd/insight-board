@@ -3,5 +3,12 @@
  * Request a specific behavior for the backend to serve.
  */
 export interface BehaviorClusterCustomers {
-  customerTable: { name: string; id: string; email: string }[];
+  table: { name: string; id: string; email: string }[];
+  total: number;
 };
+
+export type CustomerTable = BehaviorClusterCustomers['table'];
+
+export type BehaviorType = 'revenue' | 'recency' | 'frequency';
+
+export type LevelType = 'high' | 'normal' | 'low';

@@ -3,16 +3,12 @@ import {
   createColumnHelper,
 } from '@tanstack/react-table';
 import Table from '../../components/Table';
-import { BehaviorClusterCustomers } from '../../types/customerTrends';
+import { CustomerTable, BehaviorType, LevelType } from '../../types/customerTrends';
 
 interface ViewCustomerGroupTableProps {
-  behavior: string;    
+  behavior: BehaviorType;    
   behaviorObject: {
-    table: {
-        name: string;
-        id: string;
-        email: string;
-    }[];
+    table: CustomerTable;
     total: number;
     pageIndex: number;
     pageSize: number;
@@ -22,8 +18,8 @@ interface ViewCustomerGroupTableProps {
     setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
     isLoading: boolean;
     isError: boolean;
-  }
-  handleLevelChange: (behavior: string, levelType: string) => void;
+  };
+  handleLevelChange: (behavior: BehaviorType, levelType: LevelType) => void;
 }
 
 const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: ViewCustomerGroupTableProps) => {
@@ -35,7 +31,7 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
     setBehaviorTitle(title);
   }, [])
 
-  const handleClick = (levelType: string) => {
+  const handleClick = (behavior: BehaviorType, levelType: LevelType) => {
     handleLevelChange(behavior, levelType);
   };
 
@@ -72,9 +68,9 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
       <h2 className="">Customers Grouped by {behaviorTitle} Contribution</h2>
       <div className="flex flex-col gap-4">
         <div className="flex flex-row gap-2">
-          <button onClick={() => handleClick('high')}>High</button>
-          <button onClick={() => handleClick('normal')}>Normal</button>
-          <button onClick={() => handleClick('low')}>Low</button>
+          <button onClick={() => handleClick(behavior, 'high')}>High</button>
+          <button onClick={() => handleClick(behavior, 'normal')}>Normal</button>
+          <button onClick={() => handleClick(behavior, 'low')}>Low</button>
         </div>
         <Table
           data={behaviorObject.table}
@@ -92,6 +88,6 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
       </div>
     </div>
   )
-}
+};
 
-export default ViewCustomerGroupTable
+export default ViewCustomerGroupTable;
