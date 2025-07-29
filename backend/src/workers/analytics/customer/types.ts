@@ -1,3 +1,5 @@
+export type Analysis = 'customer-behavior' | '';
+
 type ClusterLevel = 'high' | 'normal' | 'low';
 
 export interface CustomerRecord {

@@ -27,7 +27,11 @@ describe("Customer trends analytics end points unit tests", () => {
         const mockedResult = {
           message: expect.stringContaining('success'),
           data: true
-        };        
+        };
+        req.params = {
+          analysis: 'customer-behavior',
+          filter: 'highSpend'
+        };
         jest.spyOn(mlTrendsService, 'getCustomerTrends').mockResolvedValue(true);
         await getCustomerTrends(req, res, next);
 
@@ -38,11 +42,21 @@ describe("Customer trends analytics end points unit tests", () => {
 
     it('should call next with an error if service throws', async () => {
       const mockError = new Error('failure');
+      req.params = {
+          analysis: 'customer-behavior',
+          filter: 'highSpend'
+        };
       jest.spyOn(mlTrendsService, 'getCustomerTrends').mockRejectedValue(mockError);
       await getCustomerTrends(req, res, next);
 
       expect(next).toHaveBeenCalledWith(mockError);
 
+    });
+
+    it('should return a 400 status code with missing request parameters', async () => {
+      req.params = {}
+      const result = await getCustomerTrends(req, res, next);
+      expect(res.status).toHaveBeenCalledWith(400);
     })
   });
 });
