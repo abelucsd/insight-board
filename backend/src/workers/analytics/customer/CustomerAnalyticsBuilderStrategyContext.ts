@@ -43,23 +43,27 @@ export class CustomerAnalyticsBuilderStrategyContext {
   };
 
   public async buildAnalytics(): Promise<any> {
-    const serializedData = this.serializeData();
-    return this.analysisBuilderStrategy.buildAnalytics(serializedData);
+    try {
+      const serializedData = this.serializeData();
+      return await this.analysisBuilderStrategy.buildAnalytics(serializedData);
+    } catch (error) {
+      throw error;
+    }
   };
 
   public async cacheAnalytics(results: BuilderBehaviorClusteringResult, analysis: string): Promise<String | null> {
     try {
-      let retVal = null;      
+      let retVal = null;
       const validAnalysis = ['customer-behavior'];
       if (validAnalysis.includes(analysis)) {
         for (const [key, value] of Object.entries(results)) {
-          await getRedis().set(`CustomerAnalytics:${analysis}-${key}`, value);
+          await getRedis().set(`customerAnalytics:${analysis}-${key}`, JSON.stringify(value));
         };
         retVal = 'success';
       }
       return retVal;
-    } catch (err) {      
-      throw err;
+    } catch (error) {
+      throw error;
     };
-  }
+  };
 };

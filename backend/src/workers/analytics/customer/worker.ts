@@ -17,8 +17,12 @@ export function startWorker() {
           customerAnalyticsWorker = new Worker(
             'customerAnalytics',
             async (job: Job) => {
-              // delegate the job to a machine learning script and receive a JSON string.
-              return await runPythonFile(job.name);
+              try {
+                // delegate the job to a machine learning script and receive a JSON string.
+                return await runPythonFile(job.name);
+              } catch (error) {
+                logger.error(`[Worker]: Failed python file workflow. ${error}`);
+              }
             },
             {
               connection: {
@@ -28,24 +32,28 @@ export function startWorker() {
             }
           );
           customerAnalyticsWorker.on('completed', async (job: Job, returnvalue: any) => {
-            logger.info(`[Worker]: Completed job ${job.id}`);
-            // Strategy algorithm will return a dictionary of stringified values.
-            const serializationStrategy = new CustomerBehaviorClusteringStrategy();
-            const analysisBuilderStrategy = new CustomerBehaviorClusteringAnalyticsBuilderStrategy();
-            const analysisBuilderStrategyCtx = new CustomerAnalyticsBuilderStrategyContext(
-              serializationStrategy, 
-              analysisBuilderStrategy, 
-              returnvalue
-            );            
-            const results = await analysisBuilderStrategyCtx.buildAnalytics();            
-            await analysisBuilderStrategyCtx.cacheAnalytics(results, job.name);
+            try {
+              logger.info(`[Worker]: Completed job ${job.id}`);
+              // Strategy algorithm will return a dictionary of stringified values.
+              const serializationStrategy = new CustomerBehaviorClusteringStrategy();
+              const analysisBuilderStrategy = new CustomerBehaviorClusteringAnalyticsBuilderStrategy();
+              const analysisBuilderStrategyCtx = new CustomerAnalyticsBuilderStrategyContext(
+                serializationStrategy, 
+                analysisBuilderStrategy, 
+                returnvalue
+              );
+              const results = await analysisBuilderStrategyCtx.buildAnalytics();            
+              await analysisBuilderStrategyCtx.cacheAnalytics(results, job.name);
+            } catch (error) {
+              logger.error(`[Worker]: Failed during transform and load results into the cache. ${error}`);
+            }
           });
           customerAnalyticsWorker.on('failed', (job: Job | undefined, error: Error, prev: string) => {
-            logger.error(`[Worker]: Failed job ${job?.id}, ${error}`)            
+            logger.error(`[Worker]: Failed job ${job?.id}, ${error}`);
           });
-          customerAnalyticsWorker.on('error', err => {        
-            logger.error(`[Worker]: ${err}`); 
-            reject(err);           
+          customerAnalyticsWorker.on('error', error => {
+            logger.error(`[Worker]: ${error}`); 
+            reject(error);
           });
           resolve();
         } else {
