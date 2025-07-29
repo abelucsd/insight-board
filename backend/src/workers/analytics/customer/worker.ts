@@ -37,11 +37,8 @@ export function startWorker() {
               analysisBuilderStrategy, 
               returnvalue
             );            
-            const results = await analysisBuilderStrategyCtx.buildAnalytics();
-
-            for (const [key, value] of Object.entries(results)) {
-              await getRedis().set(`customerAnalytics:${key}`, value);
-            }
+            const results = await analysisBuilderStrategyCtx.buildAnalytics();            
+            await analysisBuilderStrategyCtx.cacheAnalytics(results, job.name);
           });
           customerAnalyticsWorker.on('failed', (job: Job | undefined, error: Error, prev: string) => {
             logger.error(`[Worker]: Failed job ${job?.id}, ${error}`)            
