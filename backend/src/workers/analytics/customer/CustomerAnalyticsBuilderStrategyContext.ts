@@ -4,7 +4,11 @@ import { SerializedBehaviorClusteringResult } from "./customerStrategyReturnType
 import { CustomerAnalyticsBuilderStrategy } from './CustomerAnalyticsBuilderStrategy';
 import { Analysis } from './types';
 import { BuilderBehaviorClusteringResult } from './customerStrategyReturnTypes';
+<<<<<<< HEAD
 import { getRedis, cacheValue } from "../../../redis/redisClient";
+=======
+import { getRedis } from "../../../redis/redisClient";
+>>>>>>> Feat/integrate backend python ml (#105)
 import { createLogger } from "../../../utils/logger";
 
 const logger = createLogger('CustomerAnalyticsBuilderStrategyContext')
