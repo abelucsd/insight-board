@@ -17,11 +17,15 @@ export const getCustomerTrends = async(
       });
       return;
     };
-    const { analysis, filter, page, limit, search } = req.query;
+    const analysis = req.query.analysis as string;
+    const filter = req.query.filter as string;
+    const page = parseInt(req.query.page as string);
+    const limit = parseInt(req.query.limit as string);
+    const search = parseInt(req.query.search as string);
 
     console.log("Going into the service layer.")
 
-    const response = await mlTrendsService.getCustomerTrends(analysis as string, filter as string);
+    const response = await mlTrendsService.getCustomerTrends(analysis as string, filter as string, page, limit);
     res.status(200).json({
       message: 'Customer trends retrieved successfully',
       data: response

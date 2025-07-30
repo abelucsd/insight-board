@@ -22,7 +22,7 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
      * Call the done function after the assertions to ensure the callback completes before finishing the test.
      */    
     it('should run the python file with a resolved promise.', done => {      
-      const analysisType = 'behavior';
+      const analysisType = 'customer-behavior';
       const args = [mongoUri, dbName, analysisType];
       console.log(`MONGO_URI: ${mongoUri}`)
       console.log(`DB Name: ${dbName}`)
@@ -46,7 +46,7 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
     }, 30000)
 
     it('should receive correct map structure from stdout', done => {      
-      const analysisType = 'behavior';
+      const analysisType = 'customer-behavior';
       const args = [mongoUri, dbName, analysisType];
 
       const pythonProcess = spawn(pythonExecutable, [filePath, ...args]);

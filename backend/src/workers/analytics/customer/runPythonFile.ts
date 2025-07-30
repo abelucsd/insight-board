@@ -47,7 +47,6 @@ export const runPythonFile = async (analysisType: string): Promise<string> => {
       } else {
         reject(new Error(`Process exited with code ${code}`));
       }
-    });            
-    return result;
+    });    
   });
 };
