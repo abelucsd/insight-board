@@ -7,16 +7,21 @@ const logger = createLogger('mlTrends.controller');
 export const getCustomerTrends = async(
   req: Request, res: Response, next: NextFunction
 ) : Promise<void> => {
-  try {
-    const { behavior } = req.query;
+  try {    
+    logger.info(`[getCustomerTrends] Request received.`);        
+    
+    if (req.query.analysis == null || req.query.filter == null) {    
+      
+      res.status(400).json({
+        error: 'Missing request parameters.'
+      });
+      return;
+    };
+    const { analysis, filter, page, limit, search } = req.query;
 
-    if (typeof behavior !== 'string') {
-      res.status(400).json({ error: "Invalid behavior type"});
-      return
-    }
+    console.log("Going into the service layer.")
 
-    logger.info(`[getCustomerTrends] Request received.`);
-    const response = await mlTrendsService.getCustomerTrends(behavior);
+    const response = await mlTrendsService.getCustomerTrends(analysis as string, filter as string);
     res.status(200).json({
       message: 'Customer trends retrieved successfully',
       data: response

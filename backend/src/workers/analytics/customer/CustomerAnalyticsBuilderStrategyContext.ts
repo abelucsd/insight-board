@@ -2,6 +2,12 @@ import { CustomerAnalyticsSerializationStrategy } from "./CustomerAnalyticsSeria
 import { ClusteringResult } from "./types";
 import { SerializedBehaviorClusteringResult } from "./customerStrategyReturnTypes";
 import { CustomerAnalyticsBuilderStrategy } from './CustomerAnalyticsBuilderStrategy';
+import { Analysis } from './types';
+import { BuilderBehaviorClusteringResult } from './customerStrategyReturnTypes';
+import { getRedis } from "../../../redis/redisClient";
+import { createLogger } from "../../../utils/logger";
+
+const logger = createLogger('CustomerAnalyticsBuilderStrategyContext')
 
 export class CustomerAnalyticsBuilderStrategyContext {
   private serializationStrategy: CustomerAnalyticsSerializationStrategy;
@@ -37,7 +43,28 @@ export class CustomerAnalyticsBuilderStrategyContext {
   };
 
   public async buildAnalytics(): Promise<any> {
-    const serializedData = this.serializeData();
-    return this.analysisBuilderStrategy.buildAnalytics(serializedData);
+    try {
+      const serializedData = this.serializeData();
+      return await this.analysisBuilderStrategy.buildAnalytics(serializedData);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  public async cacheAnalytics(results: BuilderBehaviorClusteringResult, analysis: string): Promise<String | null> {
+    try {
+      let retVal = null;
+      const validAnalysis = ['customer-behavior'];
+      console.log("Caching the data.")
+      if (validAnalysis.includes(analysis)) {
+        for (const [key, value] of Object.entries(results)) {
+          await getRedis().set(`customerAnalytics:${analysis}-${key}`, JSON.stringify(value));
+        };
+        retVal = 'success';
+      }
+      return retVal;
+    } catch (error) {
+      throw error;
+    };
   };
 };

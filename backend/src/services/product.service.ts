@@ -43,7 +43,7 @@ export const productService = {
       logger.info(`[getProductById] Fetching product with ID: ${id}`);
       return await Product.findById(id);
     } catch (error) {
-      const err = new CustomError('Failed to fetch product by ID', 404);      
+      const err = new CustomError('Failed to fetch product by ID', 404);
       throw err;
     }
   },

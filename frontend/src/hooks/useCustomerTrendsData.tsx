@@ -4,15 +4,7 @@ import '@tanstack/react-query';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import {
-  getHighSpenderCustomers,
-  getNormalSpenderCustomers,
-  getLowSpenderCustomers,
-  getHighRecencyCustomers,
-  getNormalRecencyCustomers,
-  getLowRecencyCustomers,
-  getHighFrequencyCustomers,
-  getNormalFrequencyCustomers,
-  getLowFrequencyCustomers,
+  getCustomerTrendAnalytics,
 } from '../api/customerTrendsAPI';
 import { CustomerTable, BehaviorType, LevelType } from '../types/customerTrends';
 
@@ -65,19 +57,19 @@ export const useCustomerTrendsData = () => {
 
   const queries = {
     revenue: {
-      high: useQuery({queryKey: [behavior, 'high-spend', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getHighSpenderCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
-      normal: useQuery({queryKey: [behavior, 'normal-spend', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getNormalSpenderCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),      
-      low: useQuery({queryKey: [behavior, 'low-spend', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getLowSpenderCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      high: useQuery({queryKey: [behavior, 'highSpend', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      normal: useQuery({queryKey: [behavior, 'normalSpend', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),      
+      low: useQuery({queryKey: [behavior, 'lowSpend', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
     },
     recency: {
-      high: useQuery({queryKey: [behavior, 'high-recency', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getHighRecencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
-      normal: useQuery({queryKey: [behavior, 'normal-recency', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getNormalRecencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
-      low: useQuery({queryKey: [behavior, 'low-recency', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getLowRecencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      high: useQuery({queryKey: [behavior, 'highRecency', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      normal: useQuery({queryKey: [behavior, 'normalRecency', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      low: useQuery({queryKey: [behavior, 'lowRecency', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
     },
     frequency: {
-      high: useQuery({queryKey: [behavior, 'high-frequency', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getHighFrequencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
-      normal: useQuery({queryKey: [behavior, 'normal-frequency', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getNormalFrequencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
-      low: useQuery({queryKey: [behavior, 'low-frequency', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getLowFrequencyCustomers, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      high: useQuery({queryKey: [behavior, 'highFrequency', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      normal: useQuery({queryKey: [behavior, 'normalFrequency', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      low: useQuery({queryKey: [behavior, 'lowFrequency', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
     }
   }
 

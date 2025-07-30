@@ -34,15 +34,15 @@ export class CustomerBehaviorClusteringAnalyticsBuilderStrategy implements Custo
     }
 
     return {
-      spendHighTable: allTables['spendHigh'] ?? [],
-      spendNormalTable: allTables['spendNormal'] ?? [],
-      spendLowTable: allTables['spendLow'] ?? [],
-      frequencyHighTable: allTables['frequencyHigh'] ?? [],
-      frequencyNormalTable: allTables['frequencyNormal'] ?? [],
-      frequencyLowTable: allTables['frequencyLow'] ?? [],
-      recencyHighTable: allTables['recencyHigh'] ?? [],
-      recencyNormalTable: allTables['recencyNormal'] ?? [],
-      recencyLowTable: allTables['recencyLow'] ?? [],
+      spendHigh: allTables['spendHigh'] ?? [],
+      spendNormal: allTables['spendNormal'] ?? [],
+      spendLow: allTables['spendLow'] ?? [],
+      frequencyHigh: allTables['frequencyHigh'] ?? [],
+      frequencyNormal: allTables['frequencyNormal'] ?? [],
+      frequencyLow: allTables['frequencyLow'] ?? [],
+      recencyHigh: allTables['recencyHigh'] ?? [],
+      recencyNormal: allTables['recencyNormal'] ?? [],
+      recencyLow: allTables['recencyLow'] ?? [],
     };
   };
 };

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { logo } from "../utils/data";
 import { navItems } from "../utils/data";
-import { productsDropdownLinks, invoiceDropdownLinks, customerDropdownLinks } from "../utils/data";
+import { trendsDropdownLinks, productsDropdownLinks, invoiceDropdownLinks, customerDropdownLinks } from "../utils/data";
 import DropdownLinks from "./DropdownLinks";
 
 interface SidenavProps {
@@ -18,11 +18,19 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
       `}
       >
       <h1>{logo}</h1>
-      <ul className="flex flex-col gap-6">
+      <ul className="flex flex-col gap-6">        
         <li onClick={onLinkClick}>
           <Link to={navItems[0].link}>
             <h3>{navItems[0].name}</h3>
           </Link>
+        </li>
+
+        <li>
+          <DropdownLinks 
+            title={`Trends`} 
+            links={trendsDropdownLinks} 
+            onLinkClick={onLinkClick}
+          />
         </li>
 
         <li>

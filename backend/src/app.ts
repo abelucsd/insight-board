@@ -13,6 +13,7 @@ import { analyticsRouter } from './routes/analytics.routes';
 import { customerRouter } from './routes/customer.route';
 import { startAnalyticsWorker, stopAnalyticsWorker } from './workers/analytics/invoice/analyticsWorker';
 import { setupCronJobs } from './utils/cronjob';
+import * as customerWorker from './workers/analytics/customer/worker';
 
 
 const app = express();
@@ -40,6 +41,7 @@ app.use(limiter);
 
 // Worker
 startAnalyticsWorker();
+customerWorker.startWorker();
 
 // Routes
 app.use('/api/products', productRouter);
@@ -66,6 +68,19 @@ process.on('SIGINT', async () => {
 process.on('SIGTERM', async () => {
   console.log('SIGTERM received. Closing worker...');
   await stopAnalyticsWorker();
+  process.exit(0);
+});
+
+
+process.on('SIGINT', async () => {
+  console.log('SIGINT received. Closing worker...');
+  await customerWorker.stopAnalyticsWorker();
+  process.exit(0);
+});
+
+process.on('SIGTERM', async () => {
+  console.log('SIGTERM received. Closing worker...');
+  await customerWorker.stopAnalyticsWorker();
   process.exit(0);
 });
 

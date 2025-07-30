@@ -12,6 +12,7 @@ import LoadInvoices from "./pages/invoices/LoadInvoices"
 import { useEffect } from "react"
 import ViewCustomers from "./pages/customers/ViewCustomers";
 import LoadCustomers from "./pages/customers/LoadCustomers";
+import ViewCustomerTrends from "./pages/trends/CustomerTrends";
 
 const queryClient = new QueryClient();
 // TODO: consider persister.
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/invoices/add-batch" element={<LoadInvoices />} />
                 <Route path="/customers/view" element={<ViewCustomers />} />
                 <Route path="/customers/add-batch" element={<LoadCustomers />} />
+                <Route path="/trends/customers" element={<ViewCustomerTrends />} />
               </Route>
             </Routes>
           
