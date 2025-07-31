@@ -89,8 +89,8 @@ describe('Product Controller', () => {
     it('should return all products', async () => {
       // Mock Service with sample data
       const products = [
-        { _id: '1', name: 'Product 1', price: 10 },
-        { _id: '2', name: 'Product 2', price: 20 },
+        { _id: '1', id: 'prod-01', name: 'Product 1', category: 'Electronics', price: 10, salePrice: 10, cost: 4},
+        { _id: '2', id: 'prod-02', name: 'Product 2', category: 'Electronics', price: 20, salePrice: 20, cost: 8},
       ];
       const mockProducts = {data: products, total: 2};
 
@@ -122,8 +122,8 @@ describe('Product Controller', () => {
 
     it('should return 200 status code', async () => {
       const products = [
-        { _id: '1', name: 'Product 1', price: 10 },
-        { _id: '2', name: 'Product 2', price: 20 },
+        { _id: '1', id: 'prod-01', name: 'Product 1', category: 'Electronics', price: 10, salePrice: 10, cost: 4},
+        { _id: '2', id: 'prod-02', name: 'Product 2', category: 'Electronics', price: 20, salePrice: 20, cost: 8},
       ];
       const mockProducts = {data: products, total: 2};
       jest.spyOn(productService, 'getProducts').mockResolvedValue(mockProducts);
@@ -143,7 +143,7 @@ describe('Product Controller', () => {
   describe('Get Product By ID', () => {
     it('should return a product by ID', async () => {
       const productId = '123';
-      const product = { _id: productId, name: 'Product 1', price: 10 };
+      const product = { _id: productId, id: 'prod-01', name: 'Product 1', category: 'Electronics', price: 10, salePrice: 10, cost: 4};
 
       jest.spyOn(productService, 'getProductById').mockResolvedValue(product);
       req.params = { id: productId };

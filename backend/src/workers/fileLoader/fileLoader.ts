@@ -8,6 +8,7 @@ import { Product } from "../../models/product";
 import { getDb } from '../../db/db';
 import { Invoice } from '../../models/invoice';
 import { Visit } from '../../models/visit';
+import { Customer } from '../../models/customer';
 
 
 const logger = createLogger('fileLoader.ts');
@@ -41,6 +42,9 @@ export async function cleanAndValidateData(
     case 'visit':
       schemaPaths = Visit.schema.paths;
       break;
+    case 'customer':
+      schemaPaths = Customer.schema.paths;
+      break;
     default:
       const err = new CustomError('Unsupported category type', 500);
       throw err;
@@ -63,7 +67,7 @@ export async function cleanAndValidateData(
       if (schemaPaths[key]) {
         // instance - Mongoose property that tells the field type.
         const schemaType = schemaPaths[key].instance;
-
+        
         switch (schemaType) {
           case 'Number':
             value = Number(value);
@@ -172,6 +176,9 @@ export async function loadFile(
       break
     case 'visit':
       await Visit.insertMany(cleanedRows);
+      break;
+    case 'customer':
+      await Customer.insertMany(cleanedRows);
       break;
     default:
       const err = new CustomError('Unsupported file type', 400);      

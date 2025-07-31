@@ -27,6 +27,13 @@ const ViewInvoices = () => {
   const columnHelper = createColumnHelper<typeof invoices[0]>();
 
   const columns = [
+    columnHelper.accessor('id', {
+      header: () => 'Id',
+      cell: info => info.getValue(),
+      meta: {
+        className: 'w-48 truncate',
+      },
+    }),
     columnHelper.accessor('customer', {
       header: () => 'Customer Name',
       cell: info => info.getValue(),
@@ -76,8 +83,8 @@ const ViewInvoices = () => {
         className: 'w-24 text-right',
       },
     }),
-    columnHelper.accessor('totalCost', {
-      header: () => 'Total Cost ($)',
+    columnHelper.accessor('cost', {
+      header: () => 'Cost ($)',
       cell: info => info.getValue().toFixed(2),
       meta: {
         className: 'w-24 text-right',

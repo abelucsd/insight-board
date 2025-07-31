@@ -10,6 +10,10 @@ export const navItems = [
     {name: "Dashboard", link: "/"},        
 ];
 
+export const trendsDropdownLinks = [
+    {name: "Customers", link: "/trends/customers"},
+]
+
 export const productsDropdownLinks = [
     {name: "View Products", link: "/products/view"},
     {name: "Add Product", link: "/products/add"},
@@ -19,6 +23,12 @@ export const productsDropdownLinks = [
 export const invoiceDropdownLinks = [
     {name: "View Invoices", link: "/invoices/view"},
     {name: "Add Batch Invoices", link: "/invoices/add-batch"},
+]
+
+export const customerDropdownLinks = [
+    {name: "View Customers", link: "/customers/view"},
+    {name: "Add Customer", link: "/customers/add"},
+    {name: "Add Batch Customer", link: "/customers/add-batch"},
 ]
 
 
