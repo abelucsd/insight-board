@@ -10,16 +10,22 @@ export const getCustomerTrends = async(
   try {    
     logger.info(`[getCustomerTrends] Request received.`);        
     
-    if (req.params.analysis == null || req.params.filter == null) {    
-      console.log("null or undef")  
+    if (req.query.analysis == null || req.query.filter == null) {    
+      
       res.status(400).json({
         error: 'Missing request parameters.'
       });
       return;
-    };    
-    const { analysis, filter } = req.params;
+    };
+    const analysis = req.query.analysis as string;
+    const filter = req.query.filter as string;
+    const page = parseInt(req.query.page as string);
+    const limit = parseInt(req.query.limit as string);
+    const search = parseInt(req.query.search as string);
 
-    const response = await mlTrendsService.getCustomerTrends(analysis, filter);
+    logger.info(`[getCustomerTrends] Query according to ${analysis} and ${filter}`)
+
+    const response = await mlTrendsService.getCustomerTrends(analysis as string, filter as string, page, limit);
     res.status(200).json({
       message: 'Customer trends retrieved successfully',
       data: response

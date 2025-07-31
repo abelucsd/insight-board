@@ -26,13 +26,19 @@ describe("Customer trends analytics end points unit tests", () => {
       async () => {
         const mockedResult = {
           message: expect.stringContaining('success'),
-          data: true
-        };
-        req.params = {
+          data: {
+            customerTable: true,
+            total: 10,
+          }
+        };        
+        req.query = {
           analysis: 'customer-behavior',
-          filter: 'highSpend'
+          filter: 'highSpend',  
+          page: '1',
+          limit: '10',
         };
-        jest.spyOn(mlTrendsService, 'getCustomerTrends').mockResolvedValue(true);
+
+        jest.spyOn(mlTrendsService, 'getCustomerTrends').mockResolvedValue({customerTable: true, total: 10});
         await getCustomerTrends(req, res, next);
 
         expect(res.status).toHaveBeenCalledWith(200);
@@ -42,10 +48,12 @@ describe("Customer trends analytics end points unit tests", () => {
 
     it('should call next with an error if service throws', async () => {
       const mockError = new Error('failure');
-      req.params = {
-          analysis: 'customer-behavior',
-          filter: 'highSpend'
-        };
+      req.query = {
+        analysis: 'customer-behavior',
+        filter: 'highSpend',  
+        page: '1',
+        limit: '10',
+      };
       jest.spyOn(mlTrendsService, 'getCustomerTrends').mockRejectedValue(mockError);
       await getCustomerTrends(req, res, next);
 
@@ -54,7 +62,7 @@ describe("Customer trends analytics end points unit tests", () => {
     });
 
     it('should return a 400 status code with missing request parameters', async () => {
-      req.params = {}
+      req.query = {}
       const result = await getCustomerTrends(req, res, next);
       expect(res.status).toHaveBeenCalledWith(400);
     })

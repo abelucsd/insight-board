@@ -1,18 +1,27 @@
 import { createLogger } from "../utils/logger";
 import { CustomError } from "../errors/CustomError";
-import { getRedis } from "../redis/redisClient";
+import { getRedis, getValue } from "../redis/redisClient";
 import { getCustomerAnalyticsQueue } from "../workers/queues/customerAnalyticsQueue";
 
 const logger = createLogger('mlTrends.service');
 
 export const mlTrendsService = {
-  getCustomerTrends: async (analysis: string, filter: string) => {
+  getCustomerTrends: async (analysis: string, filter: string, page: number, limit: number) => {
     try {
-      // Try to get the data from the cache.
-      const value = await getRedis().get(`customerAnalytics:${analysis}-${filter}`);
-      if (value) {
-        return JSON.parse(value);
+      // Try to get the data from the cache.      
+      
+      const data = await getValue('customers', 'customer-behavior', filter);
+      // const value = await getRedis().get(`customerAnalytics:${analysis}-${filter}`);
+      if (data) {
+        logger.info(`[getCustomerTrends] Data was cached.`)
+        const startIndex = (page - 1) * limit;
+        const endIndex = page * limit;
+        const parsedData = JSON.parse(data);
+        const paginatedData = parsedData.slice(startIndex, endIndex);
+        return { customerTable: paginatedData, total: parsedData.length };
       }
+
+      logger.info(`[getCustomerTrends] Pushing job into the queue.`)
 
       // Push the job into the queue.
       let queue = getCustomerAnalyticsQueue();      

@@ -10,6 +10,10 @@ export const navItems = [
     {name: "Dashboard", link: "/"},        
 ];
 
+export const trendsDropdownLinks = [
+    {name: "Customers", link: "/trends/customers"},
+]
+
 export const productsDropdownLinks = [
     {name: "View Products", link: "/products/view"},
     {name: "Add Product", link: "/products/add"},
