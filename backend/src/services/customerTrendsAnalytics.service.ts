@@ -18,7 +18,7 @@ export const mlTrendsService = {
         const endIndex = page * limit;
         const parsedData = JSON.parse(data);
         const paginatedData = parsedData.slice(startIndex, endIndex);
-        return { data: paginatedData, total: parsedData.length };
+        return { customerTable: paginatedData, total: parsedData.length };
       }
 
       logger.info(`[getCustomerTrends] Pushing job into the queue.`)

@@ -23,7 +23,7 @@ export const getCustomerTrends = async(
     const limit = parseInt(req.query.limit as string);
     const search = parseInt(req.query.search as string);
 
-    console.log("Going into the service layer.")
+    logger.info(`[getCustomerTrends] Query according to ${analysis} and ${filter}`)
 
     const response = await mlTrendsService.getCustomerTrends(analysis as string, filter as string, page, limit);
     res.status(200).json({

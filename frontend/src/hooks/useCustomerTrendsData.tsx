@@ -57,19 +57,19 @@ export const useCustomerTrendsData = () => {
 
   const queries = {
     revenue: {
-      high: useQuery({queryKey: [behavior, 'highSpend', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
-      normal: useQuery({queryKey: [behavior, 'normalSpend', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),      
-      low: useQuery({queryKey: [behavior, 'lowSpend', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      high: useQuery({queryKey: [behavior, 'spendHigh', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      normal: useQuery({queryKey: [behavior, 'spendNormal', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),      
+      low: useQuery({queryKey: [behavior, 'spendLow', revenue.pageIndex, revenue.pageSize, revenue.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
     },
     recency: {
-      high: useQuery({queryKey: [behavior, 'highRecency', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
-      normal: useQuery({queryKey: [behavior, 'normalRecency', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
-      low: useQuery({queryKey: [behavior, 'lowRecency', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      high: useQuery({queryKey: [behavior, 'recencyHigh', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      normal: useQuery({queryKey: [behavior, 'recencyNormal', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      low: useQuery({queryKey: [behavior, 'recencyLow', recency.pageIndex, recency.pageSize, recency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
     },
     frequency: {
-      high: useQuery({queryKey: [behavior, 'highFrequency', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
-      normal: useQuery({queryKey: [behavior, 'normalFrequency', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
-      low: useQuery({queryKey: [behavior, 'lowFrequency', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      high: useQuery({queryKey: [behavior, 'frequencyHigh', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      normal: useQuery({queryKey: [behavior, 'frequencyNormal', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
+      low: useQuery({queryKey: [behavior, 'frequencyLow', frequency.pageIndex, frequency.pageSize, frequency.searchQuery], queryFn: getCustomerTrendAnalytics, staleTime: 1000 * 60 * 60 * 24 * 30, refetchInterval: false}),
     }
   }
 

@@ -11,7 +11,7 @@ const ViewCustomerTrends = () => {
 
   return (
     <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">
-      <h2 className="">Customers Grouped by Revenue Contribution</h2>      
+      <h2 className="">Customer Contribution Behavior</h2>      
       <ViewCustomerGroupTable 
         behavior={'revenue'} 
         behaviorObject={revenue}

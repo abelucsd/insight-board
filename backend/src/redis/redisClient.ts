@@ -55,8 +55,9 @@ export async function cacheValue(redisKeyType: RedisKey, analysis: string, value
 export async function getValue(redisKeyType: RedisKey, analysis: string, filter?: string) {
   try {
     const key = getRedisKey(redisKeyType, analysis, filter);
-    console.log(key)
+    logger.info(`[getValue] Redis key retrieved: ${key}`);
     return await getRedis().get(key);
+    logger.info(`[getValue] Completed the cache for ${key}`);
   } catch (error) {
     logger.error(`[cacheValue]: Error fetching value into redis. ${error}.`);
   };

@@ -27,7 +27,7 @@ describe("Customer trends analytics end points unit tests", () => {
         const mockedResult = {
           message: expect.stringContaining('success'),
           data: {
-            data: true,
+            customerTable: true,
             total: 10,
           }
         };        
@@ -38,7 +38,7 @@ describe("Customer trends analytics end points unit tests", () => {
           limit: '10',
         };
 
-        jest.spyOn(mlTrendsService, 'getCustomerTrends').mockResolvedValue({data: true, total: 10});
+        jest.spyOn(mlTrendsService, 'getCustomerTrends').mockResolvedValue({customerTable: true, total: 10});
         await getCustomerTrends(req, res, next);
 
         expect(res.status).toHaveBeenCalledWith(200);

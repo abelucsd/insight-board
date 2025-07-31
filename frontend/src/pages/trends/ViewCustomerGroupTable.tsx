@@ -25,15 +25,20 @@ interface ViewCustomerGroupTableProps {
 const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: ViewCustomerGroupTableProps) => {
 
   const [behaviorTitle, setBehaviorTitle] = useState<string>(behavior);
+  const [level, setLevel] = useState<string>('High');
+
   useEffect(() => {
     let title = behaviorTitle;
-    title.charAt(0).toUpperCase;
+    title = title.charAt(0).toUpperCase() + title.slice(1);
     setBehaviorTitle(title);
-  }, [])
+  }, [])  
 
   const handleClick = (behavior: BehaviorType, levelType: LevelType) => {
     handleLevelChange(behavior, levelType);
-  };
+    let newLevel = levelType;
+    newLevel = newLevel.charAt(0).toUpperCase() + newLevel.slice(1);
+    setLevel(newLevel);
+  };  
 
   const columnHelper = createColumnHelper<typeof behaviorObject.customerTable[0]>();
   
@@ -65,12 +70,12 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
 
   return (
     <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">
-      <h2 className="">Customers Grouped by {behaviorTitle} Contribution</h2>
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-row gap-2">
-          <button onClick={() => handleClick(behavior, 'high')}>High</button>
-          <button onClick={() => handleClick(behavior, 'normal')}>Normal</button>
-          <button onClick={() => handleClick(behavior, 'low')}>Low</button>
+      <h2>{level} {behaviorTitle}</h2>
+      <div className="flex flex-col">
+        <div className="flex flex-row justify-end gap-2">
+          <button className='btn-secondary' onClick={() => handleClick(behavior, 'high')}>High</button>
+          <button className='btn-secondary' onClick={() => handleClick(behavior, 'normal')}>Normal</button>
+          <button className='btn-secondary' onClick={() => handleClick(behavior, 'low')}>Low</button>
         </div>
         <Table
           data={behaviorObject.customerTable}

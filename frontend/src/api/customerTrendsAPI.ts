@@ -8,14 +8,16 @@ import apiClient from './apiClient';
 export const getCustomerTrendAnalytics = async (
   { queryKey }: QueryFunctionContext<[string, string, number, number, string]>)
   : Promise<BehaviorClusterCustomers> => {
-  const [behavior, filterType, pageIndex, pageSize, searchQuery] = queryKey;
-  const response = await apiClient.get(`/analytics/customer-trends?analysis=${behavior}&filter=${filterType}`, {
+  const [behavior, filterType, pageIndex, pageSize, searchQuery] = queryKey;  
+  const response = await apiClient.get(`/analytics/customer-trends`, {
     params: {
+      analysis: behavior,
+      filter: filterType,
       page: pageIndex + 1,
       limit: pageSize,
       search: searchQuery,
     }
   })
-  
-  return response.data;
+  console.log(response.data.data)
+  return response.data.data;
 };

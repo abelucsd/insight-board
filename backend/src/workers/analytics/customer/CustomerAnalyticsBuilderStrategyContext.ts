@@ -57,13 +57,14 @@ export class CustomerAnalyticsBuilderStrategyContext {
     try {
       let retVal = null;
       const validAnalysis = ['customer-behavior'];
-      console.log("Caching the data.")
+      
       if (validAnalysis.includes(analysis)) {
         for (const [key, value] of Object.entries(results)) {
           await cacheValue('customers', 'customer-behavior', JSON.stringify(value), key);          
         };
         retVal = 'success';
       }
+      logger.info(`[cacheAnalytics] Done caching the ${validAnalysis} analytics.`)
       return retVal;
     } catch (error) {
       throw error;
