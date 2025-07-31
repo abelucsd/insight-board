@@ -111,9 +111,9 @@ if __name__ == '__main__':
       analysis_type = sys.argv[3]
 
       match analysis_type:
-         case 'behavior':
-            result = run_ml_analysis(mongo_uri, db_name, analysis_type)
-            print(json.dumps(result))
+         case 'customer-behavior':
+            result = run_ml_analysis(mongo_uri, db_name, analysis_type)            
+            print(json.dumps(result), flush=True)
             sys.exit(0)
          case _:
             sys.exit(1)            

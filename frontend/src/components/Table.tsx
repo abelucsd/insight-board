@@ -22,6 +22,7 @@ interface TableProps {
   columns: ColumnDef<any, any>[];
   isLoading: boolean;
   isError: boolean;
+  extraFilters?: string;
 }
 
 const ViewProducts = ({
@@ -73,6 +74,8 @@ const ViewProducts = ({
       Error: {'Failed to load data.'}
     </div>;
   };
+
+  const emptyRowCount = pageSize - table.getRowModel().rows.length;
 
 
   return (
@@ -126,6 +129,13 @@ const ViewProducts = ({
                   <td key={cell.id} className="px-4 py-4">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
+                ))}
+              </tr>
+            ))}
+            {Array.from({ length: emptyRowCount }).map((_, index) => (
+              <tr key={`empty-${index}`} className="border-b border-gray-200 bg-white shadow-sm">
+                {columns.map(col => (
+                  <td key={col.id} className="px-4 py-4">&nbsp;</td>
                 ))}
               </tr>
             ))}

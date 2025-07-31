@@ -19,7 +19,9 @@ export function startWorker() {
             async (job: Job) => {
               try {
                 // delegate the job to a machine learning script and receive a JSON string.
-                return await runPythonFile(job.name);
+                const result =  await runPythonFile(job.name);
+                logger.info(`[Worker]: Results from runPythonFile--${result}`)
+                return result;
               } catch (error) {
                 logger.error(`[Worker]: Failed python file workflow. ${error}`);
               }
@@ -31,7 +33,7 @@ export function startWorker() {
               },
             }
           );
-          customerAnalyticsWorker.on('completed', async (job: Job, returnvalue: any) => {
+          customerAnalyticsWorker.on('completed', async (job: Job, value: any) => {
             try {
               logger.info(`[Worker]: Completed job ${job.id}`);
               // Strategy algorithm will return a dictionary of stringified values.
@@ -40,7 +42,7 @@ export function startWorker() {
               const analysisBuilderStrategyCtx = new CustomerAnalyticsBuilderStrategyContext(
                 serializationStrategy, 
                 analysisBuilderStrategy, 
-                returnvalue
+                value
               );
               const results = await analysisBuilderStrategyCtx.buildAnalytics();            
               await analysisBuilderStrategyCtx.cacheAnalytics(results, job.name);

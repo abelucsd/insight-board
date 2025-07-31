@@ -8,9 +8,9 @@ if (!fs.existsSync(logDir)) {
 
 const logFilePath = path.join(logDir, 'app.log');
 
-const writeToFile = (level: string, context: string, msg: string) => {
+const writeToFile = (msg: string) => {
   const timestamp = new Date().toISOString();
-  const logLine = `${timestamp} ${level.toUpperCase} [${context}]: ${msg}\n`;
+  const logLine = `${timestamp} ${msg}\n`;
   fs.appendFileSync(logFilePath, logLine);
 }
 
@@ -22,14 +22,14 @@ export const createLogger = (context: string) => {
 
       const formatted = `INFO [${context}]: ${msg}`;
       console.log(formatted);
-      writeToFile('info', context, formatted);
+      writeToFile(formatted);
     },
     error: (msg: string) => {
       if (isTest) return;
 
       const formatted = `ERROR [${context}]: ${msg}`;
       console.log(formatted);
-      writeToFile('info', context, formatted);
+      writeToFile(formatted);
     },
   }
 };

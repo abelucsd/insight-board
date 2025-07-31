@@ -32,9 +32,11 @@ function getRedisKey(redisKeyType: RedisKey, analysis: string, filter?: string) 
   switch (redisKeyType) {
     case 'customers': {
       redisKey = `customerAnalytics:${analysis}-${filter}`;
+      break;
     }
     case 'invoices': {
       redisKey = `invoiceAnalytics:${analysis}`;
+      break;
     }
   };
   return redisKey;
@@ -47,5 +49,16 @@ export async function cacheValue(redisKeyType: RedisKey, analysis: string, value
     await getRedis().set(key, value);
   } catch (error) {
     logger.error(`[cacheValue]: Error caching value into redis. ${error}.`);
+  };
+};
+
+export async function getValue(redisKeyType: RedisKey, analysis: string, filter?: string) {
+  try {
+    const key = getRedisKey(redisKeyType, analysis, filter);
+    logger.info(`[getValue] Redis key retrieved: ${key}`);
+    return await getRedis().get(key);
+    logger.info(`[getValue] Completed the cache for ${key}`);
+  } catch (error) {
+    logger.error(`[cacheValue]: Error fetching value into redis. ${error}.`);
   };
 };

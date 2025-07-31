@@ -2,6 +2,9 @@ import { ClusteringResult } from "./types";
 import { SerializedBehaviorClusteringResult } from "./customerStrategyReturnTypes";
 import { Customer } from '../../../models/customer';
 import { BuilderBehaviorClusteringResult } from './customerStrategyReturnTypes';
+import { createLogger } from "../../../utils/logger";
+
+const logger = createLogger(`CustomerAnalyticsBuilderStrategy`);
 
 export interface CustomerAnalyticsBuilderStrategy {
   buildAnalytics(data: SerializedBehaviorClusteringResult): Promise<BuilderBehaviorClusteringResult>;
@@ -12,6 +15,7 @@ export interface CustomerAnalyticsBuilderStrategy {
  */
 export class CustomerBehaviorClusteringAnalyticsBuilderStrategy implements CustomerAnalyticsBuilderStrategy {
   public async buildAnalytics(data: SerializedBehaviorClusteringResult): Promise<BuilderBehaviorClusteringResult> {
+    logger.info(`[buildAnalytics] Building the analytics table.`)
     // Build the table.
 
     // 1. Find the Customer to ID pairing.
@@ -21,7 +25,7 @@ export class CustomerBehaviorClusteringAnalyticsBuilderStrategy implements Custo
     for (const [featureName, customerRecords] of Object.entries(data)) {
       const table: { name: string; id: string; email: string }[] = [];
       for (const row of customerRecords) {
-        const customer = await Customer.findById(row.customerId).lean();
+        const customer = await Customer.findOne({id: row.customerId}).lean();
         if (customer){
           table.push({
             name: customer.name,
@@ -32,6 +36,8 @@ export class CustomerBehaviorClusteringAnalyticsBuilderStrategy implements Custo
       }
       allTables[featureName] = table
     }
+
+    logger.info(`[buildAnalytics] Done building the table.`)
 
     return {
       spendHigh: allTables['spendHigh'] ?? [],
