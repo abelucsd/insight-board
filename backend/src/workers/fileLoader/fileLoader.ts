@@ -60,7 +60,7 @@ export async function cleanAndValidateData(
     const cleanedRow: Record<string, any> = {};
 
     for (const [rawKey, rawValue] of Object.entries(row)) {
-      const key = toCamelCase(rawKey.trim());
+      const key = toCamelCase(rawKey.trim().replace(/\s+/g, ''));
       let value: any = rawValue.trim();
 
       // Clean value by inferring schema type

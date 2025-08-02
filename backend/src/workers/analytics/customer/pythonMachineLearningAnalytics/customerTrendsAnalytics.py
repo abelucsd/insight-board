@@ -20,7 +20,7 @@ def run_ml_analysis(mongo_uri, db_name, analysis_type):
 
       collection = db['invoices']      
       
-      invoices_cursor = collection.find({})            
+      invoices_cursor = collection.find({}, {'customerId': 1, 'price': 1, 'quantity': 1, 'revenue': 1, 'cost': 1, 'profit': 1, 'date': 1})
       invoices_documents = list(invoices_cursor)            
       clean_inv_docs = [convert_json_serializable_doc(doc) for doc in invoices_documents]
       
@@ -94,7 +94,9 @@ def run_ml_analysis(mongo_uri, db_name, analysis_type):
             'high': high_frequencies.to_dict(orient='records'), 
             'normal': normal_frequencies.to_dict(orient='records'), 
             'low': low_frequencies.to_dict(orient='records')},
-      }      
+      }
+
+      client.close();      
 
       return result 
    except Exception as e:

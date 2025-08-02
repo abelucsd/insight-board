@@ -17,18 +17,18 @@ describe('Products API', () => {
 
   // setup and teardown
   beforeAll(async () => {
-    mongoServer = await MongoMemoryServer.create();
-    const uri = mongoServer.getUri();
-    await mongoose.connect(uri);
+    // mongoServer = await MongoMemoryServer.create();
+    // const uri = mongoServer.getUri();
+    // await mongoose.connect(uri);
 
-    server = app.listen(3009);
+    // server = app.listen(3009);
   });
 
   afterAll(async () => {
-    await server.close();
-    await mongoose.connection.dropDatabase();
-    await mongoose.connection.close();
-    await mongoServer.stop();    
+    // await server.close();
+    // await mongoose.connection.dropDatabase();
+    // await mongoose.connection.close();
+    // await mongoServer.stop();    
   });
 
   beforeEach(async () => {
