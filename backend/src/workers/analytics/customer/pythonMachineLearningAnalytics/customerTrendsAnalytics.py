@@ -114,12 +114,6 @@ if __name__ == '__main__':
          case 'customer-behavior':
             result = run_ml_analysis(mongo_uri, db_name, analysis_type)            
             print(json.dumps(result), flush=True)
-         case 'behavior':
-            result = run_ml_analysis(mongo_uri, db_name, analysis_type)
-            print(json.dumps(result))
-         case 'customer-behavior':
-            result = run_ml_analysis(mongo_uri, db_name, analysis_type)            
-            print(json.dumps(result), flush=True)
             sys.exit(0)
          case _:
             sys.exit(1)            

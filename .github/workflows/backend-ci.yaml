@@ -16,17 +16,18 @@ jobs:
 
     services:
       mongo:
-        image: mongo:5.0
-        ports: -27017:27017
+        image: mongo:5
+        ports:
+          - 27017:27017
         options: >-
           --health-cmd="mongosh --eval 'db.runCommand({ ping: 1 })'"
           --health-interval=10s
-          --health-interval=5s
+          --health-timeout=5s
           --health-retries=5
 
     env:
-      MONGO_URI: ${{ secrets.MONGO_URI_DEV }}
-      DB_NAME: ${{ secrets.DB_NAME_DEV }}
+      MONGO_URI: mongodb://localhost:27017/testdb
+      DB_NAME: testdb
       NODE_ENV: development
 
     strategy:
@@ -71,8 +72,6 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y ca-certificates
 
       - name: Run tests
-        env:
-          MONGO_URI: mongodb://localhost:27017/testdb
         run: npm test
         working-directory: ./backend
 
