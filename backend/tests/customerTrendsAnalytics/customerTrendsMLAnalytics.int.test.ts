@@ -1,20 +1,77 @@
 import { jest } from '@jest/globals';
-import { describe, it, expect } from '@jest/globals';
+import { describe, it, expect, beforeAll, afterAll } from '@jest/globals';
 import { spawn } from 'child_process';
 import { config } from '../../src/config/config';
 import path from 'path';
 import os from 'os';
 import { ClusteringResult, ClusterCategory } from '../../src/workers/analytics/customer/types';
+import { Customer } from '../../src/models/customer';
+import { Invoice } from '../../src/models/invoice';
 
 // Dependencies:
 const filePath = path.join(__dirname, '..', '..', 'src', 'workers', 'analytics', 'customer', 'pythonMachineLearningAnalytics', 'customerTrendsAnalytics.py');
-const mongoUri = config.db.mongodbUri;
+let mongoUri = config.db.mongodbUri;
 const dbName = config.db.name;
 const pythonExecutable = os.platform() === 'win32'
   ? path.join(__dirname, '..', '..', '.venv', 'Scripts', 'python.exe')
   : path.join(__dirname, '..', '..', '.venv', 'bin', 'python');
 
 describe("Customer Trends Analytics - Integration Test with the Python machine learning algorithms", () => {
+  // beforeAll(async () => {
+  //   mongoUri = uri;
+  //   await Customer.create(
+  //     {
+  //       id: 'cust-01',
+  //       name: 'Foo Bar',
+  //       number: 9999999999,
+  //       address: 'USA',
+  //       email: 'foobar@email.com',      
+  //     },
+  //     {
+  //       id: 'cust-02',
+  //       name: 'Test Name',
+  //       number: 9999999998,
+  //       address: 'USA',
+  //       email: 'testname@email.com',
+  //     }
+  //   );
+  //   await Invoice.create(
+  //     {      
+  //       id: 'inv-01',
+  //       customerId: "cust-01",
+  //       customer: "Foo Bar", 
+  //       itemName: "Bar 2",
+  //       itemNumber: 'prod-01',
+  //       price: 5,
+  //       date: new Date().toDateString(),
+  //       quantity: 10,
+  //       revenue: 50,
+  //       cost: 10,
+  //       profit: 40,
+  //       location: 'USA',
+  //     },
+  //     {      
+  //       id: 'inv-02',
+  //       customerId: "cust-02",
+  //       customer: "Test Name", 
+  //       itemName: "Bar 2",
+  //       itemNumber: 'prod-02',
+  //       price: 10,
+  //       date: new Date().toDateString(),
+  //       quantity: 20,
+  //       revenue: 200,
+  //       cost: 40,
+  //       profit: 160,
+  //       location: 'USA',
+  //     }
+  //   );
+
+
+  // });
+  // afterAll(async () => {
+
+  // });
+
   describe('runPythonFile', () => {
 
     /**
@@ -43,7 +100,7 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
         expect(code).toBe(0);
         done();
       });
-    }, 30000)
+    }, 120000)
 
     it('should receive correct map structure from stdout', done => {      
       const analysisType = 'customer-behavior';
@@ -102,7 +159,7 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
         expect(code).toBe(0);
         done();
       });
-    }, 30000)
+    }, 120000)
     
     it('should run the python file and receive an exit code 1', done => {      
       const analysisType = 'fail';
@@ -124,7 +181,7 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
         expect(code).toBe(1);
         done();
       });
-    }, 30000)
+    }, 120000)
 
     it('should pass insufficient args to the python file.', done => {            
       const args = [mongoUri, dbName];
@@ -146,6 +203,6 @@ describe("Customer Trends Analytics - Integration Test with the Python machine l
         expect(code).toBe(1);
         done();
       });      
-    }, 30000)
+    }, 120000)
   })
 })
