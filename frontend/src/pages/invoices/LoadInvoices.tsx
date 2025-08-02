@@ -7,8 +7,7 @@ const LoadInvoices = () => {
     fileName,
     message,
     handleFileChange,
-    handleFileButtonClick, 
-    handleSubmit   
+    handleFileButtonClick,     
   } = useFileUpload({postUrl: `${API_URL}/worker/upload-file/invoice`});
 
   return (
@@ -34,7 +33,7 @@ const LoadInvoices = () => {
           Upload File
         </button>
         <p>{fileName}</p>
-        <button className="btn-primary" onClick={handleSubmit}>Submit</button>
+        <button className="btn-primary">Submit (Disabled for Demo)</button>
       </div>
 
       {message && <p>{message}</p>}

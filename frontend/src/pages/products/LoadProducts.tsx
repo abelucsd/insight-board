@@ -7,8 +7,7 @@ const LoadProducts = () => {
     fileName,
     message,
     handleFileChange,
-    handleFileButtonClick,
-    handleSubmit, 
+    handleFileButtonClick,    
    } = useFileUpload({postUrl: `${API_URL}/worker/upload-file/product`});
 
 
@@ -35,7 +34,7 @@ const LoadProducts = () => {
           Upload File
         </button>
         <p>{fileName}</p>
-        <button className="btn-primary" onClick={handleSubmit}>Submit (Disabled for Demo)</button>
+        <button className="btn-primary">Submit (Disabled for Demo)</button>
       </div>
 
       {message && <p>{message}</p>}
