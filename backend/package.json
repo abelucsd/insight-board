@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && cpx \"src/**/*.js\" dist",
+    "build:ts": "tsc && cpx \"src/**/*.js\" dist",
+    "build:py": "cpx \"src/workers/analytics/customer/pythonMachineLearningAnalytics/**/*.py\" \"dist/workers/analytics/customer/pythonMachineLearningAnalytics/\"",
+    "build": "npm run build:ts && npm run build:py",
     "start": "node dist/server.js",
     "dev": "cross-env NODE_ENV=development nodemon",
     "lint": "eslint 'src/**/*.ts'",
