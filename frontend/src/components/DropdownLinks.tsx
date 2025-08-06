@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { DownArrow } from "../icons/DownArrow";
 import { UpArrow } from "../icons/UpArrow";
