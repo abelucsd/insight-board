@@ -7,7 +7,7 @@ export const adminName = 'Blue Water';
 
 
 export const navItems = [
-    {name: "Dashboard", link: "/"},        
+    {name: "Dashboard", link: "/"},
 ];
 
 export const trendsDropdownLinks = [
@@ -26,8 +26,7 @@ export const invoiceDropdownLinks = [
 ]
 
 export const customerDropdownLinks = [
-    {name: "View Customers", link: "/customers/view"},
-    {name: "Add Customer", link: "/customers/add"},
+    {name: "View Customers", link: "/customers/view"},    
     {name: "Add Batch Customer", link: "/customers/add-batch"},
 ]
 
