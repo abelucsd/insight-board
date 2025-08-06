@@ -14,11 +14,11 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
       className={`    
         ${styles}
         flex flex-col gap-8 overflow-hidden shadow-xs 
-        border-r border-[#e5e7eb] w-64 min-h-screen h-full px-6 bg-[var(--bg-nav)]        
+        border-r border-[#e5e7eb] w-64 min-h-screen h-full px-6 bg-[var(--bg-nav)]
       `}
       >
       <h1>{logo}</h1>
-      <ul className="flex flex-col gap-6">        
+      <ul className="flex flex-col gap-6">
         <li onClick={onLinkClick}>
           <Link to={navItems[0].link}>
             <h3>{navItems[0].name}</h3>
