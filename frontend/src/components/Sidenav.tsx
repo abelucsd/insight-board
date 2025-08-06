@@ -3,12 +3,16 @@ import { logo } from "../utils/data";
 import { navItems } from "../utils/data";
 import { trendsDropdownLinks, productsDropdownLinks, invoiceDropdownLinks, customerDropdownLinks } from "../utils/data";
 import DropdownLinks from "./DropdownLinks";
+import { useState } from "react";
 
 interface SidenavProps {
   styles?: string;
   onLinkClick?: () => void;
 }
-const Sidenav = ({styles, onLinkClick}: SidenavProps) => {    
+
+const Sidenav = ({styles, onLinkClick}: SidenavProps) => {  
+  const [isOpen, setIsOpen]  = useState<boolean>(false);
+  const toggleDropdown = () => setIsOpen(prev => !prev);
   return (
     <nav 
       className={`    
@@ -29,7 +33,7 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
           <DropdownLinks 
             title={`Trends`} 
             links={trendsDropdownLinks} 
-            onLinkClick={onLinkClick}
+            onLinkClick={onLinkClick}            
           />
         </li>
 
@@ -37,7 +41,7 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
           <DropdownLinks 
             title={`Products`} 
             links={productsDropdownLinks} 
-            onLinkClick={onLinkClick}
+            onLinkClick={onLinkClick}            
           />
         </li>
 
