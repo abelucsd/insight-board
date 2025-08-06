@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 
 const Layout = () => {
   return (
-    <div className='flex flex-row max-w-screen'>
+    <div className='flex flex-row max-w-screen bg-gray-50'>
 
       <div className='max-[1280px]:hidden'>
         <Sidenav />
