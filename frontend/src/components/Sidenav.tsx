@@ -3,6 +3,8 @@ import { logo } from "../utils/data";
 import { navItems } from "../utils/data";
 import { trendsDropdownLinks, productsDropdownLinks, invoiceDropdownLinks, customerDropdownLinks } from "../utils/data";
 import DropdownLinks from "./DropdownLinks";
+import { useDropdownContext } from "../providers/DropdownProvider";
+
 
 interface SidenavProps {
   styles?: string;
@@ -10,6 +12,10 @@ interface SidenavProps {
 }
 
 const Sidenav = ({styles, onLinkClick}: SidenavProps) => {    
+  const {      
+      toggleDropdown,
+    } = useDropdownContext();    
+
   return (
     <nav 
       className={`    
@@ -20,7 +26,8 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
       >
       <h1>{logo}</h1>
       <ul className="flex flex-col gap-6">
-        <li onClick={onLinkClick}>
+        
+        <li onClick={() => {toggleDropdown(navItems[0].name)}}>
           <Link to={navItems[0].link}>
             <h3>{navItems[0].name}</h3>
           </Link>

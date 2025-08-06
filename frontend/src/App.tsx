@@ -13,6 +13,7 @@ import { useEffect } from "react"
 import ViewCustomers from "./pages/customers/ViewCustomers";
 import LoadCustomers from "./pages/customers/LoadCustomers";
 import ViewCustomerTrends from "./pages/trends/CustomerTrends";
+import { DropdownProvider } from "./providers/DropdownProvider";
 
 const queryClient = new QueryClient();
 // TODO: consider persister.
@@ -30,6 +31,7 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <MantineProvider>
+          <DropdownProvider>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Layout />}>
@@ -46,6 +48,7 @@ function App() {
             </Routes>
           
           </BrowserRouter>
+          </DropdownProvider>
         </MantineProvider>
       </QueryClientProvider>
     </>
