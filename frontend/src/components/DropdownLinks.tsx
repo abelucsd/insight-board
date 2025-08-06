@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { DownArrow } from "../icons/DownArrow";
+import { UpArrow } from "../icons/UpArrow";
 
 interface DropdownLink {
   name: string;
@@ -22,12 +24,20 @@ const DropdownLinks = ({title, links, onLinkClick}: DropdownLinksProps) => {
   return (
     <div
       ref={dropdownRef}      
-      className="relative"
+      className="relative w-full"
     >
       <button 
         onClick={toggleDropdown}
+        className="w-full"
       >
-        <h3>{title}</h3>
+        <div className="flex flex-row justify-between">
+          <h3>{title}</h3>
+          {isOpen === false ?
+            <DownArrow />
+          :
+            <UpArrow />
+          }          
+        </div>
       </button>
 
       {isOpen && (
