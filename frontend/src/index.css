@@ -6,11 +6,13 @@
     --nav-border: #e5e7eb;
     --bg-nav: white;    
     --bg-nav-dropdown: white;
-    --bg-card: white;    
+    --bg-card: white;
+    --color-table-border: #e5e7eb;
     --graph-border: #e5e7eb;
+    --card-border: #e5e7eb;
     --graph-primary: blue;
     --graph-active: pink;
-    --color-primary: red;
+    --color-primary: blue;
     --color-secondary: #e6f0fa;    
     --color-secondary-variant: #c9dff4;
     --color-white: white;
@@ -105,7 +107,8 @@
   }  
 
   .input-box {
-    @apply border rounded-md p-1 invalid:border-pink-500 invalid:text-pink-600 
+    @apply border rounded-md border-gray-300 p-2 
+    invalid:border-pink-500 invalid:text-pink-600 
     focus:border-sky-500 focus:outline focus:outline-sky-500
     focus:invalid:border-pink-500 focus:invalid:outline-pink-500 
     disabled:shadow-none disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 

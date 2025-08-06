@@ -25,7 +25,7 @@ interface TableProps {
   extraFilters?: string;
 }
 
-const ViewProducts = ({
+const Table = ({
   data,
   total,
   pageIndex,
@@ -96,10 +96,8 @@ const ViewProducts = ({
       </div>
 
       {/* md:w-auto */}
-      <div className="mx-auto w-[400px] md:w-full overflow-x-auto">
-        <table className="w-full border border-gray-300">
-          
-
+      <div className="mx-auto w-[400px] md:w-full overflow-x-auto border-[var(--color-table-border)] border-[2px] rounded-xl bg-white">
+        <table className="w-full">
           <thead>
             {table.getHeaderGroups().map(headerGroup => (
               <tr key={headerGroup.id} className="bg-white">
@@ -110,7 +108,7 @@ const ViewProducts = ({
                     <th 
                       key={header.id}
                       onClick={canSort ? header.column.getToggleSortingHandler() : undefined}
-                      className={`border px-4 py-4 text-left cursor-pointer select-none ${
+                      className={`border-b border-[var(--color-table-border)] px-6 py-4 pt-6 text-left cursor-pointer select-none ${
                         canSort ? 'hover:bg-gray-200' : ''
                       }`}
                     >
@@ -126,7 +124,7 @@ const ViewProducts = ({
             {table.getRowModel().rows.map(row => (
               <tr key={row.id} className="border-b border-gray-200 bg-white shadow-sm rounded">
                 {row.getVisibleCells().map(cell => (
-                  <td key={cell.id} className="px-4 py-4">
+                  <td key={cell.id} className="px-6 py-4">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
@@ -187,4 +185,4 @@ const ViewProducts = ({
   );
 };
 
-export default ViewProducts;
+export default Table;

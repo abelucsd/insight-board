@@ -8,17 +8,18 @@ interface SidenavProps {
   styles?: string;
   onLinkClick?: () => void;
 }
+
 const Sidenav = ({styles, onLinkClick}: SidenavProps) => {    
   return (
     <nav 
       className={`    
         ${styles}
         flex flex-col gap-8 overflow-hidden shadow-xs 
-        border-r border-[#e5e7eb] w-64 min-h-screen h-full px-6 bg-[var(--bg-nav)]        
+        border-r border-[#e5e7eb] w-64 min-h-screen h-full px-6 bg-[var(--bg-nav)]
       `}
       >
       <h1>{logo}</h1>
-      <ul className="flex flex-col gap-6">        
+      <ul className="flex flex-col gap-6">
         <li onClick={onLinkClick}>
           <Link to={navItems[0].link}>
             <h3>{navItems[0].name}</h3>
@@ -29,7 +30,7 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
           <DropdownLinks 
             title={`Trends`} 
             links={trendsDropdownLinks} 
-            onLinkClick={onLinkClick}
+            onLinkClick={onLinkClick}            
           />
         </li>
 
@@ -37,7 +38,7 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
           <DropdownLinks 
             title={`Products`} 
             links={productsDropdownLinks} 
-            onLinkClick={onLinkClick}
+            onLinkClick={onLinkClick}            
           />
         </li>
 
