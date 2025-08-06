@@ -73,7 +73,7 @@ const CreateProduct = () => {
         <button type="submit" disabled={isSubmitting} className="btn btn-primary">
           {isSubmitting ? 'Creating...' : 'Create Product'}
         </button>
-      </FormCard>      
+      </FormCard>
     </form>
   );
 };
