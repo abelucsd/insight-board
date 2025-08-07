@@ -20,8 +20,9 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
     <nav 
       className={`    
         ${styles}
-        flex flex-col gap-8 overflow-hidden shadow-xs 
-        border-r border-[#e5e7eb] w-64 min-h-screen h-full px-6 bg-[var(--bg-nav)]
+        sticky top-0 left-0 min-h-screen
+        flex flex-col gap-8 shadow-xs 
+        border-r border-[#e5e7eb] w-64 px-6 bg-[var(--bg-nav)]
       `}
       >
       <h1>{logo}</h1>

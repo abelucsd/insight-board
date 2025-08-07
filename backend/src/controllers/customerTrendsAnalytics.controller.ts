@@ -21,7 +21,7 @@ export const getCustomerTrends = async(
     const filter = req.query.filter as string;
     const page = parseInt(req.query.page as string);
     const limit = parseInt(req.query.limit as string);
-    const search = parseInt(req.query.search as string);
+    const search = req.query.search as string;
 
     logger.info(`[getCustomerTrends] Query according to ${analysis} and ${filter}`)
 
@@ -32,5 +32,5 @@ export const getCustomerTrends = async(
     });
   } catch (error) {
     next(error);
-  }
+  };
 };

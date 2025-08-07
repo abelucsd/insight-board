@@ -41,7 +41,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="
+    <div className="      
+      overflow-y-auto
       md:container mx-auto flex flex-col lg:grid grid-cols-4 gap-8 
       w-[430px] py-8 md:p-8 px-2
     ">
