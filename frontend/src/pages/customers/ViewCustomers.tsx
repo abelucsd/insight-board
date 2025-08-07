@@ -6,6 +6,11 @@ import { useCustomersTableData } from '../../hooks/useCustomersTableData';
 import Table from '../../components/Table';
 import { ConfirmDialog } from '../../components/ConfirmDialog';
 import { UpdateCustomerModal } from '../../components/UpdateCustomerModal';
+import TableCore from '../../components/table/TableCore';
+import TableSearch from '../../components/table/TableSearch';
+import TableBase from '../../components/table/TableBase';
+import TablePagination from '../../components/table/TablePagination';
+import TablePageSizeSelector from '../../components/table/TablePageSizeSelector';
 
 const ViewCustomers = () => {
   const {
@@ -93,8 +98,27 @@ const ViewCustomers = () => {
 
 
   return (
-    <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">            
-      <h2 className="">Customers</h2>      
+    <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2 w-full">
+      <h2 className="">Customers</h2>
+      <TableBase
+        data={customers}
+        total={total}
+        pageIndex={pageIndex}
+        pageSize={pageSize}        
+        setPageIndex={setPageIndex}
+        setPageSize={setPageSize}        
+        columns={columns}
+        isLoading={isLoading}
+        isError={isError}
+      >
+        <TableSearch searchQuery={searchQuery} onChange={setSearchQuery}/>
+        <TableCore />
+        <div className="float-right flex flex-col gap-4 my-4">
+          <TablePagination />
+          <TablePageSizeSelector />
+        </div>
+      </TableBase>
+
       <Table
         data={customers}
         total={total}

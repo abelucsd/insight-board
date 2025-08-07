@@ -37,7 +37,7 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
           <DropdownLinks 
             title={`Trends`} 
             links={trendsDropdownLinks} 
-            onLinkClick={onLinkClick}            
+            onLinkClick={onLinkClick}
           />
         </li>
 
