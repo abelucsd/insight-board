@@ -8,17 +8,15 @@ const logger = createLogger('mlTrends.service');
 export const mlTrendsService = {
   getCustomerTrends: async (analysis: string, filter: string, page: number, limit: number) => {
     try {
-      // Try to get the data from the cache.      
-      
-      const data = await getValue('customers', 'customer-behavior', filter);
-      // const value = await getRedis().get(`customerAnalytics:${analysis}-${filter}`);
+      // Try to get the data from the cache.            
+      const data = await getValue('customers', 'customer-behavior', filter);      
       if (data) {
         logger.info(`[getCustomerTrends] Data was cached.`)
+        const parsedData: string[] = JSON.parse(data);
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
-        const parsedData = JSON.parse(data);
         const paginatedData = parsedData.slice(startIndex, endIndex);
-        return { customerTable: paginatedData, total: parsedData.length };
+        return { customerTable: paginatedData, total: parsedData.length };                     
       }
 
       logger.info(`[getCustomerTrends] Pushing job into the queue.`)

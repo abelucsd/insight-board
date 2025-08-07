@@ -7,6 +7,7 @@ import TableBase from '../../components/table/TableBase';
 import TableCore from '../../components/table/TableCore';
 import TablePagination from '../../components/table/TablePagination';
 import TableLevelFilter from './TableLevelFilter';
+import TableSearch from '../../components/table/TableSearch';
 
 interface ViewCustomerGroupTableProps {
   behavior: BehaviorType;    
@@ -87,7 +88,7 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
           isError={behaviorObject.isError}
         >
           <div className='flex flex-row justify-between w-full'>
-            <TableLevelFilter behavior={behavior} activeLevel={activeLevel} handleClick={handleClick}/>            
+            <TableLevelFilter behavior={behavior} activeLevel={activeLevel} handleClick={handleClick}/>                        
           </div>
           <TableCore />
           <div className="float-right flex flex-col gap-4 my-4">
