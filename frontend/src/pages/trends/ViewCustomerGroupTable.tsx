@@ -7,7 +7,6 @@ import TableBase from '../../components/table/TableBase';
 import TableCore from '../../components/table/TableCore';
 import TablePagination from '../../components/table/TablePagination';
 import TableLevelFilter from './TableLevelFilter';
-import TableSearch from '../../components/table/TableSearch';
 
 interface ViewCustomerGroupTableProps {
   behavior: BehaviorType;    
