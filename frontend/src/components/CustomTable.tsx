@@ -14,7 +14,7 @@ const CustomTable = ({containerStyles, styles, title, rows, columns}: CustomTabl
   return (
     <div className={`
       ${containerStyles}
-      flex flex-col justify-between overflow-x-auto overflow-y-hidden 
+      flex flex-col justify-between overflow-x-auto overflow-y-hidden
       border border-[var(--graph-border)] rounded-2xl px-8 py-6 bg-white
     `}>
       <h3>{title}</h3>

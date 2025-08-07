@@ -73,7 +73,7 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
 
 
   return (
-    <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">
+    <div className="container mx-auto flex flex-col gap-8 py-8 md:p-8 px-2">
       <h2>{level} {behaviorTitle}</h2>      
         <TableBase
           data={behaviorObject.customerTable}
@@ -87,7 +87,7 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
           isError={behaviorObject.isError}
         >
           <div className='flex flex-row justify-between w-full'>
-            <TableLevelFilter behavior={behavior} activeLevel={activeLevel} handleClick={handleClick}/>            
+            <TableLevelFilter behavior={behavior} activeLevel={activeLevel} handleClick={handleClick}/>                        
           </div>
           <TableCore />
           <div className="float-right flex flex-col gap-4 my-4">
