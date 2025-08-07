@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react'
 import {  
   createColumnHelper,
 } from '@tanstack/react-table';
-import Table from '../../components/Table';
 import { CustomerTable, BehaviorType, LevelType } from '../../types/customerTrends';
+import TableBase from '../../components/table/TableBase';
+import TableSearch from '../../components/table/TableSearch';
+import TableCore from '../../components/table/TableCore';
+import TablePagination from '../../components/table/TablePagination';
+import TablePageSizeSelector from '../../components/table/TablePageSizeSelector';
+import TableLevelFilter from './TableLevelFilter';
 
 interface ViewCustomerGroupTableProps {
   behavior: BehaviorType;    
@@ -70,27 +75,28 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
 
   return (
     <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">
-      <h2>{level} {behaviorTitle}</h2>
-      <div className="flex flex-col">
-        <div className="flex flex-row justify-end gap-2">
-          <button className='btn-secondary' onClick={() => handleClick(behavior, 'high')}>High</button>
-          <button className='btn-secondary' onClick={() => handleClick(behavior, 'normal')}>Normal</button>
-          <button className='btn-secondary' onClick={() => handleClick(behavior, 'low')}>Low</button>
-        </div>
-        <Table
+      <h2>{level} {behaviorTitle}</h2>      
+        <TableBase
           data={behaviorObject.customerTable}
           total={behaviorObject.total}
           pageIndex={behaviorObject.pageIndex}
           pageSize={behaviorObject.pageSize}
-          searchQuery={behaviorObject.searchQuery}
           setPageIndex={behaviorObject.setPageIndex}
-          setPageSize={behaviorObject.setPageSize}
-          setSearchQuery={behaviorObject.setSearchQuery}
+          setPageSize={behaviorObject.setPageSize}        
           columns={columns}
           isLoading={behaviorObject.isLoading}
           isError={behaviorObject.isError}
-        />
-      </div>
+        >
+          <div className='flex flex-row justify-between w-full'>
+            <TableLevelFilter behavior={behavior} handleClick={handleClick}/>
+            <TableSearch searchQuery={behaviorObject.searchQuery} onChange={behaviorObject.setSearchQuery}/>
+          </div>
+          <TableCore />
+          <div className="float-right flex flex-col gap-4 my-4">
+            <TablePagination />
+            <TablePageSizeSelector />
+          </div>
+        </TableBase>          
     </div>
   )
 };

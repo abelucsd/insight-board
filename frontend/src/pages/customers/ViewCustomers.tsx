@@ -3,7 +3,6 @@ import {
 } from '@tanstack/react-table';
 
 import { useCustomersTableData } from '../../hooks/useCustomersTableData';
-import Table from '../../components/Table';
 import { ConfirmDialog } from '../../components/ConfirmDialog';
 import { UpdateCustomerModal } from '../../components/UpdateCustomerModal';
 import TableCore from '../../components/table/TableCore';
@@ -118,20 +117,6 @@ const ViewCustomers = () => {
           <TablePageSizeSelector />
         </div>
       </TableBase>
-
-      <Table
-        data={customers}
-        total={total}
-        pageIndex={pageIndex}
-        pageSize={pageSize}
-        searchQuery={searchQuery}
-        setPageIndex={setPageIndex}
-        setPageSize={setPageSize}
-        setSearchQuery={setSearchQuery}
-        columns={columns}
-        isLoading={isLoading}
-        isError={isError}
-      />
 
       <UpdateCustomerModal
         isOpen={isUpdateOpen}
