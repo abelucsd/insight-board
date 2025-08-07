@@ -12,7 +12,7 @@ export const mlTrendsService = {
       const data = await getValue('customers', 'customer-behavior', filter);      
       if (data) {
         logger.info(`[getCustomerTrends] Data was cached.`)
-        const parsedData: string[] = JSON.parse(data);
+        const parsedData = JSON.parse(data);
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
         const paginatedData = parsedData.slice(startIndex, endIndex);
