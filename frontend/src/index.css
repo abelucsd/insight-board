@@ -94,7 +94,10 @@
         background-color: var(--color-white-variant);
       }
     }
-  }  
+  }
+  .btn-secondary.active {
+    @apply bg-slate-700 text-white hover:bg-slate-800;
+  }
 
   .btn-file {
     @apply border rounded-md p-1 text-sm text-gray-500 bg-white shadow-sm 

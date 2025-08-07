@@ -10,7 +10,7 @@ const TableSearch = ({searchQuery, onChange, styles }: TableSearchProps) => {
     <input 
       className={`${styles} float-right border rounded px-3 py-2`}
       type="text"
-      placeholder="Search products..."
+      placeholder="Search..."
       value={searchQuery}
       onChange={e => {
         onChange(e.target.value);

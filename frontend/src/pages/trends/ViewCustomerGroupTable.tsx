@@ -4,10 +4,8 @@ import {
 } from '@tanstack/react-table';
 import { CustomerTable, BehaviorType, LevelType } from '../../types/customerTrends';
 import TableBase from '../../components/table/TableBase';
-import TableSearch from '../../components/table/TableSearch';
 import TableCore from '../../components/table/TableCore';
 import TablePagination from '../../components/table/TablePagination';
-import TablePageSizeSelector from '../../components/table/TablePageSizeSelector';
 import TableLevelFilter from './TableLevelFilter';
 
 interface ViewCustomerGroupTableProps {
@@ -30,6 +28,7 @@ interface ViewCustomerGroupTableProps {
 const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: ViewCustomerGroupTableProps) => {
 
   const [behaviorTitle, setBehaviorTitle] = useState<string>(behavior);
+  const [activeLevel, setActiveLevel] = useState<LevelType>('high');
   const [level, setLevel] = useState<string>('High');
 
   useEffect(() => {
@@ -40,10 +39,11 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
 
   const handleClick = (behavior: BehaviorType, levelType: LevelType) => {
     handleLevelChange(behavior, levelType);
+    setActiveLevel(levelType);
     let newLevel = levelType;
-    newLevel = newLevel.charAt(0).toUpperCase() + newLevel.slice(1);
+    newLevel = newLevel.charAt(0).toUpperCase() + newLevel.slice(1);    
     setLevel(newLevel);
-  };  
+  };
 
   const columnHelper = createColumnHelper<typeof behaviorObject.customerTable[0]>();
   
@@ -72,7 +72,6 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
   ];
 
 
-
   return (
     <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">
       <h2>{level} {behaviorTitle}</h2>      
@@ -88,15 +87,13 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
           isError={behaviorObject.isError}
         >
           <div className='flex flex-row justify-between w-full'>
-            <TableLevelFilter behavior={behavior} handleClick={handleClick}/>
-            <TableSearch searchQuery={behaviorObject.searchQuery} onChange={behaviorObject.setSearchQuery}/>
+            <TableLevelFilter behavior={behavior} activeLevel={activeLevel} handleClick={handleClick}/>            
           </div>
           <TableCore />
           <div className="float-right flex flex-col gap-4 my-4">
             <TablePagination />
-            <TablePageSizeSelector />
           </div>
-        </TableBase>          
+        </TableBase>
     </div>
   )
 };
