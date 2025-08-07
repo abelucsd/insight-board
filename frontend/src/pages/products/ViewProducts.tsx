@@ -3,9 +3,13 @@ import {
 } from '@tanstack/react-table';
 
 import { useProductsTableData } from '../../hooks/useProductsTableData';
-import Table from '../../components/Table';
 import { ConfirmDialog } from '../../components/ConfirmDialog';
 import { UpdateProductModal } from '../../components/UpdateProductModal';
+import TableBase from '../../components/table/TableBase';
+import TableSearch from '../../components/table/TableSearch';
+import TableCore from '../../components/table/TableCore';
+import TablePagination from '../../components/table/TablePagination';
+import TablePageSizeSelector from '../../components/table/TablePageSizeSelector';
 
 const ViewProducts = () => {
   const {
@@ -109,21 +113,24 @@ const ViewProducts = () => {
   return (
     <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">
       <h2 className="">Products</h2>
-      <div>
-        <Table
-          data={products}
-          total={total}
-          pageIndex={pageIndex}
-          pageSize={pageSize}
-          searchQuery={searchQuery}
-          setPageIndex={setPageIndex}
-          setPageSize={setPageSize}
-          setSearchQuery={setSearchQuery}
-          columns={columns}
-          isLoading={isLoading}
-          isError={isError}
-        />
-      </div>
+      <TableBase
+        data={products}
+        total={total}
+        pageIndex={pageIndex}
+        pageSize={pageSize}        
+        setPageIndex={setPageIndex}
+        setPageSize={setPageSize}        
+        columns={columns}
+        isLoading={isLoading}
+        isError={isError}
+      >
+        <TableSearch searchQuery={searchQuery} onChange={setSearchQuery}/>
+        <TableCore />
+        <div className="float-right flex flex-col gap-4 my-4">
+          <TablePagination />
+          <TablePageSizeSelector />
+        </div>
+      </TableBase>
 
       <UpdateProductModal
         isOpen={isUpdateOpen}
