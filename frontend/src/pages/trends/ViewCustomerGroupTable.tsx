@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 import {  
   createColumnHelper,
 } from '@tanstack/react-table';
-import Table from '../../components/Table';
 import { CustomerTable, BehaviorType, LevelType } from '../../types/customerTrends';
+import TableBase from '../../components/table/TableBase';
+import TableCore from '../../components/table/TableCore';
+import TablePagination from '../../components/table/TablePagination';
+import TableLevelFilter from './TableLevelFilter';
 
 interface ViewCustomerGroupTableProps {
   behavior: BehaviorType;    
@@ -25,6 +28,7 @@ interface ViewCustomerGroupTableProps {
 const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: ViewCustomerGroupTableProps) => {
 
   const [behaviorTitle, setBehaviorTitle] = useState<string>(behavior);
+  const [activeLevel, setActiveLevel] = useState<LevelType>('high');
   const [level, setLevel] = useState<string>('High');
 
   useEffect(() => {
@@ -35,10 +39,11 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
 
   const handleClick = (behavior: BehaviorType, levelType: LevelType) => {
     handleLevelChange(behavior, levelType);
+    setActiveLevel(levelType);
     let newLevel = levelType;
-    newLevel = newLevel.charAt(0).toUpperCase() + newLevel.slice(1);
+    newLevel = newLevel.charAt(0).toUpperCase() + newLevel.slice(1);    
     setLevel(newLevel);
-  };  
+  };
 
   const columnHelper = createColumnHelper<typeof behaviorObject.customerTable[0]>();
   
@@ -67,30 +72,28 @@ const ViewCustomerGroupTable = ({behavior, behaviorObject, handleLevelChange}: V
   ];
 
 
-
   return (
     <div className="container mx-auto flex flex-col gap-8 h-screen py-8 md:p-8 px-2">
-      <h2>{level} {behaviorTitle}</h2>
-      <div className="flex flex-col">
-        <div className="flex flex-row justify-end gap-2">
-          <button className='btn-secondary' onClick={() => handleClick(behavior, 'high')}>High</button>
-          <button className='btn-secondary' onClick={() => handleClick(behavior, 'normal')}>Normal</button>
-          <button className='btn-secondary' onClick={() => handleClick(behavior, 'low')}>Low</button>
-        </div>
-        <Table
+      <h2>{level} {behaviorTitle}</h2>      
+        <TableBase
           data={behaviorObject.customerTable}
           total={behaviorObject.total}
           pageIndex={behaviorObject.pageIndex}
           pageSize={behaviorObject.pageSize}
-          searchQuery={behaviorObject.searchQuery}
           setPageIndex={behaviorObject.setPageIndex}
-          setPageSize={behaviorObject.setPageSize}
-          setSearchQuery={behaviorObject.setSearchQuery}
+          setPageSize={behaviorObject.setPageSize}        
           columns={columns}
           isLoading={behaviorObject.isLoading}
           isError={behaviorObject.isError}
-        />
-      </div>
+        >
+          <div className='flex flex-row justify-between w-full'>
+            <TableLevelFilter behavior={behavior} activeLevel={activeLevel} handleClick={handleClick}/>            
+          </div>
+          <TableCore />
+          <div className="float-right flex flex-col gap-4 my-4">
+            <TablePagination />
+          </div>
+        </TableBase>
     </div>
   )
 };

@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { DownArrow } from "../icons/DownArrow";
 import { UpArrow } from "../icons/UpArrow";
-import { useDropDownLinks } from "../hooks/useDropdownLinks";
+import { useDropdownContext } from "../providers/DropdownProvider";
 
 interface DropdownLink {
   name: string;
@@ -20,9 +20,11 @@ const DropdownLinks = ({title, links, onLinkClick}: DropdownLinksProps) => {
   const dropdownRef = useRef<HTMLDivElement | null>(null);  
 
   const {
-    isOpen,
+    openId,
     toggleDropdown,
-  } = useDropDownLinks();
+  } = useDropdownContext();
+  const isOpen = openId === title;
+
 
   return (
     <div
@@ -30,7 +32,7 @@ const DropdownLinks = ({title, links, onLinkClick}: DropdownLinksProps) => {
       className="relative w-full"
     >
       <button 
-        onClick={toggleDropdown}
+        onClick={() => toggleDropdown(title)}
         className="w-full"
       >
         <div className="flex flex-row justify-between">
