@@ -11,18 +11,18 @@ const Navbar = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState<boolean>(false);
 
   return (
-    <nav className="
+    <nav className="      
       relative flex flex-row justify-between items-center 
-      shadow-xs border-b border-[#e5e7eb] h-16 px-6 bg-[var(--bg-nav)]
+      shadow-xs border-b border-[#e5e7eb] h-16 px-6 bg-[var(--bg-nav)] z-100
     ">
             
       <div className={`
-          absolute z-50 top-full left-0 
+          absolute z-50 top-full left-0
           ${isSideNavOpen ? 'translate-x-0': 'max-[1280px]:-translate-x-full xl:hidden'}
           transition-transform duration-300 ease-in-out
         `}>
           <Sidenav 
-            styles={"border-t border-[#e5e7eb] w-62"}
+            styles={"border-t border-[#e5e7eb] w-screen h-screen"}
             onLinkClick={() => setIsSideNavOpen(false)}
           />
       </div>
