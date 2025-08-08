@@ -12,8 +12,7 @@ const LoadCustomers = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-gray-800">Customer Page</h1>
-      <p className="mt-4 text-lg text-gray-600">This is the customers page.</p>
+      <h1 className="text-4xl font-bold text-gray-800">Customer Page</h1>      
             
       <div className="flex flex-row items-center justify-center gap-4 mt-8">
         <input 
