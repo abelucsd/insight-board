@@ -21,10 +21,9 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
   return (
     <nav 
       className={`    
-        ${styles}
-        sticky top-0 left-0 min-h-screen
+        ${styles}             
         flex flex-col gap-8 shadow-xs 
-        border-r border-[#e5e7eb] w-64 px-6 bg-[var(--bg-nav)]
+        border-r border-[#e5e7eb] w-64 h-full px-6 bg-[var(--bg-nav)]
       `}
       >
       <h1>{logo}</h1>
@@ -33,6 +32,7 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
         <li onClick={() => {          
           toggleDropdown(navItems[0].name)
           handleActiveLink(navItems[0].name, navItems[0].name)
+          onLinkClick?.()
           }}>
           <Link             
             to={navItems[0].link}>
