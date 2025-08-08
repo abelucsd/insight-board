@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef} from "react";
 import { Link } from "react-router-dom";
 import { DownArrow } from "../icons/DownArrow";
 import { UpArrow } from "../icons/UpArrow";
@@ -21,10 +21,12 @@ const DropdownLinks = ({title, links, onLinkClick}: DropdownLinksProps) => {
 
   const {
     openId,
+    activeDropdownId,
+    activeLink,
     toggleDropdown,
+    handleActiveLink,
   } = useDropdownContext();
   const isOpen = openId === title;
-
 
   return (
     <div
@@ -35,31 +37,32 @@ const DropdownLinks = ({title, links, onLinkClick}: DropdownLinksProps) => {
         onClick={() => toggleDropdown(title)}
         className="w-full"
       >
-        <div className="flex flex-row justify-between">
-          <h3>{title}</h3>
-          {isOpen === false ?
-            <DownArrow />
+        {isOpen === true || activeDropdownId === title ?
+          <div className="flex flex-row justify-between navlink active"><h3>{title}</h3><UpArrow /></div>
           :
-            <UpArrow />
-          }
-        </div>
+          <div className="flex flex-row justify-between navlink"><h3>{title}</h3><DownArrow /></div>
+        }        
       </button>
 
-      {isOpen && (
-        <div className="p-4 flex flex-col gap-4">
-          {links.map((link, index) => (            
-              <Link 
-                to={link.link} key={index} 
-                onClick={() => {                
+      {isOpen || activeDropdownId === title ?
+        <div className="flex flex-col gap-4 m-4">
+          {links.map((link, index) => (
+              <Link                                 
+                to={link.link} 
+                key={index}
+                className={`navlink ${activeLink === link.name ? 'active' : ''}`}
+                onClick={() => {                  
+                  handleActiveLink(title, link.name);
                   onLinkClick?.();
                 }
               }
-              >
-                <h3>{link.name}</h3>
-              </Link>            
+              >                                  
+                <h3>{link.name}</h3>                
+              </Link>
           ))}
         </div>
-      )}
+        : <div></div>
+      }
 
     </div>
   );

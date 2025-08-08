@@ -11,11 +11,13 @@ interface SidenavProps {
   onLinkClick?: () => void;
 }
 
-const Sidenav = ({styles, onLinkClick}: SidenavProps) => {    
-  const {      
-      toggleDropdown,
-    } = useDropdownContext();    
-
+const Sidenav = ({styles, onLinkClick}: SidenavProps) => {      
+  const {          
+    activeDropdownId,
+    toggleDropdown,
+    handleActiveLink,
+  } = useDropdownContext();  
+    
   return (
     <nav 
       className={`    
@@ -28,9 +30,13 @@ const Sidenav = ({styles, onLinkClick}: SidenavProps) => {
       <h1>{logo}</h1>
       <ul className="flex flex-col gap-6">
         
-        <li onClick={() => {toggleDropdown(navItems[0].name)}}>
-          <Link to={navItems[0].link}>
-            <h3>{navItems[0].name}</h3>
+        <li onClick={() => {          
+          toggleDropdown(navItems[0].name)
+          handleActiveLink(navItems[0].name, navItems[0].name)
+          }}>
+          <Link             
+            to={navItems[0].link}>
+            <h3 className={`navlink ${activeDropdownId === navItems[0].name ? 'navlink active' : ''}`}>{navItems[0].name}</h3>
           </Link>
         </li>
 

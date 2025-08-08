@@ -18,6 +18,6 @@ export const getCustomerTrendAnalytics = async (
       search: searchQuery,
     }
   })
-  console.log(response.data.data)
+  
   return response.data.data;
 };
