@@ -16,7 +16,7 @@ const Layout = () => {
         <div className='flex-2'>
           <Navbar />
         </div>
-        <main className='flex-grow'>
+        <main className='flex-grow max-w-screen'>
           <Outlet />
         </main>
       </div>

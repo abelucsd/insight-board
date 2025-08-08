@@ -41,33 +41,33 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="      
+    <div className="
       overflow-y-auto
       md:container mx-auto flex flex-col lg:grid grid-cols-4 gap-8 
-      w-[430px] py-8 md:p-8 px-2
+      py-8 md:p-8 px-2
     ">
-      <div className="row-start-1 col-start-1 col-end-3">        
-        <div className="grid grid-cols-2 gap-8 h-full">
+      <div className="row-start-1 col-start-1 col-end-3">
+        <div className="grid grid-cols-2 md:gap-8 gap-2 h-full max-w-full">
           <CustomStatTrackerBox 
-            style={"w-full h-full"}
+            style={""}
             title={"Invoices"}
             total={currMonthInvoices.total} 
             growth={currMonthInvoices.growth} 
           />
           <CustomStatTrackerBox 
-            style={"w-full h-full"}
+            style={""}
             title={"Revenue"} 
             total={currMonthRevenue.total} 
             growth={currMonthRevenue.growth} 
           />
           <CustomStatTrackerBox
-            style={"w-full h-full"}
+            style={""}
             title={"Profit"}
             total={currMonthProfit.total}
             growth={currMonthProfit.growth}
           />
           <CustomStatTrackerBox 
-            style={"w-full h-full"}
+            style={""}
             title={"Visits"} 
             total={currMonthVisits.total}             
             growth={currMonthVisits.growth}
