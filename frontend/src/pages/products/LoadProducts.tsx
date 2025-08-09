@@ -17,7 +17,7 @@ const LoadProducts = () => {
 
       {/* 2 Products Table */}
       {/* 1 Upload Many Products */}
-      <div className="flex flex-row items-center justify-center gap-4 mt-8">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8">
         <input 
           type="file" 
           className="hidden"
